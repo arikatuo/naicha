@@ -1,1 +1,89 @@
+.result-page {
+  display: flex;
+  flex-direction: column;
+  gap: 32rpx;
+}
 
+.summary {
+  display: flex;
+  flex-direction: column;
+  gap: 16rpx;
+}
+
+.result-title {
+  font-size: 42rpx;
+  font-weight: 900;
+}
+
+.calorie-row {
+  display: flex;
+  align-items: center;
+  gap: 16rpx;
+}
+
+.calories {
+  font-size: 56rpx;
+  font-weight: 900;
+}
+
+.badge {
+  border-radius: 999rpx;
+  background: #ead6c1;
+  color: #5b3926;
+  font-size: 22rpx;
+  padding: 8rpx 14rpx;
+}
+
+.drink-name,
+.disclaimer {
+  color: #77675b;
+  font-size: 26rpx;
+  line-height: 1.5;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 18rpx;
+}
+
+.equivalent-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14rpx;
+  min-height: 190rpx;
+  box-sizing: border-box;
+  padding: 24rpx;
+  border-radius: 20rpx;
+  background: #fff3e2;
+}
+
+.icon {
+  width: 72rpx;
+  height: 72rpx;
+}
+
+.card-text {
+  font-size: 26rpx;
+  font-weight: 800;
+  text-align: center;
+}
+
+.actions {
+  display: flex;
+  flex-direction: column;
+  gap: 18rpx;
+}
+
+.fresh .equivalent-card {
+  background: #edf6e9;
+}
+
+.warm .equivalent-card {
+  background: #ffe8cf;
+}
+
+.cocoa .equivalent-card {
+  background: #efe0d4;
+}
