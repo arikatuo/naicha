@@ -14,7 +14,7 @@
     >
       <text class="drink-name">{{item.displayName}}</text>
       <view class="tag-row">
-        <text wx:for="{{item.tagIds}}" wx:key="*this" class="tag">{{item}}</text>
+        <text wx:for="{{item.tags}}" wx:key="id" class="tag">{{item.name}}</text>
       </view>
     </button>
   </view>

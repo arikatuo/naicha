@@ -6,6 +6,7 @@ const sweetnessLevels = require('../data/sweetness-levels');
 const toppings = require('../data/toppings');
 const equivalents = require('../data/equivalents');
 const copywriting = require('../data/copywriting');
+const tags = require('../data/tags');
 
 function byId(items, id) {
   return items.find((item) => item.id === id) || null;
@@ -47,6 +48,14 @@ function getToppingsByIds(ids) {
   return ids.map(getToppingById).filter(Boolean);
 }
 
+function getTagById(id) {
+  return byId(tags, id);
+}
+
+function getTagsByIds(ids) {
+  return ids.map(getTagById).filter(Boolean);
+}
+
 module.exports = {
   getBrands,
   getBrandById,
@@ -57,10 +66,13 @@ module.exports = {
   getSweetnessById,
   getToppingById,
   getToppingsByIds,
+  getTagById,
+  getTagsByIds,
   bases,
   cupSizes,
   sweetnessLevels,
   toppings,
   equivalents,
-  copywriting
+  copywriting,
+  tags
 };

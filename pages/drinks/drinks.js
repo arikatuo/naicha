@@ -21,7 +21,10 @@ Page({
 
   onLoad(options) {
     const brand = store.getBrandById(options.brandId);
-    const drinks = store.getDrinksByBrandId(options.brandId);
+    const drinks = store.getDrinksByBrandId(options.brandId).map((drink) => ({
+      ...drink,
+      tags: store.getTagsByIds(drink.tagIds || [])
+    }));
     this.setData({ brand, drinks });
   },
 
