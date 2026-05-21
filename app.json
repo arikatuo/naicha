@@ -1,0 +1,17 @@
+{
+  "pages": [
+    "pages/home/home",
+    "pages/brands/brands",
+    "pages/drinks/drinks",
+    "pages/custom/custom",
+    "pages/result/result"
+  ],
+  "window": {
+    "navigationBarTitleText": "奶茶热量换算器",
+    "navigationBarBackgroundColor": "#f7efe5",
+    "navigationBarTextStyle": "black",
+    "backgroundColor": "#fffaf3"
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}

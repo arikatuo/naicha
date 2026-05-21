@@ -1,0 +1,18 @@
+{
+  "description": "奶茶热量换算器",
+  "packOptions": {
+    "ignore": []
+  },
+  "setting": {
+    "urlCheck": true,
+    "es6": true,
+    "enhance": true,
+    "postcss": true,
+    "minified": true
+  },
+  "compileType": "miniprogram",
+  "libVersion": "latest",
+  "appid": "touristappid",
+  "projectname": "milk-tea-calorie-mini-program",
+  "condition": {}
+}

@@ -1,0 +1,42 @@
+.home-page {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.hero {
+  display: flex;
+  flex-direction: column;
+  gap: 20rpx;
+  padding-top: 72rpx;
+}
+
+.eyebrow {
+  color: #8b5f3f;
+  font-size: 26rpx;
+  font-weight: 700;
+}
+
+.title {
+  font-size: 58rpx;
+  font-weight: 900;
+  line-height: 1.15;
+}
+
+.subtitle {
+  color: #6e5d51;
+  font-size: 32rpx;
+  line-height: 1.5;
+}
+
+.actions {
+  display: flex;
+  flex-direction: column;
+  gap: 24rpx;
+}
+
+.disclaimer {
+  color: #8a7b70;
+  font-size: 24rpx;
+  text-align: center;
+}
