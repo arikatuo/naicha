@@ -87,3 +87,11 @@
 .cocoa .equivalent-card {
   background: #efe0d4;
 }
+
+.poster-canvas {
+  position: fixed;
+  left: -9999rpx;
+  top: -9999rpx;
+  width: 360px;
+  height: 640px;
+}

@@ -2,6 +2,7 @@ const store = require('../../utils/data-store');
 const { decodePayload } = require('../../utils/nav');
 const { buildEquivalentCards } = require('../../utils/equivalents');
 const { getResultCopy } = require('../../utils/copy');
+const { drawPoster } = require('../../utils/poster');
 
 Page({
   data: {
@@ -31,7 +32,38 @@ Page({
   },
 
   generatePoster() {
-    wx.showToast({ title: '海报功能下一步接入', icon: 'none' });
+    if (!this.data.payload) {
+      wx.showToast({ title: '结果走丢了，请重新计算', icon: 'none' });
+      return;
+    }
+
+    const ctx = wx.createCanvasContext('posterCanvas', this);
+    drawPoster({
+      ctx,
+      payload: this.data.payload,
+      cards: this.data.cards,
+      resultCopy: this.data.resultCopy,
+      width: 360,
+      height: 640
+    });
+
+    ctx.draw(false, () => {
+      wx.canvasToTempFilePath({
+        canvasId: 'posterCanvas',
+        width: 360,
+        height: 640,
+        destWidth: 1080,
+        destHeight: 1920,
+        success: (res) => {
+          wx.saveImageToPhotosAlbum({
+            filePath: res.tempFilePath,
+            success: () => wx.showToast({ title: '已保存到相册', icon: 'success' }),
+            fail: () => wx.showToast({ title: '保存失败，请检查相册权限', icon: 'none' })
+          });
+        },
+        fail: () => wx.showToast({ title: '海报生成失败', icon: 'none' })
+      }, this);
+    });
   },
 
   onShareAppMessage() {

@@ -20,4 +20,6 @@
     <button class="button-primary" bindtap="generatePoster">生成分享图</button>
     <button class="button-secondary" bindtap="recalculate">再算一杯</button>
   </view>
+
+  <canvas canvas-id="posterCanvas" class="poster-canvas"></canvas>
 </view>
