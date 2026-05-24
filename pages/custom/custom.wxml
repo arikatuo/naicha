@@ -1,31 +1,32 @@
 <view class="page">
   <view class="section-head">
+    <text class="eyebrow">自由搭配</text>
     <text class="title">自己搭一杯</text>
     <text class="subtitle">先搭配，热量留到结果页揭晓。</text>
   </view>
 
-  <view class="option-group">
+  <view class="option-group surface">
     <text class="label">基底</text>
     <view class="option-grid">
       <button wx:for="{{bases}}" wx:key="id" class="option {{selectedBaseId === item.id ? 'active' : ''}}" data-id="{{item.id}}" bindtap="selectBase">{{item.name}}</button>
     </view>
   </view>
 
-  <view class="option-group">
+  <view class="option-group surface">
     <text class="label">杯型</text>
     <view class="option-grid two">
       <button wx:for="{{cupSizes}}" wx:key="id" class="option {{selectedSizeId === item.id ? 'active' : ''}}" data-id="{{item.id}}" bindtap="selectSize">{{item.name}}</button>
     </view>
   </view>
 
-  <view class="option-group">
+  <view class="option-group surface">
     <text class="label">甜度</text>
     <view class="option-grid">
       <button wx:for="{{sweetnessLevels}}" wx:key="id" class="option {{selectedSweetnessId === item.id ? 'active' : ''}}" data-id="{{item.id}}" bindtap="selectSweetness">{{item.name}}</button>
     </view>
   </view>
 
-  <view class="option-group">
+  <view class="option-group surface">
     <text class="label">小料</text>
     <view class="option-grid">
       <button wx:for="{{toppingOptions}}" wx:key="id" class="option {{item.selected ? 'active' : ''}}" data-id="{{item.id}}" bindtap="toggleTopping">{{item.name}}</button>

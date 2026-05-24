@@ -1,17 +1,17 @@
 page {
-  background: #fffaf3;
-  color: #2f241d;
+  background: #fff8ec;
+  color: #2d211b;
   font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif;
 }
 
 .page {
   min-height: 100vh;
   box-sizing: border-box;
-  padding: 40rpx 32rpx 56rpx;
+  padding: 40rpx 32rpx 64rpx;
 }
 
 .muted {
-  color: #7f7168;
+  color: #77695f;
 }
 
 .button-primary {
@@ -19,10 +19,18 @@ page {
   align-items: center;
   justify-content: center;
   min-height: 96rpx;
-  border-radius: 20rpx;
-  background: #5b3926;
-  color: #fffaf3;
+  border: 0;
+  border-radius: 28rpx;
+  background: #6b3f2a;
+  color: #fff8ec;
+  box-shadow: 0 14rpx 30rpx rgba(107, 63, 42, 0.22);
   font-weight: 700;
+  line-height: 1;
+}
+
+.button-primary::after,
+.button-secondary::after {
+  border: 0;
 }
 
 .button-secondary {
@@ -30,8 +38,35 @@ page {
   align-items: center;
   justify-content: center;
   min-height: 96rpx;
-  border-radius: 20rpx;
-  background: #f0dfcc;
+  border: 0;
+  border-radius: 28rpx;
+  background: #f6e5ce;
   color: #4a3324;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.button-primary:active,
+.button-secondary:active {
+  opacity: 0.86;
+  transform: scale(0.99);
+}
+
+.surface {
+  border-radius: 28rpx;
+  background: #fffdf8;
+  box-shadow: 0 16rpx 40rpx rgba(88, 58, 36, 0.08);
+}
+
+.pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 56rpx;
+  box-sizing: border-box;
+  border-radius: 999rpx;
+  background: #f6e5ce;
+  color: #684b39;
+  font-size: 24rpx;
   font-weight: 700;
 }

@@ -1,8 +1,29 @@
 <view class="page home-page">
   <view class="hero">
     <text class="eyebrow">趣味估算工具</text>
-    <text class="title">奶茶热量换算器</text>
-    <text class="subtitle">看看这一杯快乐，约等于什么。</text>
+    <text class="title">这一杯快乐，约等于什么？</text>
+    <text class="subtitle">选品牌、挑饮品、加点小料，热量到最后一秒揭晓。</text>
+  </view>
+
+  <view class="preview-card surface">
+    <view class="preview-head">
+      <text class="preview-kicker">示例结果</text>
+      <text class="preview-calorie">约 486 kcal</text>
+    </view>
+    <view class="preview-grid">
+      <view class="preview-item">
+        <image src="/assets/icons/fries.png" mode="aspectFit"></image>
+        <text>1.6 包大薯</text>
+      </view>
+      <view class="preview-item">
+        <image src="/assets/icons/pork.png" mode="aspectFit"></image>
+        <text>60g 肥肉</text>
+      </view>
+      <view class="preview-item">
+        <image src="/assets/icons/jogging.png" mode="aspectFit"></image>
+        <text>45 分钟慢跑</text>
+      </view>
+    </view>
   </view>
 
   <view class="actions">

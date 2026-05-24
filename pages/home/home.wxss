@@ -1,32 +1,93 @@
 .home-page {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  gap: 40rpx;
 }
 
 .hero {
   display: flex;
   flex-direction: column;
-  gap: 20rpx;
-  padding-top: 72rpx;
+  gap: 18rpx;
+  padding-top: 44rpx;
 }
 
 .eyebrow {
+  width: fit-content;
+  border-radius: 999rpx;
+  background: #f6e5ce;
   color: #8b5f3f;
   font-size: 26rpx;
   font-weight: 700;
+  padding: 10rpx 18rpx;
 }
 
 .title {
-  font-size: 58rpx;
+  max-width: 620rpx;
+  font-size: 60rpx;
   font-weight: 900;
   line-height: 1.15;
 }
 
 .subtitle {
-  color: #6e5d51;
+  color: #6f6258;
   font-size: 32rpx;
   line-height: 1.5;
+}
+
+.preview-card {
+  display: flex;
+  flex-direction: column;
+  gap: 24rpx;
+  padding: 30rpx;
+}
+
+.preview-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20rpx;
+}
+
+.preview-kicker {
+  color: #8b5f3f;
+  font-size: 24rpx;
+  font-weight: 800;
+}
+
+.preview-calorie {
+  color: #2d211b;
+  font-size: 36rpx;
+  font-weight: 900;
+}
+
+.preview-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14rpx;
+}
+
+.preview-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10rpx;
+  min-height: 150rpx;
+  box-sizing: border-box;
+  border-radius: 22rpx;
+  background: #fff4df;
+  padding: 18rpx 10rpx;
+}
+
+.preview-item image {
+  width: 64rpx;
+  height: 64rpx;
+}
+
+.preview-item text {
+  color: #513929;
+  font-size: 22rpx;
+  font-weight: 800;
+  text-align: center;
 }
 
 .actions {
@@ -39,4 +100,5 @@
   color: #8a7b70;
   font-size: 24rpx;
   text-align: center;
+  margin-top: auto;
 }

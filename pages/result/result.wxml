@@ -1,5 +1,6 @@
 <view class="page result-page {{resultCopy.theme}}">
-  <view class="summary">
+  <view class="summary surface">
+    <text class="eyebrow">揭晓结果</text>
     <text class="result-title">{{resultCopy.title}}</text>
     <view class="calorie-row">
       <text class="calories">约 {{payload.calories}} kcal</text>

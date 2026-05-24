@@ -7,11 +7,22 @@
 .summary {
   display: flex;
   flex-direction: column;
-  gap: 16rpx;
+  gap: 18rpx;
+  padding: 30rpx;
+}
+
+.eyebrow {
+  width: fit-content;
+  border-radius: 999rpx;
+  background: #f6e5ce;
+  color: #8b5f3f;
+  font-size: 24rpx;
+  font-weight: 800;
+  padding: 8rpx 18rpx;
 }
 
 .result-title {
-  font-size: 42rpx;
+  font-size: 44rpx;
   font-weight: 900;
 }
 
@@ -22,7 +33,7 @@
 }
 
 .calories {
-  font-size: 56rpx;
+  font-size: 62rpx;
   font-weight: 900;
 }
 
@@ -51,17 +62,19 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 14rpx;
-  min-height: 190rpx;
+  justify-content: center;
+  gap: 16rpx;
+  min-height: 218rpx;
   box-sizing: border-box;
   padding: 24rpx;
-  border-radius: 20rpx;
-  background: #fff3e2;
+  border-radius: 28rpx;
+  background: #fffdf8;
+  box-shadow: 0 12rpx 32rpx rgba(88, 58, 36, 0.08);
 }
 
 .icon {
-  width: 72rpx;
-  height: 72rpx;
+  width: 96rpx;
+  height: 96rpx;
 }
 
 .card-text {
@@ -77,7 +90,7 @@
 }
 
 .fresh .equivalent-card {
-  background: #edf6e9;
+  background: #eef8e9;
 }
 
 .warm .equivalent-card {

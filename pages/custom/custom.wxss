@@ -6,8 +6,27 @@
   margin-bottom: 32rpx;
 }
 
+.section-head {
+  gap: 14rpx;
+  margin-bottom: 34rpx;
+}
+
+.eyebrow {
+  width: fit-content;
+  border-radius: 999rpx;
+  background: #f6e5ce;
+  color: #8b5f3f;
+  font-size: 24rpx;
+  font-weight: 800;
+  padding: 8rpx 18rpx;
+}
+
+.option-group {
+  padding: 26rpx;
+}
+
 .title {
-  font-size: 44rpx;
+  font-size: 48rpx;
   font-weight: 900;
 }
 
@@ -33,15 +52,26 @@
 
 .option {
   min-height: 72rpx;
+  border: 0;
   border-radius: 999rpx;
-  background: #f0dfcc;
+  background: #f6e5ce;
   color: #4a3324;
   font-size: 24rpx;
+  font-weight: 700;
+}
+
+.option::after {
+  border: 0;
+}
+
+.option:active {
+  opacity: 0.88;
+  transform: scale(0.98);
 }
 
 .option.active {
-  background: #5b3926;
-  color: #fffaf3;
+  background: #6b3f2a;
+  color: #fff8ec;
 }
 
 .submit {
