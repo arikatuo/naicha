@@ -7,27 +7,66 @@
 }
 
 .section-head {
+  position: relative;
   gap: 14rpx;
+  min-height: 184rpx;
   margin-bottom: 34rpx;
+  padding-right: 190rpx;
 }
 
 .eyebrow {
   width: fit-content;
   border-radius: 999rpx;
-  background: #f6e5ce;
-  color: #8b5f3f;
+  background: linear-gradient(145deg, #fff6df, #efbf98);
+  color: #8b4f3b;
   font-size: 24rpx;
   font-weight: 800;
   padding: 8rpx 18rpx;
+  box-shadow:
+    0 10rpx 20rpx rgba(139, 95, 63, 0.13),
+    inset 5rpx 6rpx 12rpx rgba(255, 255, 255, 0.56),
+    inset -5rpx -7rpx 12rpx rgba(174, 101, 73, 0.16);
 }
 
 .option-group {
-  padding: 26rpx;
+  padding: 30rpx;
 }
 
 .title {
   font-size: 48rpx;
   font-weight: 900;
+}
+
+.topping-toy {
+  position: absolute;
+  right: 0;
+  top: 12rpx;
+  width: 174rpx;
+  height: 174rpx;
+  filter: drop-shadow(0 18rpx 18rpx rgba(101, 62, 39, 0.16));
+}
+
+.group-head {
+  display: flex;
+  align-items: center;
+  gap: 14rpx;
+}
+
+.step-dot {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48rpx;
+  height: 48rpx;
+  border-radius: 999rpx;
+  background: linear-gradient(145deg, #ffbc73, #ef8178);
+  color: #fffaf1;
+  font-size: 24rpx;
+  font-weight: 900;
+  box-shadow:
+    0 9rpx 16rpx rgba(173, 92, 63, 0.18),
+    inset 4rpx 5rpx 9rpx rgba(255, 242, 204, 0.42),
+    inset -4rpx -6rpx 10rpx rgba(151, 63, 51, 0.16);
 }
 
 .subtitle,
@@ -51,13 +90,18 @@
 }
 
 .option {
-  min-height: 72rpx;
+  min-height: 78rpx;
   border: 0;
   border-radius: 999rpx;
-  background: #f6e5ce;
+  background: linear-gradient(145deg, #fff5df, #edc295);
   color: #4a3324;
   font-size: 24rpx;
   font-weight: 700;
+  box-shadow:
+    0 9rpx 16rpx rgba(124, 78, 49, 0.12),
+    inset 4rpx 5rpx 10rpx rgba(255, 255, 255, 0.52),
+    inset -4rpx -6rpx 10rpx rgba(160, 93, 62, 0.14);
+  transition: transform 180ms ease-out, box-shadow 180ms ease-out;
 }
 
 .option::after {
@@ -65,13 +109,16 @@
 }
 
 .option:active {
-  opacity: 0.88;
-  transform: scale(0.98);
+  opacity: 0.96;
+  transform: scale(0.96) translateY(3rpx);
 }
 
 .option.active {
-  background: #6b3f2a;
+  background: linear-gradient(145deg, #7d5038, #5c3527);
   color: #fff8ec;
+  box-shadow:
+    inset 7rpx 8rpx 14rpx rgba(48, 27, 20, 0.36),
+    inset -6rpx -8rpx 14rpx rgba(255, 229, 187, 0.16);
 }
 
 .submit {

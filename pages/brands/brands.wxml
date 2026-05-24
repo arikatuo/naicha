@@ -18,5 +18,8 @@
     </button>
   </view>
 
-  <text class="disclaimer">热量为估算值，非品牌官方数据，仅供趣味参考。</text>
+  <view class="soft-note">
+    <image src="/assets/icons/pearls.png" mode="aspectFit"></image>
+    <text>热量为估算值，非品牌官方数据，仅供趣味参考。</text>
+  </view>
 </view>

@@ -1,8 +1,13 @@
 <view class="page home-page">
+  <view class="toy-orbit">
+    <image class="hero-cup" src="/assets/icons/milk-tea-cup.png" mode="aspectFit"></image>
+    <image class="hero-pearls" src="/assets/icons/pearls.png" mode="aspectFit"></image>
+  </view>
+
   <view class="hero">
     <text class="eyebrow">趣味估算工具</text>
     <text class="title">这一杯快乐，约等于什么？</text>
-    <text class="subtitle">选品牌、挑饮品、加点小料，热量到最后一秒揭晓。</text>
+    <text class="subtitle">像捏一杯奶茶一样，选品牌、加小料，最后揭晓热量玩具卡。</text>
   </view>
 
   <view class="preview-card surface">

@@ -5,23 +5,41 @@
 }
 
 .summary {
+  position: relative;
   display: flex;
   flex-direction: column;
   gap: 18rpx;
-  padding: 30rpx;
+  min-height: 312rpx;
+  padding: 34rpx;
+  overflow: hidden;
+}
+
+.result-toy {
+  position: absolute;
+  right: -12rpx;
+  top: 10rpx;
+  width: 206rpx;
+  height: 206rpx;
+  opacity: 0.92;
+  filter: drop-shadow(0 18rpx 18rpx rgba(101, 62, 39, 0.16));
 }
 
 .eyebrow {
   width: fit-content;
   border-radius: 999rpx;
-  background: #f6e5ce;
-  color: #8b5f3f;
+  background: linear-gradient(145deg, #fff6df, #efbf98);
+  color: #8b4f3b;
   font-size: 24rpx;
   font-weight: 800;
   padding: 8rpx 18rpx;
+  box-shadow:
+    0 10rpx 20rpx rgba(139, 95, 63, 0.13),
+    inset 5rpx 6rpx 12rpx rgba(255, 255, 255, 0.56),
+    inset -5rpx -7rpx 12rpx rgba(174, 101, 73, 0.16);
 }
 
 .result-title {
+  max-width: 430rpx;
   font-size: 44rpx;
   font-weight: 900;
 }
@@ -30,6 +48,7 @@
   display: flex;
   align-items: center;
   gap: 16rpx;
+  max-width: 450rpx;
 }
 
 .calories {
@@ -39,10 +58,11 @@
 
 .badge {
   border-radius: 999rpx;
-  background: #ead6c1;
-  color: #5b3926;
+  background: linear-gradient(145deg, #fff5df, #edc295);
+  color: #6b3f2a;
   font-size: 22rpx;
   padding: 8rpx 14rpx;
+  box-shadow: inset 4rpx 5rpx 10rpx rgba(255, 255, 255, 0.5);
 }
 
 .drink-name,
@@ -64,17 +84,20 @@
   align-items: center;
   justify-content: center;
   gap: 16rpx;
-  min-height: 218rpx;
+  min-height: 232rpx;
   box-sizing: border-box;
   padding: 24rpx;
-  border-radius: 28rpx;
-  background: #fffdf8;
-  box-shadow: 0 12rpx 32rpx rgba(88, 58, 36, 0.08);
+  border-radius: 42rpx;
+  background: linear-gradient(145deg, #fffaf1, #f6d2a9);
+  box-shadow:
+    0 22rpx 38rpx rgba(124, 78, 49, 0.16),
+    inset 10rpx 12rpx 20rpx rgba(255, 255, 255, 0.55),
+    inset -10rpx -14rpx 22rpx rgba(173, 101, 72, 0.16);
 }
 
 .icon {
-  width: 96rpx;
-  height: 96rpx;
+  width: 112rpx;
+  height: 112rpx;
 }
 
 .card-text {
@@ -90,15 +113,15 @@
 }
 
 .fresh .equivalent-card {
-  background: #eef8e9;
+  background: linear-gradient(145deg, #f5ffe7, #bde8d1);
 }
 
 .warm .equivalent-card {
-  background: #ffe8cf;
+  background: linear-gradient(145deg, #fff2db, #f6b774);
 }
 
 .cocoa .equivalent-card {
-  background: #efe0d4;
+  background: linear-gradient(145deg, #f6e3d1, #c99978);
 }
 
 .poster-canvas {

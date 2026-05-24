@@ -1,31 +1,88 @@
 .home-page {
   display: flex;
   flex-direction: column;
-  gap: 40rpx;
+  gap: 34rpx;
+  overflow: hidden;
+}
+
+.toy-orbit {
+  position: relative;
+  min-height: 300rpx;
+  margin-top: 6rpx;
+}
+
+.toy-orbit::before,
+.toy-orbit::after {
+  content: "";
+  position: absolute;
+  border-radius: 999rpx;
+  background: linear-gradient(145deg, #bde8d1, #f6c2b2);
+  box-shadow:
+    0 22rpx 44rpx rgba(126, 78, 49, 0.16),
+    inset 8rpx 10rpx 18rpx rgba(255, 255, 255, 0.42),
+    inset -8rpx -10rpx 20rpx rgba(125, 78, 49, 0.14);
+}
+
+.toy-orbit::before {
+  width: 150rpx;
+  height: 150rpx;
+  left: 8rpx;
+  top: 28rpx;
+}
+
+.toy-orbit::after {
+  width: 94rpx;
+  height: 94rpx;
+  right: 24rpx;
+  top: 26rpx;
+  background: linear-gradient(145deg, #fde69b, #ef9f9a);
+}
+
+.hero-cup {
+  position: absolute;
+  left: 148rpx;
+  top: -18rpx;
+  width: 360rpx;
+  height: 360rpx;
+  filter: drop-shadow(0 26rpx 24rpx rgba(101, 62, 39, 0.18));
+}
+
+.hero-pearls {
+  position: absolute;
+  right: 28rpx;
+  bottom: 0;
+  width: 148rpx;
+  height: 148rpx;
+  filter: drop-shadow(0 16rpx 18rpx rgba(101, 62, 39, 0.15));
 }
 
 .hero {
   display: flex;
   flex-direction: column;
   gap: 18rpx;
-  padding-top: 44rpx;
+  padding-top: 0;
 }
 
 .eyebrow {
   width: fit-content;
   border-radius: 999rpx;
-  background: #f6e5ce;
-  color: #8b5f3f;
+  background: linear-gradient(145deg, #fff6df, #efbf98);
+  color: #8b4f3b;
   font-size: 26rpx;
-  font-weight: 700;
-  padding: 10rpx 18rpx;
+  font-weight: 900;
+  padding: 12rpx 22rpx;
+  box-shadow:
+    0 10rpx 20rpx rgba(139, 95, 63, 0.13),
+    inset 5rpx 6rpx 12rpx rgba(255, 255, 255, 0.56),
+    inset -5rpx -7rpx 12rpx rgba(174, 101, 73, 0.16);
 }
 
 .title {
   max-width: 620rpx;
-  font-size: 60rpx;
+  font-size: 64rpx;
   font-weight: 900;
   line-height: 1.15;
+  text-shadow: 0 6rpx 0 rgba(255, 255, 255, 0.52);
 }
 
 .subtitle {
@@ -38,7 +95,7 @@
   display: flex;
   flex-direction: column;
   gap: 24rpx;
-  padding: 30rpx;
+  padding: 34rpx;
 }
 
 .preview-head {
@@ -56,7 +113,7 @@
 
 .preview-calorie {
   color: #2d211b;
-  font-size: 36rpx;
+  font-size: 40rpx;
   font-weight: 900;
 }
 
@@ -71,16 +128,20 @@
   flex-direction: column;
   align-items: center;
   gap: 10rpx;
-  min-height: 150rpx;
+  min-height: 166rpx;
   box-sizing: border-box;
-  border-radius: 22rpx;
-  background: #fff4df;
+  border-radius: 32rpx;
+  background: linear-gradient(145deg, #fff8e9, #f4caa1);
+  box-shadow:
+    0 14rpx 24rpx rgba(139, 95, 63, 0.14),
+    inset 7rpx 9rpx 14rpx rgba(255, 255, 255, 0.58),
+    inset -7rpx -9rpx 16rpx rgba(172, 102, 68, 0.16);
   padding: 18rpx 10rpx;
 }
 
 .preview-item image {
-  width: 64rpx;
-  height: 64rpx;
+  width: 76rpx;
+  height: 76rpx;
 }
 
 .preview-item text {

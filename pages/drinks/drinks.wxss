@@ -8,11 +8,15 @@
 .eyebrow {
   width: fit-content;
   border-radius: 999rpx;
-  background: #f6e5ce;
-  color: #8b5f3f;
+  background: linear-gradient(145deg, #fff6df, #efbf98);
+  color: #8b4f3b;
   font-size: 24rpx;
   font-weight: 800;
-  padding: 8rpx 18rpx;
+  padding: 10rpx 20rpx;
+  box-shadow:
+    0 10rpx 20rpx rgba(139, 95, 63, 0.13),
+    inset 5rpx 6rpx 12rpx rgba(255, 255, 255, 0.56),
+    inset -5rpx -7rpx 12rpx rgba(174, 101, 73, 0.16);
 }
 
 .title {
@@ -38,11 +42,15 @@
   align-items: flex-start;
   gap: 16rpx;
   border: 0;
-  border-radius: 26rpx;
-  background: #fffdf8;
-  box-shadow: 0 12rpx 32rpx rgba(88, 58, 36, 0.08);
-  padding: 28rpx;
+  border-radius: 38rpx;
+  background: linear-gradient(145deg, #fffaf1, #f6d2a9);
+  box-shadow:
+    0 22rpx 38rpx rgba(124, 78, 49, 0.16),
+    inset 10rpx 12rpx 20rpx rgba(255, 255, 255, 0.55),
+    inset -10rpx -14rpx 22rpx rgba(173, 101, 72, 0.16);
+  padding: 30rpx;
   text-align: left;
+  transition: transform 180ms ease-out, box-shadow 180ms ease-out;
 }
 
 .drink-card::after {
@@ -50,8 +58,12 @@
 }
 
 .drink-card:active {
-  opacity: 0.9;
-  transform: scale(0.99);
+  opacity: 0.98;
+  transform: scale(0.965) translateY(4rpx);
+  box-shadow:
+    0 8rpx 16rpx rgba(124, 78, 49, 0.12),
+    inset 10rpx 12rpx 20rpx rgba(111, 66, 43, 0.18),
+    inset -8rpx -10rpx 18rpx rgba(255, 246, 221, 0.28);
 }
 
 .drink-main {
@@ -70,11 +82,15 @@
 .drink-action {
   flex: 0 0 auto;
   border-radius: 999rpx;
-  background: #f4a261;
+  background: linear-gradient(145deg, #ffbc73, #ef8178);
   color: #fff8ec;
   font-size: 22rpx;
   font-weight: 800;
   padding: 10rpx 18rpx;
+  box-shadow:
+    0 9rpx 16rpx rgba(173, 92, 63, 0.18),
+    inset 4rpx 5rpx 9rpx rgba(255, 242, 204, 0.42),
+    inset -4rpx -6rpx 10rpx rgba(151, 63, 51, 0.16);
 }
 
 .tag-row,
@@ -89,10 +105,14 @@
 .readonly-tag,
 .option {
   border-radius: 999rpx;
-  background: #f6e5ce;
+  background: linear-gradient(145deg, #fff5df, #edc295);
   color: #5a3a28;
   font-size: 24rpx;
   padding: 10rpx 18rpx;
+  box-shadow:
+    0 9rpx 16rpx rgba(124, 78, 49, 0.12),
+    inset 4rpx 5rpx 10rpx rgba(255, 255, 255, 0.52),
+    inset -4rpx -6rpx 10rpx rgba(160, 93, 62, 0.14);
 }
 
 .sheet-mask {
@@ -112,9 +132,21 @@
   max-height: 82vh;
   box-sizing: border-box;
   padding: 36rpx 32rpx 54rpx;
-  border-radius: 34rpx 34rpx 0 0;
-  background: #fff8ec;
-  box-shadow: 0 -20rpx 60rpx rgba(47, 36, 29, 0.18);
+  border-radius: 52rpx 52rpx 0 0;
+  background: linear-gradient(145deg, #fff6e8, #f3cfaa);
+  box-shadow:
+    0 -28rpx 70rpx rgba(47, 36, 29, 0.22),
+    inset 12rpx 14rpx 24rpx rgba(255, 255, 255, 0.52),
+    inset -12rpx -16rpx 28rpx rgba(171, 103, 70, 0.16);
+}
+
+.sheet-handle {
+  align-self: center;
+  width: 94rpx;
+  height: 16rpx;
+  border-radius: 999rpx;
+  background: #d7a87d;
+  box-shadow: inset 4rpx 5rpx 8rpx rgba(105, 63, 42, 0.18);
 }
 
 .sheet-head {
@@ -124,7 +156,7 @@
 }
 
 .sheet-kicker {
-  color: #8b5f3f;
+  color: #8b4f3b;
   font-size: 24rpx;
   font-weight: 800;
 }
@@ -152,10 +184,18 @@
 }
 
 .option.active {
-  background: #6b3f2a;
+  background: linear-gradient(145deg, #7d5038, #5c3527);
   color: #fff8ec;
+  box-shadow:
+    inset 7rpx 8rpx 14rpx rgba(48, 27, 20, 0.36),
+    inset -6rpx -8rpx 14rpx rgba(255, 229, 187, 0.16);
 }
 
 .sheet-button {
   margin-top: 6rpx;
+}
+
+.tiny-clay {
+  width: 48rpx;
+  height: 48rpx;
 }

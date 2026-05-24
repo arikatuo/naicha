@@ -25,6 +25,7 @@
 
   <view wx:if="{{panelOpen}}" class="sheet-mask" bindtap="closePanel"></view>
   <view wx:if="{{panelOpen}}" class="sheet">
+    <view class="sheet-handle"></view>
     <view class="sheet-head">
       <text class="sheet-kicker">{{brand.name}}</text>
       <text class="sheet-title">{{selectedDrink.displayName}}</text>
@@ -33,6 +34,7 @@
 
     <view wx:if="{{defaultToppings.length}}" class="readonly-row">
       <text class="label">本身含有</text>
+      <image class="tiny-clay" src="/assets/icons/toppings.png" mode="aspectFit"></image>
       <text wx:for="{{defaultToppings}}" wx:key="id" class="readonly-tag">{{item.name}}</text>
     </view>
 
