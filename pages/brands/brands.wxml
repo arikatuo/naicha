@@ -13,8 +13,11 @@
       data-id="{{item.id}}"
       bindtap="openBrand"
     >
-      <text class="brand-name">{{item.name}}</text>
-      <text class="brand-hint">查看热门款</text>
+      <image class="brand-logo" src="{{item.logo}}" mode="aspectFit"></image>
+      <view class="brand-copy">
+        <text class="brand-name">{{item.name}}</text>
+        <text class="brand-hint">热门款</text>
+      </view>
     </button>
   </view>
 

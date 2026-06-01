@@ -13,13 +13,14 @@
       data-id="{{item.id}}"
       bindtap="openDrink"
     >
-      <view class="drink-main">
+      <image class="drink-icon" src="{{item.icon}}" mode="aspectFit"></image>
+      <view class="drink-content">
         <text class="drink-name">{{item.displayName}}</text>
-        <text class="drink-action">选它</text>
+        <view class="tag-row">
+          <text wx:for="{{item.tags}}" wx:key="id" class="tag">{{item.name}}</text>
+        </view>
       </view>
-      <view class="tag-row">
-        <text wx:for="{{item.tags}}" wx:key="id" class="tag">{{item.name}}</text>
-      </view>
+      <text class="drink-action">选</text>
     </button>
   </view>
 

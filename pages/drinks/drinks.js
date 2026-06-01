@@ -21,10 +21,14 @@ Page({
 
   onLoad(options) {
     const brand = store.getBrandById(options.brandId);
-    const drinks = store.getDrinksByBrandId(options.brandId).map((drink) => ({
-      ...drink,
-      tags: store.getTagsByIds(drink.tagIds || [])
-    }));
+    const drinks = store.getDrinksByBrandId(options.brandId).map((drink) => {
+      const tags = store.getTagsByIds(drink.tagIds || []);
+      return {
+        ...drink,
+        tags,
+        icon: tags[0] ? tags[0].icon : '/assets/icons/milk-tea-cup.png'
+      };
+    });
     this.setData({ brand, drinks });
   },
 
