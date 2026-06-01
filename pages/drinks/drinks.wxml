@@ -13,14 +13,16 @@
       data-id="{{item.id}}"
       bindtap="openDrink"
     >
-      <image class="drink-icon" src="{{item.icon}}" mode="aspectFit"></image>
+      <view class="drink-icon-shell">
+        <image class="drink-icon" src="{{item.icon}}" mode="aspectFit"></image>
+      </view>
       <view class="drink-content">
         <text class="drink-name">{{item.displayName}}</text>
         <view class="tag-row">
-          <text wx:for="{{item.tags}}" wx:key="id" class="tag">{{item.name}}</text>
+          <text wx:for="{{item.displayTags}}" wx:key="id" class="tag">{{item.name}}</text>
         </view>
       </view>
-      <text class="drink-action">选</text>
+      <text class="drink-action">›</text>
     </button>
   </view>
 
@@ -33,57 +35,63 @@
       <text class="sheet-subtitle">配置一下，热量马上揭晓。</text>
     </view>
 
-    <view wx:if="{{defaultToppings.length}}" class="readonly-row">
-      <text class="label">本身含有</text>
-      <image class="tiny-clay" src="/assets/icons/toppings.png" mode="aspectFit"></image>
-      <text wx:for="{{defaultToppings}}" wx:key="id" class="readonly-tag">{{item.name}}</text>
-    </view>
+    <scroll-view class="sheet-scroll" scroll-y="true">
+      <view class="sheet-body">
+        <view wx:if="{{defaultToppings.length}}" class="readonly-row">
+          <text class="label">本身含有</text>
+          <image class="tiny-clay" src="/assets/icons/toppings.png" mode="aspectFit"></image>
+          <text wx:for="{{defaultToppings}}" wx:key="id" class="readonly-tag">{{item.name}}</text>
+        </view>
 
-    <view wx:if="{{selectedDrink.availableSizes.length > 1}}" class="option-group">
-      <text class="label">杯型</text>
-      <view class="segmented">
-        <button
-          wx:for="{{sizeOptions}}"
-          wx:key="id"
-          class="option {{item.selected ? 'active' : ''}}"
-          data-id="{{item.id}}"
-          bindtap="selectSize"
-        >
-          {{item.name}}
-        </button>
+        <view wx:if="{{selectedDrink.availableSizes.length > 1}}" class="option-group">
+          <text class="label">杯型</text>
+          <view class="segmented">
+            <button
+              wx:for="{{sizeOptions}}"
+              wx:key="id"
+              class="option {{item.selected ? 'active' : ''}}"
+              data-id="{{item.id}}"
+              bindtap="selectSize"
+            >
+              {{item.name}}
+            </button>
+          </view>
+        </view>
+
+        <view wx:if="{{selectedDrink.sweetnessAdjustable}}" class="option-group">
+          <text class="label">甜度</text>
+          <view class="segmented wrap">
+            <button
+              wx:for="{{sweetnessLevels}}"
+              wx:key="id"
+              class="option {{selectedSweetnessId === item.id ? 'active' : ''}}"
+              data-id="{{item.id}}"
+              bindtap="selectSweetness"
+            >
+              {{item.name}}
+            </button>
+          </view>
+        </view>
+
+        <view class="option-group">
+          <text class="label">额外加料</text>
+          <view class="segmented wrap">
+            <button
+              wx:for="{{toppingOptions}}"
+              wx:key="id"
+              class="option {{item.selected ? 'active' : ''}}"
+              data-id="{{item.id}}"
+              bindtap="toggleExtraTopping"
+            >
+              {{item.name}}
+            </button>
+          </view>
+        </view>
       </view>
-    </view>
+    </scroll-view>
 
-    <view wx:if="{{selectedDrink.sweetnessAdjustable}}" class="option-group">
-      <text class="label">甜度</text>
-      <view class="segmented wrap">
-        <button
-          wx:for="{{sweetnessLevels}}"
-          wx:key="id"
-          class="option {{selectedSweetnessId === item.id ? 'active' : ''}}"
-          data-id="{{item.id}}"
-          bindtap="selectSweetness"
-        >
-          {{item.name}}
-        </button>
-      </view>
+    <view class="sheet-footer">
+      <button class="button-primary sheet-button" bindtap="calculate">看看等于什么</button>
     </view>
-
-    <view class="option-group">
-      <text class="label">额外加料</text>
-      <view class="segmented wrap">
-        <button
-          wx:for="{{toppingOptions}}"
-          wx:key="id"
-          class="option {{item.selected ? 'active' : ''}}"
-          data-id="{{item.id}}"
-          bindtap="toggleExtraTopping"
-        >
-          {{item.name}}
-        </button>
-      </view>
-    </view>
-
-    <button class="button-primary sheet-button" bindtap="calculate">看看等于什么</button>
   </view>
 </view>

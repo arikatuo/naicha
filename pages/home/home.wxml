@@ -6,7 +6,10 @@
 
   <view class="hero">
     <text class="eyebrow">趣味估算工具</text>
-    <text class="title">这一杯快乐，约等于什么？</text>
+    <view class="title">
+      <text class="title-line">这一杯快乐，</text>
+      <text class="title-line title-accent">约等于什么？</text>
+    </view>
     <text class="subtitle">像捏一杯奶茶一样，选品牌、加小料，最后揭晓热量玩具卡。</text>
   </view>
 

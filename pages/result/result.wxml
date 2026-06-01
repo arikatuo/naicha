@@ -1,6 +1,5 @@
 <view class="page result-page {{resultCopy.theme}}">
   <view class="summary surface">
-    <image class="result-toy" src="/assets/icons/result-clay-card.png" mode="aspectFit"></image>
     <text class="eyebrow">揭晓结果</text>
     <text class="result-title">{{resultCopy.title}}</text>
     <view class="calorie-row">

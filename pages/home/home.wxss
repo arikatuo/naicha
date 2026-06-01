@@ -78,11 +78,21 @@
 }
 
 .title {
-  max-width: 620rpx;
-  font-size: 64rpx;
+  display: flex;
+  flex-direction: column;
+  gap: 2rpx;
+  font-size: 58rpx;
   font-weight: 900;
-  line-height: 1.15;
+  line-height: 1.12;
   text-shadow: 0 6rpx 0 rgba(255, 255, 255, 0.52);
+}
+
+.title-line {
+  display: block;
+}
+
+.title-accent {
+  color: #8b4f3b;
 }
 
 .subtitle {

@@ -26,6 +26,7 @@ Page({
       return {
         ...drink,
         tags,
+        displayTags: tags.slice(0, 2),
         icon: tags[0] ? tags[0].icon : '/assets/icons/milk-tea-cup.png'
       };
     });
