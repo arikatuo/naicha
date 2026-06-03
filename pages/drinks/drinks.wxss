@@ -2,7 +2,7 @@
   display: flex;
   flex-direction: column;
   gap: 14rpx;
-  margin-bottom: 34rpx;
+  margin-bottom: 26rpx;
 }
 
 .eyebrow {
@@ -33,7 +33,7 @@
 .drink-list {
   display: flex;
   flex-direction: column;
-  gap: 14rpx;
+  gap: 16rpx;
 }
 
 .drink-card {
@@ -41,15 +41,17 @@
   flex-direction: row;
   align-items: center;
   gap: 14rpx;
+  width: 100%;
   border: 0;
-  border-radius: 32rpx;
+  border-radius: 34rpx;
   background: linear-gradient(145deg, #fffaf1, #f6d2a9);
   box-shadow:
     0 22rpx 38rpx rgba(124, 78, 49, 0.16),
     inset 10rpx 12rpx 20rpx rgba(255, 255, 255, 0.55),
     inset -10rpx -14rpx 22rpx rgba(173, 101, 72, 0.16);
   min-height: 116rpx;
-  padding: 16rpx 18rpx;
+  margin: 0;
+  padding: 18rpx 20rpx;
   text-align: left;
   transition: transform 180ms ease-out, box-shadow 180ms ease-out;
 }
@@ -72,8 +74,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 76rpx;
-  height: 76rpx;
+  width: 82rpx;
+  height: 82rpx;
   border-radius: 24rpx;
   background: rgba(255, 250, 241, 0.58);
   box-shadow:
@@ -82,8 +84,8 @@
 }
 
 .drink-icon {
-  width: 64rpx;
-  height: 64rpx;
+  width: 68rpx;
+  height: 68rpx;
   filter: drop-shadow(0 9rpx 9rpx rgba(77, 48, 34, 0.14));
 }
 
@@ -97,7 +99,7 @@
 }
 
 .drink-name {
-  font-size: 28rpx;
+  font-size: 31rpx;
   font-weight: 900;
   line-height: 1.3;
 }

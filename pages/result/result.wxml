@@ -10,16 +10,36 @@
     <text class="disclaimer">{{disclaimer}}</text>
   </view>
 
-  <view class="cards">
-    <view wx:for="{{cards}}" wx:key="id" class="equivalent-card">
-      <image class="icon" src="{{item.icon}}" mode="aspectFit"></image>
-      <text class="card-text">{{item.text}}</text>
+  <view class="equivalent-stage">
+    <text class="stage-label">左右滑动看看还等于什么</text>
+    <swiper class="equivalent-swiper" circular="true" bindchange="onEquivalentChange">
+      <swiper-item wx:for="{{cards}}" wx:key="id">
+        <view class="equivalent-card">
+          <image class="icon" src="{{item.icon}}" mode="aspectFit"></image>
+          <text class="card-text">{{item.text}}</text>
+          <text class="card-sub">第 {{index + 1}} / {{cards.length}} 个换算玩具</text>
+        </view>
+      </swiper-item>
+    </swiper>
+    <view class="dots">
+      <view wx:for="{{cards}}" wx:key="id" class="dot {{currentEquivalentIndex === index ? 'active' : ''}}"></view>
     </view>
   </view>
 
   <view class="actions">
-    <button class="button-primary" bindtap="generatePoster">生成分享图</button>
+    <button class="button-primary" loading="{{posterGenerating}}" bindtap="generatePoster">生成分享图</button>
     <button class="button-secondary" bindtap="recalculate">再算一杯</button>
+  </view>
+
+  <view wx:if="{{posterPreviewOpen}}" class="poster-preview-mask" bindtap="closePosterPreview">
+    <view class="poster-preview-sheet" catchtap="noop">
+      <text class="preview-title">先看看分享图</text>
+      <image class="poster-preview-image" src="{{previewPosterPath}}" mode="aspectFit"></image>
+      <view class="preview-actions">
+        <button class="button-primary preview-save" bindtap="savePoster">保存到相册</button>
+        <button class="button-secondary preview-close" bindtap="closePosterPreview">再改一下</button>
+      </view>
+    </view>
   </view>
 
   <canvas canvas-id="posterCanvas" class="poster-canvas"></canvas>

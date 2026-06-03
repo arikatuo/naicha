@@ -28,3 +28,28 @@ test('drink list uses compact display tags and result header has no cropped deco
   assert.match(drinkMarkup, /wx:for="{{item\.displayTags}}"/);
   assert.doesNotMatch(resultMarkup, /result-toy/);
 });
+
+test('result page presents equivalent cards as a single-card swiper', () => {
+  const markup = read('pages/result/result.wxml');
+
+  assert.match(markup, /<swiper class="equivalent-swiper"/);
+  assert.match(markup, /<swiper-item wx:for="{{cards}}"/);
+  assert.doesNotMatch(markup, /class="cards"/);
+});
+
+test('poster generation previews before saving to album', () => {
+  const script = read('pages/result/result.js');
+  const markup = read('pages/result/result.wxml');
+
+  assert.match(script, /posterPreviewOpen:\s*false/);
+  assert.match(script, /previewPosterPath:\s*''/);
+  assert.match(script, /savePoster\(\)/);
+  assert.match(markup, /class="poster-preview-mask"/);
+  assert.match(markup, /bindtap="savePoster">保存到相册/);
+
+  const generatePosterBody = script.slice(
+    script.indexOf('generatePoster()'),
+    script.indexOf('savePoster()')
+  );
+  assert.doesNotMatch(generatePosterBody, /saveImageToPhotosAlbum/);
+});

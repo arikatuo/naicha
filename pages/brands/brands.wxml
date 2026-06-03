@@ -13,11 +13,11 @@
       data-id="{{item.id}}"
       bindtap="openBrand"
     >
-      <image class="brand-logo" src="{{item.logo}}" mode="aspectFit"></image>
       <view class="brand-copy">
+        <image class="brand-logo" src="{{item.logo}}" mode="aspectFit"></image>
         <text class="brand-name">{{item.name}}</text>
-        <text class="brand-hint">热门款</text>
       </view>
+      <text class="brand-hint">10 款</text>
     </button>
   </view>
 

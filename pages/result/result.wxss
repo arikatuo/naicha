@@ -1,7 +1,7 @@
 .result-page {
   display: flex;
   flex-direction: column;
-  gap: 32rpx;
+  gap: 28rpx;
 }
 
 .summary {
@@ -58,10 +58,22 @@
   line-height: 1.5;
 }
 
-.cards {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 18rpx;
+.equivalent-stage {
+  display: flex;
+  flex-direction: column;
+  gap: 16rpx;
+}
+
+.stage-label {
+  color: #8b5f3f;
+  font-size: 24rpx;
+  font-weight: 900;
+  padding-left: 8rpx;
+}
+
+.equivalent-swiper {
+  width: 100%;
+  height: 430rpx;
 }
 
 .equivalent-card {
@@ -69,11 +81,12 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 16rpx;
-  min-height: 232rpx;
+  gap: 24rpx;
+  height: 410rpx;
   box-sizing: border-box;
-  padding: 24rpx;
-  border-radius: 42rpx;
+  margin: 8rpx 6rpx 18rpx;
+  padding: 34rpx 28rpx;
+  border-radius: 54rpx;
   background: linear-gradient(145deg, #fffaf1, #f6d2a9);
   box-shadow:
     0 22rpx 38rpx rgba(124, 78, 49, 0.16),
@@ -82,14 +95,40 @@
 }
 
 .icon {
-  width: 112rpx;
-  height: 112rpx;
+  width: 174rpx;
+  height: 174rpx;
 }
 
 .card-text {
-  font-size: 26rpx;
+  font-size: 42rpx;
   font-weight: 800;
   text-align: center;
+  line-height: 1.25;
+}
+
+.card-sub {
+  color: #8a6b58;
+  font-size: 22rpx;
+  font-weight: 800;
+}
+
+.dots {
+  display: flex;
+  justify-content: center;
+  gap: 12rpx;
+}
+
+.dot {
+  width: 14rpx;
+  height: 14rpx;
+  border-radius: 999rpx;
+  background: rgba(139, 95, 63, 0.24);
+  transition: width 180ms ease-out, background 180ms ease-out;
+}
+
+.dot.active {
+  width: 42rpx;
+  background: #ef8178;
 }
 
 .actions {
@@ -116,4 +155,56 @@
   top: -9999rpx;
   width: 360px;
   height: 640px;
+}
+
+.poster-preview-mask {
+  position: fixed;
+  inset: 0;
+  z-index: 30;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  padding: 36rpx;
+  background: rgba(47, 36, 29, 0.52);
+}
+
+.poster-preview-sheet {
+  display: flex;
+  flex-direction: column;
+  gap: 20rpx;
+  width: 100%;
+  max-height: 92vh;
+  box-sizing: border-box;
+  border-radius: 48rpx;
+  background: linear-gradient(145deg, #fff8e8, #f0cda8);
+  padding: 28rpx;
+  box-shadow:
+    0 30rpx 70rpx rgba(47, 36, 29, 0.28),
+    inset 10rpx 12rpx 22rpx rgba(255, 255, 255, 0.52),
+    inset -10rpx -14rpx 24rpx rgba(168, 99, 68, 0.18);
+}
+
+.preview-title {
+  color: #3b281d;
+  font-size: 30rpx;
+  font-weight: 900;
+}
+
+.poster-preview-image {
+  width: 100%;
+  height: 820rpx;
+  border-radius: 34rpx;
+  background: #fff1dc;
+}
+
+.preview-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 16rpx;
+}
+
+.preview-save,
+.preview-close {
+  min-height: 88rpx;
 }

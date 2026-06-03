@@ -8,6 +8,10 @@ Page({
   data: {
     payload: null,
     cards: [],
+    currentEquivalentIndex: 0,
+    posterPreviewOpen: false,
+    previewPosterPath: '',
+    posterGenerating: false,
     resultCopy: { title: '这杯快乐有点认真。', theme: 'milkTea' },
     disclaimer: store.copywriting.disclaimer
   },
@@ -31,17 +35,25 @@ Page({
     wx.navigateBack({ delta: 1 });
   },
 
+  onEquivalentChange(event) {
+    this.setData({ currentEquivalentIndex: event.detail.current || 0 });
+  },
+
   generatePoster() {
     if (!this.data.payload) {
       wx.showToast({ title: '结果走丢了，请重新计算', icon: 'none' });
       return;
     }
 
+    this.setData({ posterGenerating: true });
     const ctx = wx.createCanvasContext('posterCanvas', this);
+    const highlightCard = this.data.cards[this.data.currentEquivalentIndex] || this.data.cards[0];
+
     drawPoster({
       ctx,
       payload: this.data.payload,
       cards: this.data.cards,
+      highlightCard,
       resultCopy: this.data.resultCopy,
       width: 360,
       height: 640
@@ -55,14 +67,39 @@ Page({
         destWidth: 1080,
         destHeight: 1920,
         success: (res) => {
-          wx.saveImageToPhotosAlbum({
-            filePath: res.tempFilePath,
-            success: () => wx.showToast({ title: '已保存到相册', icon: 'success' }),
-            fail: () => wx.showToast({ title: '保存失败，请检查相册权限', icon: 'none' })
+          this.setData({
+            previewPosterPath: res.tempFilePath,
+            posterPreviewOpen: true,
+            posterGenerating: false
           });
         },
-        fail: () => wx.showToast({ title: '海报生成失败', icon: 'none' })
+        fail: () => {
+          this.setData({ posterGenerating: false });
+          wx.showToast({ title: '海报生成失败', icon: 'none' });
+        }
       }, this);
+    });
+  },
+
+  closePosterPreview() {
+    this.setData({ posterPreviewOpen: false });
+  },
+
+  noop() {},
+
+  savePoster() {
+    if (!this.data.previewPosterPath) {
+      wx.showToast({ title: '请先生成分享图', icon: 'none' });
+      return;
+    }
+
+    wx.saveImageToPhotosAlbum({
+      filePath: this.data.previewPosterPath,
+      success: () => {
+        this.setData({ posterPreviewOpen: false });
+        wx.showToast({ title: '已保存到相册', icon: 'success' });
+      },
+      fail: () => wx.showToast({ title: '保存失败，请检查相册权限', icon: 'none' })
     });
   },
 

@@ -34,21 +34,24 @@
 .brand-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 18rpx;
+  gap: 20rpx;
 }
 
 .brand-card {
   display: flex;
-  flex-direction: row;
-  align-items: center;
-  gap: 14rpx;
-  min-height: 154rpx;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 18rpx;
+  width: 100%;
+  min-height: 178rpx;
   box-sizing: border-box;
   border: 0;
-  border-radius: 38rpx;
-  background: linear-gradient(145deg, #fff6df, #f0bfa0);
+  border-radius: 34rpx;
+  background: linear-gradient(145deg, #fffdf6, #f4d7b8);
   color: #3b281d;
-  padding: 22rpx 18rpx;
+  margin: 0;
+  padding: 22rpx;
   text-align: left;
   box-shadow:
     0 22rpx 38rpx rgba(124, 78, 49, 0.18),
@@ -57,16 +60,8 @@
   transition: transform 180ms ease-out, box-shadow 180ms ease-out;
 }
 
-.brand-card:nth-child(3n + 1) {
-  background: linear-gradient(145deg, #fff6df, #f3b28f);
-}
-
-.brand-card:nth-child(3n + 2) {
-  background: linear-gradient(145deg, #eff8df, #bde8d1);
-}
-
-.brand-card:nth-child(3n) {
-  background: linear-gradient(145deg, #fff0f1, #f3b2bf);
+.brand-card:nth-child(2n) {
+  background: linear-gradient(145deg, #f9fff2, #d5ead6);
 }
 
 .brand-card::after {
@@ -83,10 +78,10 @@
 }
 
 .brand-logo {
-  flex: 0 0 auto;
-  width: 76rpx;
-  height: 76rpx;
-  filter: drop-shadow(0 8rpx 8rpx rgba(77, 48, 34, 0.15));
+  width: 156rpx;
+  height: 74rpx;
+  margin-left: -6rpx;
+  filter: drop-shadow(0 8rpx 10rpx rgba(77, 48, 34, 0.13));
 }
 
 .brand-copy {
@@ -98,15 +93,23 @@
 }
 
 .brand-name {
-  font-size: 28rpx;
+  font-size: 29rpx;
   font-weight: 900;
   line-height: 1.25;
 }
 
 .brand-hint {
+  align-self: flex-end;
+  border-radius: 999rpx;
+  background: rgba(255, 250, 241, 0.58);
   color: #7d4e35;
-  font-size: 21rpx;
+  font-size: 20rpx;
   font-weight: 900;
+  line-height: 1;
+  padding: 9rpx 14rpx;
+  box-shadow:
+    inset 4rpx 5rpx 9rpx rgba(255, 255, 255, 0.62),
+    inset -4rpx -5rpx 9rpx rgba(130, 81, 51, 0.12);
 }
 
 .soft-note {
