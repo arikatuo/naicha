@@ -13,8 +13,11 @@
       data-id="{{item.id}}"
       bindtap="openDrink"
     >
-      <view class="drink-icon-shell">
-        <image class="drink-icon" src="{{item.icon}}" mode="aspectFit"></image>
+      <view class="drink-card-head">
+        <view class="drink-icon-shell">
+          <image class="drink-icon" src="{{item.icon}}" mode="aspectFit"></image>
+        </view>
+        <text class="drink-action">›</text>
       </view>
       <view class="drink-content">
         <text class="drink-name">{{item.displayName}}</text>
@@ -22,7 +25,6 @@
           <text wx:for="{{item.displayTags}}" wx:key="id" class="tag">{{item.name}}</text>
         </view>
       </view>
-      <text class="drink-action">›</text>
     </button>
   </view>
 
