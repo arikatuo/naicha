@@ -2,6 +2,7 @@ const fs = require('node:fs');
 const path = require('node:path');
 const test = require('node:test');
 const assert = require('node:assert/strict');
+const { getCalorieLayout } = require('../utils/poster');
 
 function read(relativePath) {
   return fs.readFileSync(path.join(__dirname, '..', relativePath), 'utf8');
@@ -72,4 +73,12 @@ test('poster includes a QR code asset and separates kcal from estimate badge', (
   assert.match(poster, /drawText\(ctx,\s*calories,/);
   assert.match(poster, /drawText\(ctx,\s*'kcal',/);
   assert.doesNotMatch(poster, /`\$\{payload\.calories\} kcal`/);
+});
+
+test('poster calorie layout keeps number unit and estimate badge separated', () => {
+  const layout = getCalorieLayout(520);
+
+  assert.equal(layout.numberX, 92);
+  assert.ok(layout.unitX >= 218);
+  assert.ok(layout.badgeX >= layout.unitX + 54);
 });

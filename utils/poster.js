@@ -20,12 +20,22 @@ function drawText(ctx, text, x, y, size, color) {
   ctx.fillText(text, x, y);
 }
 
+function getCalorieLayout(calories) {
+  const text = `${calories}`;
+  return {
+    numberSize: text.length > 3 ? 46 : 56,
+    numberX: 92,
+    unitX: text.length > 3 ? 224 : 218,
+    unitSize: 26,
+    badgeX: 276
+  };
+}
+
 function drawPoster({ ctx, payload, cards, highlightCard, resultCopy, width, height }) {
   const selectedCard = highlightCard || cards[0];
   const drinkLabel = payload.brandName ? `${payload.brandName} · ${payload.drinkName}` : payload.drinkName;
   const calories = `${payload.calories}`;
-  const numberSize = calories.length > 3 ? 48 : 56;
-  const unitX = 92 + calories.length * (numberSize * 0.54);
+  const calorieLayout = getCalorieLayout(payload.calories);
 
   ctx.setFillStyle('#fff1dc');
   ctx.fillRect(0, 0, width, height);
@@ -39,10 +49,10 @@ function drawPoster({ ctx, payload, cards, highlightCard, resultCopy, width, hei
 
   roundRect(ctx, 24, 188, 312, 148, 22, '#fffaf1');
   drawText(ctx, '约', 48, 252, 34, '#2e211b');
-  drawText(ctx, calories, 92, 252, numberSize, '#2e211b');
-  drawText(ctx, 'kcal', unitX, 252, 29, '#2e211b');
-  roundRect(ctx, 270, 216, 46, 30, 15, '#f1d3ad');
-  drawText(ctx, '估算', 280, 236, 13, '#7a4a35');
+  drawText(ctx, calories, calorieLayout.numberX, 252, calorieLayout.numberSize, '#2e211b');
+  drawText(ctx, 'kcal', calorieLayout.unitX, 252, calorieLayout.unitSize, '#2e211b');
+  roundRect(ctx, calorieLayout.badgeX, 216, 46, 30, 15, '#f1d3ad');
+  drawText(ctx, '估算', calorieLayout.badgeX + 10, 236, 13, '#7a4a35');
   drawText(ctx, '热量为估算值，仅供趣味参考。', 48, 298, 14, '#75665a');
 
   roundRect(ctx, 36, 360, 288, 142, 26, '#f6d0aa');
@@ -57,5 +67,6 @@ function drawPoster({ ctx, payload, cards, highlightCard, resultCopy, width, hei
 }
 
 module.exports = {
-  drawPoster
+  drawPoster,
+  getCalorieLayout
 };
