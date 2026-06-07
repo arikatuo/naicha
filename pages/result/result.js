@@ -1,8 +1,19 @@
 const store = require('../../utils/data-store');
-const { decodePayload } = require('../../utils/nav');
+const { decodePayload, encodePayload } = require('../../utils/nav');
 const { buildEquivalentCards } = require('../../utils/equivalents');
 const { getResultCopy } = require('../../utils/copy');
 const { drawPoster } = require('../../utils/poster');
+
+function buildShareTitle(payload, card) {
+  if (!payload) {
+    return store.copywriting.shareTitle;
+  }
+
+  const drinkName = payload.drinkName || '这杯奶茶';
+  const calories = payload.calories || 0;
+  const equivalentText = card && card.text ? `，等于${card.text.replace(/^约\s*/, '')}` : '';
+  return `我这杯${drinkName}约 ${calories} kcal${equivalentText}`;
+}
 
 Page({
   data: {
@@ -104,9 +115,19 @@ Page({
   },
 
   onShareAppMessage() {
+    const payload = this.data.payload;
+    if (!payload) {
+      return {
+        title: store.copywriting.shareTitle,
+        path: '/pages/home/home'
+      };
+    }
+
+    const currentCard = this.data.cards[this.data.currentEquivalentIndex] || this.data.cards[0];
+
     return {
-      title: store.copywriting.shareTitle,
-      path: '/pages/home/home'
+      title: buildShareTitle(payload, currentCard),
+      path: `/pages/result/result?payload=${encodePayload(payload)}`
     };
   }
 });

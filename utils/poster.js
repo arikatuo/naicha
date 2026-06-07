@@ -61,7 +61,7 @@ function drawPoster({ ctx, payload, cards, highlightCard, resultCopy, width, hei
 
   roundRect(ctx, 72, 518, 216, 72, 20, '#fff8e8');
   ctx.drawImage('/assets/qrcode.png', 90, 529, 50, 50);
-  drawText(ctx, '长按识别小程序', 154, 558, 13, '#7a4a35');
+  drawText(ctx, '你的那杯呢？扫码比一比', 154, 558, 13, '#7a4a35');
 
   drawText(ctx, '热量和运动消耗均为估算，不作为健康建议', 28, 616, 12, '#8a7b70');
 }

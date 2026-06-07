@@ -6,7 +6,12 @@ Page({
   },
 
   onLoad() {
-    this.setData({ brands: store.getBrands() });
+    const brands = store.getBrands().map((brand) => ({
+      ...brand,
+      drinkCount: store.getDrinksByBrandId(brand.id).length
+    }));
+
+    this.setData({ brands });
   },
 
   openBrand(event) {

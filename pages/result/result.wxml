@@ -12,7 +12,7 @@
 
   <view class="equivalent-stage">
     <text class="stage-label">左右滑动看看还等于什么</text>
-    <swiper class="equivalent-swiper" circular="true" bindchange="onEquivalentChange">
+    <swiper class="equivalent-swiper" previous-margin="24rpx" next-margin="24rpx" circular="true" bindchange="onEquivalentChange">
       <swiper-item wx:for="{{cards}}" wx:key="id">
         <view class="equivalent-card">
           <image class="icon" src="{{item.icon}}" mode="aspectFit"></image>
@@ -27,7 +27,8 @@
   </view>
 
   <view class="actions">
-    <button class="button-primary" loading="{{posterGenerating}}" bindtap="generatePoster">生成分享图</button>
+    <button class="button-primary share-button" open-type="share">分享给朋友</button>
+    <button class="button-secondary" loading="{{posterGenerating}}" bindtap="generatePoster">生成分享图</button>
     <button class="button-secondary" bindtap="recalculate">再算一杯</button>
   </view>
 

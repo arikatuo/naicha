@@ -2,6 +2,7 @@ const fs = require('node:fs');
 const path = require('node:path');
 const test = require('node:test');
 const assert = require('node:assert/strict');
+const store = require('../utils/data-store');
 const { getCalorieLayout } = require('../utils/poster');
 
 function read(relativePath) {
@@ -14,6 +15,29 @@ test('home headline uses deliberate balanced lines', () => {
   assert.match(markup, /<text class="title-line">这一杯快乐，<\/text>/);
   assert.match(markup, /<text class="title-line title-accent">约等于什么？<\/text>/);
   assert.doesNotMatch(markup, /像捏一杯奶茶一样/);
+});
+
+test('home teaser keeps the reveal hidden until calculation', () => {
+  const markup = read('pages/home/home.wxml');
+
+  assert.match(markup, /算完才知道/);
+  assert.doesNotMatch(markup, /486 kcal/);
+  assert.doesNotMatch(markup, /1\.6 包大薯/);
+  assert.doesNotMatch(markup, /60g 肥肉/);
+  assert.doesNotMatch(markup, /45 分钟慢跑/);
+});
+
+test('brand cards show dynamic drink counts from the current data set', () => {
+  const script = read('pages/brands/brands.js');
+  const markup = read('pages/brands/brands.wxml');
+
+  assert.match(script, /drinkCount:\s*store\.getDrinksByBrandId\(brand\.id\)\.length/);
+  assert.match(markup, /{{item\.drinkCount}} 款/);
+  assert.doesNotMatch(markup, />10 款</);
+
+  for (const brand of store.getBrands()) {
+    assert.equal(store.getDrinksByBrandId(brand.id).length, 8);
+  }
 });
 
 test('drink sheet keeps the calculate action in a fixed footer below scrollable options', () => {
@@ -42,9 +66,19 @@ test('drink selection uses a two-column grid instead of a narrow single column',
 test('result page presents equivalent cards as a single-card swiper', () => {
   const markup = read('pages/result/result.wxml');
 
-  assert.match(markup, /<swiper class="equivalent-swiper"/);
+  assert.match(markup, /<swiper class="equivalent-swiper"[^>]*previous-margin="24rpx"[^>]*next-margin="24rpx"/);
   assert.match(markup, /<swiper-item wx:for="{{cards}}"/);
   assert.doesNotMatch(markup, /class="cards"/);
+});
+
+test('result page offers one-tap dynamic sharing for the current result', () => {
+  const script = read('pages/result/result.js');
+  const markup = read('pages/result/result.wxml');
+
+  assert.match(markup, /open-type="share"[^>]*>分享给朋友<\/button>/);
+  assert.match(script, /buildShareTitle\(/);
+  assert.match(script, /encodePayload\(payload\)/);
+  assert.match(script, /\/pages\/result\/result\?payload=/);
 });
 
 test('poster generation previews before saving to album', () => {
@@ -69,6 +103,7 @@ test('poster includes a QR code asset and separates kcal from estimate badge', (
 
   assert.match(poster, /\/assets\/qrcode\.png/);
   assert.match(poster, /drawImage\('\/assets\/qrcode\.png'/);
+  assert.match(poster, /你的那杯呢？扫码比一比/);
   assert.match(poster, /const calories = `\$\{payload\.calories\}`/);
   assert.match(poster, /drawText\(ctx,\s*calories,/);
   assert.match(poster, /drawText\(ctx,\s*'kcal',/);

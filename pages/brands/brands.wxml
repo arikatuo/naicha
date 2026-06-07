@@ -17,7 +17,7 @@
         <image class="brand-logo" src="{{item.logo}}" mode="aspectFit"></image>
         <text class="brand-name">{{item.name}}</text>
       </view>
-      <text class="brand-hint">10 款</text>
+      <text class="brand-hint">{{item.drinkCount}} 款</text>
     </button>
   </view>
 
