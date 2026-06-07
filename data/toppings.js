@@ -1,8 +1,22 @@
 module.exports = [
-  { id: 'pearl', name: '珍珠', calories: 120 },
-  { id: 'coconut-jelly', name: '椰果', calories: 70 },
-  { id: 'milk-foam', name: '奶盖', calories: 150 },
+  { id: 'milk-foam', name: '芝士奶盖', calories: 203 },
+  { id: 'pearl', name: '珍珠/波霸', calories: 156 },
+  { id: 'powder-strip', name: '粉条', calories: 131 },
+  { id: 'taro-ball', name: '芋圆', calories: 128 },
+  { id: 'oreo', name: '奥利奥脆片', calories: 116 },
+  { id: 'pudding', name: '布丁', calories: 110 },
+  { id: 'coconut-jelly', name: '椰果', calories: 76 },
+  { id: 'konjac-jelly', name: '蒟蒻/寒天晶球', calories: 71 },
+  { id: 'grass-jelly', name: '仙草冻', calories: 57 },
+  { id: 'aiyu', name: '爱玉', calories: 45 },
+  { id: 'kanten', name: '寒天', calories: 42 },
+  { id: 'aloe', name: '芦荟', calories: 31 },
+  { id: 'sago', name: '西米', calories: 100 },
+  { id: 'crisp-boba', name: '脆波波/爆爆珠', calories: 70 },
+  { id: 'milk-jelly', name: '奶冻/茶冻/冻冻', calories: 70 },
+  { id: 'rice-ball', name: '白玉丸子', calories: 150 },
+  { id: 'grain', name: '青稞/燕麦谷物', calories: 120 },
   { id: 'taro', name: '芋泥', calories: 180 },
-  { id: 'grass-jelly', name: '烧仙草', calories: 90 },
-  { id: 'pudding', name: '布丁', calories: 110 }
+  { id: 'red-bean', name: '红豆', calories: 130 },
+  { id: 'ice-cream', name: '冰淇淋/雪顶', calories: 130 }
 ];

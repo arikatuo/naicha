@@ -21,6 +21,23 @@ test('brand drink uses reference base and adds extra toppings after size and swe
   assert.equal(result, 684);
 });
 
+test('brand drink uses documented size calories before generic cup multiplier', () => {
+  const drink = {
+    baseCalories: 130,
+    sizeCalories: {
+      medium: 130,
+      large: 170
+    },
+    sweetnessCalorieImpact: 'low'
+  };
+  const size = { id: 'large', multiplier: 1.25 };
+  const sweetness = { multipliers: { low: 1 } };
+
+  const result = calculateBrandDrinkCalories({ drink, size, sweetness, extraToppings: [] });
+
+  assert.equal(result, 170);
+});
+
 test('custom drink multiplies base by size and sweetness then adds toppings', () => {
   const base = { calories: 320, sweetnessCalorieImpact: 'medium' };
   const size = { multiplier: 1.25 };

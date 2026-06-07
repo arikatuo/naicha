@@ -16,10 +16,15 @@ function getSweetnessMultiplier(sweetness, impact) {
 }
 
 function calculateBrandDrinkCalories({ drink, size, sweetness, extraToppings }) {
-  const sizeMultiplier = Number(size && size.multiplier) || 1;
+  const sizeId = size && size.id;
+  const documentedSizeCalories = drink && drink.sizeCalories && sizeId
+    ? Number(drink.sizeCalories[sizeId])
+    : NaN;
+  const hasDocumentedSizeCalories = Number.isFinite(documentedSizeCalories);
+  const sizeMultiplier = hasDocumentedSizeCalories ? 1 : Number(size && size.multiplier) || 1;
   const impact = drink && drink.sweetnessCalorieImpact ? drink.sweetnessCalorieImpact : 'medium';
   const sweetnessMultiplier = getSweetnessMultiplier(sweetness, impact);
-  const baseCalories = Number(drink && drink.baseCalories) || 0;
+  const baseCalories = hasDocumentedSizeCalories ? documentedSizeCalories : Number(drink && drink.baseCalories) || 0;
   const toppingCalories = sumToppingCalories(extraToppings);
 
   return roundCalories(baseCalories * sizeMultiplier * sweetnessMultiplier + toppingCalories);

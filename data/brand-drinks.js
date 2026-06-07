@@ -1,137 +1,442 @@
 function drink(brandId, slug, displayName, calories, options = {}) {
+  const sizeCalories = options.sizeCalories || null;
+
   return {
     id: `${brandId}-${slug}`,
     brandId,
     displayName,
     aliasName: options.aliasName || '',
     baseCalories: calories,
-    defaultSize: options.defaultSize || 'medium',
-    availableSizes: options.availableSizes || ['medium', 'large'],
+    sizeCalories,
+    defaultSize: options.defaultSize || (sizeCalories && sizeCalories.large ? 'large' : 'medium'),
+    availableSizes: options.availableSizes || (sizeCalories ? Object.keys(sizeCalories) : ['medium', 'large']),
     defaultSweetness: options.defaultSweetness || 'half',
     sweetnessAdjustable: options.sweetnessAdjustable !== false,
     sweetnessCalorieImpact: options.sweetnessCalorieImpact || 'medium',
     defaultToppingIds: options.defaultToppingIds || [],
     tagIds: options.tagIds || ['classic'],
-    sourceType: options.sourceType || 'estimated',
-    sourceNote: options.sourceNote || '同类饮品估算'
+    sourceType: options.sourceType || 'document_reference',
+    sourceNote: options.sourceNote || '奶茶热门饮品_杯型与小料热量_中国大陆口径.docx'
   };
 }
 
 module.exports = [
-  drink('mixue', 'pearl-milk-tea', '珍珠奶茶', 420, { defaultSweetness: 'normal', defaultToppingIds: ['pearl'], tagIds: ['classic', 'milk-tea'], sourceType: 'user_reference', sourceNote: '用户提供参考值' }),
-  drink('mixue', 'lemon-tea', '冰鲜柠檬水', 180, { defaultSize: 'large', availableSizes: ['large'], defaultSweetness: 'normal', sweetnessCalorieImpact: 'high', tagIds: ['fruit', 'fresh'] }),
-  drink('mixue', 'brown-sugar-pearl', '黑糖珍珠奶茶', 520, { defaultSweetness: 'normal', defaultToppingIds: ['pearl'], tagIds: ['classic', 'milk-tea', 'toppings'] }),
-  drink('mixue', 'coconut-milk', '椰椰奶茶', 390, { tagIds: ['milk-tea'] }),
-  drink('mixue', 'mango-pomelo', '杨枝甘露', 480, { sweetnessCalorieImpact: 'high', defaultToppingIds: ['coconut-jelly'], tagIds: ['fruit', 'toppings'] }),
-  drink('mixue', 'strawberry-sundae-tea', '草莓奶茶', 430, { sweetnessCalorieImpact: 'high', tagIds: ['fruit', 'milk-tea'] }),
-  drink('mixue', 'taro-milk-tea', '芋泥奶茶', 500, { defaultToppingIds: ['taro'], tagIds: ['milk-tea', 'toppings'] }),
-  drink('mixue', 'jasmine-tea', '茉莉绿茶', 120, { defaultSweetness: 'none', sweetnessCalorieImpact: 'low', tagIds: ['fresh'] }),
+  drink('mixue', 'fresh-lemonade', '冰鲜柠檬水', 160, {
+    sizeCalories: { large: 160 },
+    availableSizes: ['large'],
+    defaultSize: 'large',
+    defaultSweetness: 'normal',
+    sweetnessCalorieImpact: 'high',
+    tagIds: ['fruit', 'fresh']
+  }),
+  drink('mixue', 'ice-cream', '新鲜冰淇淋', 180, {
+    sizeCalories: { large: 180 },
+    availableSizes: ['large'],
+    defaultSize: 'large',
+    defaultSweetness: 'normal',
+    sweetnessAdjustable: false,
+    tagIds: ['classic']
+  }),
+  drink('mixue', 'strawberry-shake', '草莓摇摇奶昔', 360, {
+    sizeCalories: { large: 360 },
+    availableSizes: ['large'],
+    defaultSize: 'large',
+    defaultSweetness: 'normal',
+    sweetnessCalorieImpact: 'high',
+    defaultToppingIds: ['ice-cream'],
+    tagIds: ['fruit', 'toppings']
+  }),
+  drink('mixue', 'jasmine-milk-green', '茉莉奶绿', 280, {
+    sizeCalories: { large: 280 },
+    availableSizes: ['large'],
+    defaultSize: 'large',
+    tagIds: ['fresh', 'milk-tea']
+  }),
+  drink('mixue', 'snow-king-coffee', '雪王雪顶咖啡', 330, {
+    sizeCalories: { large: 330 },
+    availableSizes: ['large'],
+    defaultSize: 'large',
+    defaultToppingIds: ['ice-cream'],
+    tagIds: ['classic', 'toppings']
+  }),
+  drink('mixue', 'pearl-milk-tea', '珍珠奶茶', 460, {
+    sizeCalories: { large: 460 },
+    availableSizes: ['large'],
+    defaultSize: 'large',
+    defaultSweetness: 'normal',
+    defaultToppingIds: ['pearl'],
+    tagIds: ['classic', 'milk-tea', 'toppings']
+  }),
+  drink('mixue', 'orange-smash', '棒打鲜橙', 240, {
+    sizeCalories: { large: 240 },
+    availableSizes: ['large'],
+    defaultSize: 'large',
+    defaultSweetness: 'normal',
+    sweetnessCalorieImpact: 'high',
+    tagIds: ['fruit', 'fresh']
+  }),
+  drink('mixue', 'passion-fruit-cup', '满杯百香果', 360, {
+    sizeCalories: { large: 360 },
+    availableSizes: ['large'],
+    defaultSize: 'large',
+    defaultSweetness: 'normal',
+    sweetnessCalorieImpact: 'high',
+    tagIds: ['fruit', 'toppings']
+  }),
 
-  drink('chagee', 'jasmine-milk-tea', '茉莉轻乳茶', 310, { defaultSweetness: 'half', sweetnessCalorieImpact: 'low', tagIds: ['fresh', 'milk-tea'] }),
-  drink('chagee', 'orchid-milk-tea', '兰香轻乳茶', 330, { sweetnessCalorieImpact: 'low', tagIds: ['fresh', 'milk-tea'] }),
-  drink('chagee', 'osmanthus-oolong', '桂花乌龙轻乳茶', 340, { sweetnessCalorieImpact: 'low', tagIds: ['fresh', 'milk-tea'] }),
-  drink('chagee', 'raw-leaf-tea', '原叶鲜茶', 90, { defaultSize: 'medium', availableSizes: ['medium'], defaultSweetness: 'none', sweetnessAdjustable: false, sweetnessCalorieImpact: 'low', tagIds: ['fresh'] }),
-  drink('chagee', 'peach-oolong', '白桃乌龙轻乳茶', 350, { tagIds: ['fresh', 'fruit'] }),
-  drink('chagee', 'black-tea-latte', '红茶拿铁', 360, { tagIds: ['milk-tea'] }),
-  drink('chagee', 'jasmine-cheese', '茉莉奶盖茶', 440, { defaultToppingIds: ['milk-foam'], tagIds: ['milk-foam', 'fresh'] }),
-  drink('chagee', 'coconut-jasmine', '椰香茉莉', 370, { tagIds: ['fresh', 'milk-tea'] }),
+  drink('chagee', 'boya-juexian', '伯牙绝弦', 130, {
+    sizeCalories: { medium: 130, large: 170 },
+    defaultSweetness: 'half',
+    sweetnessCalorieImpact: 'low',
+    tagIds: ['classic', 'milk-tea', 'fresh']
+  }),
+  drink('chagee', 'ceylon-black-tea', '锡兰红茶', 150, {
+    sizeCalories: { medium: 150, large: 195 },
+    defaultSweetness: 'half',
+    sweetnessCalorieImpact: 'low',
+    tagIds: ['fresh', 'milk-tea']
+  }),
+  drink('chagee', 'qingmo-guanyin', '青沫观音', 145, {
+    sizeCalories: { medium: 145, large: 190 },
+    defaultSweetness: 'half',
+    sweetnessCalorieImpact: 'low',
+    tagIds: ['fresh', 'milk-tea']
+  }),
+  drink('chagee', 'qingqing-nuoshan', '青青糯山', 155, {
+    sizeCalories: { medium: 155, large: 205 },
+    defaultSweetness: 'half',
+    sweetnessCalorieImpact: 'low',
+    tagIds: ['fresh', 'milk-tea']
+  }),
+  drink('chagee', 'guifu-lanxiang', '桂馥兰香', 145, {
+    sizeCalories: { medium: 145, large: 190 },
+    defaultSweetness: 'half',
+    sweetnessCalorieImpact: 'low',
+    tagIds: ['fresh', 'milk-tea']
+  }),
+  drink('chagee', 'baiwu-hongchen', '白雾红尘', 150, {
+    sizeCalories: { medium: 150, large: 200 },
+    defaultSweetness: 'half',
+    sweetnessCalorieImpact: 'low',
+    tagIds: ['fresh', 'milk-tea']
+  }),
+  drink('chagee', 'rose-puer', '去云南·玫瑰普洱', 150, {
+    sizeCalories: { medium: 150, large: 200 },
+    defaultSweetness: 'half',
+    sweetnessCalorieImpact: 'low',
+    tagIds: ['fresh', 'milk-tea']
+  }),
+  drink('chagee', 'wanshanhong', '万山红·金丝小种', 150, {
+    sizeCalories: { medium: 150, large: 200 },
+    defaultSweetness: 'half',
+    sweetnessCalorieImpact: 'low',
+    tagIds: ['fresh', 'milk-tea']
+  }),
 
-  drink('heytea', 'grape-cheese', '芝士葡萄', 520, { defaultSweetness: 'seventy', sweetnessCalorieImpact: 'high', defaultToppingIds: ['milk-foam'], tagIds: ['fruit', 'milk-foam'] }),
-  drink('heytea', 'berry-cheese', '芝士莓莓', 500, { sweetnessCalorieImpact: 'high', defaultToppingIds: ['milk-foam'], tagIds: ['fruit', 'milk-foam'] }),
-  drink('heytea', 'mango-grapefruit', '多肉芒芒甘露', 560, { sweetnessCalorieImpact: 'high', defaultToppingIds: ['coconut-jelly'], tagIds: ['fruit', 'toppings'] }),
-  drink('heytea', 'taro-bobo', '芋泥波波', 620, { defaultToppingIds: ['taro', 'pearl'], tagIds: ['milk-tea', 'toppings'] }),
-  drink('heytea', 'coconut-latte', '椰椰拿铁', 430, { tagIds: ['milk-tea'] }),
-  drink('heytea', 'milk-tea', '经典奶茶', 390, { tagIds: ['classic', 'milk-tea'] }),
-  drink('heytea', 'lemon-tea', '爆柠茶', 260, { sweetnessCalorieImpact: 'high', tagIds: ['fruit', 'fresh'] }),
-  drink('heytea', 'cheese-tea', '芝士茗茶', 410, { defaultToppingIds: ['milk-foam'], tagIds: ['milk-foam', 'fresh'] }),
+  drink('heytea', 'grape-jelly', '多肉葡萄冻', 140, {
+    sizeCalories: { medium: 140 },
+    availableSizes: ['medium'],
+    defaultSweetness: 'seventy',
+    sweetnessCalorieImpact: 'high',
+    defaultToppingIds: ['milk-jelly'],
+    tagIds: ['fruit', 'toppings']
+  }),
+  drink('heytea', 'berry-cheese', '芝芝莓莓', 430, {
+    sizeCalories: { medium: 430 },
+    availableSizes: ['medium'],
+    defaultSweetness: 'seventy',
+    sweetnessCalorieImpact: 'high',
+    defaultToppingIds: ['milk-foam'],
+    tagIds: ['fruit', 'milk-foam']
+  }),
+  drink('heytea', 'mango-cheese', '芝芝芒芒', 470, {
+    sizeCalories: { medium: 470 },
+    availableSizes: ['medium'],
+    defaultSweetness: 'seventy',
+    sweetnessCalorieImpact: 'high',
+    defaultToppingIds: ['milk-foam'],
+    tagIds: ['fruit', 'milk-foam']
+  }),
+  drink('heytea', 'green-grape', '多肉青提', 330, {
+    sizeCalories: { medium: 330 },
+    availableSizes: ['medium'],
+    defaultSweetness: 'seventy',
+    sweetnessCalorieImpact: 'high',
+    defaultToppingIds: ['milk-jelly'],
+    tagIds: ['fruit', 'toppings']
+  }),
+  drink('heytea', 'roasted-brown-sugar-bobo', '烤黑糖波波牛乳茶', 560, {
+    sizeCalories: { medium: 560 },
+    availableSizes: ['medium'],
+    defaultSweetness: 'normal',
+    defaultToppingIds: ['pearl'],
+    tagIds: ['milk-tea', 'toppings']
+  }),
+  drink('heytea', 'light-mango-pomelo', '轻芒芒甘露', 330, {
+    sizeCalories: { medium: 330 },
+    availableSizes: ['medium'],
+    defaultSweetness: 'seventy',
+    sweetnessCalorieImpact: 'high',
+    defaultToppingIds: ['sago'],
+    tagIds: ['fruit', 'toppings']
+  }),
+  drink('heytea', 'cheese-green-tea', '芝芝绿妍茶后', 260, {
+    sizeCalories: { medium: 260 },
+    availableSizes: ['medium'],
+    defaultSweetness: 'half',
+    defaultToppingIds: ['milk-foam'],
+    tagIds: ['fresh', 'milk-foam']
+  }),
+  drink('heytea', 'yueguan', '月观', 103, {
+    sizeCalories: { medium: 103 },
+    availableSizes: ['medium'],
+    defaultSweetness: 'half',
+    sweetnessCalorieImpact: 'low',
+    tagIds: ['fresh']
+  }),
 
-  drink('nayuki', 'grape-cheese', '霸气葡萄', 510, { sweetnessCalorieImpact: 'high', defaultToppingIds: ['milk-foam'], tagIds: ['fruit', 'milk-foam'] }),
-  drink('nayuki', 'orange-tea', '霸气橙子', 330, { sweetnessCalorieImpact: 'high', tagIds: ['fruit', 'fresh'] }),
-  drink('nayuki', 'strawberry-cheese', '霸气草莓', 490, { sweetnessCalorieImpact: 'high', defaultToppingIds: ['milk-foam'], tagIds: ['fruit', 'milk-foam'] }),
-  drink('nayuki', 'mango-pomelo', '杨枝甘露', 540, { defaultToppingIds: ['coconut-jelly'], tagIds: ['fruit', 'toppings'] }),
-  drink('nayuki', 'taro-milk', '芋泥鲜奶', 560, { defaultToppingIds: ['taro'], tagIds: ['milk-tea', 'toppings'] }),
-  drink('nayuki', 'jasmine-latte', '茉莉拿铁', 350, { sweetnessCalorieImpact: 'low', tagIds: ['fresh', 'milk-tea'] }),
-  drink('nayuki', 'black-tea-milk', '红茶鲜奶', 360, { tagIds: ['milk-tea'] }),
-  drink('nayuki', 'lemon-tea', '鸭屎香柠檬茶', 280, { sweetnessCalorieImpact: 'high', tagIds: ['fruit', 'fresh'] }),
+  drink('chabaidao', 'yangzhi-ganlu', '杨枝甘露', 390, {
+    sizeCalories: { medium: 390, large: 520 },
+    defaultSweetness: 'normal',
+    sweetnessCalorieImpact: 'high',
+    defaultToppingIds: ['sago'],
+    tagIds: ['fruit', 'toppings']
+  }),
+  drink('chabaidao', 'green-grape-jasmine', '青提茉莉', 210, {
+    sizeCalories: { medium: 210, large: 280 },
+    defaultSweetness: 'seventy',
+    sweetnessCalorieImpact: 'high',
+    tagIds: ['fruit', 'fresh']
+  }),
+  drink('chabaidao', 'watermelon-bobo', '西瓜啵啵', 240, {
+    sizeCalories: { medium: 240, large: 320 },
+    defaultSweetness: 'seventy',
+    sweetnessCalorieImpact: 'high',
+    defaultToppingIds: ['crisp-boba'],
+    tagIds: ['fruit', 'toppings']
+  }),
+  drink('chabaidao', 'sunshine-green-grape-milk', '阳光青提冰奶', 310, {
+    sizeCalories: { medium: 310, large: 420 },
+    defaultSweetness: 'seventy',
+    sweetnessCalorieImpact: 'high',
+    tagIds: ['fruit', 'milk-tea']
+  }),
+  drink('chabaidao', 'pink-guava', '粉上芭乐提', 230, {
+    sizeCalories: { medium: 230, large: 310 },
+    defaultSweetness: 'seventy',
+    sweetnessCalorieImpact: 'high',
+    tagIds: ['fruit', 'fresh']
+  }),
+  drink('chabaidao', 'soy-jade-kylin', '豆乳玉麒麟', 330, {
+    sizeCalories: { medium: 330, large: 450 },
+    defaultSweetness: 'half',
+    tagIds: ['fresh', 'milk-tea']
+  }),
+  drink('chabaidao', 'signature-taro-ball-milk-tea', '招牌芋圆奶茶', 470, {
+    sizeCalories: { medium: 470, large: 620 },
+    defaultSweetness: 'normal',
+    defaultToppingIds: ['taro-ball'],
+    tagIds: ['milk-tea', 'toppings']
+  }),
+  drink('chabaidao', 'jasmine-milk-green', '茉莉奶绿', 270, {
+    sizeCalories: { medium: 270, large: 360 },
+    defaultSweetness: 'half',
+    tagIds: ['fresh', 'milk-tea']
+  }),
 
-  drink('chabaidao', 'yangzhi-ganlu', '杨枝甘露', 520, { sweetnessCalorieImpact: 'high', defaultToppingIds: ['coconut-jelly'], tagIds: ['fruit', 'toppings'] }),
-  drink('chabaidao', 'taro-bobo', '芋泥啵啵奶茶', 590, { defaultToppingIds: ['taro', 'pearl'], tagIds: ['milk-tea', 'toppings'] }),
-  drink('chabaidao', 'pearl-milk-tea', '珍珠奶茶', 430, { defaultToppingIds: ['pearl'], tagIds: ['classic', 'milk-tea'] }),
-  drink('chabaidao', 'douhua-milk-tea', '豆花布丁奶茶', 560, { defaultToppingIds: ['pudding'], tagIds: ['milk-tea', 'toppings'] }),
-  drink('chabaidao', 'grape-cheese', '芝士葡萄', 510, { sweetnessCalorieImpact: 'high', defaultToppingIds: ['milk-foam'], tagIds: ['fruit', 'milk-foam'] }),
-  drink('chabaidao', 'peach-oolong', '桃桃乌龙', 330, { sweetnessCalorieImpact: 'high', tagIds: ['fruit', 'fresh'] }),
-  drink('chabaidao', 'coconut-milk', '椰椰奶茶', 410, { tagIds: ['milk-tea'] }),
-  drink('chabaidao', 'lemon-tea', '鲜柠檬茶', 250, { sweetnessCalorieImpact: 'high', tagIds: ['fruit', 'fresh'] }),
+  drink('guming', 'yangzhi-ganlu', '杨枝甘露', 390, {
+    sizeCalories: { medium: 390, large: 520 },
+    defaultSweetness: 'normal',
+    sweetnessCalorieImpact: 'high',
+    defaultToppingIds: ['sago'],
+    tagIds: ['fruit', 'toppings']
+  }),
+  drink('guming', 'super-cheese-grape', '超A芝士葡萄', 360, {
+    sizeCalories: { medium: 360, large: 500 },
+    defaultSweetness: 'seventy',
+    sweetnessCalorieImpact: 'high',
+    defaultToppingIds: ['milk-foam'],
+    tagIds: ['fruit', 'milk-foam']
+  }),
+  drink('guming', 'yunling-jasmine-white', '云岭茉莉白', 240, {
+    sizeCalories: { medium: 240, large: 330 },
+    defaultSweetness: 'half',
+    sweetnessCalorieImpact: 'low',
+    tagIds: ['fresh', 'milk-tea']
+  }),
+  drink('guming', 'brulee-crunch-milk', '布蕾脆脆奶芙', 520, {
+    sizeCalories: { medium: 520, large: 700 },
+    defaultSweetness: 'normal',
+    defaultToppingIds: ['pudding'],
+    tagIds: ['milk-tea', 'toppings']
+  }),
+  drink('guming', 'taro-grain-milk', '芋泥青稞牛奶', 500, {
+    sizeCalories: { medium: 500, large: 670 },
+    defaultSweetness: 'normal',
+    defaultToppingIds: ['taro', 'grain'],
+    tagIds: ['milk-tea', 'toppings']
+  }),
+  drink('guming', 'whole-lemon', '一颗大柠檬', 150, {
+    sizeCalories: { medium: 150, large: 220 },
+    defaultSweetness: 'seventy',
+    sweetnessCalorieImpact: 'high',
+    tagIds: ['fruit', 'fresh']
+  }),
+  drink('guming', 'passion-duet', '百香双重奏', 330, {
+    sizeCalories: { medium: 330, large: 450 },
+    defaultSweetness: 'normal',
+    sweetnessCalorieImpact: 'high',
+    tagIds: ['fruit', 'toppings']
+  }),
+  drink('guming', 'classic-milk-tea', '古茗奶茶', 280, {
+    sizeCalories: { medium: 280, large: 390 },
+    defaultSweetness: 'half',
+    tagIds: ['classic', 'milk-tea']
+  }),
 
-  drink('guming', 'yangzhi-ganlu', '杨枝甘露', 530, { defaultToppingIds: ['coconut-jelly'], tagIds: ['fruit', 'toppings'] }),
-  drink('guming', 'grape-cheese', '芝士多肉葡萄', 520, { defaultToppingIds: ['milk-foam'], tagIds: ['fruit', 'milk-foam'] }),
-  drink('guming', 'peach', '桃桃乌龙', 320, { sweetnessCalorieImpact: 'high', tagIds: ['fruit', 'fresh'] }),
-  drink('guming', 'taro-bobo', '芋泥波波奶茶', 600, { defaultToppingIds: ['taro', 'pearl'], tagIds: ['milk-tea', 'toppings'] }),
-  drink('guming', 'milk-tea', '古茗奶茶', 400, { tagIds: ['classic', 'milk-tea'] }),
-  drink('guming', 'coconut-latte', '椰椰拿铁', 420, { tagIds: ['milk-tea'] }),
-  drink('guming', 'lemon-tea', '手打柠檬茶', 260, { sweetnessCalorieImpact: 'high', tagIds: ['fruit', 'fresh'] }),
-  drink('guming', 'pudding-milk-tea', '布丁奶茶', 500, { defaultToppingIds: ['pudding'], tagIds: ['milk-tea', 'toppings'] }),
+  drink('yidiandian', 'black-tea-macchiato', '红茶玛奇朵', 270, {
+    sizeCalories: { medium: 270, large: 380 },
+    defaultSweetness: 'half',
+    defaultToppingIds: ['milk-foam'],
+    tagIds: ['classic', 'milk-foam']
+  }),
+  drink('yidiandian', 'boba-milk-tea', '波霸奶茶', 460, {
+    sizeCalories: { medium: 460, large: 620 },
+    defaultSweetness: 'normal',
+    defaultToppingIds: ['pearl'],
+    tagIds: ['milk-tea', 'toppings']
+  }),
+  drink('yidiandian', 'four-seasons-three-toppings', '四季春+珍波椰', 330, {
+    sizeCalories: { medium: 330, large: 450 },
+    defaultSweetness: 'half',
+    defaultToppingIds: ['pearl', 'coconut-jelly'],
+    tagIds: ['fresh', 'toppings']
+  }),
+  drink('yidiandian', 'milk-black-tea', '牛乳红茶', 220, {
+    sizeCalories: { medium: 220, large: 320 },
+    defaultSweetness: 'half',
+    tagIds: ['fresh', 'milk-tea']
+  }),
+  drink('yidiandian', 'qingxiang-oolong', '清香乌龙茶', 60, {
+    sizeCalories: { medium: 60, large: 90 },
+    defaultSweetness: 'none',
+    sweetnessCalorieImpact: 'low',
+    tagIds: ['fresh']
+  }),
+  drink('yidiandian', 'ice-cream-black-tea', '冰淇淋红茶', 260, {
+    sizeCalories: { medium: 260, large: 380 },
+    defaultSweetness: 'half',
+    defaultToppingIds: ['ice-cream'],
+    tagIds: ['fresh', 'toppings']
+  }),
+  drink('yidiandian', 'yakult-green-tea', '多多绿', 220, {
+    sizeCalories: { medium: 220, large: 330 },
+    defaultSweetness: 'half',
+    sweetnessCalorieImpact: 'high',
+    tagIds: ['fresh']
+  }),
+  drink('yidiandian', 'grapefruit-green-tea', '葡萄柚绿', 200, {
+    sizeCalories: { medium: 200, large: 300 },
+    defaultSweetness: 'half',
+    sweetnessCalorieImpact: 'high',
+    tagIds: ['fruit', 'fresh']
+  }),
 
-  drink('hushangayi', 'blood-rice-milk-tea', '血糯米奶茶', 580, { defaultToppingIds: ['grass-jelly'], tagIds: ['milk-tea', 'toppings'] }),
-  drink('hushangayi', 'yangzhi-ganlu', '杨枝甘露', 520, { defaultToppingIds: ['coconut-jelly'], tagIds: ['fruit', 'toppings'] }),
-  drink('hushangayi', 'taro-milk', '芋泥鲜奶', 560, { defaultToppingIds: ['taro'], tagIds: ['milk-tea', 'toppings'] }),
-  drink('hushangayi', 'pearl-milk-tea', '珍珠奶茶', 430, { defaultToppingIds: ['pearl'], tagIds: ['classic', 'milk-tea'] }),
-  drink('hushangayi', 'grape', '多肉葡萄', 470, { sweetnessCalorieImpact: 'high', tagIds: ['fruit'] }),
-  drink('hushangayi', 'lemon-tea', '手打柠檬茶', 270, { sweetnessCalorieImpact: 'high', tagIds: ['fruit', 'fresh'] }),
-  drink('hushangayi', 'coconut-milk', '椰椰奶茶', 410, { tagIds: ['milk-tea'] }),
-  drink('hushangayi', 'milk-foam-tea', '奶盖茶', 430, { defaultToppingIds: ['milk-foam'], tagIds: ['milk-foam', 'fresh'] }),
+  drink('coco', 'pearl-milk-tea', '珍珠奶茶', 450, {
+    sizeCalories: { medium: 450, large: 620 },
+    defaultSweetness: 'normal',
+    defaultToppingIds: ['pearl'],
+    tagIds: ['classic', 'milk-tea', 'toppings']
+  }),
+  drink('coco', 'three-brothers', '奶茶三兄弟', 560, {
+    sizeCalories: { medium: 560, large: 760 },
+    defaultSweetness: 'normal',
+    defaultToppingIds: ['pearl', 'pudding', 'grass-jelly'],
+    tagIds: ['milk-tea', 'toppings']
+  }),
+  drink('coco', 'passion-fruit-double', '鲜百香双响炮', 380, {
+    sizeCalories: { medium: 380, large: 520 },
+    defaultSweetness: 'normal',
+    sweetnessCalorieImpact: 'high',
+    defaultToppingIds: ['pearl', 'coconut-jelly'],
+    tagIds: ['fruit', 'toppings']
+  }),
+  drink('coco', 'taro-grain-milk', '鲜芋青稞牛奶', 510, {
+    sizeCalories: { medium: 510, large: 680 },
+    defaultSweetness: 'normal',
+    defaultToppingIds: ['taro', 'grain'],
+    tagIds: ['milk-tea', 'toppings']
+  }),
+  drink('coco', 'jasmine-milk-green', '茉莉奶绿', 300, {
+    sizeCalories: { medium: 300, large: 420 },
+    defaultSweetness: 'half',
+    tagIds: ['fresh', 'milk-tea']
+  }),
+  drink('coco', 'taro-milk-tea', '芋头奶茶', 400, {
+    sizeCalories: { medium: 400, large: 560 },
+    defaultSweetness: 'normal',
+    tagIds: ['milk-tea']
+  }),
+  drink('coco', 'lemon-king', '柠檬霸', 180, {
+    sizeCalories: { medium: 180, large: 260 },
+    defaultSweetness: 'seventy',
+    sweetnessCalorieImpact: 'high',
+    tagIds: ['fruit', 'fresh']
+  }),
+  drink('coco', 'coconut-mango-pomelo', '生椰杨枝甘露', 430, {
+    sizeCalories: { medium: 430, large: 600 },
+    defaultSweetness: 'normal',
+    sweetnessCalorieImpact: 'high',
+    defaultToppingIds: ['sago'],
+    tagIds: ['fruit', 'toppings']
+  }),
 
-  drink('shuyi', 'grass-jelly', '书亦烧仙草', 610, { defaultToppingIds: ['grass-jelly', 'pearl'], tagIds: ['classic', 'toppings'] }),
-  drink('shuyi', 'pearl-milk-tea', '珍珠奶茶', 430, { defaultToppingIds: ['pearl'], tagIds: ['classic', 'milk-tea'] }),
-  drink('shuyi', 'taro-bobo', '芋泥啵啵奶茶', 590, { defaultToppingIds: ['taro', 'pearl'], tagIds: ['milk-tea', 'toppings'] }),
-  drink('shuyi', 'mango-pomelo', '杨枝甘露', 520, { defaultToppingIds: ['coconut-jelly'], tagIds: ['fruit', 'toppings'] }),
-  drink('shuyi', 'coconut-jelly-milk', '椰果奶茶', 460, { defaultToppingIds: ['coconut-jelly'], tagIds: ['milk-tea', 'toppings'] }),
-  drink('shuyi', 'pudding-milk-tea', '布丁奶茶', 500, { defaultToppingIds: ['pudding'], tagIds: ['milk-tea', 'toppings'] }),
-  drink('shuyi', 'lemon-tea', '柠檬茶', 260, { sweetnessCalorieImpact: 'high', tagIds: ['fruit', 'fresh'] }),
-  drink('shuyi', 'cheese-tea', '奶盖绿茶', 420, { defaultToppingIds: ['milk-foam'], tagIds: ['milk-foam', 'fresh'] }),
-
-  drink('yidiandian', 'pearl-milk-tea', '珍珠奶茶', 430, { defaultToppingIds: ['pearl'], tagIds: ['classic', 'milk-tea'] }),
-  drink('yidiandian', 'boba-milk-tea', '波霸奶茶', 460, { defaultToppingIds: ['pearl'], tagIds: ['milk-tea', 'toppings'] }),
-  drink('yidiandian', 'four-seasons-milk', '四季奶青', 360, { sweetnessCalorieImpact: 'low', tagIds: ['fresh', 'milk-tea'] }),
-  drink('yidiandian', 'pudding-milk-tea', '布丁奶茶', 500, { defaultToppingIds: ['pudding'], tagIds: ['milk-tea', 'toppings'] }),
-  drink('yidiandian', 'coconut-jelly-milk-tea', '椰果奶茶', 450, { defaultToppingIds: ['coconut-jelly'], tagIds: ['milk-tea', 'toppings'] }),
-  drink('yidiandian', 'grass-jelly-milk-tea', '仙草奶茶', 470, { defaultToppingIds: ['grass-jelly'], tagIds: ['milk-tea', 'toppings'] }),
-  drink('yidiandian', 'black-tea-latte', '红茶拿铁', 350, { tagIds: ['milk-tea'] }),
-  drink('yidiandian', 'lemon-green-tea', '柠檬绿茶', 250, { sweetnessCalorieImpact: 'high', tagIds: ['fruit', 'fresh'] }),
-
-  drink('coco', 'pearl-milk-tea', '珍珠奶茶', 440, { defaultToppingIds: ['pearl'], tagIds: ['classic', 'milk-tea'] }),
-  drink('coco', 'three-brothers', '奶茶三兄弟', 620, { defaultToppingIds: ['pearl', 'pudding', 'grass-jelly'], tagIds: ['milk-tea', 'toppings'] }),
-  drink('coco', 'mango-pomelo', '杨枝甘露', 520, { defaultToppingIds: ['coconut-jelly'], tagIds: ['fruit', 'toppings'] }),
-  drink('coco', 'taro-milk-tea', '芋泥奶茶', 560, { defaultToppingIds: ['taro'], tagIds: ['milk-tea', 'toppings'] }),
-  drink('coco', 'lemon-tea', '鲜柠檬茶', 260, { sweetnessCalorieImpact: 'high', tagIds: ['fruit', 'fresh'] }),
-  drink('coco', 'coconut-latte', '椰椰拿铁', 420, { tagIds: ['milk-tea'] }),
-  drink('coco', 'milk-foam-tea', '奶盖绿茶', 420, { defaultToppingIds: ['milk-foam'], tagIds: ['milk-foam', 'fresh'] }),
-  drink('coco', 'fruit-tea', '百香果双响炮', 430, { sweetnessCalorieImpact: 'high', defaultToppingIds: ['coconut-jelly'], tagIds: ['fruit', 'toppings'] }),
-
-  drink('yihetang', 'roasted-milk-tea', '烤奶', 450, { tagIds: ['classic', 'milk-tea'] }),
-  drink('yihetang', 'pearl-roasted-milk', '珍珠烤奶', 520, { defaultToppingIds: ['pearl'], tagIds: ['milk-tea', 'toppings'] }),
-  drink('yihetang', 'grass-jelly-milk', '烧仙草烤奶', 540, { defaultToppingIds: ['grass-jelly'], tagIds: ['milk-tea', 'toppings'] }),
-  drink('yihetang', 'pudding-milk', '布丁烤奶', 530, { defaultToppingIds: ['pudding'], tagIds: ['milk-tea', 'toppings'] }),
-  drink('yihetang', 'lemon-tea', '手打柠檬茶', 250, { sweetnessCalorieImpact: 'high', tagIds: ['fruit', 'fresh'] }),
-  drink('yihetang', 'mango-pomelo', '杨枝甘露', 510, { defaultToppingIds: ['coconut-jelly'], tagIds: ['fruit', 'toppings'] }),
-  drink('yihetang', 'coconut-milk', '椰椰奶茶', 410, { tagIds: ['milk-tea'] }),
-  drink('yihetang', 'taro-milk', '芋泥奶茶', 560, { defaultToppingIds: ['taro'], tagIds: ['milk-tea', 'toppings'] }),
-
-  drink('molimilk', 'jasmine-milk', '茉莉奶白', 330, { sweetnessCalorieImpact: 'low', tagIds: ['fresh', 'milk-tea'] }),
-  drink('molimilk', 'jasmine-latte', '茉莉拿铁', 350, { sweetnessCalorieImpact: 'low', tagIds: ['fresh', 'milk-tea'] }),
-  drink('molimilk', 'osmanthus-milk', '桂花奶白', 360, { sweetnessCalorieImpact: 'low', tagIds: ['fresh', 'milk-tea'] }),
-  drink('molimilk', 'peach-jasmine', '白桃茉莉', 340, { sweetnessCalorieImpact: 'medium', tagIds: ['fruit', 'fresh'] }),
-  drink('molimilk', 'milk-foam-jasmine', '奶盖茉莉', 430, { defaultToppingIds: ['milk-foam'], tagIds: ['milk-foam', 'fresh'] }),
-  drink('molimilk', 'coconut-jasmine', '椰香茉莉', 390, { tagIds: ['fresh', 'milk-tea'] }),
-  drink('molimilk', 'pure-jasmine', '茉莉原茶', 90, { defaultSize: 'medium', availableSizes: ['medium'], defaultSweetness: 'none', sweetnessAdjustable: false, sweetnessCalorieImpact: 'low', tagIds: ['fresh'] }),
-  drink('molimilk', 'taro-jasmine', '芋泥茉莉', 520, { defaultToppingIds: ['taro'], tagIds: ['milk-tea', 'toppings'] }),
-
-  drink('chayanyuese', 'youlan-latte', '幽兰拿铁', 360, { defaultToppingIds: ['milk-foam'], tagIds: ['classic', 'milk-foam'] }),
-  drink('chayanyuese', 'shengsheng-oolong', '声声乌龙', 330, { sweetnessCalorieImpact: 'low', tagIds: ['fresh', 'milk-tea'] }),
-  drink('chayanyuese', 'momo-oolong', '蔓越阑珊', 350, { sweetnessCalorieImpact: 'medium', tagIds: ['fruit', 'fresh'] }),
-  drink('chayanyuese', 'black-tea-latte', '红茶拿铁', 340, { tagIds: ['milk-tea'] }),
-  drink('chayanyuese', 'jasmine-latte', '茉莉拿铁', 330, { sweetnessCalorieImpact: 'low', tagIds: ['fresh', 'milk-tea'] }),
-  drink('chayanyuese', 'osmanthus-latte', '桂花拿铁', 360, { sweetnessCalorieImpact: 'low', tagIds: ['fresh', 'milk-tea'] }),
-  drink('chayanyuese', 'milk-foam-tea', '奶盖茶', 420, { defaultToppingIds: ['milk-foam'], tagIds: ['milk-foam', 'fresh'] }),
-  drink('chayanyuese', 'taro-latte', '芋泥拿铁', 520, { defaultToppingIds: ['taro'], tagIds: ['milk-tea', 'toppings'] })
+  drink('molimilk', 'jasmine-milk-white', '茉莉奶白', 250, {
+    sizeCalories: { medium: 250, large: 350 },
+    defaultSweetness: 'half',
+    sweetnessCalorieImpact: 'low',
+    tagIds: ['classic', 'fresh', 'milk-tea']
+  }),
+  drink('molimilk', 'osmanthus-longjing', '桂花龙井', 230, {
+    sizeCalories: { medium: 230, large: 330 },
+    defaultSweetness: 'half',
+    sweetnessCalorieImpact: 'low',
+    tagIds: ['fresh', 'milk-tea']
+  }),
+  drink('molimilk', 'bailan', '白兰', 250, {
+    sizeCalories: { medium: 250, large: 350 },
+    defaultSweetness: 'half',
+    sweetnessCalorieImpact: 'low',
+    tagIds: ['fresh', 'milk-tea']
+  }),
+  drink('molimilk', 'gardenia-milk-white', '栀子奶白', 250, {
+    sizeCalories: { medium: 250, large: 350 },
+    defaultSweetness: 'half',
+    sweetnessCalorieImpact: 'low',
+    tagIds: ['fresh', 'milk-tea']
+  }),
+  drink('molimilk', 'matcha-bailan', '抹茶白兰', 430, {
+    sizeCalories: { medium: 430, large: 600 },
+    defaultSweetness: 'half',
+    defaultToppingIds: ['milk-foam'],
+    tagIds: ['fresh', 'milk-foam']
+  }),
+  drink('molimilk', 'matcha-zhenwang', '抹茶针王', 430, {
+    sizeCalories: { medium: 430, large: 600 },
+    defaultSweetness: 'half',
+    defaultToppingIds: ['milk-foam'],
+    tagIds: ['fresh', 'milk-foam']
+  }),
+  drink('molimilk', 'jasmine-flower', '一朵茉莉花', 460, {
+    sizeCalories: { medium: 460, large: 650 },
+    defaultSweetness: 'normal',
+    defaultToppingIds: ['milk-foam'],
+    tagIds: ['milk-tea', 'toppings']
+  }),
+  drink('molimilk', 'jasmine-mango-pomelo', '茉莉杨枝甘露', 420, {
+    sizeCalories: { medium: 420, large: 580 },
+    defaultSweetness: 'normal',
+    sweetnessCalorieImpact: 'high',
+    tagIds: ['fruit', 'toppings']
+  })
 ];
