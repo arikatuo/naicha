@@ -26,12 +26,17 @@ function buildEquivalentText(calories, equivalent) {
 }
 
 function buildEquivalentCards(calories, equivalents) {
-  return equivalents.map((equivalent) => ({
-    id: equivalent.id,
-    name: equivalent.name,
-    icon: equivalent.icon,
-    text: buildEquivalentText(calories, equivalent)
-  }));
+  return equivalents.map((equivalent, index) => {
+    const remaining = equivalents.length - index - 1;
+
+    return {
+      id: equivalent.id,
+      name: equivalent.name,
+      icon: equivalent.icon,
+      text: buildEquivalentText(calories, equivalent),
+      hint: remaining > 0 ? `还有 ${remaining} 个对比，左右滑动` : '已经看完啦，换一杯试试'
+    };
+  });
 }
 
 module.exports = {

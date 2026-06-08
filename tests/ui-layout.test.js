@@ -77,8 +77,28 @@ test('result page offers one-tap dynamic sharing for the current result', () => 
 
   assert.match(markup, /open-type="share"[^>]*>分享给朋友<\/button>/);
   assert.match(script, /buildShareTitle\(/);
+  assert.match(script, /你那杯呢/);
   assert.match(script, /encodePayload\(payload\)/);
   assert.match(script, /\/pages\/result\/result\?payload=/);
+});
+
+test('result page gives calorie badge and drink identity distinct hierarchy', () => {
+  const markup = read('pages/result/result.wxml');
+  const styles = read('pages/result/result.wxss');
+
+  assert.match(markup, /<text class="result-badge">{{resultCopy\.badge}}<\/text>/);
+  assert.match(markup, /<view class="calorie-row">\s*<text class="calories">约 {{payload\.calories}} kcal<\/text>\s*<\/view>\s*<text class="estimate-badge">估算<\/text>/);
+  assert.match(styles, /\.calories\s*{[^}]*font-size:\s*88rpx;/s);
+  assert.match(styles, /\.drink-name\s*{[^}]*font-size:\s*30rpx;[^}]*font-weight:\s*800;/s);
+  assert.match(styles, /\.disclaimer\s*{[^}]*font-size:\s*22rpx;/s);
+}
+);
+
+test('equivalent cards use user-facing progress copy instead of internal toy wording', () => {
+  const markup = read('pages/result/result.wxml');
+
+  assert.match(markup, /{{item\.hint}}/);
+  assert.doesNotMatch(markup, /换算玩具/);
 });
 
 test('poster generation previews before saving to album', () => {
@@ -90,6 +110,8 @@ test('poster generation previews before saving to album', () => {
   assert.match(script, /savePoster\(\)/);
   assert.match(markup, /class="poster-preview-mask"/);
   assert.match(markup, /bindtap="savePoster">保存到相册/);
+  assert.match(markup, /你的专属结果图/);
+  assert.match(markup, /暂时不分享/);
 
   const generatePosterBody = script.slice(
     script.indexOf('generatePoster()'),

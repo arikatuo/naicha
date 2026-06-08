@@ -9,10 +9,9 @@ function buildShareTitle(payload, card) {
     return store.copywriting.shareTitle;
   }
 
-  const drinkName = payload.drinkName || '这杯奶茶';
   const calories = payload.calories || 0;
-  const equivalentText = card && card.text ? `，等于${card.text.replace(/^约\s*/, '')}` : '';
-  return `我这杯${drinkName}约 ${calories} kcal${equivalentText}`;
+  const equivalentText = card && card.text ? card.text.replace(/^约\s*/, '') : `${calories} kcal`;
+  return `我刚才这杯约等于${equivalentText}，你那杯呢？`;
 }
 
 Page({
@@ -23,7 +22,7 @@ Page({
     posterPreviewOpen: false,
     previewPosterPath: '',
     posterGenerating: false,
-    resultCopy: { title: '这杯快乐有点认真。', theme: 'milkTea' },
+    resultCopy: { title: '快乐上线，分量刚好有感。', badge: '快乐常驻', theme: 'milkTea' },
     disclaimer: store.copywriting.disclaimer
   },
 

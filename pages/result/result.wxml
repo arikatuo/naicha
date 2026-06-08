@@ -1,11 +1,12 @@
 <view class="page result-page {{resultCopy.theme}}">
   <view class="summary surface">
     <text class="eyebrow">揭晓结果</text>
+    <text class="result-badge">{{resultCopy.badge}}</text>
     <text class="result-title">{{resultCopy.title}}</text>
     <view class="calorie-row">
       <text class="calories">约 {{payload.calories}} kcal</text>
-      <text class="badge">估算</text>
     </view>
+    <text class="estimate-badge">估算</text>
     <text class="drink-name">{{payload.brandName ? payload.brandName + ' · ' : ''}}{{payload.drinkName}}</text>
     <text class="disclaimer">{{disclaimer}}</text>
   </view>
@@ -17,7 +18,7 @@
         <view class="equivalent-card">
           <image class="icon" src="{{item.icon}}" mode="aspectFit"></image>
           <text class="card-text">{{item.text}}</text>
-          <text class="card-sub">第 {{index + 1}} / {{cards.length}} 个换算玩具</text>
+          <text class="card-sub">{{item.hint}}</text>
         </view>
       </swiper-item>
     </swiper>
@@ -34,11 +35,11 @@
 
   <view wx:if="{{posterPreviewOpen}}" class="poster-preview-mask" bindtap="closePosterPreview">
     <view class="poster-preview-sheet" catchtap="noop">
-      <text class="preview-title">先看看分享图</text>
+      <text class="preview-title">你的专属结果图</text>
       <image class="poster-preview-image" src="{{previewPosterPath}}" mode="aspectFit"></image>
       <view class="preview-actions">
         <button class="button-primary preview-save" bindtap="savePoster">保存到相册</button>
-        <button class="button-secondary preview-close" bindtap="closePosterPreview">再改一下</button>
+        <button class="button-secondary preview-close" bindtap="closePosterPreview">暂时不分享</button>
       </view>
     </view>
   </view>
