@@ -18,7 +18,7 @@
       </view>
       <view class="brand-meta">
         <text class="brand-name">{{item.name}}</text>
-        <text class="brand-subtitle">热门饮品入口</text>
+        <text class="brand-subtitle">{{item.subtitle}}</text>
       </view>
       <text class="brand-hint">{{item.drinkCount}} 款热门</text>
     </button>

@@ -1,9 +1,10 @@
 .result-page {
   display: flex;
   flex-direction: column;
-  gap: 16rpx;
-  height: calc(100vh - 110rpx);
+  gap: 14rpx;
+  height: 100vh;
   min-height: 0;
+  justify-content: space-between;
   overflow: hidden;
 }
 
@@ -12,8 +13,9 @@
   display: flex;
   flex-direction: column;
   flex: 0 0 auto;
-  gap: 10rpx;
-  padding: 24rpx 30rpx;
+  gap: 8rpx;
+  border-radius: 38rpx;
+  padding: 22rpx 30rpx 24rpx;
 }
 
 .eyebrow {
@@ -31,20 +33,37 @@
 }
 
 .result-title {
-  font-size: 38rpx;
+  font-size: 32rpx;
   font-weight: 900;
-  line-height: 1.22;
+  line-height: 1.16;
 }
 
 .calorie-row {
   display: flex;
-  align-items: center;
+  align-items: baseline;
+  gap: 14rpx;
+  min-width: 0;
 }
 
-.calories {
-  font-size: 88rpx;
+.calorie-prefix {
+  color: #2d1f18;
+  font-size: 58rpx;
   font-weight: 900;
-  line-height: 1.05;
+  line-height: 1;
+}
+
+.calorie-number {
+  color: #2d1f18;
+  font-size: 92rpx;
+  font-weight: 900;
+  line-height: 0.98;
+}
+
+.calorie-unit {
+  color: #2d1f18;
+  font-size: 54rpx;
+  font-weight: 900;
+  line-height: 1;
 }
 
 .result-badge,
@@ -57,15 +76,15 @@
 }
 
 .result-badge {
-  font-size: 22rpx;
+  font-size: 21rpx;
   font-weight: 900;
-  padding: 7rpx 16rpx;
+  padding: 6rpx 15rpx;
 }
 
 .estimate-badge {
   font-size: 20rpx;
   font-weight: 800;
-  padding: 7rpx 13rpx;
+  padding: 6rpx 13rpx;
 }
 
 .drink-name {
@@ -84,21 +103,21 @@
 .equivalent-stage {
   display: flex;
   flex-direction: column;
-  flex: 1 1 auto;
+  flex: 0 0 auto;
   gap: 10rpx;
   min-height: 0;
 }
 
 .stage-label {
   color: #8b5f3f;
-  font-size: 23rpx;
+  font-size: 24rpx;
   font-weight: 900;
   padding-left: 8rpx;
 }
 
 .equivalent-swiper {
   width: 100%;
-  height: 344rpx;
+  height: 360rpx;
   flex: 0 0 auto;
 }
 
@@ -107,22 +126,22 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 16rpx;
-  height: 326rpx;
+  gap: 14rpx;
+  height: 342rpx;
   box-sizing: border-box;
   margin: 8rpx 10rpx 10rpx;
   padding: 24rpx 28rpx;
-  border-radius: 42rpx;
-  background: linear-gradient(145deg, #fffaf1, #f6d2a9);
+  border-radius: 38rpx;
+  background: linear-gradient(145deg, #fffbf4, #f5cea2);
   box-shadow:
-    0 22rpx 38rpx rgba(124, 78, 49, 0.16),
+    0 18rpx 30rpx rgba(124, 78, 49, 0.14),
     inset 10rpx 12rpx 20rpx rgba(255, 255, 255, 0.55),
     inset -10rpx -14rpx 22rpx rgba(173, 101, 72, 0.16);
 }
 
 .icon {
-  width: 126rpx;
-  height: 126rpx;
+  width: 116rpx;
+  height: 116rpx;
 }
 
 .card-text {
@@ -158,17 +177,31 @@
 }
 
 .actions {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  display: flex;
+  flex-direction: column;
   gap: 12rpx;
   flex: 0 0 auto;
+  align-self: stretch;
 }
 
 .actions button {
-  min-height: 84rpx;
-  padding: 0 12rpx;
-  font-size: 24rpx;
+  min-height: 78rpx;
+  padding: 0 16rpx;
+  font-size: 25rpx;
   line-height: 1.15;
+  white-space: nowrap;
+}
+
+.share-button {
+  width: 100%;
+  min-height: 86rpx;
+  font-size: 28rpx;
+}
+
+.secondary-actions {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12rpx;
 }
 
 .fresh .equivalent-card {

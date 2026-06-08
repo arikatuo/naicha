@@ -30,6 +30,7 @@
 
 .option-group {
   padding: 30rpx;
+  overflow: hidden;
 }
 
 .title {
@@ -81,22 +82,34 @@
 
 .option-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 14rpx;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16rpx;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .option-grid.two {
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
 .option {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
   min-height: 78rpx;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0 18rpx;
   border: 0;
   border-radius: 999rpx;
   background: linear-gradient(145deg, #fff5df, #edc295);
   color: #4a3324;
   font-size: 24rpx;
   font-weight: 700;
+  line-height: 1.2;
+  text-align: center;
+  overflow: hidden;
   box-shadow:
     0 9rpx 16rpx rgba(124, 78, 49, 0.12),
     inset 4rpx 5rpx 10rpx rgba(255, 255, 255, 0.52),

@@ -40,6 +40,27 @@ test('brand cards show dynamic drink counts from the current data set', () => {
   }
 });
 
+test('brand cards use brand-specific flavor labels instead of repeated generic subtitles', () => {
+  const markup = read('pages/brands/brands.wxml');
+  const brands = require('../data/brands');
+
+  assert.match(markup, /<text class="brand-subtitle">{{item\.subtitle}}<\/text>/);
+  assert.doesNotMatch(markup, /热门饮品入口/);
+
+  const subtitles = brands.map((brand) => brand.subtitle);
+  assert.equal(new Set(subtitles).size, brands.length);
+  assert.deepEqual(subtitles, [
+    '平价清爽，果茶为主',
+    '新中式茶饮，低糖系',
+    '芝士奶盖 & 鲜果茶',
+    '水果系 & 经典奶茶',
+    '厚乳 & 多料',
+    '奶茶经典款',
+    '台式奶茶定番',
+    '茉莉 & 轻奶茶'
+  ]);
+});
+
 test('drink sheet keeps the calculate action in a fixed footer below scrollable options', () => {
   const markup = read('pages/drinks/drinks.wxml');
 
@@ -61,6 +82,18 @@ test('drink selection uses a two-column grid instead of a narrow single column',
   assert.match(styles, /\.drink-list\s*{[^}]*display:\s*grid;/s);
   assert.match(styles, /grid-template-columns:\s*repeat\(2,\s*1fr\)/);
   assert.doesNotMatch(styles, /\.drink-list\s*{[^}]*flex-direction:\s*column/s);
+});
+
+test('custom builder option buttons stay inside their cards', () => {
+  const markup = read('pages/custom/custom.wxml');
+  const styles = read('pages/custom/custom.wxss');
+
+  assert.match(markup, /<view class="option-grid">/);
+  assert.match(styles, /\.option-group\s*{[^}]*overflow:\s*hidden;/s);
+  assert.match(styles, /\.option-grid\s*{[^}]*grid-template-columns:\s*repeat\(2,\s*minmax\(0,\s*1fr\)\)/s);
+  assert.match(styles, /\.option\s*{[^}]*width:\s*100%;[^}]*box-sizing:\s*border-box;[^}]*margin:\s*0;/s);
+  assert.match(styles, /\.option\s*{[^}]*overflow:\s*hidden;/s);
+  assert.doesNotMatch(styles, /\.option-grid\s*{[^}]*grid-template-columns:\s*repeat\(3,/s);
 });
 
 test('drink cards use drink-specific artwork instead of the first generic tag icon', () => {
@@ -89,19 +122,39 @@ test('brand page gives official logos a larger dedicated visual area', () => {
 test('result page is a compact no-scroll reveal screen', () => {
   const config = JSON.parse(read('pages/result/result.json'));
   const styles = read('pages/result/result.wxss');
+  const markup = read('pages/result/result.wxml');
 
   assert.equal(config.disableScroll, true);
-  assert.match(styles, /\.result-page\s*{[^}]*height:\s*calc\(100vh - 110rpx\);[^}]*overflow:\s*hidden;/s);
-  assert.match(styles, /\.equivalent-swiper\s*{[^}]*height:\s*344rpx;/s);
-  assert.match(styles, /\.equivalent-card\s*{[^}]*height:\s*326rpx;/s);
-  assert.match(styles, /\.actions\s*{[^}]*display:\s*grid;[^}]*grid-template-columns:\s*repeat\(3,\s*1fr\)/s);
-  assert.match(styles, /\.actions\s+button\s*{[^}]*min-height:\s*84rpx;/s);
+  assert.match(styles, /\.result-page\s*{[^}]*height:\s*100vh;[^}]*justify-content:\s*space-between;[^}]*overflow:\s*hidden;/s);
+  assert.match(markup, /<view class="secondary-actions">\s*<button class="button-secondary" loading="{{posterGenerating}}" bindtap="generatePoster">生成分享图<\/button>\s*<button class="button-secondary" bindtap="recalculate">再算一杯<\/button>\s*<\/view>/);
+  assert.match(styles, /\.equivalent-swiper\s*{[^}]*height:\s*360rpx;/s);
+  assert.match(styles, /\.equivalent-card\s*{[^}]*height:\s*342rpx;/s);
+  assert.match(styles, /\.actions\s*{[^}]*display:\s*flex;[^}]*flex-direction:\s*column/s);
+  assert.match(styles, /\.secondary-actions\s*{[^}]*display:\s*grid;[^}]*grid-template-columns:\s*repeat\(2,\s*1fr\)/s);
+  assert.doesNotMatch(styles, /\.actions\s*{[^}]*grid-template-columns:\s*repeat\(3,\s*1fr\)/s);
+});
+
+test('result page uses a full-viewport composition instead of leaving an orphan blank bottom', () => {
+  const markup = read('pages/result/result.wxml');
+  const styles = read('pages/result/result.wxss');
+
+  assert.match(markup, /<text class="calorie-prefix">约<\/text>\s*<text class="calorie-number">{{payload\.calories}}<\/text>\s*<text class="calorie-unit">kcal<\/text>/);
+  assert.doesNotMatch(markup, /<text class="calories">约 {{payload\.calories}} kcal<\/text>/);
+  assert.match(styles, /\.calorie-number\s*{[^}]*font-size:\s*92rpx;/s);
+  assert.match(styles, /\.calorie-unit\s*{[^}]*font-size:\s*54rpx;/s);
+  assert.match(styles, /\.summary\s*{[^}]*border-radius:\s*38rpx;/s);
+  assert.match(styles, /\.equivalent-stage\s*{[^}]*flex:\s*0 0 auto;/s);
+  assert.match(styles, /\.actions\s*{[^}]*align-self:\s*stretch;/s);
+  assert.doesNotMatch(styles, /\.equivalent-stage\s*{[^}]*flex:\s*1 1 auto;/s);
 });
 
 test('local visual assets cover official brand logos and specific drink icons', () => {
   const sources = JSON.parse(read('assets/brands/sources.json'));
   const iconPaths = [
     'assets/icons/bike.png',
+    'assets/icons/americano.png',
+    'assets/icons/ice-cream.png',
+    'assets/icons/apple.png',
     'assets/icons/drinks/original-tea.png',
     'assets/icons/drinks/milk-tea.png',
     'assets/icons/drinks/fruit-tea.png',
@@ -146,13 +199,35 @@ test('result page offers one-tap dynamic sharing for the current result', () => 
   assert.match(script, /\/pages\/result\/result\?payload=/);
 });
 
+test('result recalculation starts a fresh flow from home instead of stepping back', () => {
+  const script = read('pages/result/result.js');
+  const recalculateBody = script.slice(
+    script.indexOf('recalculate()'),
+    script.indexOf('onEquivalentChange')
+  );
+
+  assert.match(recalculateBody, /wx\.reLaunch\(\{\s*url:\s*'\/pages\/home\/home'\s*\}\)/s);
+  assert.doesNotMatch(recalculateBody, /navigateBack/);
+});
+
 test('result page gives calorie badge and drink identity distinct hierarchy', () => {
   const markup = read('pages/result/result.wxml');
   const styles = read('pages/result/result.wxss');
+  const calorieIndex = markup.indexOf('<view class="calorie-row">');
+  const titleIndex = markup.indexOf('<text class="result-title">');
+  const badgeIndex = markup.indexOf('<text class="result-badge">');
+  const estimateIndex = markup.indexOf('<text class="estimate-badge">估算</text>');
 
   assert.match(markup, /<text class="result-badge">{{resultCopy\.badge}}<\/text>/);
-  assert.match(markup, /<view class="calorie-row">\s*<text class="calories">约 {{payload\.calories}} kcal<\/text>\s*<\/view>\s*<text class="estimate-badge">估算<\/text>/);
-  assert.match(styles, /\.calories\s*{[^}]*font-size:\s*88rpx;/s);
+  assert.ok(calorieIndex > -1);
+  assert.ok(titleIndex > -1);
+  assert.ok(badgeIndex > -1);
+  assert.ok(estimateIndex > -1);
+  assert.ok(calorieIndex < titleIndex, 'calorie number should appear before result title');
+  assert.ok(titleIndex < badgeIndex, 'badge should support the result title instead of leading the page');
+  assert.ok(badgeIndex < estimateIndex, 'estimate badge should stay below identity copy');
+  assert.doesNotMatch(markup, /约 {{payload\.calories}} kcal/);
+  assert.match(styles, /\.calorie-number\s*{[^}]*font-size:\s*92rpx;/s);
   assert.match(styles, /\.drink-name\s*{[^}]*font-size:\s*28rpx;[^}]*font-weight:\s*800;/s);
   assert.match(styles, /\.disclaimer\s*{[^}]*font-size:\s*20rpx;/s);
 }

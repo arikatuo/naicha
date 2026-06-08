@@ -1,13 +1,15 @@
 <view class="page result-page {{resultCopy.theme}}">
   <view class="summary surface">
     <text class="eyebrow">揭晓结果</text>
-    <text class="result-badge">{{resultCopy.badge}}</text>
-    <text class="result-title">{{resultCopy.title}}</text>
     <view class="calorie-row">
-      <text class="calories">约 {{payload.calories}} kcal</text>
+      <text class="calorie-prefix">约</text>
+      <text class="calorie-number">{{payload.calories}}</text>
+      <text class="calorie-unit">kcal</text>
     </view>
-    <text class="estimate-badge">估算</text>
+    <text class="result-title">{{resultCopy.title}}</text>
+    <text class="result-badge">{{resultCopy.badge}}</text>
     <text class="drink-name">{{payload.brandName ? payload.brandName + ' · ' : ''}}{{payload.drinkName}}</text>
+    <text class="estimate-badge">估算</text>
     <text class="disclaimer">{{disclaimer}}</text>
   </view>
 
@@ -29,8 +31,10 @@
 
   <view class="actions">
     <button class="button-primary share-button" open-type="share">分享给朋友</button>
-    <button class="button-secondary" loading="{{posterGenerating}}" bindtap="generatePoster">生成分享图</button>
-    <button class="button-secondary" bindtap="recalculate">再算一杯</button>
+    <view class="secondary-actions">
+      <button class="button-secondary" loading="{{posterGenerating}}" bindtap="generatePoster">生成分享图</button>
+      <button class="button-secondary" bindtap="recalculate">再算一杯</button>
+    </view>
   </view>
 
   <view wx:if="{{posterPreviewOpen}}" class="poster-preview-mask" bindtap="closePosterPreview">

@@ -8,9 +8,9 @@ const equivalents = [
   { id: 'pork', name: '肥肉', unit: 'g', kind: 'grams', caloriesPer100g: 807, icon: '/assets/icons/pork.png' },
   { id: 'rice', name: '米饭', unit: '碗', kind: 'count', caloriesPerUnit: 232, icon: '/assets/icons/rice.png' },
   { id: 'jogging', name: '慢跑', unit: '分钟', kind: 'minutes', caloriesPerMinute: 10.8, icon: '/assets/icons/jogging.png' },
-  { id: 'americano', name: '美式咖啡', unit: '杯', kind: 'count', caloriesPerUnit: 10, icon: '/assets/icons/milk-tea-cup.png' },
-  { id: 'ice-cream', name: '雪糕', unit: '根', kind: 'count', caloriesPerUnit: 120, icon: '/assets/icons/result-clay-card.png' },
-  { id: 'apple', name: '苹果', unit: '个', kind: 'count', caloriesPerUnit: 95, icon: '/assets/icons/toppings.png' },
+  { id: 'americano', name: '美式咖啡', unit: '杯', kind: 'count', caloriesPerUnit: 10, icon: '/assets/icons/americano.png' },
+  { id: 'ice-cream', name: '雪糕', unit: '根', kind: 'count', caloriesPerUnit: 120, icon: '/assets/icons/ice-cream.png' },
+  { id: 'apple', name: '苹果', unit: '个', kind: 'count', caloriesPerUnit: 95, icon: '/assets/icons/apple.png' },
   { id: 'bike', name: '骑共享单车', unit: '分钟', kind: 'minutes', caloriesPerMinute: 6.5, icon: '/assets/icons/bike.png' }
 ];
 
@@ -47,4 +47,15 @@ test('shared bike equivalent uses a bike icon instead of the jogging figure', ()
 
   assert.equal(bike.icon, '/assets/icons/bike.png');
   assert.notEqual(bike.icon, '/assets/icons/jogging.png');
+});
+
+test('new food equivalents use dedicated artwork instead of placeholder milk tea assets', () => {
+  const icons = Object.fromEntries(store.equivalents.map((item) => [item.id, item.icon]));
+
+  assert.equal(icons.americano, '/assets/icons/americano.png');
+  assert.equal(icons['ice-cream'], '/assets/icons/ice-cream.png');
+  assert.equal(icons.apple, '/assets/icons/apple.png');
+  assert.notEqual(icons.americano, '/assets/icons/milk-tea-cup.png');
+  assert.notEqual(icons['ice-cream'], '/assets/icons/result-clay-card.png');
+  assert.notEqual(icons.apple, '/assets/icons/toppings.png');
 });
