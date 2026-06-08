@@ -42,16 +42,16 @@
   flex-direction: column;
   align-items: flex-start;
   justify-content: space-between;
-  gap: 18rpx;
+  gap: 16rpx;
   width: 100%;
-  min-height: 178rpx;
+  min-height: 214rpx;
   box-sizing: border-box;
   border: 0;
-  border-radius: 34rpx;
-  background: linear-gradient(145deg, #fffdf6, #f4d7b8);
+  border-radius: 32rpx;
+  background: linear-gradient(145deg, #fffaf1, #f0d3af);
   color: #3b281d;
   margin: 0;
-  padding: 22rpx;
+  padding: 18rpx;
   text-align: left;
   box-shadow:
     0 22rpx 38rpx rgba(124, 78, 49, 0.18),
@@ -61,7 +61,7 @@
 }
 
 .brand-card:nth-child(2n) {
-  background: linear-gradient(145deg, #f9fff2, #d5ead6);
+  background: linear-gradient(145deg, #f7fff2, #d4ead7);
 }
 
 .brand-card::after {
@@ -77,25 +77,45 @@
     inset -8rpx -10rpx 18rpx rgba(255, 246, 221, 0.28);
 }
 
+.brand-logo-panel {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 112rpx;
+  border-radius: 26rpx;
+  background: rgba(255, 255, 255, 0.78);
+  box-shadow:
+    inset 6rpx 7rpx 14rpx rgba(255, 255, 255, 0.72),
+    inset -6rpx -8rpx 14rpx rgba(133, 89, 58, 0.1),
+    0 12rpx 20rpx rgba(124, 78, 49, 0.08);
+}
+
 .brand-logo {
-  width: 156rpx;
-  height: 74rpx;
-  margin-left: -6rpx;
+  width: 220rpx;
+  height: 96rpx;
   filter: drop-shadow(0 8rpx 10rpx rgba(77, 48, 34, 0.13));
 }
 
-.brand-copy {
+.brand-meta {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 8rpx;
+  gap: 4rpx;
   min-width: 0;
 }
 
 .brand-name {
-  font-size: 29rpx;
+  font-size: 30rpx;
   font-weight: 900;
-  line-height: 1.25;
+  line-height: 1.18;
+}
+
+.brand-subtitle {
+  color: #8c7768;
+  font-size: 20rpx;
+  font-weight: 700;
+  line-height: 1.3;
 }
 
 .brand-hint {
@@ -103,10 +123,10 @@
   border-radius: 999rpx;
   background: rgba(255, 250, 241, 0.58);
   color: #7d4e35;
-  font-size: 20rpx;
+  font-size: 19rpx;
   font-weight: 900;
   line-height: 1;
-  padding: 9rpx 14rpx;
+  padding: 9rpx 13rpx;
   box-shadow:
     inset 4rpx 5rpx 9rpx rgba(255, 255, 255, 0.62),
     inset -4rpx -5rpx 9rpx rgba(130, 81, 51, 0.12);

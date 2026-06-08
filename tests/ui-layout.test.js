@@ -63,6 +63,57 @@ test('drink selection uses a two-column grid instead of a narrow single column',
   assert.doesNotMatch(styles, /\.drink-list\s*{[^}]*flex-direction:\s*column/s);
 });
 
+test('drink cards use drink-specific artwork instead of the first generic tag icon', () => {
+  const script = read('pages/drinks/drinks.js');
+  const iconMap = require('../data/drink-icons');
+
+  assert.match(script, /getDrinkIcon\(drink\)/);
+  assert.doesNotMatch(script, /icon:\s*tags\[0\]\s*\?\s*tags\[0\]\.icon/);
+  assert.equal(iconMap['molimilk-osmanthus-longjing'], '/assets/icons/drinks/osmanthus-tea.png');
+  assert.equal(iconMap['molimilk-jasmine-mango-pomelo'], '/assets/icons/drinks/mango-pomelo.png');
+  assert.ok(new Set(Object.values(iconMap)).size >= 8);
+});
+
+test('brand page gives official logos a larger dedicated visual area', () => {
+  const markup = read('pages/brands/brands.wxml');
+  const styles = read('pages/brands/brands.wxss');
+
+  assert.match(markup, /class="brand-logo-panel"/);
+  assert.match(markup, /class="brand-meta"/);
+  assert.match(styles, /\.brand-logo-panel\s*{/);
+  assert.match(styles, /\.brand-logo\s*{[^}]*width:\s*220rpx;[^}]*height:\s*96rpx;/s);
+  assert.match(styles, /\.brand-card\s*{[^}]*min-height:\s*214rpx;/s);
+});
+
+test('local visual assets cover official brand logos and specific drink icons', () => {
+  const sources = JSON.parse(read('assets/brands/sources.json'));
+  const iconPaths = [
+    'assets/icons/bike.png',
+    'assets/icons/drinks/original-tea.png',
+    'assets/icons/drinks/milk-tea.png',
+    'assets/icons/drinks/fruit-tea.png',
+    'assets/icons/drinks/cheese-foam.png',
+    'assets/icons/drinks/matcha.png',
+    'assets/icons/drinks/mango-pomelo.png',
+    'assets/icons/drinks/coffee-float.png',
+    'assets/icons/drinks/ice-cream.png',
+    'assets/icons/drinks/osmanthus-tea.png',
+    'assets/icons/drinks/jasmine-milk.png'
+  ];
+
+  assert.equal(Object.keys(sources).length, 8);
+  for (const source of Object.values(sources)) {
+    assert.match(source.url, /^https:\/\/(www\.|cn\.|web-oss\.|oss\.|g\.)?[a-z0-9.-]+\//i);
+    assert.equal(source.type, 'official');
+  }
+
+  for (const iconPath of iconPaths) {
+    const absolutePath = path.join(__dirname, '..', iconPath);
+    assert.ok(fs.existsSync(absolutePath), `${iconPath} should exist`);
+    assert.ok(fs.statSync(absolutePath).size > 1000, `${iconPath} should be a real image asset`);
+  }
+});
+
 test('result page presents equivalent cards as a single-card swiper', () => {
   const markup = read('pages/result/result.wxml');
 

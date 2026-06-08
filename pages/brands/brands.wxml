@@ -13,11 +13,14 @@
       data-id="{{item.id}}"
       bindtap="openBrand"
     >
-      <view class="brand-copy">
+      <view class="brand-logo-panel">
         <image class="brand-logo" src="{{item.logo}}" mode="aspectFit"></image>
-        <text class="brand-name">{{item.name}}</text>
       </view>
-      <text class="brand-hint">{{item.drinkCount}} 款</text>
+      <view class="brand-meta">
+        <text class="brand-name">{{item.name}}</text>
+        <text class="brand-subtitle">热门饮品入口</text>
+      </view>
+      <text class="brand-hint">{{item.drinkCount}} 款热门</text>
     </button>
   </view>
 

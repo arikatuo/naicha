@@ -11,7 +11,7 @@ const equivalents = [
   { id: 'americano', name: '美式咖啡', unit: '杯', kind: 'count', caloriesPerUnit: 10, icon: '/assets/icons/milk-tea-cup.png' },
   { id: 'ice-cream', name: '雪糕', unit: '根', kind: 'count', caloriesPerUnit: 120, icon: '/assets/icons/result-clay-card.png' },
   { id: 'apple', name: '苹果', unit: '个', kind: 'count', caloriesPerUnit: 95, icon: '/assets/icons/toppings.png' },
-  { id: 'bike', name: '骑共享单车', unit: '分钟', kind: 'minutes', caloriesPerMinute: 6.5, icon: '/assets/icons/jogging.png' }
+  { id: 'bike', name: '骑共享单车', unit: '分钟', kind: 'minutes', caloriesPerMinute: 6.5, icon: '/assets/icons/bike.png' }
 ];
 
 test('buildEquivalentCards formats the eight fixed equivalent cards', () => {
@@ -40,4 +40,11 @@ test('stored equivalent set includes the four surprise comparison cards', () => 
     'apple',
     'bike'
   ]);
+});
+
+test('shared bike equivalent uses a bike icon instead of the jogging figure', () => {
+  const bike = store.equivalents.find((item) => item.id === 'bike');
+
+  assert.equal(bike.icon, '/assets/icons/bike.png');
+  assert.notEqual(bike.icon, '/assets/icons/jogging.png');
 });

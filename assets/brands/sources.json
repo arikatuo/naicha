@@ -1,0 +1,50 @@
+{
+  "mixue": {
+    "asset": "assets/brands/mixue.png",
+    "type": "official",
+    "url": "https://oss.mxbc.com/uploads/images/202508/d0f3ec7b09cef7a19808b3d6972bdbc7.svg",
+    "note": "蜜雪冰城官网首页静态 logo"
+  },
+  "chagee": {
+    "asset": "assets/brands/chagee.png",
+    "type": "official",
+    "url": "https://global.chagee.com/",
+    "note": "CHAGEE 官方全球站页头内联 logo"
+  },
+  "heytea": {
+    "asset": "assets/brands/heytea.png",
+    "type": "official",
+    "url": "https://static.heytea.com/web/logo/heytea.svg",
+    "note": "喜茶官网 favicon/logo 静态资源"
+  },
+  "chabaidao": {
+    "asset": "assets/brands/chabaidao.png",
+    "type": "official",
+    "url": "https://sg.chapanda.com.cn/logo.png",
+    "note": "茶百道海外官方站提供图标，横向字标沿用本地排版"
+  },
+  "guming": {
+    "asset": "assets/brands/guming.png",
+    "type": "official",
+    "url": "https://g.gumingnc.com/u/v1C3hdxA/3w.png",
+    "note": "古茗官网页头图片资源"
+  },
+  "yidiandian": {
+    "asset": "assets/brands/yidiandian.png",
+    "type": "official",
+    "url": "https://www.alittle-tea.com/images/logo.png",
+    "note": "1点点官网 CSS 背景 logo"
+  },
+  "coco": {
+    "asset": "assets/brands/coco.png",
+    "type": "official",
+    "url": "https://www.coco-tea.com.cn/static/portal/images/logo_hover.png",
+    "note": "CoCo 都可官网页头深色 logo"
+  },
+  "molimilk": {
+    "asset": "assets/brands/molimilk.png",
+    "type": "official",
+    "url": "https://cn.mollytea.com/wp-content/uploads/2022/04/Molly-Tea-墨稿logo-320x67.png",
+    "note": "茉莉奶白官网 logo 图片"
+  }
+}

@@ -1,5 +1,6 @@
 const store = require('../../utils/data-store');
 const { calculateBrandDrinkCalories } = require('../../utils/calculator');
+const { getDrinkIcon } = require('../../utils/drink-icons');
 const { encodePayload } = require('../../utils/nav');
 
 Page({
@@ -27,7 +28,7 @@ Page({
         ...drink,
         tags,
         displayTags: tags.slice(0, 2),
-        icon: tags[0] ? tags[0].icon : '/assets/icons/milk-tea-cup.png'
+        icon: getDrinkIcon(drink)
       };
     });
     this.setData({ brand, drinks });
