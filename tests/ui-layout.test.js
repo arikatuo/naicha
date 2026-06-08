@@ -81,8 +81,21 @@ test('brand page gives official logos a larger dedicated visual area', () => {
   assert.match(markup, /class="brand-logo-panel"/);
   assert.match(markup, /class="brand-meta"/);
   assert.match(styles, /\.brand-logo-panel\s*{/);
-  assert.match(styles, /\.brand-logo\s*{[^}]*width:\s*220rpx;[^}]*height:\s*96rpx;/s);
+  assert.doesNotMatch(styles, /\.brand-logo-panel\s*{[^}]*background:\s*rgba\(255,\s*255,\s*255,\s*0\.78\)/s);
+  assert.match(styles, /\.brand-logo\s*{[^}]*width:\s*252rpx;[^}]*height:\s*92rpx;/s);
   assert.match(styles, /\.brand-card\s*{[^}]*min-height:\s*214rpx;/s);
+});
+
+test('result page is a compact no-scroll reveal screen', () => {
+  const config = JSON.parse(read('pages/result/result.json'));
+  const styles = read('pages/result/result.wxss');
+
+  assert.equal(config.disableScroll, true);
+  assert.match(styles, /\.result-page\s*{[^}]*height:\s*calc\(100vh - 110rpx\);[^}]*overflow:\s*hidden;/s);
+  assert.match(styles, /\.equivalent-swiper\s*{[^}]*height:\s*344rpx;/s);
+  assert.match(styles, /\.equivalent-card\s*{[^}]*height:\s*326rpx;/s);
+  assert.match(styles, /\.actions\s*{[^}]*display:\s*grid;[^}]*grid-template-columns:\s*repeat\(3,\s*1fr\)/s);
+  assert.match(styles, /\.actions\s+button\s*{[^}]*min-height:\s*84rpx;/s);
 });
 
 test('local visual assets cover official brand logos and specific drink icons', () => {
@@ -140,8 +153,8 @@ test('result page gives calorie badge and drink identity distinct hierarchy', ()
   assert.match(markup, /<text class="result-badge">{{resultCopy\.badge}}<\/text>/);
   assert.match(markup, /<view class="calorie-row">\s*<text class="calories">约 {{payload\.calories}} kcal<\/text>\s*<\/view>\s*<text class="estimate-badge">估算<\/text>/);
   assert.match(styles, /\.calories\s*{[^}]*font-size:\s*88rpx;/s);
-  assert.match(styles, /\.drink-name\s*{[^}]*font-size:\s*30rpx;[^}]*font-weight:\s*800;/s);
-  assert.match(styles, /\.disclaimer\s*{[^}]*font-size:\s*22rpx;/s);
+  assert.match(styles, /\.drink-name\s*{[^}]*font-size:\s*28rpx;[^}]*font-weight:\s*800;/s);
+  assert.match(styles, /\.disclaimer\s*{[^}]*font-size:\s*20rpx;/s);
 }
 );
 
