@@ -25,15 +25,62 @@ function buildEquivalentText(calories, equivalent) {
   return `约 ${Math.round(calories)} kcal`;
 }
 
+function buildEquivalentDisplay(calories, equivalent) {
+  if (equivalent.kind === 'count') {
+    const count = formatOneDecimal(calories / equivalent.caloriesPerUnit);
+
+    return {
+      number: `${count} ${equivalent.unit}`,
+      numberMain: `${count}`,
+      numberUnit: equivalent.unit,
+      label: equivalent.name
+    };
+  }
+
+  if (equivalent.kind === 'grams') {
+    const grams = roundToNearest((calories / equivalent.caloriesPer100g) * 100, 5);
+
+    return {
+      number: `${grams}g`,
+      numberMain: `${grams}`,
+      numberUnit: 'g',
+      label: equivalent.name
+    };
+  }
+
+  if (equivalent.kind === 'minutes') {
+    const minutes = roundToNearest(calories / equivalent.caloriesPerMinute, 5);
+
+    return {
+      number: `${minutes} ${equivalent.unit}`,
+      numberMain: `${minutes}`,
+      numberUnit: equivalent.unit,
+      label: `${equivalent.name}消耗`
+    };
+  }
+
+  return {
+    number: `${Math.round(calories)} kcal`,
+    numberMain: `${Math.round(calories)}`,
+    numberUnit: 'kcal',
+    label: '热量'
+  };
+}
+
 function buildEquivalentCards(calories, equivalents) {
   return equivalents.map((equivalent, index) => {
     const remaining = equivalents.length - index - 1;
+    const display = buildEquivalentDisplay(calories, equivalent);
 
     return {
       id: equivalent.id,
       name: equivalent.name,
       icon: equivalent.icon,
       text: buildEquivalentText(calories, equivalent),
+      number: display.number,
+      numberMain: display.numberMain,
+      numberUnit: display.numberUnit,
+      label: display.label,
       hint: remaining > 0 ? `还有 ${remaining} 个对比，左右滑动` : '已经看完啦，换一杯试试'
     };
   });
@@ -41,6 +88,7 @@ function buildEquivalentCards(calories, equivalents) {
 
 module.exports = {
   buildEquivalentCards,
+  buildEquivalentDisplay,
   buildEquivalentText,
   roundToNearest
 };

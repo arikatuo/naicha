@@ -1,39 +1,57 @@
 <view class="page result-page {{resultCopy.theme}}">
-  <view class="summary surface">
-    <text class="eyebrow">揭晓结果</text>
-    <view class="calorie-row">
-      <text class="calorie-prefix">约</text>
-      <text class="calorie-number">{{payload.calories}}</text>
-      <text class="calorie-unit">kcal</text>
+  <view class="result-shell">
+    <view class="summary surface">
+      <text class="eyebrow">揭晓结果</text>
+      <view class="calorie-row">
+        <text class="calorie-prefix">约</text>
+        <text class="calorie-number">{{payload.calories}}</text>
+        <text class="calorie-unit">kcal</text>
+      </view>
+      <view class="badge-row">
+        <text class="result-badge">{{resultCopy.badge}}</text>
+        <text class="estimate-badge">估算</text>
+      </view>
+      <text class="result-title">{{resultCopy.title}}</text>
+      <text class="drink-name">{{payload.brandName ? payload.brandName + ' · ' : ''}}{{payload.drinkName}}</text>
+      <text class="disclaimer">{{disclaimer}}</text>
     </view>
-    <text class="result-title">{{resultCopy.title}}</text>
-    <text class="result-badge">{{resultCopy.badge}}</text>
-    <text class="drink-name">{{payload.brandName ? payload.brandName + ' · ' : ''}}{{payload.drinkName}}</text>
-    <text class="estimate-badge">估算</text>
-    <text class="disclaimer">{{disclaimer}}</text>
-  </view>
 
-  <view class="equivalent-stage">
-    <text class="stage-label">左右滑动看看还等于什么</text>
-    <swiper class="equivalent-swiper" previous-margin="24rpx" next-margin="24rpx" circular="true" bindchange="onEquivalentChange">
-      <swiper-item wx:for="{{cards}}" wx:key="id">
-        <view class="equivalent-card">
-          <image class="icon" src="{{item.icon}}" mode="aspectFit"></image>
-          <text class="card-text">{{item.text}}</text>
-          <text class="card-sub">{{item.hint}}</text>
+    <view class="equivalent-stage">
+      <text class="stage-label">等于什么？</text>
+      <view class="equivalent-frame">
+        <swiper class="equivalent-swiper" current="{{currentEquivalentIndex}}" circular="true" bindchange="onEquivalentChange">
+          <swiper-item wx:for="{{cards}}" wx:key="id">
+            <view class="equivalent-card">
+              <view class="icon-well">
+                <image class="icon" src="{{item.icon}}" mode="aspectFit"></image>
+              </view>
+              <view class="card-body">
+                <view class="metric-row">
+                  <text class="card-number">{{item.numberMain}}</text>
+                  <text class="card-unit">{{item.numberUnit}}</text>
+                </view>
+                <text class="card-label">{{item.label}}</text>
+                <text class="card-sub">{{item.hint}}</text>
+              </view>
+            </view>
+          </swiper-item>
+        </swiper>
+      </view>
+      <view class="carousel-controls">
+        <view class="carousel-arrow" bindtap="previousEquivalent">‹</view>
+        <view class="dots">
+          <view wx:for="{{cards}}" wx:key="id" class="dot {{currentEquivalentIndex === index ? 'active' : ''}}"></view>
         </view>
-      </swiper-item>
-    </swiper>
-    <view class="dots">
-      <view wx:for="{{cards}}" wx:key="id" class="dot {{currentEquivalentIndex === index ? 'active' : ''}}"></view>
+        <view class="carousel-arrow" bindtap="nextEquivalent">›</view>
+      </view>
     </view>
-  </view>
 
-  <view class="actions">
-    <button class="button-primary share-button" open-type="share">分享给朋友</button>
-    <view class="secondary-actions">
-      <button class="button-secondary" loading="{{posterGenerating}}" bindtap="generatePoster">生成分享图</button>
-      <button class="button-secondary" bindtap="recalculate">再算一杯</button>
+    <view class="actions">
+      <button class="button-primary share-button" open-type="share">分享给朋友</button>
+      <view class="secondary-actions">
+        <button class="button-secondary" loading="{{posterGenerating}}" bindtap="generatePoster">生成分享图</button>
+        <button class="button-secondary" bindtap="recalculate">再算一杯</button>
+      </view>
     </view>
   </view>
 

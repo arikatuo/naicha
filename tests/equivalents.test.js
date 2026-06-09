@@ -30,6 +30,26 @@ test('buildEquivalentCards formats the eight fixed equivalent cards', () => {
     '约 5.1 个苹果',
     '约骑共享单车 75 分钟消耗'
   ]);
+  assert.deepEqual(cards.map((card) => `${card.number}|${card.label}`), [
+    '1.6 包|大薯',
+    '60g|肥肉',
+    '2.1 碗|米饭',
+    '45 分钟|慢跑消耗',
+    '48.6 杯|美式咖啡',
+    '4.1 根|雪糕',
+    '5.1 个|苹果',
+    '75 分钟|骑共享单车消耗'
+  ]);
+  assert.deepEqual(cards.map((card) => `${card.numberMain}|${card.numberUnit}`), [
+    '1.6|包',
+    '60|g',
+    '2.1|碗',
+    '45|分钟',
+    '48.6|杯',
+    '4.1|根',
+    '5.1|个',
+    '75|分钟'
+  ]);
 });
 
 test('stored equivalent set includes the four surprise comparison cards', () => {

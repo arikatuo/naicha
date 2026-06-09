@@ -49,6 +49,28 @@ Page({
     this.setData({ currentEquivalentIndex: event.detail.current || 0 });
   },
 
+  previousEquivalent() {
+    const total = this.data.cards.length;
+    if (!total) {
+      return;
+    }
+
+    this.setData({
+      currentEquivalentIndex: (this.data.currentEquivalentIndex - 1 + total) % total
+    });
+  },
+
+  nextEquivalent() {
+    const total = this.data.cards.length;
+    if (!total) {
+      return;
+    }
+
+    this.setData({
+      currentEquivalentIndex: (this.data.currentEquivalentIndex + 1) % total
+    });
+  },
+
   generatePoster() {
     if (!this.data.payload) {
       wx.showToast({ title: '结果走丢了，请重新计算', icon: 'none' });
