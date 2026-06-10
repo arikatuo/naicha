@@ -126,17 +126,20 @@ test('result page is a compact no-scroll reveal screen', () => {
 
   assert.equal(config.disableScroll, true);
   assert.match(markup, /<view class="result-shell">/);
-  assert.match(styles, /\.result-page\s*{[^}]*height:\s*calc\(100vh - 110rpx\);[^}]*justify-content:\s*flex-start;[^}]*overflow:\s*hidden;/s);
-  assert.match(styles, /\.result-shell\s*{[^}]*display:\s*flex;[^}]*max-height:\s*100%;/s);
-  assert.match(styles, /\.result-shell\s*{[^}]*padding-top:\s*10rpx;/s);
+  assert.match(styles, /\.result-page\s*{[^}]*height:\s*calc\(100vh - 110rpx\);[^}]*padding-top:\s*0;[^}]*justify-content:\s*flex-start;[^}]*overflow:\s*hidden;/s);
+  assert.match(styles, /\.result-shell\s*{[^}]*display:\s*flex;[^}]*max-height:\s*100%;[^}]*justify-content:\s*flex-start;/s);
+  assert.match(styles, /\.result-shell\s*{[^}]*padding-top:\s*0;/s);
   assert.match(markup, /<view class="secondary-actions">\s*<button class="button-secondary" loading="{{posterGenerating}}" bindtap="generatePoster">生成分享图<\/button>\s*<button class="button-secondary" bindtap="recalculate">再算一杯<\/button>\s*<\/view>/);
-  assert.match(styles, /\.equivalent-swiper\s*{[^}]*height:\s*248rpx;[^}]*flex:\s*0 0 auto;/s);
-  assert.match(styles, /\.equivalent-card\s*{[^}]*height:\s*228rpx;/s);
+  assert.match(styles, /\.equivalent-swiper\s*{[^}]*height:\s*220rpx;[^}]*flex:\s*0 0 auto;/s);
+  assert.match(styles, /\.equivalent-card\s*{[^}]*height:\s*220rpx;/s);
   assert.match(styles, /\.actions\s*{[^}]*display:\s*flex;[^}]*flex-direction:\s*column/s);
   assert.match(styles, /\.actions button\s*{[^}]*width:\s*100%;[^}]*margin:\s*0;/s);
+  assert.match(styles, /\.share-button\s*{[^}]*width:\s*100%;/s);
   assert.match(styles, /\.secondary-actions\s*{[^}]*display:\s*grid;[^}]*grid-template-columns:\s*repeat\(2,\s*1fr\)/s);
   assert.doesNotMatch(styles, /\.actions\s*{[^}]*grid-template-columns:\s*repeat\(3,\s*1fr\)/s);
+  assert.doesNotMatch(styles, /\.result-page\s*{[^}]*justify-content:\s*center/s);
   assert.doesNotMatch(styles, /\.result-page\s*{[^}]*justify-content:\s*space-between/s);
+  assert.doesNotMatch(styles, /background:\s*#1a1108/);
   assert.doesNotMatch(styles, /background:\s*#160c05/);
 });
 
@@ -144,13 +147,16 @@ test('result page centers a compact stack instead of stretching the comparison c
   const markup = read('pages/result/result.wxml');
   const styles = read('pages/result/result.wxss');
 
+  assert.match(markup, /<view class="eyebrow">\s*<view class="eyebrow-dot"><\/view>\s*<text>揭晓结果<\/text>\s*<\/view>/);
   assert.match(markup, /<text class="calorie-prefix">约<\/text>\s*<text class="calorie-number">{{payload\.calories}}<\/text>\s*<text class="calorie-unit">kcal<\/text>/);
   assert.match(markup, /<view class="badge-row">\s*<text class="result-badge">{{resultCopy\.badge}}<\/text>\s*<text class="estimate-badge">估算<\/text>\s*<\/view>/);
   assert.doesNotMatch(markup, /<text class="calories">约 {{payload\.calories}} kcal<\/text>/);
-  assert.match(styles, /\.calorie-number\s*{[^}]*font-size:\s*92rpx;/s);
-  assert.match(styles, /\.calorie-unit\s*{[^}]*font-size:\s*50rpx;/s);
+  assert.match(styles, /\.calorie-number\s*{[^}]*font-size:\s*116rpx;/s);
+  assert.match(styles, /\.calorie-unit\s*{[^}]*font-size:\s*38rpx;/s);
   assert.match(styles, /\.summary\s*{[^}]*border-radius:\s*38rpx;/s);
+  assert.match(styles, /\.summary\s*{[^}]*padding:\s*34rpx 36rpx 28rpx;/s);
   assert.match(styles, /\.summary\s*{[^}]*gap:\s*0;/s);
+  assert.match(styles, /\.eyebrow\s*{[^}]*display:\s*inline-flex;[^}]*margin-bottom:\s*14rpx;/s);
   assert.match(styles, /\.badge-row\s*{[^}]*display:\s*flex;[^}]*gap:\s*10rpx;/s);
   assert.match(styles, /\.equivalent-stage\s*{[^}]*flex:\s*0 0 auto;/s);
   assert.match(styles, /\.equivalent-stage\s*{[^}]*min-height:\s*0;/s);
@@ -164,18 +170,34 @@ test('result equivalent card uses a framed hero comparison with carousel control
   const styles = read('pages/result/result.wxss');
 
   assert.match(markup, /<view class="equivalent-frame">/);
-  assert.match(markup, /<swiper class="equivalent-swiper"[^>]*current="{{currentEquivalentIndex}}"/);
+  assert.match(markup, /<swiper\s+[^>]*class="equivalent-swiper"[^>]*current="{{currentEquivalentIndex}}"/s);
+  assert.match(markup, /<view class="equivalent-top-bar"><\/view>/);
   assert.match(markup, /<view class="icon-well">\s*<image class="icon" src="{{item\.icon}}" mode="aspectFit"><\/image>\s*<\/view>/);
   assert.match(markup, /<view class="metric-row">\s*<text class="card-number">{{item\.numberMain}}<\/text>\s*<text class="card-unit">{{item\.numberUnit}}<\/text>\s*<\/view>/);
   assert.match(markup, /<view class="carousel-controls">\s*<view class="carousel-arrow" bindtap="previousEquivalent">‹<\/view>/);
   assert.match(markup, /<view class="carousel-arrow" bindtap="nextEquivalent">›<\/view>/);
+  assert.doesNotMatch(markup, /<button[^>]*class="carousel-arrow"/);
   assert.match(styles, /\.equivalent-frame\s*{[^}]*border-radius:\s*34rpx;[^}]*background:\s*linear-gradient\(145deg,\s*#fffaf1,\s*#f9d9b4\)/s);
-  assert.match(styles, /\.equivalent-card\s*{[^}]*display:\s*grid;[^}]*grid-template-columns:\s*122rpx minmax\(0,\s*1fr\)/s);
-  assert.match(styles, /\.icon-well\s*{[^}]*width:\s*104rpx;[^}]*height:\s*104rpx;/s);
-  assert.match(styles, /\.card-number\s*{[^}]*font-size:\s*72rpx;[^}]*font-weight:\s*900;/s);
+  assert.match(styles, /\.equivalent-top-bar\s*{[^}]*position:\s*absolute;[^}]*height:\s*6rpx;[^}]*background:\s*#ef8178;/s);
+  assert.match(styles, /\.equivalent-card\s*{[^}]*display:\s*flex;[^}]*flex-direction:\s*row;[^}]*height:\s*220rpx;/s);
+  assert.match(styles, /\.icon-well\s*{[^}]*width:\s*124rpx;[^}]*height:\s*124rpx;/s);
+  assert.match(styles, /\.icon\s*{[^}]*width:\s*80rpx;[^}]*height:\s*80rpx;/s);
+  assert.match(styles, /\.card-number\s*{[^}]*font-size:\s*88rpx;[^}]*font-weight:\s*900;/s);
   assert.match(styles, /\.carousel-controls\s*{[^}]*display:\s*flex;[^}]*justify-content:\s*space-between;/s);
   assert.match(styles, /\.carousel-arrow\s*{[^}]*flex:\s*0 0 58rpx;[^}]*width:\s*58rpx;/s);
   assert.doesNotMatch(markup, /<text class="card-text">{{item\.text}}<\/text>/);
+});
+
+test('result summary footer matches the reference rhythm without changing to dark mode', () => {
+  const markup = read('pages/result/result.wxml');
+  const styles = read('pages/result/result.wxss');
+
+  assert.match(markup, /<view class="summary-footer">\s*<text class="drink-name">{{payload\.brandName \? payload\.brandName \+ ' · ' : ''}}{{payload\.drinkName}}<\/text>\s*<text class="disclaimer">{{disclaimer}}<\/text>\s*<\/view>/);
+  assert.match(styles, /\.summary-footer\s*{[^}]*display:\s*flex;[^}]*align-items:\s*center;[^}]*justify-content:\s*space-between;[^}]*border-top:\s*1rpx solid rgba\(188,\s*126,\s*82,\s*0\.18\);/s);
+  assert.match(styles, /\.drink-name\s*{[^}]*flex:\s*1 1 auto;[^}]*min-width:\s*0;[^}]*font-size:\s*24rpx;/s);
+  assert.match(styles, /\.disclaimer\s*{[^}]*flex:\s*0 0 auto;[^}]*font-size:\s*18rpx;/s);
+  assert.doesNotMatch(styles, /color:\s*#fff\b/);
+  assert.doesNotMatch(styles, /background:\s*#2a1c0e/);
 });
 
 test('local visual assets cover official brand logos and specific drink icons', () => {
@@ -214,7 +236,7 @@ test('result page presents equivalent cards as a single-card swiper', () => {
   const markup = read('pages/result/result.wxml');
   const script = read('pages/result/result.js');
 
-  assert.match(markup, /<swiper class="equivalent-swiper"[^>]*current="{{currentEquivalentIndex}}"/);
+  assert.match(markup, /<swiper\s+[^>]*class="equivalent-swiper"[^>]*current="{{currentEquivalentIndex}}"/s);
   assert.match(markup, /<swiper-item wx:for="{{cards}}"/);
   assert.match(markup, /class="carousel-controls"/);
   assert.match(script, /previousEquivalent\(\)/);
@@ -263,17 +285,18 @@ test('result page gives calorie badge and drink identity distinct hierarchy', ()
   assert.ok(badgeIndex < titleIndex, 'result title should follow compact status badges');
   assert.ok(estimateIndex < titleIndex, 'estimate badge should stay in the compact badge row');
   assert.doesNotMatch(markup, /约 {{payload\.calories}} kcal/);
-  assert.match(styles, /\.calorie-number\s*{[^}]*font-size:\s*92rpx;/s);
-  assert.match(styles, /\.drink-name\s*{[^}]*color:\s*#4a3328;[^}]*font-size:\s*25rpx;[^}]*font-weight:\s*800;/s);
-  assert.match(styles, /\.disclaimer\s*{[^}]*font-size:\s*20rpx;/s);
+  assert.match(styles, /\.calorie-number\s*{[^}]*font-size:\s*116rpx;/s);
+  assert.match(styles, /\.drink-name\s*{[^}]*color:\s*#4a3328;[^}]*font-size:\s*24rpx;[^}]*font-weight:\s*800;/s);
+  assert.match(styles, /\.disclaimer\s*{[^}]*font-size:\s*18rpx;/s);
 }
 );
 
-test('equivalent cards use user-facing progress copy instead of internal toy wording', () => {
+test('equivalent cards use reference details instead of carousel instructions', () => {
   const markup = read('pages/result/result.wxml');
 
   assert.match(markup, /{{item\.hint}}/);
   assert.doesNotMatch(markup, /换算玩具/);
+  assert.doesNotMatch(read('utils/equivalents.js'), /左右滑动/);
 });
 
 test('poster generation previews before saving to album', () => {

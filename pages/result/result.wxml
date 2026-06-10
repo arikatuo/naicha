@@ -1,27 +1,45 @@
 <view class="page result-page {{resultCopy.theme}}">
   <view class="result-shell">
+
+    <!-- ── 摘要卡片 ──────────────────────────────── -->
     <view class="summary surface">
-      <text class="eyebrow">揭晓结果</text>
+      <view class="eyebrow">
+        <view class="eyebrow-dot"></view>
+        <text>揭晓结果</text>
+      </view>
+
       <view class="calorie-row">
         <text class="calorie-prefix">约</text>
         <text class="calorie-number">{{payload.calories}}</text>
         <text class="calorie-unit">kcal</text>
       </view>
+
       <view class="badge-row">
         <text class="result-badge">{{resultCopy.badge}}</text>
         <text class="estimate-badge">估算</text>
       </view>
+
       <text class="result-title">{{resultCopy.title}}</text>
-      <text class="drink-name">{{payload.brandName ? payload.brandName + ' · ' : ''}}{{payload.drinkName}}</text>
-      <text class="disclaimer">{{disclaimer}}</text>
+
+      <view class="summary-footer">
+        <text class="drink-name">{{payload.brandName ? payload.brandName + ' · ' : ''}}{{payload.drinkName}}</text>
+        <text class="disclaimer">{{disclaimer}}</text>
+      </view>
     </view>
 
+    <!-- ── 等价换算区 ─────────────────────────────── -->
     <view class="equivalent-stage">
       <text class="stage-label">等于什么？</text>
       <view class="equivalent-frame">
-        <swiper class="equivalent-swiper" current="{{currentEquivalentIndex}}" circular="true" bindchange="onEquivalentChange">
+        <swiper
+          class="equivalent-swiper"
+          current="{{currentEquivalentIndex}}"
+          circular="true"
+          bindchange="onEquivalentChange"
+        >
           <swiper-item wx:for="{{cards}}" wx:key="id">
             <view class="equivalent-card">
+              <view class="equivalent-top-bar"></view>
               <view class="icon-well">
                 <image class="icon" src="{{item.icon}}" mode="aspectFit"></image>
               </view>
@@ -37,15 +55,21 @@
           </swiper-item>
         </swiper>
       </view>
+
       <view class="carousel-controls">
         <view class="carousel-arrow" bindtap="previousEquivalent">‹</view>
         <view class="dots">
-          <view wx:for="{{cards}}" wx:key="id" class="dot {{currentEquivalentIndex === index ? 'active' : ''}}"></view>
+          <view
+            wx:for="{{cards}}"
+            wx:key="id"
+            class="dot {{currentEquivalentIndex === index ? 'active' : ''}}"
+          ></view>
         </view>
         <view class="carousel-arrow" bindtap="nextEquivalent">›</view>
       </view>
     </view>
 
+    <!-- ── 操作按钮 ───────────────────────────────── -->
     <view class="actions">
       <button class="button-primary share-button" open-type="share">分享给朋友</button>
       <view class="secondary-actions">
@@ -53,8 +77,10 @@
         <button class="button-secondary" bindtap="recalculate">再算一杯</button>
       </view>
     </view>
+
   </view>
 
+  <!-- ── 海报预览浮层 ───────────────────────────── -->
   <view wx:if="{{posterPreviewOpen}}" class="poster-preview-mask" bindtap="closePosterPreview">
     <view class="poster-preview-sheet" catchtap="noop">
       <text class="preview-title">你的专属结果图</text>

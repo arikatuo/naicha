@@ -67,9 +67,36 @@ function buildEquivalentDisplay(calories, equivalent) {
   };
 }
 
+function buildEquivalentHint(equivalent) {
+  if (equivalent.id === 'fries') {
+    return '麦当劳大薯条';
+  }
+
+  if (equivalent.id === 'americano') {
+    return `低卡美式，约 ${equivalent.caloriesPerUnit} kcal/${equivalent.unit}`;
+  }
+
+  if (equivalent.id === 'apple') {
+    return `中等大小，约 ${equivalent.caloriesPerUnit} kcal/${equivalent.unit}`;
+  }
+
+  if (equivalent.kind === 'count') {
+    return `约 ${equivalent.caloriesPerUnit} kcal/${equivalent.unit}`;
+  }
+
+  if (equivalent.kind === 'grams') {
+    return `约 ${equivalent.caloriesPer100g} kcal/100g`;
+  }
+
+  if (equivalent.kind === 'minutes') {
+    return `约 ${equivalent.caloriesPerMinute} kcal/${equivalent.unit}`;
+  }
+
+  return '仅供趣味参考';
+}
+
 function buildEquivalentCards(calories, equivalents) {
-  return equivalents.map((equivalent, index) => {
-    const remaining = equivalents.length - index - 1;
+  return equivalents.map((equivalent) => {
     const display = buildEquivalentDisplay(calories, equivalent);
 
     return {
@@ -81,7 +108,7 @@ function buildEquivalentCards(calories, equivalents) {
       numberMain: display.numberMain,
       numberUnit: display.numberUnit,
       label: display.label,
-      hint: remaining > 0 ? `还有 ${remaining} 个对比，左右滑动` : '已经看完啦，换一杯试试'
+      hint: buildEquivalentHint(equivalent)
     };
   });
 }
@@ -89,6 +116,7 @@ function buildEquivalentCards(calories, equivalents) {
 module.exports = {
   buildEquivalentCards,
   buildEquivalentDisplay,
+  buildEquivalentHint,
   buildEquivalentText,
   roundToNearest
 };

@@ -18,8 +18,9 @@ test('buildEquivalentCards formats the eight fixed equivalent cards', () => {
   const cards = buildEquivalentCards(486, equivalents);
 
   assert.equal(cards.length, 8);
-  assert.equal(cards[0].hint, '还有 7 个对比，左右滑动');
-  assert.equal(cards[7].hint, '已经看完啦，换一杯试试');
+  assert.equal(cards[0].hint, '麦当劳大薯条');
+  assert.equal(cards[7].hint, '约 6.5 kcal/分钟');
+  assert.doesNotMatch(cards[0].hint, /左右滑动/);
   assert.deepEqual(cards.map((card) => card.text), [
     '约 1.6 包大薯',
     '约 60g 肥肉',
