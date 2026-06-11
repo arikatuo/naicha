@@ -126,13 +126,14 @@ test('result page is a compact no-scroll reveal screen', () => {
 
   assert.equal(config.disableScroll, true);
   assert.match(markup, /<view class="result-shell">/);
-  assert.match(styles, /\.result-page\s*{[^}]*height:\s*calc\(100vh - 110rpx\);[^}]*padding-top:\s*0;[^}]*justify-content:\s*flex-start;[^}]*overflow:\s*hidden;/s);
-  assert.match(styles, /\.result-shell\s*{[^}]*display:\s*flex;[^}]*max-height:\s*100%;[^}]*justify-content:\s*flex-start;/s);
+  assert.match(styles, /\.result-page\s*{[^}]*height:\s*100vh;[^}]*padding-top:\s*0;[^}]*justify-content:\s*flex-start;[^}]*overflow:\s*hidden;/s);
+  assert.match(styles, /\.result-shell\s*{[^}]*display:\s*flex;[^}]*height:\s*100%;[^}]*min-height:\s*0;/s);
   assert.match(styles, /\.result-shell\s*{[^}]*padding-top:\s*0;/s);
   assert.match(markup, /<view class="secondary-actions">\s*<button class="button-secondary" loading="{{posterGenerating}}" bindtap="generatePoster">生成分享图<\/button>\s*<button class="button-secondary" bindtap="recalculate">再算一杯<\/button>\s*<\/view>/);
-  assert.match(styles, /\.equivalent-swiper\s*{[^}]*height:\s*220rpx;[^}]*flex:\s*0 0 auto;/s);
-  assert.match(styles, /\.equivalent-card\s*{[^}]*height:\s*220rpx;/s);
+  assert.match(styles, /\.equivalent-swiper\s*{[^}]*height:\s*260rpx;[^}]*flex:\s*0 0 auto;/s);
+  assert.match(styles, /\.equivalent-card\s*{[^}]*height:\s*260rpx;/s);
   assert.match(styles, /\.actions\s*{[^}]*display:\s*flex;[^}]*flex-direction:\s*column/s);
+  assert.match(styles, /\.actions\s*{[^}]*flex:\s*0 0 auto;[^}]*margin-top:\s*auto;/s);
   assert.match(styles, /\.actions button\s*{[^}]*width:\s*100%;[^}]*margin:\s*0;/s);
   assert.match(styles, /\.share-button\s*{[^}]*width:\s*100%;/s);
   assert.match(styles, /\.secondary-actions\s*{[^}]*display:\s*grid;[^}]*grid-template-columns:\s*repeat\(2,\s*1fr\)/s);
@@ -143,7 +144,7 @@ test('result page is a compact no-scroll reveal screen', () => {
   assert.doesNotMatch(styles, /background:\s*#160c05/);
 });
 
-test('result page centers a compact stack instead of stretching the comparison card', () => {
+test('result page fills the viewport with a flexible centered comparison stage', () => {
   const markup = read('pages/result/result.wxml');
   const styles = read('pages/result/result.wxss');
 
@@ -158,10 +159,12 @@ test('result page centers a compact stack instead of stretching the comparison c
   assert.match(styles, /\.summary\s*{[^}]*gap:\s*0;/s);
   assert.match(styles, /\.eyebrow\s*{[^}]*display:\s*inline-flex;[^}]*margin-bottom:\s*14rpx;/s);
   assert.match(styles, /\.badge-row\s*{[^}]*display:\s*flex;[^}]*gap:\s*10rpx;/s);
-  assert.match(styles, /\.equivalent-stage\s*{[^}]*flex:\s*0 0 auto;/s);
+  assert.match(markup, /<view class="equivalent-stage">\s*<view class="equivalent-content">/s);
+  assert.match(styles, /\.equivalent-stage\s*{[^}]*flex:\s*1 1 auto;/s);
+  assert.match(styles, /\.equivalent-stage\s*{[^}]*justify-content:\s*center;/s);
   assert.match(styles, /\.equivalent-stage\s*{[^}]*min-height:\s*0;/s);
-  assert.match(styles, /\.actions\s*{[^}]*align-self:\s*stretch;[^}]*margin-top:\s*4rpx;/s);
-  assert.doesNotMatch(styles, /\.equivalent-stage\s*{[^}]*flex:\s*1 1 auto;/s);
+  assert.match(styles, /\.equivalent-content\s*{[^}]*display:\s*flex;[^}]*flex-direction:\s*column;[^}]*width:\s*100%;/s);
+  assert.match(styles, /\.actions\s*{[^}]*align-self:\s*stretch;[^}]*margin-top:\s*auto;/s);
   assert.doesNotMatch(styles, /height:\s*calc\(100% - 18rpx\)/);
 });
 
@@ -173,19 +176,30 @@ test('result equivalent card uses a framed hero comparison with carousel control
   assert.match(markup, /<swiper\s+[^>]*class="equivalent-swiper"[^>]*current="{{currentEquivalentIndex}}"/s);
   assert.match(markup, /<view class="equivalent-top-bar"><\/view>/);
   assert.match(markup, /<view class="icon-well">\s*<image class="icon" src="{{item\.icon}}" mode="aspectFit"><\/image>\s*<\/view>/);
-  assert.match(markup, /<view class="metric-row">\s*<text class="card-number">{{item\.numberMain}}<\/text>\s*<text class="card-unit">{{item\.numberUnit}}<\/text>\s*<\/view>/);
+  assert.match(markup, /<view class="metric-row">\s*<text class="card-number">{{item\.numberMain}}<\/text>\s*<view class="metric-copy">\s*<text class="card-unit">{{item\.numberUnit}}<\/text>\s*<text class="card-label">{{item\.label}}<\/text>\s*<\/view>\s*<\/view>/s);
   assert.match(markup, /<view class="carousel-controls">\s*<view class="carousel-arrow" bindtap="previousEquivalent">‹<\/view>/);
   assert.match(markup, /<view class="carousel-arrow" bindtap="nextEquivalent">›<\/view>/);
   assert.doesNotMatch(markup, /<button[^>]*class="carousel-arrow"/);
   assert.match(styles, /\.equivalent-frame\s*{[^}]*border-radius:\s*34rpx;[^}]*background:\s*linear-gradient\(145deg,\s*#fffaf1,\s*#f9d9b4\)/s);
   assert.match(styles, /\.equivalent-top-bar\s*{[^}]*position:\s*absolute;[^}]*height:\s*6rpx;[^}]*background:\s*#ef8178;/s);
-  assert.match(styles, /\.equivalent-card\s*{[^}]*display:\s*flex;[^}]*flex-direction:\s*row;[^}]*height:\s*220rpx;/s);
-  assert.match(styles, /\.icon-well\s*{[^}]*width:\s*124rpx;[^}]*height:\s*124rpx;/s);
-  assert.match(styles, /\.icon\s*{[^}]*width:\s*80rpx;[^}]*height:\s*80rpx;/s);
-  assert.match(styles, /\.card-number\s*{[^}]*font-size:\s*88rpx;[^}]*font-weight:\s*900;/s);
+  assert.match(styles, /\.equivalent-card\s*{[^}]*display:\s*flex;[^}]*flex-direction:\s*row;[^}]*height:\s*260rpx;/s);
+  assert.match(styles, /\.icon-well\s*{[^}]*width:\s*148rpx;[^}]*height:\s*148rpx;/s);
+  assert.match(styles, /\.icon\s*{[^}]*width:\s*116rpx;[^}]*height:\s*116rpx;/s);
+  assert.match(styles, /\.card-number\s*{[^}]*font-size:\s*76rpx;[^}]*font-weight:\s*900;/s);
+  assert.match(styles, /\.metric-copy\s*{[^}]*display:\s*flex;[^}]*flex-wrap:\s*wrap;/s);
+  assert.match(styles, /\.card-unit,\s*\.card-label\s*{[^}]*font-size:\s*34rpx;/s);
   assert.match(styles, /\.carousel-controls\s*{[^}]*display:\s*flex;[^}]*justify-content:\s*space-between;/s);
   assert.match(styles, /\.carousel-arrow\s*{[^}]*flex:\s*0 0 58rpx;[^}]*width:\s*58rpx;/s);
   assert.doesNotMatch(markup, /<text class="card-text">{{item\.text}}<\/text>/);
+});
+
+test('result page compresses the reveal safely on short screens', () => {
+  const styles = read('pages/result/result.wxss');
+
+  assert.match(styles, /@media\s*\(max-height:\s*700px\)/);
+  assert.match(styles, /@media\s*\(max-height:\s*700px\)\s*{[\s\S]*?\.equivalent-swiper\s*{[^}]*height:\s*220rpx;/);
+  assert.match(styles, /@media\s*\(max-height:\s*700px\)\s*{[\s\S]*?\.equivalent-card\s*{[^}]*height:\s*220rpx;/);
+  assert.match(styles, /@media\s*\(max-height:\s*700px\)\s*{[\s\S]*?\.icon\s*{[^}]*width:\s*96rpx;[^}]*height:\s*96rpx;/);
 });
 
 test('result summary footer matches the reference rhythm without changing to dark mode', () => {

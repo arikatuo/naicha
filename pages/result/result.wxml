@@ -29,43 +29,49 @@
 
     <!-- ── 等价换算区 ─────────────────────────────── -->
     <view class="equivalent-stage">
-      <text class="stage-label">等于什么？</text>
-      <view class="equivalent-frame">
-        <swiper
-          class="equivalent-swiper"
-          current="{{currentEquivalentIndex}}"
-          circular="true"
-          bindchange="onEquivalentChange"
-        >
-          <swiper-item wx:for="{{cards}}" wx:key="id">
-            <view class="equivalent-card">
-              <view class="equivalent-top-bar"></view>
-              <view class="icon-well">
-                <image class="icon" src="{{item.icon}}" mode="aspectFit"></image>
-              </view>
-              <view class="card-body">
-                <view class="metric-row">
-                  <text class="card-number">{{item.numberMain}}</text>
-                  <text class="card-unit">{{item.numberUnit}}</text>
+      <view class="equivalent-content">
+        <text class="stage-label">等于什么？</text>
+        <view class="equivalent-frame">
+          <swiper
+            class="equivalent-swiper"
+            current="{{currentEquivalentIndex}}"
+            circular="true"
+            bindchange="onEquivalentChange"
+          >
+            <swiper-item wx:for="{{cards}}" wx:key="id">
+              <view class="swiper-item-inner">
+                <view class="equivalent-card">
+                  <view class="equivalent-top-bar"></view>
+                  <view class="icon-well">
+                    <image class="icon" src="{{item.icon}}" mode="aspectFit"></image>
+                  </view>
+                  <view class="card-body">
+                    <view class="metric-row">
+                      <text class="card-number">{{item.numberMain}}</text>
+                      <view class="metric-copy">
+                        <text class="card-unit">{{item.numberUnit}}</text>
+                        <text class="card-label">{{item.label}}</text>
+                      </view>
+                    </view>
+                    <text class="card-sub">{{item.hint}}</text>
+                  </view>
                 </view>
-                <text class="card-label">{{item.label}}</text>
-                <text class="card-sub">{{item.hint}}</text>
               </view>
-            </view>
-          </swiper-item>
-        </swiper>
-      </view>
-
-      <view class="carousel-controls">
-        <view class="carousel-arrow" bindtap="previousEquivalent">‹</view>
-        <view class="dots">
-          <view
-            wx:for="{{cards}}"
-            wx:key="id"
-            class="dot {{currentEquivalentIndex === index ? 'active' : ''}}"
-          ></view>
+            </swiper-item>
+          </swiper>
         </view>
-        <view class="carousel-arrow" bindtap="nextEquivalent">›</view>
+
+        <view class="carousel-controls">
+          <view class="carousel-arrow" bindtap="previousEquivalent">‹</view>
+          <view class="dots">
+            <view
+              wx:for="{{cards}}"
+              wx:key="id"
+              class="dot {{currentEquivalentIndex === index ? 'active' : ''}}"
+            ></view>
+          </view>
+          <view class="carousel-arrow" bindtap="nextEquivalent">›</view>
+        </view>
       </view>
     </view>
 
