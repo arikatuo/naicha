@@ -2,20 +2,38 @@ const store = require('../../utils/data-store');
 
 Page({
   data: {
-    brands: []
+    brands: [],
+    hasBrands: false
   },
 
   onLoad() {
-    const brands = store.getBrands().map((brand) => ({
-      ...brand,
-      drinkCount: store.getDrinksByBrandId(brand.id).length
+    this.reloadBrands();
+  },
+
+  reloadBrands() {
+    const brands = store.getBrands().map(b => ({
+      ...b,
+      firstChar: b.name.charAt(0),
+      logoFailed: false
     }));
 
-    this.setData({ brands });
+    this.setData({
+      brands,
+      hasBrands: brands.length > 0
+    });
+  },
+
+  onLogoError(event) {
+    const { index } = event.currentTarget.dataset;
+    this.setData({ [`brands[${index}].logoFailed`]: true });
   },
 
   openBrand(event) {
     const { id } = event.currentTarget.dataset;
     wx.navigateTo({ url: `/pages/drinks/drinks?brandId=${id}` });
+  },
+
+  goHome() {
+    wx.reLaunch({ url: '/pages/home/home' });
   }
 });
