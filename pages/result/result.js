@@ -16,9 +16,12 @@ function buildShareTitle(payload, card) {
 
 Page({
   data: {
+    hasResult: false,
+    errorMessage: '结果信息不完整，请重新计算一次。',
     payload: null,
     cards: [],
     currentEquivalentIndex: 0,
+    currentEquivalentPosition: 1,
     posterPreviewOpen: false,
     previewPosterPath: '',
     posterGenerating: false,
@@ -29,14 +32,23 @@ Page({
   onLoad(options) {
     const payload = decodePayload(options.payload);
 
-    if (!payload) {
-      wx.showToast({ title: '结果走丢了，请重新计算', icon: 'none' });
+    if (
+      !payload
+      || !Number.isFinite(payload.calories)
+      || payload.calories < 0
+      || typeof payload.drinkName !== 'string'
+      || !payload.drinkName.trim()
+    ) {
+      this.setData({ hasResult: false });
       return;
     }
 
     this.setData({
+      hasResult: true,
       payload,
       cards: buildEquivalentCards(payload.calories, store.equivalents),
+      currentEquivalentIndex: 0,
+      currentEquivalentPosition: 1,
       resultCopy: getResultCopy(payload.calories, store.copywriting)
     });
   },
@@ -46,7 +58,11 @@ Page({
   },
 
   onEquivalentChange(event) {
-    this.setData({ currentEquivalentIndex: event.detail.current || 0 });
+    const currentEquivalentIndex = event.detail.current || 0;
+    this.setData({
+      currentEquivalentIndex,
+      currentEquivalentPosition: currentEquivalentIndex + 1
+    });
   },
 
   previousEquivalent() {
@@ -55,8 +71,10 @@ Page({
       return;
     }
 
+    const currentEquivalentIndex = (this.data.currentEquivalentIndex - 1 + total) % total;
     this.setData({
-      currentEquivalentIndex: (this.data.currentEquivalentIndex - 1 + total) % total
+      currentEquivalentIndex,
+      currentEquivalentPosition: currentEquivalentIndex + 1
     });
   },
 
@@ -66,8 +84,10 @@ Page({
       return;
     }
 
+    const currentEquivalentIndex = (this.data.currentEquivalentIndex + 1) % total;
     this.setData({
-      currentEquivalentIndex: (this.data.currentEquivalentIndex + 1) % total
+      currentEquivalentIndex,
+      currentEquivalentPosition: currentEquivalentIndex + 1
     });
   },
 
