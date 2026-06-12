@@ -20,12 +20,14 @@ Page({
     errorMessage: '结果信息不完整，请重新计算一次。',
     payload: null,
     cards: [],
+    moreCards: [],
+    heroCard: null,
     currentEquivalentIndex: 0,
     currentEquivalentPosition: 1,
     posterPreviewOpen: false,
     previewPosterPath: '',
     posterGenerating: false,
-    resultCopy: { title: '快乐上线，分量刚好有感。', badge: '快乐常驻', theme: 'milkTea' },
+    resultCopy: { title: '快乐是快乐，热量也是真热量。', badge: '快乐常驻', theme: 'milkTea' },
     disclaimer: store.copywriting.disclaimer
   },
 
@@ -43,10 +45,15 @@ Page({
       return;
     }
 
+    const cards = buildEquivalentCards(payload.calories, store.equivalents);
+    const moreCards = cards.length > 1 ? cards.slice(1) : cards;
+
     this.setData({
       hasResult: true,
       payload,
-      cards: buildEquivalentCards(payload.calories, store.equivalents),
+      cards,
+      moreCards,
+      heroCard: cards[0] || null,
       currentEquivalentIndex: 0,
       currentEquivalentPosition: 1,
       resultCopy: getResultCopy(payload.calories, store.copywriting)
@@ -66,7 +73,7 @@ Page({
   },
 
   previousEquivalent() {
-    const total = this.data.cards.length;
+    const total = this.data.moreCards.length;
     if (!total) {
       return;
     }
@@ -79,7 +86,7 @@ Page({
   },
 
   nextEquivalent() {
-    const total = this.data.cards.length;
+    const total = this.data.moreCards.length;
     if (!total) {
       return;
     }
@@ -99,7 +106,9 @@ Page({
 
     this.setData({ posterGenerating: true });
     const ctx = wx.createCanvasContext('posterCanvas', this);
-    const highlightCard = this.data.cards[this.data.currentEquivalentIndex] || this.data.cards[0];
+    const highlightCard = this.data.moreCards[this.data.currentEquivalentIndex]
+      || this.data.heroCard
+      || this.data.cards[0];
 
     drawPoster({
       ctx,
@@ -164,10 +173,8 @@ Page({
       };
     }
 
-    const currentCard = this.data.cards[this.data.currentEquivalentIndex] || this.data.cards[0];
-
     return {
-      title: buildShareTitle(payload, currentCard),
+      title: buildShareTitle(payload, this.data.heroCard),
       path: `/pages/result/result?payload=${encodePayload(payload)}`
     };
   }
