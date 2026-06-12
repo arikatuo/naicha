@@ -79,11 +79,9 @@
 }
 
 .drink-icon {
-  max-width: 120rpx;
-  max-height: 120rpx;
-  width: auto;
-  height: auto;
-  object-fit: contain;
+  display: block;
+  width: 120rpx;
+  height: 120rpx;
 }
 
 .drink-content {
