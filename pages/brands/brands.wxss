@@ -65,11 +65,9 @@
 }
 
 .brand-logo {
-  max-width: 160rpx;
-  max-height: 100rpx;
-  width: auto;
-  height: auto;
-  object-fit: contain;
+  display: block;
+  width: 160rpx;
+  height: 100rpx;
 }
 
 .brand-logo-fallback {
