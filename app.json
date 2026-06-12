@@ -8,9 +8,9 @@
   ],
   "window": {
     "navigationBarTitleText": "奶茶热量换算器",
-    "navigationBarBackgroundColor": "#f7efe5",
+    "navigationBarBackgroundColor": "#fff4e5",
     "navigationBarTextStyle": "black",
-    "backgroundColor": "#fffaf3"
+    "backgroundColor": "#fff4e5"
   },
   "style": "v2",
   "sitemapLocation": "sitemap.json"

@@ -2,17 +2,25 @@ const store = require('../../utils/data-store');
 const { calculateCustomDrinkCalories } = require('../../utils/calculator');
 const { encodePayload } = require('../../utils/nav');
 
+function createToppingOptions(selectedIds = []) {
+  return store.toppings.map((topping) => ({
+    ...topping,
+    selected: selectedIds.includes(topping.id)
+  }));
+}
+
 Page({
   data: {
     bases: store.bases,
     cupSizes: store.cupSizes,
     sweetnessLevels: store.sweetnessLevels,
     toppings: store.toppings,
-    toppingOptions: store.toppings.map((topping) => ({ ...topping, selected: false })),
+    toppingOptions: createToppingOptions(),
     selectedBaseId: 'milk-tea',
     selectedSizeId: 'medium',
     selectedSweetnessId: 'half',
-    selectedToppingIds: []
+    selectedToppingIds: [],
+    selectedToppingCount: 0
   },
 
   selectBase(event) {
@@ -35,10 +43,8 @@ Page({
       const next = selected.filter((item) => item !== id);
       this.setData({
         selectedToppingIds: next,
-        toppingOptions: this.data.toppingOptions.map((topping) => ({
-          ...topping,
-          selected: next.includes(topping.id)
-        }))
+        selectedToppingCount: next.length,
+        toppingOptions: createToppingOptions(next)
       });
       return;
     }
@@ -51,10 +57,8 @@ Page({
     selected.push(id);
     this.setData({
       selectedToppingIds: selected,
-      toppingOptions: this.data.toppingOptions.map((topping) => ({
-        ...topping,
-        selected: selected.includes(topping.id)
-      }))
+      selectedToppingCount: selected.length,
+      toppingOptions: createToppingOptions(selected)
     });
   },
 

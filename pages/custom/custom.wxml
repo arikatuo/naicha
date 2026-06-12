@@ -1,50 +1,95 @@
-<view class="page">
+<view class="page custom-page">
   <view class="section-head">
     <text class="eyebrow">自由搭配</text>
     <text class="title">自己搭一杯</text>
-    <text class="subtitle">先搭配，热量留到结果页揭晓。</text>
+    <text class="subtitle">把四个常见选项顺手配好，再去看结果。</text>
     <image class="topping-toy" src="/assets/icons/toppings.png" mode="aspectFit"></image>
   </view>
 
-  <view class="option-group surface">
-    <view class="group-head">
-      <text class="step-dot">1</text>
-      <text class="label">先选基底</text>
+  <view class="builder-surface surface">
+    <view class="builder-group">
+      <view class="group-head">
+        <text class="step-dot">1</text>
+        <text class="label">先选基底</text>
+      </view>
+      <view class="option-grid">
+        <button
+          wx:for="{{bases}}"
+          wx:key="id"
+          class="option {{selectedBaseId === item.id ? 'active' : ''}}"
+          data-id="{{item.id}}"
+          bindtap="selectBase"
+          aria-label="基底 {{item.name}}"
+          aria-checked="{{selectedBaseId === item.id}}"
+        >
+          {{item.name}}
+        </button>
+      </view>
     </view>
-    <view class="option-grid">
-      <button wx:for="{{bases}}" wx:key="id" class="option {{selectedBaseId === item.id ? 'active' : ''}}" data-id="{{item.id}}" bindtap="selectBase">{{item.name}}</button>
+
+    <view class="builder-group">
+      <view class="group-head">
+        <text class="step-dot">2</text>
+        <text class="label">杯型</text>
+      </view>
+      <view class="option-grid two">
+        <button
+          wx:for="{{cupSizes}}"
+          wx:key="id"
+          class="option {{selectedSizeId === item.id ? 'active' : ''}}"
+          data-id="{{item.id}}"
+          bindtap="selectSize"
+          aria-label="杯型 {{item.name}}"
+          aria-checked="{{selectedSizeId === item.id}}"
+        >
+          {{item.name}}
+        </button>
+      </view>
+    </view>
+
+    <view class="builder-group">
+      <view class="group-head">
+        <text class="step-dot">3</text>
+        <text class="label">甜度</text>
+      </view>
+      <view class="option-grid">
+        <button
+          wx:for="{{sweetnessLevels}}"
+          wx:key="id"
+          class="option {{selectedSweetnessId === item.id ? 'active' : ''}}"
+          data-id="{{item.id}}"
+          bindtap="selectSweetness"
+          aria-label="甜度 {{item.name}}"
+          aria-checked="{{selectedSweetnessId === item.id}}"
+        >
+          {{item.name}}
+        </button>
+      </view>
+    </view>
+
+    <view class="builder-group">
+      <view class="group-head">
+        <text class="step-dot">4</text>
+        <text class="label">加点小料 {{selectedToppingCount}}/4</text>
+      </view>
+      <text class="group-help">最多选 4 种，按你平时的搭配来。</text>
+      <view class="option-grid">
+        <button
+          wx:for="{{toppingOptions}}"
+          wx:key="id"
+          class="option {{item.selected ? 'active' : ''}}"
+          data-id="{{item.id}}"
+          bindtap="toggleTopping"
+          aria-label="小料 {{item.name}}"
+          aria-checked="{{item.selected}}"
+        >
+          {{item.name}}
+        </button>
+      </view>
     </view>
   </view>
 
-  <view class="option-group surface">
-    <view class="group-head">
-      <text class="step-dot">2</text>
-      <text class="label">杯型</text>
-    </view>
-    <view class="option-grid two">
-      <button wx:for="{{cupSizes}}" wx:key="id" class="option {{selectedSizeId === item.id ? 'active' : ''}}" data-id="{{item.id}}" bindtap="selectSize">{{item.name}}</button>
-    </view>
+  <view class="submit-bar">
+    <button class="button-primary submit" bindtap="calculate">看看等于什么</button>
   </view>
-
-  <view class="option-group surface">
-    <view class="group-head">
-      <text class="step-dot">3</text>
-      <text class="label">甜度</text>
-    </view>
-    <view class="option-grid">
-      <button wx:for="{{sweetnessLevels}}" wx:key="id" class="option {{selectedSweetnessId === item.id ? 'active' : ''}}" data-id="{{item.id}}" bindtap="selectSweetness">{{item.name}}</button>
-    </view>
-  </view>
-
-  <view class="option-group surface">
-    <view class="group-head">
-      <text class="step-dot">4</text>
-      <text class="label">加点小料</text>
-    </view>
-    <view class="option-grid">
-      <button wx:for="{{toppingOptions}}" wx:key="id" class="option {{item.selected ? 'active' : ''}}" data-id="{{item.id}}" bindtap="toggleTopping">{{item.name}}</button>
-    </view>
-  </view>
-
-  <button class="button-primary submit" bindtap="calculate">看看等于什么</button>
 </view>

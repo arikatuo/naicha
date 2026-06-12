@@ -1,41 +1,40 @@
 <view class="page home-page">
   <view class="toy-orbit">
-    <image class="hero-cup" src="/assets/icons/milk-tea-cup.png" mode="aspectFit"></image>
-    <image class="hero-pearls" src="/assets/icons/pearls.png" mode="aspectFit"></image>
+    <image class="hero-cup" src="/assets/icons/milk-tea-cup.png" mode="aspectFit" aria-hidden="true"></image>
+    <image class="hero-pearls" src="/assets/icons/pearls.png" mode="aspectFit" aria-hidden="true"></image>
   </view>
 
   <view class="hero">
-    <text class="eyebrow">趣味估算工具</text>
     <view class="title">
       <text class="title-line">这一杯快乐，</text>
       <text class="title-line title-accent">约等于什么？</text>
     </view>
   </view>
 
-  <view class="preview-card surface">
+  <view class="preview-card surface" aria-hidden="true">
     <view class="preview-head">
       <text class="preview-kicker">算完才知道</text>
       <text class="preview-calorie">你猜？</text>
     </view>
     <view class="preview-grid">
       <view class="preview-item">
-        <image src="/assets/icons/fries.png" mode="aspectFit"></image>
+        <image src="/assets/icons/fries.png" mode="aspectFit" aria-hidden="true"></image>
         <text>？包大薯</text>
       </view>
       <view class="preview-item">
-        <image src="/assets/icons/pork.png" mode="aspectFit"></image>
+        <image src="/assets/icons/pork.png" mode="aspectFit" aria-hidden="true"></image>
         <text>？g 肥肉</text>
       </view>
       <view class="preview-item">
-        <image src="/assets/icons/jogging.png" mode="aspectFit"></image>
+        <image src="/assets/icons/jogging.png" mode="aspectFit" aria-hidden="true"></image>
         <text>？分钟慢跑</text>
       </view>
     </view>
   </view>
 
   <view class="actions">
-    <button class="button-primary" bindtap="goBrands">选品牌热门款</button>
-    <button class="button-secondary" bindtap="goCustom">自己搭一杯</button>
+    <button class="button-primary" bindtap="goBrands" aria-label="选择品牌热门款">选品牌热门款</button>
+    <button class="button-secondary" bindtap="goCustom" aria-label="自己搭配一杯奶茶">自己搭一杯</button>
   </view>
 
   <text class="disclaimer">热量为估算值，仅供趣味参考。</text>
