@@ -1,48 +1,64 @@
-<view class="page">
+<view class="page drinks-page">
   <view class="section-head">
-    <text class="eyebrow">第二步</text>
-    <text class="title">{{brand.name}}</text>
-    <text class="subtitle">选一杯热门款，先不剧透具体热量。</text>
+    <text class="title">{{brandName}}</text>
+    <text class="subtitle">{{hasContent ? '挑一杯常点款，继续完成配置。' : '先看看别家，或者重新加载这页。'}}</text>
   </view>
 
-  <view class="drink-list">
-    <button
-      wx:for="{{drinks}}"
-      wx:key="id"
-      class="drink-card"
-      data-id="{{item.id}}"
-      bindtap="openDrink"
-    >
-      <view class="drink-card-head">
-        <view class="drink-icon-shell">
-          <image class="drink-icon" src="{{item.icon}}" mode="aspectFit"></image>
+  <view wx:if="{{hasContent}}">
+    <view class="drink-list">
+      <button
+        wx:for="{{drinks}}"
+        wx:key="id"
+        class="drink-card"
+        data-id="{{item.id}}"
+        bindtap="openDrink"
+        aria-label="打开 {{item.displayName}} 配置"
+      >
+        <view class="drink-card-head">
+          <view class="drink-icon-shell">
+            <image class="drink-icon" src="{{item.icon}}" mode="aspectFit"></image>
+          </view>
         </view>
-        <text class="drink-action">›</text>
-      </view>
-      <view class="drink-content">
-        <text class="drink-name">{{item.displayName}}</text>
-        <view class="tag-row">
-          <text wx:for="{{item.displayTags}}" wx:key="id" class="tag">{{item.name}}</text>
+        <view class="drink-content">
+          <text class="drink-name">{{item.displayName}}</text>
+          <view class="tag-row">
+            <text wx:for="{{item.displayTags}}" wx:key="id" class="tag {{item.tagClass}}">{{item.name}}</text>
+          </view>
         </view>
-      </view>
-    </button>
+      </button>
+    </view>
+  </view>
+
+  <view wx:else class="empty-state">
+    <text class="empty-title">{{emptyTitle}}</text>
+    <text class="empty-copy">{{emptyMessage}}</text>
+    <view class="empty-actions">
+      <button class="button-primary empty-button" bindtap="reloadContent">重试一下</button>
+      <button class="empty-button secondary" bindtap="backToBrands">返回品牌列表</button>
+    </view>
   </view>
 
   <view wx:if="{{panelOpen}}" class="sheet-mask" bindtap="closePanel"></view>
   <view wx:if="{{panelOpen}}" class="sheet">
-    <view class="sheet-handle"></view>
     <view class="sheet-head">
-      <text class="sheet-kicker">{{brand.name}}</text>
-      <text class="sheet-title">{{selectedDrink.displayName}}</text>
-      <text class="sheet-subtitle">配置一下，热量马上揭晓。</text>
+      <view class="sheet-head-copy">
+        <text class="sheet-kicker">{{brand.name}}</text>
+        <text class="sheet-title">{{selectedDrink.displayName}}</text>
+        <text class="sheet-subtitle">把常见选项配好，再去看结果。</text>
+      </view>
+      <button class="sheet-close" bindtap="closePanel" aria-label="关闭饮品配置">×</button>
     </view>
 
     <scroll-view class="sheet-scroll" scroll-y="true">
       <view class="sheet-body">
         <view wx:if="{{defaultToppings.length}}" class="readonly-row">
-          <text class="label">本身含有</text>
-          <image class="tiny-clay" src="/assets/icons/toppings.png" mode="aspectFit"></image>
-          <text wx:for="{{defaultToppings}}" wx:key="id" class="readonly-tag">{{item.name}}</text>
+          <view class="readonly-heading">
+            <text class="label">本身含有</text>
+            <image class="tiny-clay" src="/assets/icons/toppings.png" mode="aspectFit" aria-hidden="true"></image>
+          </view>
+          <view class="readonly-values">
+            <text wx:for="{{defaultToppings}}" wx:key="id" class="readonly-tag">{{item.name}}</text>
+          </view>
         </view>
 
         <view wx:if="{{selectedDrink.availableSizes.length > 1}}" class="option-group">
@@ -54,6 +70,8 @@
               class="option {{item.selected ? 'active' : ''}}"
               data-id="{{item.id}}"
               bindtap="selectSize"
+              aria-label="杯型 {{item.name}}"
+              aria-checked="{{item.selected}}"
             >
               {{item.name}}
             </button>
@@ -69,6 +87,8 @@
               class="option {{selectedSweetnessId === item.id ? 'active' : ''}}"
               data-id="{{item.id}}"
               bindtap="selectSweetness"
+              aria-label="甜度 {{item.name}}"
+              aria-checked="{{selectedSweetnessId === item.id}}"
             >
               {{item.name}}
             </button>
@@ -76,7 +96,10 @@
         </view>
 
         <view class="option-group">
-          <text class="label">额外加料</text>
+          <view class="group-label-row">
+            <text class="label">额外加料 {{selectedExtraToppingCount}}/3</text>
+            <text class="helper">最多额外选 3 种</text>
+          </view>
           <view class="segmented wrap">
             <button
               wx:for="{{toppingOptions}}"
@@ -84,6 +107,8 @@
               class="option {{item.selected ? 'active' : ''}}"
               data-id="{{item.id}}"
               bindtap="toggleExtraTopping"
+              aria-label="额外加料 {{item.name}}"
+              aria-checked="{{item.selected}}"
             >
               {{item.name}}
             </button>
