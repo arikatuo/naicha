@@ -199,7 +199,7 @@ test('poster generation previews before saving to album', () => {
   assert.match(script, /savePoster\(\)/);
   assert.match(markup, /class="poster-preview-mask"/);
   assert.match(markup, /bindtap="savePoster">保存到相册/);
-  assert.match(markup, /暂时不分享/);
+  assert.match(markup, /关闭/);
 
   const generatePosterBody = script.slice(
     script.indexOf('generatePoster()'),
