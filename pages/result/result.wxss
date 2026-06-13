@@ -40,7 +40,7 @@
 
 .calorie-number {
   color: #2d1f18;
-  font-size: 72rpx;
+  font-size: 104rpx;
   font-weight: 900;
   line-height: 0.96;
   letter-spacing: -2rpx;
@@ -62,7 +62,7 @@
 .result-badge {
   width: fit-content;
   border-radius: 24rpx;
-  background: #FAEEDA;
+  background: #f4d4b5;
   color: #6a3c2c;
   font-size: 24rpx;
   font-weight: 700;
@@ -72,6 +72,7 @@
 
 .estimate-badge {
   display: none;
+  background: #f2efeb;
 }
 
 .result-title {
@@ -231,7 +232,7 @@
 
 .carousel-arrow {
   width: 84rpx;
-  min-height: 84rpx;
+  min-height: 88rpx;
   margin: 0;
   padding: 0;
   border: 2rpx solid rgba(185, 71, 61, 0.16);
