@@ -65,5 +65,16 @@
     <button class="button-primary" bindtap="recalculate">重新计算</button>
   </view>
 
+  <view wx:if="{{posterPreviewOpen}}" class="poster-preview-mask" bindtap="closePosterPreview">
+    <view class="poster-preview-sheet" catchtap="noop">
+      <text class="preview-title">结果图预览</text>
+      <image class="poster-preview-image" src="{{previewPosterPath}}" mode="aspectFit"></image>
+      <view class="preview-actions">
+        <button class="button-primary preview-save" bindtap="savePoster">保存图片</button>
+        <button class="button-text preview-close" bindtap="closePosterPreview">关闭</button>
+      </view>
+    </view>
+  </view>
+
   <canvas canvas-id="posterCanvas" class="poster-canvas"></canvas>
 </view>
