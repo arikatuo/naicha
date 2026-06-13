@@ -125,11 +125,12 @@ function drawPoster({ ctx, payload, cards, highlightCard, resultCopy, width, hei
   drawText(ctx, '换算结果', 48, 54, 14, '#ffffff');
   ctx.drawImage('/assets/icons/milk-tea-cup.png', 264, 26, 66, 66);
 
-  const titleBottom = drawWrappedText(ctx, resultCopy.title, 28, 126, 25, '#2d1f18', 304, 32, 2);
+  roundRect(ctx, 20, 106, 320, 82, 22, 'rgba(255, 249, 240, 0.86)');
+  const titleBottom = drawWrappedText(ctx, resultCopy.title, 34, 137, 24, '#2d1f18', 292, 30, 2);
   const drinkY = titleBottom + 4;
-  drawText(ctx, ellipsizeText(drinkLabel, 304, 17), 28, drinkY, 17, '#6f5d51');
+  drawText(ctx, ellipsizeText(drinkLabel, 292, 16), 34, drinkY, 16, '#6f5d51');
 
-  const calorieCardY = Math.max(202, drinkY + 30);
+  const calorieCardY = Math.max(220, drinkY + 30);
   roundRect(ctx, 28, calorieCardY, 304, 126, 22, '#fff9f0');
   drawText(ctx, '约', 54, calorieCardY + 66, 34, '#2d1f18');
   drawText(ctx, calories, calorieLayout.numberX, calorieCardY + 66, calorieLayout.numberSize, '#2d1f18');
