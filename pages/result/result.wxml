@@ -1,17 +1,23 @@
 <view class="page result-page {{resultCopy.theme}}">
   <view wx:if="{{hasResult}}" class="result-shell">
     <view class="summary result-surface" aria-live="polite">
-      <text class="summary-kicker">揭晓结果</text>
+      <view class="summary-topline">
+        <text class="summary-kicker">揭晓结果</text>
+      </view>
+
       <view class="calorie-row">
         <text class="calorie-prefix">约</text>
         <text class="calorie-number">{{payload.calories}}</text>
         <text class="calorie-unit">kcal</text>
       </view>
+
       <view class="badge-row">
         <text class="result-badge">{{resultCopy.badge}}</text>
         <text class="estimate-badge">估算</text>
       </view>
+
       <text class="result-title">{{resultCopy.title}}</text>
+
       <view class="summary-footer">
         <text class="drink-name">{{payload.brandName ? payload.brandName + ' · ' : ''}}{{payload.drinkName}}</text>
         <text class="disclaimer">{{disclaimer}}</text>
@@ -20,31 +26,33 @@
 
     <view class="equivalent-stage">
       <text class="stage-label">等于什么？</text>
-      <view wx:if="{{currentCard}}" class="equivalent-card">
-        <view class="icon-well">
-          <image class="icon" src="{{currentCard.icon}}" mode="aspectFit"></image>
-        </view>
-        <view class="card-body">
-          <view class="metric-row">
-            <text class="card-number">{{currentCard.numberMain}}</text>
-            <text class="card-unit">{{currentCard.numberUnit}}</text>
+
+      <swiper class="equivalent-swiper" current="{{currentEquivalentIndex}}" circular="true" duration="280" easing-function="easeOutCubic" bindchange="onEquivalentChange">
+        <swiper-item wx:for="{{cards}}" wx:key="id">
+          <view class="swiper-item-inner">
+            <view class="equivalent-card">
+              <view class="icon-well">
+                <image class="icon" src="{{item.icon}}" mode="aspectFit"></image>
+              </view>
+              <view class="card-body">
+                <view class="metric-row">
+                  <text class="card-number">{{item.numberMain}}</text>
+                  <text class="card-unit">{{item.numberUnit}}</text>
+                </view>
+                <text class="card-label">{{item.label}}</text>
+                <text class="card-sub">{{item.hint}}</text>
+              </view>
+            </view>
           </view>
-          <text class="card-label">{{currentCard.label}}</text>
-          <text class="card-sub">{{currentCard.hint}}</text>
-        </view>
-      </view>
+        </swiper-item>
+      </swiper>
 
       <view class="carousel-controls">
-        <button class="result-arrow carousel-arrow" bindtap="previousEquivalent" aria-label="上一个换算">‹</button>
+        <button class="carousel-arrow" bindtap="previousEquivalent" aria-label="上一个换算">‹</button>
         <view class="carousel-dots" aria-label="换算分页">
           <text wx:for="{{dots}}" wx:key="id" class="carousel-dot {{item.active ? 'active' : ''}}"></text>
         </view>
-        <button class="result-arrow carousel-arrow" bindtap="nextEquivalent" aria-label="下一个换算">›</button>
-      </view>
-
-      <view class="legacy-grid-marker equivalent-grid" aria-hidden="true">
-        <view wx:for="{{primaryCards}}" wx:key="id" class="equivalent-card-large"><text>{{item.hint}}</text></view>
-        <view wx:for="{{secondaryCards}}" wx:key="id" class="equivalent-card-small"><text>{{item.hint}}</text></view>
+        <button class="carousel-arrow" bindtap="nextEquivalent" aria-label="下一个换算">›</button>
       </view>
     </view>
 
