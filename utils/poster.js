@@ -148,7 +148,7 @@ function drawPoster({ ctx, payload, cards, highlightCard, resultCopy, width, hei
 
   const qrY = equivalentY + 142;
   roundRect(ctx, 54, qrY, 252, 92, 24, '#fff9f0');
-  ctx.drawImage('/assets/qrcode-official.png', 72, qrY + 6, 80, 80);
+  ctx.drawImage('/assets/qrcode.png', 72, qrY + 6, 80, 80);
   drawText(ctx, '微信搜一搜', 172, qrY + 36, 13, '#6a3c2c');
   drawText(ctx, '奶茶有多胖', 172, qrY + 58, 13, '#6a3c2c');
 
