@@ -95,40 +95,42 @@ test('result page allows adaptive scrolling instead of forcing a clipped viewpor
   assert.doesNotMatch(styles, /\.actions\s*{[^}]*margin-top:\s*auto;/s);
 });
 
-test('result page puts calories before badges and copy', () => {
+test('result page keeps the kcal summary as the leading card', () => {
   const markup = read('pages/result/result.wxml');
   const styles = read('pages/result/result.wxss');
-  const calorieIndex = markup.indexOf('<view class="calorie-row">');
-  const badgeIndex = markup.indexOf('<view class="badge-row">');
-  const titleIndex = markup.indexOf('<text class="result-title">');
+  const summaryIndex = markup.indexOf('<view class="summary result-surface"');
+  const equivalentIndex = markup.indexOf('<view class="equivalent-stage">');
 
-  assert.ok(calorieIndex > -1);
-  assert.ok(calorieIndex < badgeIndex);
-  assert.ok(badgeIndex < titleIndex);
-  assert.doesNotMatch(markup, /揭晓结果/);
-  assert.match(styles, /\.calorie-number\s*{[^}]*font-size:\s*104rpx;/s);
+  assert.ok(summaryIndex > -1);
+  assert.ok(summaryIndex < equivalentIndex);
+  assert.match(markup, /揭晓结果/);
+  assert.match(styles, /\.calorie-number\s*{[^}]*font-size:\s*100rpx;/s);
   assert.match(styles, /\.summary-footer\s*{[^}]*flex-direction:\s*column;/s);
 });
 
-test('result page gives status and estimate tags different semantic styling', () => {
+test('result page keeps light badge styling', () => {
   const styles = read('pages/result/result.wxss');
 
-  assert.match(styles, /\.result-badge\s*{[^}]*background:\s*#f4d4b5;/s);
-  assert.match(styles, /\.estimate-badge\s*{[^}]*background:\s*#f2efeb;/s);
-  assert.doesNotMatch(styles, /\.estimate-badge\s*{[^}]*background:\s*rgba\(255,\s*249,\s*240/s);
+  assert.match(styles, /\.result-badge\s*{[^}]*background:\s*#b9473d;/s);
+  assert.match(styles, /\.estimate-badge\s*{[^}]*background:\s*#FAEEDA;/s);
+  assert.doesNotMatch(styles, /\.result-page\s*{[^}]*background:\s*#0/s);
 });
 
-test('result equivalents use a single-card swiper with semantic controls', () => {
+test('result equivalents use a large-small grid instead of carousel arrows', () => {
   const markup = read('pages/result/result.wxml');
   const styles = read('pages/result/result.wxss');
+  const script = read('pages/result/result.js');
 
-  assert.match(markup, /<swiper\s+[^>]*class="equivalent-swiper"[^>]*current="{{currentEquivalentIndex}}"/s);
-  assert.match(markup, /<swiper-item wx:for="{{cards}}"/);
-  assert.match(markup, /<button\s+[^>]*class="carousel-arrow"[^>]*aria-label="上一个换算"/s);
-  assert.match(markup, /<button\s+[^>]*class="carousel-arrow"[^>]*aria-label="下一个换算"/s);
-  assert.match(markup, /{{currentEquivalentPosition}} \/ {{cards.length}}/);
-  assert.doesNotMatch(markup, /equivalent-top-bar/);
-  assert.match(styles, /\.carousel-arrow\s*{[^}]*min-height:\s*88rpx;/s);
+  assert.match(markup, /class="equivalent-grid"/);
+  assert.match(markup, /wx:for="{{primaryCards}}"/);
+  assert.match(markup, /wx:for="{{secondaryCards}}"/);
+  assert.doesNotMatch(markup, /class="equivalent-swiper"/);
+  assert.doesNotMatch(markup, /class="carousel-arrow"/);
+  assert.match(styles, /\.equivalent-grid\s*{[^}]*grid-template-columns:\s*repeat\(4,\s*minmax\(0,\s*1fr\)\)/s);
+  assert.match(styles, /\.equivalent-card-large\s*{[^}]*grid-column:\s*span\s*2;/s);
+  assert.match(styles, /\.equivalent-card-small\s*{[^}]*grid-column:\s*span\s*1;/s);
+  assert.match(script, /primaryCards:\s*cards\.slice\(0,\s*2\)/);
+  assert.match(script, /secondaryCards:\s*cards\.slice\(2,\s*6\)/);
 });
 
 test('result page provides a visible recovery state for malformed payloads', () => {
