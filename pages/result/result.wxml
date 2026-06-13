@@ -6,14 +6,11 @@
         <text class="calorie-number">{{payload.calories}}</text>
         <text class="calorie-unit">kcal</text>
       </view>
-
       <view class="badge-row">
         <text class="result-badge">{{resultCopy.badge}}</text>
         <text class="estimate-badge">估算</text>
       </view>
-
       <text class="result-title">{{resultCopy.title}}</text>
-
       <view class="summary-footer">
         <text class="drink-name">{{payload.brandName ? payload.brandName + ' · ' : ''}}{{payload.drinkName}}</text>
         <text class="disclaimer">{{disclaimer}}</text>
@@ -22,20 +19,14 @@
 
     <view class="equivalent-stage">
       <view class="stage-divider"></view>
-      <text class="stage-label">等于什么？</text>
-
+      <text class="stage-label">这杯约等于</text>
       <view class="equivalent-frame">
-        <swiper
-          class="equivalent-swiper"
-          current="{{currentEquivalentIndex}}"
-          circular="true"
-          bindchange="onEquivalentChange"
-        >
+        <swiper class="equivalent-swiper" current="{{currentEquivalentIndex}}" circular="true" bindchange="onEquivalentChange">
           <swiper-item wx:for="{{cards}}" wx:key="id">
             <view class="swiper-item-inner">
               <view class="equivalent-card">
                 <view class="icon-well">
-                  <image class="icon" src="{{item.icon}}" mode="aspectFit" aria-hidden="true"></image>
+                  <image class="icon" src="{{item.icon}}" mode="aspectFit"></image>
                 </view>
                 <view class="card-body">
                   <view class="metric-row">
@@ -52,31 +43,17 @@
           </swiper-item>
         </swiper>
       </view>
-
       <view class="carousel-controls">
-        <button
-          class="carousel-arrow"
-          bindtap="previousEquivalent"
-          aria-label="上一个换算"
-        >‹</button>
+        <button class="carousel-arrow" bindtap="previousEquivalent" aria-label="上一个换算">‹</button>
         <text class="carousel-count">{{currentEquivalentPosition}} / {{cards.length}}</text>
-        <button
-          class="carousel-arrow"
-          bindtap="nextEquivalent"
-          aria-label="下一个换算"
-        >›</button>
+        <button class="carousel-arrow" bindtap="nextEquivalent" aria-label="下一个换算">›</button>
       </view>
     </view>
 
     <view class="actions">
       <button class="button-primary share-button" open-type="share">分享给朋友</button>
       <view class="secondary-actions">
-        <button
-          class="button-secondary poster-button"
-          loading="{{posterGenerating}}"
-          disabled="{{posterGenerating}}"
-          bindtap="generatePoster"
-        >生成分享图</button>
+        <button class="button-secondary poster-button" loading="{{posterGenerating}}" disabled="{{posterGenerating}}" bindtap="generatePoster">生成分享图</button>
         <button class="button-secondary recalculate-button" bindtap="recalculate">再算一杯</button>
       </view>
     </view>
@@ -86,22 +63,6 @@
     <text class="state-title">结果走丢了</text>
     <text class="state-copy">{{errorMessage}}</text>
     <button class="button-primary" bindtap="recalculate">重新计算</button>
-  </view>
-
-  <view wx:if="{{posterPreviewOpen}}" class="poster-preview-mask" bindtap="closePosterPreview">
-    <view class="poster-preview-sheet" catchtap="noop">
-      <text class="preview-title">你的专属结果图</text>
-      <image
-        class="poster-preview-image"
-        src="{{previewPosterPath}}"
-        mode="aspectFit"
-        aria-label="奶茶热量换算分享图预览"
-      ></image>
-      <view class="preview-actions">
-        <button class="button-primary preview-save" bindtap="savePoster">保存到相册</button>
-        <button class="button-text preview-close" bindtap="closePosterPreview">暂时不分享</button>
-      </view>
-    </view>
   </view>
 
   <canvas canvas-id="posterCanvas" class="poster-canvas"></canvas>
