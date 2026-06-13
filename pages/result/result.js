@@ -14,14 +14,21 @@ function buildShareTitle(payload, card) {
   return `我刚才这杯约等于${equivalentText}，你那杯呢？`;
 }
 
+function buildDots(cards, activeIndex) {
+  return cards.map((card, index) => ({
+    id: card.id,
+    active: index === activeIndex
+  }));
+}
+
 Page({
   data: {
     hasResult: false,
     errorMessage: '结果信息不完整，请重新计算一次。',
     payload: null,
     cards: [],
-    primaryCards: [],
-    secondaryCards: [],
+    currentCard: null,
+    dots: [],
     heroCard: null,
     currentEquivalentIndex: 0,
     currentEquivalentPosition: 1,
@@ -47,16 +54,17 @@ Page({
     }
 
     const cards = buildEquivalentCards(payload.calories, store.equivalents);
+    const currentEquivalentIndex = 0;
 
     this.setData({
       hasResult: true,
       payload,
       cards,
-      primaryCards: cards.slice(0, 2),
-      secondaryCards: cards.slice(2, 6),
+      currentCard: cards[currentEquivalentIndex] || null,
+      dots: buildDots(cards, currentEquivalentIndex),
       heroCard: cards[0] || null,
-      currentEquivalentIndex: 0,
-      currentEquivalentPosition: 1,
+      currentEquivalentIndex,
+      currentEquivalentPosition: currentEquivalentIndex + 1,
       resultCopy: getResultCopy(payload.calories, store.copywriting)
     });
   },
@@ -65,38 +73,28 @@ Page({
     wx.reLaunch({ url: '/pages/home/home' });
   },
 
-  onEquivalentChange(event) {
-    const currentEquivalentIndex = event.detail.current || 0;
+  setEquivalentIndex(currentEquivalentIndex) {
+    const cards = this.data.cards;
+    const total = cards.length;
+    if (!total) {
+      return;
+    }
+
+    const safeIndex = (currentEquivalentIndex + total) % total;
     this.setData({
-      currentEquivalentIndex,
-      currentEquivalentPosition: currentEquivalentIndex + 1
+      currentEquivalentIndex: safeIndex,
+      currentEquivalentPosition: safeIndex + 1,
+      currentCard: cards[safeIndex],
+      dots: buildDots(cards, safeIndex)
     });
   },
 
   previousEquivalent() {
-    const total = this.data.cards.length;
-    if (!total) {
-      return;
-    }
-
-    const currentEquivalentIndex = (this.data.currentEquivalentIndex - 1 + total) % total;
-    this.setData({
-      currentEquivalentIndex,
-      currentEquivalentPosition: currentEquivalentIndex + 1
-    });
+    this.setEquivalentIndex(this.data.currentEquivalentIndex - 1);
   },
 
   nextEquivalent() {
-    const total = this.data.cards.length;
-    if (!total) {
-      return;
-    }
-
-    const currentEquivalentIndex = (this.data.currentEquivalentIndex + 1) % total;
-    this.setData({
-      currentEquivalentIndex,
-      currentEquivalentPosition: currentEquivalentIndex + 1
-    });
+    this.setEquivalentIndex(this.data.currentEquivalentIndex + 1);
   },
 
   generatePoster() {
@@ -107,7 +105,7 @@ Page({
 
     this.setData({ posterGenerating: true });
     const ctx = wx.createCanvasContext('posterCanvas', this);
-    const highlightCard = this.data.heroCard || this.data.cards[0];
+    const highlightCard = this.data.currentCard || this.data.heroCard || this.data.cards[0];
 
     drawPoster({
       ctx,
@@ -172,7 +170,7 @@ Page({
       };
     }
 
-    const currentCard = this.data.heroCard || this.data.cards[0];
+    const currentCard = this.data.currentCard || this.data.heroCard || this.data.cards[0];
 
     return {
       title: buildShareTitle(payload, currentCard),
