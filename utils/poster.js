@@ -146,11 +146,11 @@ function drawPoster({ ctx, payload, cards, highlightCard, resultCopy, width, hei
   }
   drawText(ctx, ellipsizeText(buildEquivalentText(selectedCard), 236, 24), 62, equivalentY + 106, 24, '#2d1f18');
 
-  const qrY = equivalentY + 146;
-  roundRect(ctx, 62, qrY, 236, 82, 22, '#fff9f0');
-  ctx.drawImage('/assets/qrcode-official.jpg', 82, qrY + 9, 64, 64);
-  drawText(ctx, '微信搜一搜', 164, qrY + 32, 13, '#6a3c2c');
-  drawText(ctx, '奶茶有多胖', 164, qrY + 54, 13, '#6a3c2c');
+  const qrY = equivalentY + 142;
+  roundRect(ctx, 54, qrY, 252, 92, 24, '#fff9f0');
+  ctx.drawImage('/assets/qrcode-official.png', 72, qrY + 6, 80, 80);
+  drawText(ctx, '微信搜一搜', 172, qrY + 36, 13, '#6a3c2c');
+  drawText(ctx, '奶茶有多胖', 172, qrY + 58, 13, '#6a3c2c');
 
   drawText(ctx, '热量和运动消耗均为估算，不作为健康建议', 28, 618, 12, '#6f5d51');
 }
