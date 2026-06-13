@@ -70,7 +70,7 @@
       <text class="preview-title">结果图预览</text>
       <image class="poster-preview-image" src="{{previewPosterPath}}" mode="aspectFit"></image>
       <view class="preview-actions">
-        <button class="button-primary preview-save" bindtap="savePoster">保存图片</button>
+        <button class="button-primary preview-save" bindtap="savePoster">保存到相册</button>
         <button class="button-text preview-close" bindtap="closePosterPreview">关闭</button>
       </view>
     </view>
