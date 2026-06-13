@@ -368,3 +368,95 @@
 .preview-close {
   min-height: 72rpx;
 }
+
+.equivalent-card {
+  display: flex;
+  align-items: center;
+  gap: 26rpx;
+  width: 100%;
+  min-height: 210rpx;
+  padding: 34rpx;
+  border-radius: 34rpx;
+  box-shadow: 0 14rpx 30rpx rgba(95, 61, 49, 0.10);
+}
+
+.equivalent-card .icon-well {
+  width: 142rpx;
+  height: 142rpx;
+  border-radius: 28rpx;
+}
+
+.equivalent-card .icon {
+  width: 112rpx;
+  height: 112rpx;
+}
+
+.equivalent-card .card-number {
+  font-size: 76rpx;
+  letter-spacing: -2rpx;
+}
+
+.equivalent-card .card-unit {
+  font-size: 30rpx;
+}
+
+.equivalent-card .card-label {
+  font-size: 30rpx;
+  font-weight: 900;
+  margin-top: 8rpx;
+}
+
+.equivalent-card .card-sub {
+  font-size: 24rpx;
+  margin-top: 8rpx;
+}
+
+.carousel-controls {
+  display: grid;
+  grid-template-columns: 72rpx 1fr 72rpx;
+  align-items: center;
+  gap: 18rpx;
+  width: 100%;
+}
+
+.carousel-arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 72rpx;
+  min-height: 72rpx;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0 0 4rpx;
+  border: 2rpx solid rgba(185, 118, 78, 0.14);
+  border-radius: 999rpx;
+  background: #fff9f0;
+  color: #8b4f3b;
+  font-size: 36rpx;
+  font-weight: 900;
+  line-height: 1;
+}
+
+.carousel-arrow::after {
+  border: 0;
+}
+
+.carousel-dots {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10rpx;
+  min-height: 72rpx;
+}
+
+.carousel-dot {
+  width: 10rpx;
+  height: 10rpx;
+  border-radius: 999rpx;
+  background: rgba(139, 95, 63, 0.24);
+}
+
+.carousel-dot.active {
+  width: 34rpx;
+  background: #b9473d;
+}
