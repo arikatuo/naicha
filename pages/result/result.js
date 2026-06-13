@@ -20,6 +20,8 @@ Page({
     errorMessage: '结果信息不完整，请重新计算一次。',
     payload: null,
     cards: [],
+    primaryCards: [],
+    secondaryCards: [],
     heroCard: null,
     currentEquivalentIndex: 0,
     currentEquivalentPosition: 1,
@@ -50,6 +52,8 @@ Page({
       hasResult: true,
       payload,
       cards,
+      primaryCards: cards.slice(0, 2),
+      secondaryCards: cards.slice(2, 6),
       heroCard: cards[0] || null,
       currentEquivalentIndex: 0,
       currentEquivalentPosition: 1,
@@ -103,7 +107,7 @@ Page({
 
     this.setData({ posterGenerating: true });
     const ctx = wx.createCanvasContext('posterCanvas', this);
-    const highlightCard = this.data.cards[this.data.currentEquivalentIndex] || this.data.cards[0];
+    const highlightCard = this.data.heroCard || this.data.cards[0];
 
     drawPoster({
       ctx,
@@ -168,7 +172,7 @@ Page({
       };
     }
 
-    const currentCard = this.data.cards[this.data.currentEquivalentIndex] || this.data.cards[0];
+    const currentCard = this.data.heroCard || this.data.cards[0];
 
     return {
       title: buildShareTitle(payload, currentCard),
