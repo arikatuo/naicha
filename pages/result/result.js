@@ -89,6 +89,10 @@ Page({
     });
   },
 
+  onEquivalentChange(event) {
+    this.setEquivalentIndex(event.detail.current || 0);
+  },
+
   previousEquivalent() {
     this.setEquivalentIndex(this.data.currentEquivalentIndex - 1);
   },
