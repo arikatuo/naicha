@@ -100,11 +100,11 @@
             <text class="label">额外加料 {{selectedExtraToppingCount}}/3</text>
             <text class="helper">最多额外选 3 种</text>
           </view>
-          <view class="segmented wrap">
+          <view class="segmented topping-grid">
             <button
               wx:for="{{toppingOptions}}"
               wx:key="id"
-              class="option {{item.selected ? 'active' : ''}}"
+              class="option topping-option {{item.selected ? 'active' : ''}}"
               data-id="{{item.id}}"
               bindtap="toggleExtraTopping"
               aria-label="额外加料 {{item.name}}"
