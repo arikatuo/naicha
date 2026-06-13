@@ -48,11 +48,11 @@
       </swiper>
 
       <view class="carousel-controls">
-        <button class="carousel-arrow" bindtap="previousEquivalent" aria-label="上一个换算">‹</button>
+        <view class="carousel-arrow" bindtap="previousEquivalent" aria-label="上一个换算">‹</view>
         <view class="carousel-dots" aria-label="换算分页">
           <text wx:for="{{dots}}" wx:key="id" class="carousel-dot {{item.active ? 'active' : ''}}"></text>
         </view>
-        <button class="carousel-arrow" bindtap="nextEquivalent" aria-label="下一个换算">›</button>
+        <view class="carousel-arrow" bindtap="nextEquivalent" aria-label="下一个换算">›</view>
       </view>
     </view>
 
