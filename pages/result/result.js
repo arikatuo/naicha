@@ -2,9 +2,15 @@ const store = require('../../utils/data-store');
 const { decodePayload, encodePayload } = require('../../utils/nav');
 const { buildEquivalentCards } = require('../../utils/equivalents');
 const { getResultCopy } = require('../../utils/copy');
-const { drawPoster } = require('../../utils/poster');
+const { drawPoster, loadCanvasImage } = require('../../utils/poster');
 
 const POSTER_QRCODE_SRC = '/assets/qrcode.png';
+const POSTER_CUP_SRC = '/assets/icons/milk-tea-cup.png';
+const POSTER_WIDTH = 360;
+const POSTER_HEIGHT = 640;
+const POSTER_RENDER_SCALE = 2;
+const POSTER_EXPORT_WIDTH = 1080;
+const POSTER_EXPORT_HEIGHT = 1920;
 
 function buildShareTitle(payload, card) {
   if (!payload) {
@@ -23,13 +29,33 @@ function buildDots(cards, activeIndex) {
   }));
 }
 
-function getLocalImagePath(src) {
+function getPosterCanvas(page) {
   return new Promise((resolve, reject) => {
-    wx.getImageInfo({
-      src,
-      success: (res) => resolve(res.path || src),
+    page.createSelectorQuery()
+      .select('#posterCanvas')
+      .fields({ node: true, size: true })
+      .exec((results) => {
+        const canvas = results && results[0] && results[0].node;
+        if (!canvas) {
+          reject(new Error('Poster canvas is unavailable'));
+          return;
+        }
+        resolve(canvas);
+      });
+  });
+}
+
+function exportPoster(canvas, page) {
+  return new Promise((resolve, reject) => {
+    wx.canvasToTempFilePath({
+      canvas: canvas,
+      width: canvas.width,
+      height: canvas.height,
+      destWidth: POSTER_EXPORT_WIDTH,
+      destHeight: POSTER_EXPORT_HEIGHT,
+      success: resolve,
       fail: reject
-    });
+    }, page);
   });
 }
 
@@ -113,7 +139,7 @@ Page({
     this.setEquivalentIndex(this.data.currentEquivalentIndex + 1);
   },
 
-  generatePoster() {
+  async generatePoster() {
     if (!this.data.payload) {
       wx.showToast({ title: '结果走丢了，请重新计算', icon: 'none' });
       return;
@@ -121,47 +147,46 @@ Page({
 
     this.setData({ posterGenerating: true });
 
-    getLocalImagePath(POSTER_QRCODE_SRC)
-      .then((qrcodePath) => {
-        const ctx = wx.createCanvasContext('posterCanvas', this);
-        const highlightCard = this.data.currentCard || this.data.heroCard || this.data.cards[0];
+    try {
+      const highlightCard = this.data.currentCard || this.data.heroCard || this.data.cards[0];
+      const canvas = await getPosterCanvas(this);
 
-        drawPoster({
-          ctx,
-          payload: this.data.payload,
-          cards: this.data.cards,
-          highlightCard,
-          resultCopy: this.data.resultCopy,
-          width: 360,
-          height: 640,
-          qrcodePath
-        });
+      canvas.width = POSTER_WIDTH * POSTER_RENDER_SCALE;
+      canvas.height = POSTER_HEIGHT * POSTER_RENDER_SCALE;
 
-        ctx.draw(false, () => {
-          wx.canvasToTempFilePath({
-            canvasId: 'posterCanvas',
-            width: 360,
-            height: 640,
-            destWidth: 1080,
-            destHeight: 1920,
-            success: (res) => {
-              this.setData({
-                previewPosterPath: res.tempFilePath,
-                posterPreviewOpen: true,
-                posterGenerating: false
-              });
-            },
-            fail: () => {
-              this.setData({ posterGenerating: false });
-              wx.showToast({ title: '海报生成失败', icon: 'none' });
-            }
-          }, this);
-        });
-      })
-      .catch(() => {
-        this.setData({ posterGenerating: false });
-        wx.showToast({ title: '小程序码加载失败', icon: 'none' });
+      const ctx = canvas.getContext('2d');
+      ctx.scale(POSTER_RENDER_SCALE, POSTER_RENDER_SCALE);
+
+      const [cup, equivalent, qrcode] = await Promise.all([
+        loadCanvasImage(canvas, POSTER_CUP_SRC),
+        highlightCard && highlightCard.icon
+          ? loadCanvasImage(canvas, highlightCard.icon)
+          : Promise.resolve(null),
+        loadCanvasImage(canvas, POSTER_QRCODE_SRC)
+      ]);
+
+      drawPoster({
+        ctx,
+        payload: this.data.payload,
+        cards: this.data.cards,
+        highlightCard,
+        resultCopy: this.data.resultCopy,
+        width: POSTER_WIDTH,
+        height: POSTER_HEIGHT,
+        images: { cup, equivalent, qrcode }
       });
+
+      const result = await exportPoster(canvas, this);
+      this.setData({
+        previewPosterPath: result.tempFilePath,
+        posterPreviewOpen: true,
+        posterGenerating: false
+      });
+    } catch (error) {
+      console.error('Poster generation failed', error);
+      this.setData({ posterGenerating: false });
+      wx.showToast({ title: '海报生成失败，请重试', icon: 'none' });
+    }
   },
 
   closePosterPreview() {

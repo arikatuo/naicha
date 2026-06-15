@@ -199,5 +199,15 @@ Page({
     };
 
     wx.navigateTo({ url: `/pages/result/result?payload=${encodePayload(payload)}` });
+  },
+
+  onShareAppMessage() {
+    const brandId = this.data.brandId;
+    return {
+      title: store.copywriting.shareTitle,
+      path: brandId
+        ? `/pages/drinks/drinks?brandId=${encodeURIComponent(brandId)}`
+        : '/pages/brands/brands'
+    };
   }
 });

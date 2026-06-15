@@ -74,5 +74,12 @@ Page({
     wx.navigateTo({
       url: `/pages/result/result?payload=${encodePayload({ mode: 'custom', drinkName, calories })}`
     });
+  },
+
+  onShareAppMessage() {
+    return {
+      title: store.copywriting.shareTitle,
+      path: '/pages/custom/custom'
+    };
   }
 });

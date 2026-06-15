@@ -35,5 +35,12 @@ Page({
 
   goHome() {
     wx.reLaunch({ url: '/pages/home/home' });
+  },
+
+  onShareAppMessage() {
+    return {
+      title: store.copywriting.shareTitle,
+      path: '/pages/brands/brands'
+    };
   }
 });

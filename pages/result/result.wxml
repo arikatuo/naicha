@@ -82,5 +82,5 @@
     </view>
   </view>
 
-  <canvas canvas-id="posterCanvas" class="poster-canvas"></canvas>
+  <canvas id="posterCanvas" type="2d" class="poster-canvas"></canvas>
 </view>

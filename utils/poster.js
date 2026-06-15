@@ -10,14 +10,23 @@ function roundRect(ctx, x, y, width, height, radius, color) {
   ctx.lineTo(x, y + radius);
   ctx.quadraticCurveTo(x, y, x + radius, y);
   ctx.closePath();
-  ctx.setFillStyle(color);
+  ctx.fillStyle = color;
   ctx.fill();
 }
 
 function drawText(ctx, text, x, y, size, color) {
-  ctx.setFillStyle(color);
-  ctx.setFontSize(size);
+  ctx.fillStyle = color;
+  ctx.font = `${size}px sans-serif`;
   ctx.fillText(text, x, y);
+}
+
+function loadCanvasImage(canvas, src) {
+  return new Promise((resolve, reject) => {
+    const image = canvas.createImage();
+    image.onload = () => resolve(image);
+    image.onerror = () => reject(new Error(`Failed to load canvas image: ${src}`));
+    image.src = src;
+  });
 }
 
 function estimateTextWidth(text, size) {
@@ -112,18 +121,19 @@ function buildEquivalentText(card) {
   return card.text || '';
 }
 
-function drawPoster({ ctx, payload, cards, highlightCard, resultCopy, width, height, qrcodePath }) {
+function drawPoster({ ctx, payload, cards, highlightCard, resultCopy, width, height, images }) {
   const selectedCard = highlightCard || cards[0];
   const drinkLabel = payload.brandName ? `${payload.brandName} · ${payload.drinkName}` : payload.drinkName;
   const calories = `${payload.calories}`;
   const calorieLayout = getCalorieLayout(payload.calories);
 
-  ctx.setFillStyle('#fff4e5');
+  ctx.clearRect(0, 0, width, height);
+  ctx.fillStyle = '#fff4e5';
   ctx.fillRect(0, 0, width, height);
 
   roundRect(ctx, 26, 30, 116, 36, 18, '#b9473d');
   drawText(ctx, '换算结果', 48, 54, 14, '#ffffff');
-  ctx.drawImage('/assets/icons/milk-tea-cup.png', 264, 26, 66, 66);
+  ctx.drawImage(images.cup, 264, 26, 66, 66);
 
   roundRect(ctx, 20, 106, 320, 82, 22, 'rgba(255, 249, 240, 0.86)');
   const titleBottom = drawWrappedText(ctx, resultCopy.title, 34, 137, 24, '#2d1f18', 292, 30, 2);
@@ -141,16 +151,14 @@ function drawPoster({ ctx, payload, cards, highlightCard, resultCopy, width, hei
 
   const equivalentY = calorieCardY + 154;
   roundRect(ctx, 36, equivalentY, 288, 132, 26, '#f8e4cf');
-  if (selectedCard && selectedCard.icon) {
-    ctx.drawImage(selectedCard.icon, 145, equivalentY + 22, 70, 70);
+  if (images.equivalent) {
+    ctx.drawImage(images.equivalent, 145, equivalentY + 22, 70, 70);
   }
   drawText(ctx, ellipsizeText(buildEquivalentText(selectedCard), 236, 24), 62, equivalentY + 106, 24, '#2d1f18');
 
   const qrY = equivalentY + 142;
   roundRect(ctx, 54, qrY, 252, 92, 24, '#fff9f0');
-  if (qrcodePath) {
-    ctx.drawImage(qrcodePath, 72, qrY + 6, 80, 80);
-  }
+  ctx.drawImage(images.qrcode, 72, qrY + 6, 80, 80);
   drawText(ctx, '微信搜一搜', 172, qrY + 36, 13, '#6a3c2c');
   drawText(ctx, '奶茶有多胖', 172, qrY + 58, 13, '#6a3c2c');
 
@@ -159,5 +167,6 @@ function drawPoster({ ctx, payload, cards, highlightCard, resultCopy, width, hei
 
 module.exports = {
   drawPoster,
-  getCalorieLayout
+  getCalorieLayout,
+  loadCanvasImage
 };

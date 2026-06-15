@@ -3,7 +3,7 @@ const path = require('node:path');
 const test = require('node:test');
 const assert = require('node:assert/strict');
 const store = require('../utils/data-store');
-const { getCalorieLayout } = require('../utils/poster');
+const { drawPoster, getCalorieLayout, loadCanvasImage } = require('../utils/poster');
 
 function read(relativePath) {
   return fs.readFileSync(path.join(__dirname, '..', relativePath), 'utf8');
@@ -210,11 +210,83 @@ test('poster generation previews before saving to album', () => {
   assert.doesNotMatch(generatePosterBody, /saveImageToPhotosAlbum/);
 });
 
-test('poster includes QR artwork and separates calorie units from the estimate badge', () => {
+test('poster generation uses Canvas 2D and waits for image objects before export', () => {
+  const markup = read('pages/result/result.wxml');
+  const script = read('pages/result/result.js');
+
+  assert.match(markup, /<canvas id="posterCanvas" type="2d" class="poster-canvas"><\/canvas>/);
+  assert.doesNotMatch(markup, /canvas-id="posterCanvas"/);
+  assert.match(script, /select\('#posterCanvas'\)/);
+  assert.match(script, /getContext\('2d'\)/);
+  assert.match(script, /Promise\.all\(/);
+  assert.match(script, /loadCanvasImage\(canvas,\s*POSTER_QRCODE_SRC\)/);
+  assert.match(script, /canvas:\s*canvas/);
+  assert.doesNotMatch(script, /wx\.createCanvasContext/);
+  assert.doesNotMatch(script, /wx\.getImageInfo/);
+  assert.doesNotMatch(script, /canvasId:\s*'posterCanvas'/);
+});
+
+test('canvas image loading resolves only after the image onload callback', async () => {
+  const image = {};
+  const canvas = {
+    createImage() {
+      return image;
+    }
+  };
+
+  let resolved = false;
+  const loading = loadCanvasImage(canvas, '/assets/qrcode.png').then((result) => {
+    resolved = true;
+    return result;
+  });
+
+  await Promise.resolve();
+  assert.equal(resolved, false);
+  assert.equal(image.src, '/assets/qrcode.png');
+
+  image.onload();
+
+  assert.equal(await loading, image);
+  assert.equal(resolved, true);
+});
+
+test('poster draws preloaded image objects and separates calorie units from the estimate badge', () => {
   const poster = read('utils/poster.js');
   const layout = getCalorieLayout(520);
+  const imageDraws = [];
+  const ctx = {
+    beginPath() {},
+    moveTo() {},
+    lineTo() {},
+    quadraticCurveTo() {},
+    closePath() {},
+    fill() {},
+    fillRect() {},
+    clearRect() {},
+    fillText() {},
+    drawImage(image) {
+      imageDraws.push(image);
+    }
+  };
+  const images = {
+    cup: { id: 'cup' },
+    equivalent: { id: 'equivalent' },
+    qrcode: { id: 'qrcode' }
+  };
 
-  assert.match(poster, /\/assets\/qrcode\.png/);
+  drawPoster({
+    ctx,
+    payload: { calories: 520, drinkName: '测试奶茶' },
+    cards: [{ numberMain: '64', numberUnit: 'g', label: '肥肉' }],
+    highlightCard: { numberMain: '64', numberUnit: 'g', label: '肥肉' },
+    resultCopy: { title: '测试结果' },
+    width: 360,
+    height: 640,
+    images
+  });
+
+  assert.deepEqual(imageDraws, [images.cup, images.equivalent, images.qrcode]);
+  assert.doesNotMatch(poster, /ctx\.drawImage\(\s*['"`]\//);
   assert.match(poster, /drawText\(ctx,\s*calories,/);
   assert.match(poster, /drawText\(ctx,\s*'kcal',/);
   assert.doesNotMatch(poster, /`\$\{payload\.calories\} kcal`/);
