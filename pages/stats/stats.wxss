@@ -8,7 +8,7 @@
 .period-option::after, .chart-column::after, .calendar-link::after { border: 0; }
 .summary-card, .chart-card, .calorie-card { padding: 30rpx; }
 .period-label, .summary-caption, .calorie-caption { color: #8a7566; font-size: 23rpx; }
-.summary-values { display: flex; align-items: end; margin-top: 18rpx; }
+.summary-values { display: flex; align-items: flex-end; margin-top: 18rpx; }
 .summary-cups { display: flex; align-items: baseline; flex: 1; }
 .summary-number { color: #b9473d; font-size: 102rpx; line-height: 1; font-weight: 900; }
 .summary-unit { margin-left: 9rpx; color: #8a7566; font-size: 25rpx; }
@@ -17,12 +17,21 @@
 .stats-content { display: flex; flex-direction: column; gap: 24rpx; margin-top: 24rpx; }
 .card-title { display: block; font-size: 28rpx; font-weight: 800; }
 .card-description, .calorie-note { display: block; margin-top: 10rpx; color: #8a7566; font-size: 22rpx; line-height: 1.4; }
-.chart-columns { display: flex; justify-content: space-around; align-items: end; gap: 2rpx; height: 220rpx; margin-top: 24rpx; border-bottom: 1rpx solid #dbc6b0; }
-.chart-column { display: flex; flex: 1; flex-direction: column; align-items: center; justify-content: end; min-width: 0; height: 100%; padding: 0; margin: 0; border: 0; background: transparent; }
-.chart-track { display: flex; align-items: end; justify-content: center; width: 100%; height: 160rpx; }
+.chart-scroll { width: 100%; }
+.chart-columns { display: flex; justify-content: space-around; align-items: flex-end; gap: 2rpx; height: 220rpx; margin-top: 24rpx; border-bottom: 1rpx solid #dbc6b0; }
+.chart-columns.year-chart { min-width: 984rpx; }
+.year-chart .chart-column { min-width: 80rpx; }
+.chart-column { display: flex; flex: 1; flex-direction: column; align-items: center; justify-content: flex-end; min-width: 0; height: 100%; padding: 0; margin: 0; border: 0; background: transparent; }
+.chart-track { display: flex; flex-direction: column; align-items: center; justify-content: flex-end; width: 100%; height: 160rpx; }
+.chart-count { color: #5f3d31; font-size: 24rpx; line-height: 30rpx; }
 .chart-bar { width: 55%; max-width: 45rpx; min-width: 12rpx; border-radius: 10rpx 10rpx 0 0; background: #ead9c6; }
 .chart-bar.filled { background: #b9473d; }
-.chart-label { overflow: hidden; width: 100%; height: 46rpx; color: #8a7566; font-size: 19rpx; line-height: 46rpx; text-align: center; text-overflow: clip; white-space: nowrap; }
+.chart-label { overflow: hidden; width: 100%; height: 46rpx; color: #8a7566; font-size: 24rpx; line-height: 46rpx; text-align: center; white-space: nowrap; }
+.bucket-detail { margin-top: 24rpx; padding-top: 22rpx; border-top: 1rpx solid #ead9c6; }
+.bucket-detail-title { display: block; color: #5f3d31; font-size: 24rpx; font-weight: 800; }
+.bucket-dates { display: flex; flex-wrap: wrap; gap: 12rpx; margin-top: 16rpx; }
+.bucket-date { min-height: 58rpx; padding: 0 18rpx; margin: 0; border: 0; border-radius: 999rpx; background: #f8e4cf; color: #5f3d31; font-size: 22rpx; }
+.bucket-date::after { border: 0; }
 .calorie-value { display: flex; align-items: baseline; margin-top: 12rpx; font-size: 44rpx; font-weight: 800; }
 .calorie-unit { margin-left: 10rpx; color: #8a7566; font-size: 23rpx; font-weight: 500; }
 .calendar-link { align-self: center; min-height: 64rpx; padding: 0 16rpx; margin: 0; border: 0; background: transparent; color: #a94338; font-size: 24rpx; font-weight: 800; }

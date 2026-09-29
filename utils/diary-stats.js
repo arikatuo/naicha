@@ -75,6 +75,8 @@ function getPeriodStats(records, period, now = new Date()) {
         ? buckets.find((item) => record.date >= item.focusDate && record.date <= item.lastDate)
         : buckets[Number(record.date.slice(5, 7)) - 1];
     bucket.count += 1;
+    if (!bucket.dateCounts) bucket.dateCounts = {};
+    bucket.dateCounts[record.date] = (bucket.dateCounts[record.date] || 0) + 1;
     if (!bucket.firstRecordDate || record.date < bucket.firstRecordDate) bucket.firstRecordDate = record.date;
   });
 
@@ -83,10 +85,11 @@ function getPeriodStats(records, period, now = new Date()) {
     cups,
     days: days.size,
     calories,
-    buckets: buckets.map(({ label: bucketLabel, count, focusDate, firstRecordDate }) => ({
+    buckets: buckets.map(({ label: bucketLabel, count, focusDate, firstRecordDate, dateCounts }) => ({
       label: bucketLabel,
       count,
-      focusDate: firstRecordDate || focusDate
+      focusDate: firstRecordDate || focusDate,
+      dates: Object.keys(dateCounts || {}).sort().map((date) => ({ date, count: dateCounts[date] }))
     }))
   };
 }

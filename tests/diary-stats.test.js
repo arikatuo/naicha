@@ -39,11 +39,11 @@ test('month groups calendar rows from Monday and excludes neighboring-month date
   assert.equal(stats.label, '2026年9月');
   assert.deepEqual([stats.cups, stats.days, stats.calories], [4, 4, 1150]);
   assert.deepEqual(stats.buckets, [
-    { label: '1–6日', count: 2, focusDate: '2026-09-01' },
-    { label: '7–13日', count: 1, focusDate: '2026-09-07' },
-    { label: '14–20日', count: 0, focusDate: '2026-09-14' },
-    { label: '21–27日', count: 0, focusDate: '2026-09-21' },
-    { label: '28–30日', count: 1, focusDate: '2026-09-30' }
+    { label: '1–6日', count: 2, focusDate: '2026-09-01', dates: [{ date: '2026-09-01', count: 1 }, { date: '2026-09-06', count: 1 }] },
+    { label: '7–13日', count: 1, focusDate: '2026-09-07', dates: [{ date: '2026-09-07', count: 1 }] },
+    { label: '14–20日', count: 0, focusDate: '2026-09-14', dates: [] },
+    { label: '21–27日', count: 0, focusDate: '2026-09-21', dates: [] },
+    { label: '28–30日', count: 1, focusDate: '2026-09-30', dates: [{ date: '2026-09-30', count: 1 }] }
   ]);
 });
 

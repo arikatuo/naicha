@@ -52,7 +52,24 @@ test('calendar entry opens statistics and chart returns to a recorded date', () 
   const index = stats.data.buckets.findIndex((bucket) => bucket.count);
   assert.notEqual(index, -1);
   stats.openBucket({ currentTarget: { dataset: { index } } });
+  assert.equal(stats.data.selectedBucket.count, 2);
+  assert.deepEqual(stats.data.selectedBucket.dates.map((item) => item.date), [today]);
+  stats.openRecordDate({ currentTarget: { dataset: { date: today } } });
   assert.equal(app.globalData.focusDate, today);
+  assert.equal(navigation.at(-1), '/pages/home/home');
+});
+
+test('calendar detail link opens the latest recorded day, not an empty today', () => {
+  const { navigation } = createWx();
+  const app = { globalData: { focusDate: '' } };
+  global.getApp = () => app;
+  const stats = loadPage('pages/stats/stats.js');
+  stats.setData({ buckets: [
+    { dates: [{ date: '2026-09-01', count: 1 }] },
+    { dates: [{ date: '2026-09-06', count: 1 }, { date: '2026-09-18', count: 1 }] }
+  ] });
+  stats.goToCalendar();
+  assert.equal(app.globalData.focusDate, '2026-09-18');
   assert.equal(navigation.at(-1), '/pages/home/home');
 });
 

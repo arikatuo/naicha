@@ -25,12 +25,20 @@
     <view wx:if="{{hasPeriodRecords}}" class="stats-content">
       <view class="chart-card surface">
         <text class="card-title">{{chartTitle}}</text>
-        <text class="card-description">点选有记录的时段，回看日历里的那一天</text>
-        <view class="chart-columns">
-          <button wx:for="{{buckets}}" wx:key="label" class="chart-column" data-index="{{index}}" bindtap="openBucket" disabled="{{!item.count}}" aria-label="{{item.label}}已记录{{item.count}}杯">
-            <view class="chart-track"><view class="chart-bar {{item.count ? 'filled' : ''}}" style="height: {{item.height}}rpx"></view></view>
-            <text class="chart-label">{{item.label}}</text>
-          </button>
+        <text class="card-description">{{chartDescription}}</text>
+        <scroll-view class="chart-scroll" scroll-x="{{activePeriod === 'year'}}">
+          <view class="chart-columns {{activePeriod === 'year' ? 'year-chart' : ''}}">
+            <button wx:for="{{buckets}}" wx:key="label" class="chart-column" data-index="{{index}}" bindtap="openBucket" disabled="{{!item.count}}" aria-label="{{item.label}}已记录{{item.count}}杯，展开记录日期">
+              <view class="chart-track"><text wx:if="{{item.count}}" class="chart-count">{{item.count}}</text><view class="chart-bar {{item.count ? 'filled' : ''}}" style="height: {{item.height}}rpx"></view></view>
+              <text class="chart-label">{{item.label}}</text>
+            </button>
+          </view>
+        </scroll-view>
+        <view wx:if="{{selectedBucket}}" class="bucket-detail" aria-live="polite">
+          <text class="bucket-detail-title">{{selectedBucket.label}} · {{selectedBucket.count}}杯记录</text>
+          <view class="bucket-dates">
+            <button wx:for="{{selectedBucket.dates}}" wx:key="date" class="bucket-date" data-date="{{item.date}}" bindtap="openRecordDate">{{item.displayDate}} · {{item.count}}杯 ›</button>
+          </view>
         </view>
       </view>
 
