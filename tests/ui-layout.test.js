@@ -9,21 +9,21 @@ function read(relativePath) {
   return fs.readFileSync(path.join(__dirname, '..', relativePath), 'utf8');
 }
 
-test('home keeps the reveal hidden behind a balanced headline', () => {
+test('calendar home explains its purpose and offers an empty state', () => {
   const markup = read('pages/home/home.wxml');
 
-  assert.match(markup, /这一杯快乐/);
-  assert.match(markup, /约等于什么/);
-  assert.match(markup, /算完才知道/);
-  assert.doesNotMatch(markup, /\d+\s*kcal/);
-  assert.doesNotMatch(markup, /趣味估算工具/);
+  assert.match(markup, /选一杯看估算热量，喝过再记到日历/);
+  assert.match(markup, /class="calendar-card surface"/);
+  assert.match(markup, /class="empty-card surface"/);
+  assert.match(markup, /记录示例 · 非真实记录/);
+  assert.match(markup, /recordButtonLabel/);
 });
 
-test('home exposes the two existing calculation routes', () => {
-  const markup = read('pages/home/home.wxml');
-  const script = read('pages/home/home.js');
+test('lookup tab exposes both existing calculation routes', () => {
+  const markup = read('pages/lookup/lookup.wxml');
+  const script = read('pages/lookup/lookup.js');
 
-  assert.match(markup, /bindtap="goBrands"[^>]*>选品牌热门款<\/button>/);
+  assert.match(markup, /bindtap="goBrands"[^>]*>选一杯热门饮品<\/button>/);
   assert.match(markup, /bindtap="goCustom"[^>]*>自己搭一杯<\/button>/);
   assert.match(script, /\/pages\/brands\/brands/);
   assert.match(script, /\/pages\/custom\/custom/);
@@ -116,21 +116,15 @@ test('result page keeps light badge styling', () => {
   assert.doesNotMatch(styles, /\.result-page\s*{[^}]*background:\s*#0/s);
 });
 
-test('result equivalents use a large-small grid instead of carousel arrows', () => {
+test('result equivalents remain browsable by swipe and controls', () => {
   const markup = read('pages/result/result.wxml');
   const styles = read('pages/result/result.wxss');
   const script = read('pages/result/result.js');
 
-  assert.match(markup, /class="equivalent-grid"/);
-  assert.match(markup, /wx:for="{{primaryCards}}"/);
-  assert.match(markup, /wx:for="{{secondaryCards}}"/);
-  assert.doesNotMatch(markup, /class="equivalent-swiper"/);
-  assert.doesNotMatch(markup, /class="carousel-arrow"/);
-  assert.match(styles, /\.equivalent-grid\s*{[^}]*grid-template-columns:\s*repeat\(4,\s*minmax\(0,\s*1fr\)\)/s);
-  assert.match(styles, /\.equivalent-card-large\s*{[^}]*grid-column:\s*span\s*2;/s);
-  assert.match(styles, /\.equivalent-card-small\s*{[^}]*grid-column:\s*span\s*1;/s);
-  assert.match(script, /primaryCards:\s*cards\.slice\(0,\s*2\)/);
-  assert.match(script, /secondaryCards:\s*cards\.slice\(2,\s*6\)/);
+  assert.match(markup, /class="equivalent-swiper"/);
+  assert.match(markup, /class="carousel-arrow"/);
+  assert.match(styles, /\.equivalent-swiper\s*{[^}]*height:\s*260rpx;/s);
+  assert.match(script, /setEquivalentIndex\(/);
 });
 
 test('result page provides a visible recovery state for malformed payloads', () => {
@@ -143,16 +137,17 @@ test('result page provides a visible recovery state for malformed payloads', () 
   assert.match(script, /Number\.isFinite\(payload\.calories\)/);
 });
 
-test('result page offers direct sharing, poster generation, and a fresh calculation', () => {
+test('result page offers deliberate recording, sharing, and a fresh calculation', () => {
   const markup = read('pages/result/result.wxml');
   const script = read('pages/result/result.js');
 
+  assert.match(markup, /bindtap="saveRecord"/);
   assert.match(markup, /open-type="share"[^>]*>分享给朋友<\/button>/);
   assert.match(markup, /bindtap="generatePoster"/);
   assert.match(markup, /class="button-secondary recalculate-button"/);
   assert.match(script, /buildShareTitle\(/);
-  assert.match(script, /encodePayload\(payload\)/);
-  assert.match(script, /wx\.reLaunch\(\{\s*url:\s*'\/pages\/home\/home'\s*\}\)/s);
+  assert.match(script, /encodePayload\(\{/);
+  assert.match(script, /wx\.switchTab\(\{\s*url:\s*'\/pages\/lookup\/lookup'\s*\}\)/s);
 });
 
 test('local visual assets cover brand logos and distinct result icons', () => {

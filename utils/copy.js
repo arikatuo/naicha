@@ -7,7 +7,7 @@ function getResultCopy(calories, copywriting) {
     return { title: match.title, badge: match.badge, theme: match.theme };
   }
 
-  return { title: '快乐上线，分量刚好有感。', badge: '快乐常驻', theme: 'milkTea' };
+  return { title: '热量有数，快乐照旧。', badge: '这一杯', theme: 'milkTea' };
 }
 
 module.exports = {

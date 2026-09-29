@@ -57,10 +57,18 @@
     </view>
 
     <view class="actions">
-      <button class="button-primary share-button" open-type="share">分享给朋友</button>
-      <view class="secondary-actions">
+      <view wx:if="{{!isShared}}" class="record-action">
+        <picker mode="date" value="{{recordDate}}" end="{{todayDate}}" bindchange="selectRecordDate">
+          <view class="record-date">记录日期：{{recordDate}} <text>修改 ›</text></view>
+        </picker>
+        <button class="button-primary save-record-button" loading="{{savingRecord}}" disabled="{{savingRecord || savedRecordId}}" bindtap="saveRecord">{{savedRecordId ? '已记到日历' : '记到日历'}}</button>
+        <text class="record-helper">喝过这杯？记下后可在日历里找回。</text>
+      </view>
+      <button wx:else class="button-primary own-drink-button" bindtap="recalculate">算我的这杯</button>
+      <button class="button-secondary share-button" open-type="share">分享给朋友</button>
+      <view class="secondary-actions {{isShared ? 'shared-actions' : ''}}">
         <button class="button-secondary poster-button" loading="{{posterGenerating}}" disabled="{{posterGenerating}}" bindtap="generatePoster">生成分享图</button>
-        <button class="button-secondary recalculate-button" bindtap="recalculate">再算一杯</button>
+        <button wx:if="{{!isShared}}" class="button-secondary recalculate-button" bindtap="recalculate">算另一杯</button>
       </view>
     </view>
   </view>

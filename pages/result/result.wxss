@@ -307,12 +307,19 @@
 }
 
 .share-button {
-  width: 80%;
-  justify-self: center;
-  min-height: 92rpx;
+  width: 100%;
+  min-height: 80rpx;
   margin: 0;
-  box-shadow: 0 12rpx 24rpx rgba(185, 71, 61, 0.18);
+  box-shadow: none;
 }
+
+.record-action { display: flex; flex-direction: column; gap: 12rpx; }
+.record-date { display: flex; justify-content: space-between; color: #8a7566; font-size: 24rpx; padding: 0 12rpx; }
+.record-date text { color: #8b4f3b; }
+.record-helper { color: #8a7566; font-size: 22rpx; line-height: 1.4; text-align: center; }
+.save-record-button, .own-drink-button { width: 100%; min-height: 92rpx; }
+.shared-actions { grid-template-columns: minmax(0, 1fr); }
+.shared-actions .poster-button { width: 100%; }
 
 .poster-button,
 .recalculate-button {

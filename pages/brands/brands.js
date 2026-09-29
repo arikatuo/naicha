@@ -1,12 +1,23 @@
 const store = require('../../utils/data-store');
+const { isValidDateKey } = require('../../utils/calendar');
+const { getDrinkIcon } = require('../../utils/drink-icons');
+
+const QUICK_DRINK_IDS = [
+  'mixue-pearl-milk-tea',
+  'chagee-boya-juexian',
+  'coco-pearl-milk-tea'
+];
 
 Page({
   data: {
     brands: [],
-    hasBrands: false
+    hasBrands: false,
+    quickDrinks: [],
+    recordDate: ''
   },
 
-  onLoad() {
+  onLoad(options) {
+    this.setData({ recordDate: options && isValidDateKey(options.recordDate) ? options.recordDate : '' });
     this.reloadBrands();
   },
 
@@ -19,7 +30,18 @@ Page({
 
     this.setData({
       brands,
-      hasBrands: brands.length > 0
+      hasBrands: brands.length > 0,
+      quickDrinks: QUICK_DRINK_IDS.map((id) => {
+        const drink = store.getDrinkById(id);
+        const brand = drink && store.getBrandById(drink.brandId);
+        return drink && brand ? {
+          id: drink.id,
+          brandId: brand.id,
+          brandName: brand.name,
+          name: drink.displayName,
+          icon: getDrinkIcon(drink)
+        } : null;
+      }).filter(Boolean)
     });
   },
 
@@ -30,7 +52,20 @@ Page({
 
   openBrand(event) {
     const { id } = event.currentTarget.dataset;
-    wx.navigateTo({ url: `/pages/drinks/drinks?brandId=${id}` });
+    const recordDate = this.data.recordDate ? `&recordDate=${this.data.recordDate}` : '';
+    wx.navigateTo({ url: `/pages/drinks/drinks?brandId=${id}${recordDate}` });
+  },
+
+  openQuickDrink(event) {
+    const drink = this.data.quickDrinks.find((item) => item.id === event.currentTarget.dataset.id);
+    if (!drink) return;
+    const recordDate = this.data.recordDate ? `&recordDate=${this.data.recordDate}` : '';
+    wx.navigateTo({ url: `/pages/drinks/drinks?brandId=${drink.brandId}&drinkId=${drink.id}${recordDate}` });
+  },
+
+  goCustom() {
+    const recordDate = this.data.recordDate ? `?recordDate=${this.data.recordDate}` : '';
+    wx.navigateTo({ url: `/pages/custom/custom${recordDate}` });
   },
 
   goHome() {

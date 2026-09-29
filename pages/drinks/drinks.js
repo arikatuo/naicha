@@ -1,7 +1,8 @@
 const store = require('../../utils/data-store');
 const { calculateBrandDrinkCalories } = require('../../utils/calculator');
 const { getDrinkIcon } = require('../../utils/drink-icons');
-const { encodePayload } = require('../../utils/nav');
+const { encodePayload, decodePayload } = require('../../utils/nav');
+const { isValidDateKey } = require('../../utils/calendar');
 
 function mapDrink(drink) {
   const tagColorMap = {
@@ -35,6 +36,7 @@ function createToppingOptions(selectedIds = []) {
 Page({
   data: {
     brandId: '',
+    recordDate: '',
     brand: null,
     brandName: '饮品选择',
     drinks: [],
@@ -56,7 +58,11 @@ Page({
   },
 
   onLoad(options) {
+    this.setData({ recordDate: options && isValidDateKey(options.recordDate) ? options.recordDate : '' });
     this.loadContent((options && options.brandId) || '');
+    if (options && options.drinkId) {
+      this.openDrinkById(options.drinkId, decodePayload(options.prefill));
+    }
   },
 
   loadContent(brandId) {
@@ -99,7 +105,12 @@ Page({
   },
 
   openDrink(event) {
-    const drink = store.getDrinkById(event.currentTarget.dataset.id);
+    this.openDrinkById(event.currentTarget.dataset.id);
+  },
+
+  openDrinkById(id, prefill) {
+    const drink = store.getDrinkById(id);
+    if (drink && drink.brandId !== this.data.brandId) return;
     if (!drink) {
       wx.showToast({ title: '这杯暂时打不开，换一杯试试', icon: 'none' });
       return;
@@ -110,15 +121,20 @@ Page({
       .filter((size) => drink.availableSizes.includes(size.id))
       .map((size) => ({ ...size, selected: size.id === drink.defaultSize }));
 
+    const selectedSizeId = prefill && drink.availableSizes.includes(prefill.sizeId) ? prefill.sizeId : drink.defaultSize;
+    const selectedSweetnessId = prefill && store.getSweetnessById(prefill.sweetnessId) ? prefill.sweetnessId : drink.defaultSweetness;
+    const selectedExtraToppingIds = prefill && Array.isArray(prefill.toppingIds)
+      ? prefill.toppingIds.filter((toppingId) => store.getToppingById(toppingId)).slice(0, 3)
+      : [];
     this.setData({
       selectedDrink: drink,
-      selectedSizeId: drink.defaultSize,
-      selectedSweetnessId: drink.defaultSweetness,
-      selectedExtraToppingIds: [],
-      selectedExtraToppingCount: 0,
+      selectedSizeId,
+      selectedSweetnessId,
+      selectedExtraToppingIds,
+      selectedExtraToppingCount: selectedExtraToppingIds.length,
       defaultToppings,
-      sizeOptions,
-      toppingOptions: createToppingOptions(),
+      sizeOptions: sizeOptions.map((size) => ({ ...size, selected: size.id === selectedSizeId })),
+      toppingOptions: createToppingOptions(selectedExtraToppingIds),
       panelOpen: true
     });
   },
@@ -195,7 +211,15 @@ Page({
       mode: 'brand',
       drinkName: drink.displayName,
       brandName: this.data.brand.name,
-      calories
+      calories,
+      recordDate: this.data.recordDate,
+      config: {
+        brandId: this.data.brandId,
+        drinkId: drink.id,
+        sizeId: this.data.selectedSizeId,
+        sweetnessId: this.data.selectedSweetnessId,
+        toppingIds: this.data.selectedExtraToppingIds
+      }
     };
 
     wx.navigateTo({ url: `/pages/result/result?payload=${encodePayload(payload)}` });

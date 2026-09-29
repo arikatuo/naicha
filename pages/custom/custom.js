@@ -1,6 +1,7 @@
 const store = require('../../utils/data-store');
 const { calculateCustomDrinkCalories } = require('../../utils/calculator');
-const { encodePayload } = require('../../utils/nav');
+const { encodePayload, decodePayload } = require('../../utils/nav');
+const { isValidDateKey } = require('../../utils/calendar');
 
 function createToppingOptions(selectedIds = []) {
   return store.toppings.map((topping) => ({
@@ -20,7 +21,24 @@ Page({
     selectedSizeId: 'medium',
     selectedSweetnessId: 'half',
     selectedToppingIds: [],
-    selectedToppingCount: 0
+    selectedToppingCount: 0,
+    recordDate: ''
+  },
+
+  onLoad(options) {
+    const prefill = decodePayload(options && options.prefill);
+    const selectedToppingIds = prefill && Array.isArray(prefill.toppingIds)
+      ? prefill.toppingIds.filter((id) => store.getToppingById(id)).slice(0, 4)
+      : [];
+    this.setData({
+      recordDate: options && isValidDateKey(options.recordDate) ? options.recordDate : '',
+      selectedBaseId: prefill && store.getBaseById(prefill.baseId) ? prefill.baseId : 'milk-tea',
+      selectedSizeId: prefill && store.getCupSizeById(prefill.sizeId) ? prefill.sizeId : 'medium',
+      selectedSweetnessId: prefill && store.getSweetnessById(prefill.sweetnessId) ? prefill.sweetnessId : 'half',
+      selectedToppingIds,
+      selectedToppingCount: selectedToppingIds.length,
+      toppingOptions: createToppingOptions(selectedToppingIds)
+    });
   },
 
   selectBase(event) {
@@ -72,7 +90,15 @@ Page({
     const drinkName = toppingNames ? `${base.name} + ${toppingNames}` : base.name;
 
     wx.navigateTo({
-      url: `/pages/result/result?payload=${encodePayload({ mode: 'custom', drinkName, calories })}`
+      url: `/pages/result/result?payload=${encodePayload({
+        mode: 'custom', drinkName, calories, recordDate: this.data.recordDate,
+        config: {
+          baseId: this.data.selectedBaseId,
+          sizeId: this.data.selectedSizeId,
+          sweetnessId: this.data.selectedSweetnessId,
+          toppingIds: this.data.selectedToppingIds
+        }
+      })}`
     });
   },
 

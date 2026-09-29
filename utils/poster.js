@@ -160,9 +160,9 @@ function drawPoster({ ctx, payload, cards, highlightCard, resultCopy, width, hei
   roundRect(ctx, 54, qrY, 252, 92, 24, '#fff9f0');
   ctx.drawImage(images.qrcode, 72, qrY + 6, 80, 80);
   drawText(ctx, '微信搜一搜', 172, qrY + 36, 13, '#6a3c2c');
-  drawText(ctx, '奶茶有多胖', 172, qrY + 58, 13, '#6a3c2c');
+  drawText(ctx, '奶茶热量日历', 172, qrY + 58, 13, '#6a3c2c');
 
-  drawText(ctx, '热量和运动消耗均为估算，不作为健康建议', 28, 618, 12, '#6f5d51');
+  drawText(ctx, '热量为估算值，仅供趣味参考', 28, 618, 12, '#6f5d51');
 }
 
 module.exports = {

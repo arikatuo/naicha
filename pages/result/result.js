@@ -3,6 +3,8 @@ const { decodePayload, encodePayload } = require('../../utils/nav');
 const { buildEquivalentCards } = require('../../utils/equivalents');
 const { getResultCopy } = require('../../utils/copy');
 const { drawPoster, loadCanvasImage } = require('../../utils/poster');
+const diary = require('../../utils/diary-store');
+const { dateKey, isValidDateKey } = require('../../utils/calendar');
 
 const POSTER_QRCODE_SRC = '/assets/qrcode.png';
 const POSTER_CUP_SRC = '/assets/icons/milk-tea-cup.png';
@@ -73,7 +75,12 @@ Page({
     posterPreviewOpen: false,
     previewPosterPath: '',
     posterGenerating: false,
-    resultCopy: { title: '快乐上线，分量刚好有感。', badge: '快乐常驻', theme: 'milkTea' },
+    recordDate: '',
+    todayDate: '',
+    isShared: false,
+    savingRecord: false,
+    savedRecordId: '',
+    resultCopy: { title: '热量有数，快乐照旧。', badge: '这一杯', theme: 'milkTea' },
     disclaimer: store.copywriting.disclaimer
   },
 
@@ -103,12 +110,47 @@ Page({
       heroCard: cards[0] || null,
       currentEquivalentIndex,
       currentEquivalentPosition: currentEquivalentIndex + 1,
+      recordDate: isValidDateKey(payload.recordDate) ? payload.recordDate : dateKey(new Date()),
+      todayDate: dateKey(new Date()),
+      isShared: options.shared === '1',
+      savingRecord: false,
+      savedRecordId: '',
       resultCopy: getResultCopy(payload.calories, store.copywriting)
     });
   },
 
   recalculate() {
-    wx.reLaunch({ url: '/pages/home/home' });
+    wx.switchTab({ url: '/pages/lookup/lookup' });
+  },
+
+  selectRecordDate(event) {
+    this.setData({ recordDate: event.detail.value });
+  },
+
+  saveRecord() {
+    if (!this.data.payload || this.data.isShared || this.data.savingRecord || this.data.savedRecordId) return;
+    this.setData({ savingRecord: true });
+    try {
+      const { payload, recordDate } = this.data;
+      const record = diary.saveRecord({
+        date: recordDate,
+        mode: payload.mode,
+        brandName: payload.brandName,
+        drinkName: payload.drinkName,
+        calories: payload.calories,
+        config: payload.config
+      });
+      this.setData({ savingRecord: false, savedRecordId: record.id });
+      const app = typeof getApp === 'function' ? getApp() : null;
+      if (app && app.globalData) {
+        app.globalData.focusDate = recordDate;
+        app.globalData.focusRecordId = record.id;
+      }
+      wx.switchTab({ url: '/pages/home/home' });
+    } catch (error) {
+      this.setData({ savingRecord: false });
+      wx.showToast({ title: '保存失败，请重试', icon: 'none' });
+    }
   },
 
   setEquivalentIndex(currentEquivalentIndex) {
@@ -224,7 +266,12 @@ Page({
 
     return {
       title: buildShareTitle(payload, currentCard),
-      path: `/pages/result/result?payload=${encodePayload(payload)}`
+      path: `/pages/result/result?payload=${encodePayload({
+        mode: payload.mode,
+        brandName: payload.brandName,
+        drinkName: payload.drinkName,
+        calories: payload.calories
+      })}&shared=1`
     };
   }
 });
