@@ -1,16 +1,27 @@
 {
   "pages": [
     "pages/home/home",
+    "pages/lookup/lookup",
     "pages/brands/brands",
     "pages/drinks/drinks",
     "pages/custom/custom",
     "pages/result/result"
   ],
   "window": {
-    "navigationBarTitleText": "奶茶热量换算器",
+    "navigationBarTitleText": "奶茶热量日历",
     "navigationBarBackgroundColor": "#fff4e5",
     "navigationBarTextStyle": "black",
     "backgroundColor": "#fff4e5"
+  },
+  "tabBar": {
+    "color": "#8a8078",
+    "selectedColor": "#b9473d",
+    "backgroundColor": "#fff9f0",
+    "borderStyle": "white",
+    "list": [
+      { "pagePath": "pages/home/home", "text": "日历", "iconPath": "assets/tabs/calendar.png", "selectedIconPath": "assets/tabs/calendar-active.png" },
+      { "pagePath": "pages/lookup/lookup", "text": "查热量", "iconPath": "assets/tabs/search.png", "selectedIconPath": "assets/tabs/search-active.png" }
+    ]
   },
   "style": "v2",
   "sitemapLocation": "sitemap.json"

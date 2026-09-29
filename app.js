@@ -1,5 +1,7 @@
 App({
   globalData: {
-    appName: '奶茶热量换算器'
+    appName: '奶茶热量日历',
+    focusDate: '',
+    focusRecordId: ''
   }
 });
