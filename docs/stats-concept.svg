@@ -1,0 +1,94 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="924" height="946" viewBox="0 0 924 946">
+  <defs>
+    <style>
+      text { font-family: 'Microsoft YaHei', 'PingFang SC', sans-serif; fill: #2d1f18; }
+      .label { font-size: 17px; font-weight: 700; fill: #5f3d31; }
+      .muted { fill: #8a7566; }
+      .red { fill: #b9473d; }
+      .small { font-size: 13px; }
+      .medium { font-size: 16px; }
+      .title { font-size: 22px; font-weight: 800; }
+      .card { fill: #fff9f0; stroke: #ead9c6; stroke-width: 1; }
+    </style>
+    <filter id="shadow" x="-25%" y="-25%" width="150%" height="150%">
+      <feDropShadow dx="0" dy="8" stdDeviation="12" flood-color="#5f3d31" flood-opacity=".12"/>
+    </filter>
+  </defs>
+
+  <rect width="924" height="946" fill="#f6ecdf"/>
+  <text x="46" y="45" font-size="26" font-weight="800">奶茶热量日历 · 统计功能示意</text>
+  <text x="47" y="71" class="small muted">示例数据仅用于说明布局；沿用当前小程序的配色与卡片风格</text>
+  <text x="48" y="104" class="label">① 日历：从「本月已记」进入</text>
+  <text x="494" y="104" class="label">② 统计：默认展示本月</text>
+
+  <!-- Calendar screen -->
+  <g filter="url(#shadow)"><rect x="42" y="122" width="386" height="770" rx="32" fill="#fff4e5"/></g>
+  <rect x="42" y="122" width="386" height="50" rx="32" fill="#fff4e5"/>
+  <text x="235" y="155" text-anchor="middle" class="medium" font-weight="800">奶茶热量日历</text>
+  <text x="63" y="195" class="small muted">选一杯看估算热量，喝过再记到日历</text>
+  <rect x="59" y="218" width="352" height="355" rx="22" class="card"/>
+  <text x="80" y="262" class="medium muted">‹</text>
+  <text x="235" y="260" text-anchor="middle" class="title">2026年9月</text>
+  <text x="383" y="262" class="medium muted">›</text>
+  <g class="small muted" text-anchor="middle">
+    <text x="94" y="301">周一</text><text x="141" y="301">周二</text><text x="188" y="301">周三</text><text x="235" y="301">周四</text><text x="282" y="301">周五</text><text x="329" y="301">周六</text><text x="376" y="301">周日</text>
+  </g>
+  <g class="small" text-anchor="middle">
+    <text x="141" y="340">1</text><text x="188" y="340">2</text><text x="235" y="340">3</text><text x="282" y="340">4</text><text x="329" y="340">5</text><text x="376" y="340">6</text>
+    <text x="94" y="384">7</text><text x="141" y="384">8</text><text x="188" y="384">9</text><text x="235" y="384">10</text><text x="282" y="384">11</text><text x="329" y="384">12</text><text x="376" y="384">13</text>
+    <text x="94" y="428">14</text><text x="141" y="428">15</text><text x="188" y="428">16</text><text x="235" y="428">17</text><text x="282" y="428">18</text><text x="329" y="428">19</text><text x="376" y="428">20</text>
+    <text x="94" y="472">21</text><text x="141" y="472">22</text><text x="188" y="472">23</text><text x="235" y="472">24</text><text x="282" y="472">25</text><text x="329" y="472">26</text><text x="376" y="472">27</text>
+    <text x="94" y="516">28</text><text x="141" y="516">29</text><text x="188" y="516">30</text>
+  </g>
+  <g fill="#b9473d"><circle cx="141" cy="346" r="2.5"/><circle cx="329" cy="390" r="2.5"/><circle cx="235" cy="434" r="2.5"/></g>
+  <rect x="117" y="494" width="47" height="36" rx="18" fill="#b9473d"/>
+  <text x="141" y="516" text-anchor="middle" class="small" fill="#fff" style="fill:#fff">29</text>
+  <circle cx="141" cy="523" r="2.5" fill="#fff"/>
+  <rect x="59" y="591" width="352" height="117" rx="22" class="card"/>
+  <text x="80" y="623" class="small muted">这个月已记</text>
+  <text x="80" y="675" font-size="43" font-weight="900" class="red">6</text>
+  <text x="117" y="673" class="small muted">杯</text>
+  <line x1="173" y1="611" x2="173" y2="687" stroke="#ead9c6"/>
+  <text x="195" y="626" class="small muted">最近一杯</text>
+  <text x="195" y="651" class="medium" font-weight="700">珍珠奶茶</text>
+  <text x="195" y="682" class="small red" font-weight="700">查看本周／月／年统计  ›</text>
+  <rect x="59" y="725" width="352" height="102" rx="22" class="card"/>
+  <text x="79" y="757" class="medium" font-weight="800">9月29日</text>
+  <text x="380" y="757" text-anchor="end" class="small muted">1 杯记录</text>
+  <text x="79" y="792" class="small muted">珍珠奶茶 · 约 420 kcal</text>
+  <rect x="42" y="839" width="386" height="53" rx="0" fill="#fff9f0"/>
+  <text x="142" y="873" text-anchor="middle" class="small red" font-weight="800">▦  日历</text>
+  <text x="329" y="873" text-anchor="middle" class="small muted">⌕  查热量</text>
+
+  <!-- Statistics screen -->
+  <g filter="url(#shadow)"><rect x="487" y="122" width="386" height="770" rx="32" fill="#fff4e5"/></g>
+  <text x="508" y="156" class="medium muted">‹  返回日历</text>
+  <text x="680" y="156" text-anchor="middle" class="medium" font-weight="800">我的统计</text>
+  <text x="507" y="204" class="title">看看这段时间的记录</text>
+  <text x="507" y="230" class="small muted">只统计这台设备上保存的记录</text>
+  <rect x="506" y="251" width="348" height="46" rx="23" fill="#f1dfcc"/>
+  <rect x="624" y="255" width="112" height="38" rx="19" fill="#fff9f0"/>
+  <text x="562" y="280" text-anchor="middle" class="small muted">本周</text>
+  <text x="680" y="280" text-anchor="middle" class="small red" font-weight="800">本月</text>
+  <text x="797" y="280" text-anchor="middle" class="small muted">本年</text>
+  <rect x="506" y="315" width="348" height="149" rx="22" class="card"/>
+  <text x="526" y="345" class="small muted">2026年9月 · 已记录</text>
+  <text x="526" y="414" font-size="58" font-weight="900" class="red">6</text>
+  <text x="568" y="411" class="medium muted">杯</text>
+  <line x1="666" y1="363" x2="666" y2="437" stroke="#ead9c6"/>
+  <text x="690" y="380" class="small muted">有记录的天数</text>
+  <text x="690" y="420" font-size="30" font-weight="800">4 <tspan font-size="14" fill="#8a7566">天</tspan></text>
+  <rect x="506" y="480" width="348" height="195" rx="22" class="card"/>
+  <text x="526" y="514" class="medium" font-weight="800">每周已记录杯数</text>
+  <text x="526" y="537" class="small muted">看看记录集中在哪些时候</text>
+  <line x1="538" y1="625" x2="827" y2="625" stroke="#dbc6b0"/>
+  <g fill="#b9473d"><rect x="556" y="594" width="28" height="31" rx="7"/><rect x="612" y="563" width="28" height="62" rx="7"/><rect x="668" y="563" width="28" height="62" rx="7"/><rect x="780" y="594" width="28" height="31" rx="7"/></g>
+  <g class="small muted" text-anchor="middle"><text x="570" y="649">第1周</text><text x="626" y="649">第2周</text><text x="682" y="649">第3周</text><text x="738" y="649">第4周</text><text x="794" y="649">第5周</text></g>
+  <rect x="506" y="691" width="348" height="114" rx="22" class="card"/>
+  <text x="526" y="722" class="small muted">本月记录热量合计 · 估算</text>
+  <text x="526" y="762" font-size="28" font-weight="800">约 2,260 <tspan font-size="14" fill="#8a7566">kcal</tspan></text>
+  <text x="526" y="785" class="small muted">这是饮品估值，仅用于回顾记录</text>
+  <text x="680" y="857" text-anchor="middle" class="small red" font-weight="800">查看日历里的具体记录  ›</text>
+
+  <text x="43" y="928" class="small muted">入口：已有记录后展示「查看统计」；无记录时仍以「记第一杯」为主操作。</text>
+</svg>

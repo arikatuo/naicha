@@ -54,6 +54,7 @@
           <text class="latest-kicker">最近一杯</text>
           <text class="latest-name">{{latestRecord.brandName ? latestRecord.brandName + ' · ' : ''}}{{latestRecord.drinkName}}</text>
           <button class="latest-repeat" data-id="{{latestRecord.id}}" bindtap="repeatRecord">再记这杯 ›</button>
+          <button class="stats-link" bindtap="openStats">查看本周／月／年统计 ›</button>
         </view>
       </view>
       <view class="day-panel surface">

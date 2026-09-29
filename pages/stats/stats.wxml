@@ -1,0 +1,51 @@
+<view class="page stats-page">
+  <view class="stats-heading">
+    <text class="page-title">看看这段时间的记录</text>
+    <text class="stats-subtitle">只统计这台设备上保存的记录</text>
+  </view>
+
+  <view wx:if="{{storageError}}" class="surface stats-error">
+    <text>记录暂时无法读取</text>
+    <button class="button-secondary" bindtap="refresh">重试</button>
+  </view>
+
+  <view wx:else>
+    <view class="period-switch" role="tablist" aria-label="统计时间范围">
+      <button wx:for="{{periods}}" wx:key="key" class="period-option {{activePeriod === item.key ? 'active' : ''}}" role="tab" aria-selected="{{activePeriod === item.key}}" data-period="{{item.key}}" bindtap="changePeriod">{{item.label}}</button>
+    </view>
+
+    <view class="summary-card surface">
+      <text class="period-label">{{periodLabel}} · 已记录</text>
+      <view class="summary-values">
+        <view class="summary-cups"><text class="summary-number">{{cups}}</text><text class="summary-unit">杯</text></view>
+        <view class="summary-days"><text class="summary-caption">有记录的天数</text><view><text class="days-number">{{days}}</text><text class="summary-unit">天</text></view></view>
+      </view>
+    </view>
+
+    <view wx:if="{{hasPeriodRecords}}" class="stats-content">
+      <view class="chart-card surface">
+        <text class="card-title">{{chartTitle}}</text>
+        <text class="card-description">点选有记录的时段，回看日历里的那一天</text>
+        <view class="chart-columns">
+          <button wx:for="{{buckets}}" wx:key="label" class="chart-column" data-index="{{index}}" bindtap="openBucket" disabled="{{!item.count}}" aria-label="{{item.label}}已记录{{item.count}}杯">
+            <view class="chart-track"><view class="chart-bar {{item.count ? 'filled' : ''}}" style="height: {{item.height}}rpx"></view></view>
+            <text class="chart-label">{{item.label}}</text>
+          </button>
+        </view>
+      </view>
+
+      <view class="calorie-card surface">
+        <text class="calorie-caption">{{periodLabel}}记录热量合计 · 估算</text>
+        <view class="calorie-value"><text>约 {{calories}}</text><text class="calorie-unit">kcal</text></view>
+        <text class="calorie-note">这是饮品估值，仅用于回顾记录</text>
+      </view>
+      <button class="calendar-link" bindtap="goToCalendar">查看日历里的具体记录 ›</button>
+    </view>
+
+    <view wx:else class="stats-empty surface">
+      <text class="empty-title">这段时间还没有记录</text>
+      <text class="empty-copy">这里仅显示你记过的奶茶，不代表这段时间没有喝。</text>
+      <button class="button-primary" bindtap="startRecord">选一杯，开始记录</button>
+    </view>
+  </view>
+</view>
