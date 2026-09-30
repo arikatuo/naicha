@@ -136,12 +136,9 @@ test('configuration sheet uses a circular close control and a stretched safe foo
   assert.match(styles, /\.sheet-button\s*{[^}]*width:\s*auto;[^}]*align-self:\s*stretch;[^}]*margin:\s*0;/s);
 });
 
-test('small supporting copy stays readable and neutral', () => {
-  const homeStyles = read('pages/home/home.wxss');
+test('supporting copy stays neutral', () => {
   const customMarkup = read('pages/custom/custom.wxml');
 
-  assert.match(homeStyles, /\.diary-subtitle\s*{[^}]*font-size:\s*25rpx;/s);
-  assert.match(homeStyles, /\.empty-copy\s*{[^}]*font-size:\s*24rpx;/s);
   assert.doesNotMatch(customMarkup, /轻一点/);
   assert.match(customMarkup, /最多选 4 种，按你平时的搭配来。/);
 });

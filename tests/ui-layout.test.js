@@ -9,14 +9,13 @@ function read(relativePath) {
   return fs.readFileSync(path.join(__dirname, '..', relativePath), 'utf8');
 }
 
-test('calendar home explains its purpose and offers an empty state', () => {
+test('calendar home keeps the first action clear without explanatory copy', () => {
   const markup = read('pages/home/home.wxml');
 
-  assert.match(markup, /选一杯看估算热量，喝过再记到日历/);
   assert.match(markup, /class="calendar-card surface"/);
   assert.match(markup, /class="empty-card surface"/);
-  assert.match(markup, /记录示例 · 非真实记录/);
   assert.match(markup, /recordButtonLabel/);
+  assert.doesNotMatch(markup, /选一杯看估算热量|选好饮品|记录示例|记下后/);
 });
 
 test('lookup tab exposes both existing calculation routes', () => {

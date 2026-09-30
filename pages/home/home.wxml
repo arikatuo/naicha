@@ -1,6 +1,5 @@
 <view class="page diary-page">
   <view class="diary-heading">
-    <text class="diary-subtitle">选一杯看估算热量，喝过再记到日历</text>
     <button class="stats-entry" bindtap="openStats" aria-label="查看本周、本月、本年统计">查看统计 ›</button>
   </view>
 
@@ -39,12 +38,6 @@
     <view wx:if="{{!hasRecords}}" class="empty-card surface">
       <image class="empty-cup" src="/assets/icons/milk-tea-cup.png" mode="aspectFit" aria-hidden="true"></image>
       <text class="empty-title">{{emptyTitle}}</text>
-      <text class="empty-copy">选好饮品，就能看到热量；喝过再记下。</text>
-      <view class="example-record" aria-label="记录示例，不是真实记录">
-        <text class="example-kicker">记录示例 · 非真实记录</text>
-        <view class="example-row"><text>珍珠奶茶</text><text>约 460 kcal</text></view>
-        <text class="example-hint">记下后，会出现在你选的日期</text>
-      </view>
       <button class="button-primary record-button" disabled="{{selectedInFuture}}" bindtap="startRecord">{{recordButtonLabel}}</button>
     </view>
 
