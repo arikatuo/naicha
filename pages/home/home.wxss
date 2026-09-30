@@ -9,9 +9,10 @@
 .diary-content { display: flex; flex: 1; flex-direction: column; gap: 20rpx; }
 .history-content { display: flex; flex-direction: column; gap: 20rpx; }
 
-.first-record-layout .calendar-card { display: flex; flex: 1; flex-direction: column; }
-.first-record-layout .days-grid { flex: 1; grid-auto-rows: minmax(92rpx, 1fr); }
-.first-record-layout .day-button { width: 76rpx; height: 76rpx; min-height: 76rpx; }
+.first-record-layout .calendar-card { flex: 0 0 auto; }
+.first-record-layout .days-grid { flex: none; grid-auto-rows: 75rpx; }
+.first-record-layout .day-cell { min-height: 75rpx; }
+.first-record-layout .empty-card { flex: 1; }
 
 .calendar-card {
   padding: 24rpx 16rpx 28rpx;
@@ -112,11 +113,15 @@
   box-shadow: none;
 }
 
-.empty-card { gap: 26rpx; padding: 28rpx 30rpx; background: #fff6ed; }
-.empty-cup { flex: 0 0 112rpx; width: 112rpx; height: 112rpx; }
-.empty-action { display: flex; flex: 1; min-width: 0; flex-direction: column; align-items: stretch; gap: 16rpx; }
-.empty-title { color: #2d1f18; font-size: 29rpx; font-weight: 800; line-height: 1.25; }
-.record-button { align-self: stretch; width: 100%; min-width: 0; min-height: 76rpx; padding: 0 18rpx; margin: 0; font-size: 26rpx; box-shadow: 0 7rpx 16rpx rgba(169, 67, 56, 0.14); }
+.empty-card { flex-direction: column; align-items: stretch; justify-content: space-between; min-height: 330rpx; padding: 34rpx; border: 0; background: #f6e2cd; }
+.empty-main { display: flex; flex: 1; align-items: flex-start; justify-content: space-between; min-height: 220rpx; padding-top: 34rpx; box-sizing: border-box; }
+.empty-copy { display: flex; flex: 1; min-width: 0; flex-direction: column; gap: 18rpx; padding-top: 22rpx; }
+.empty-date { color: #b9473d; font-size: 52rpx; font-weight: 900; line-height: 1; }
+.empty-title { color: #2d1f18; font-size: 30rpx; font-weight: 800; line-height: 1.3; }
+.empty-art { position: relative; display: flex; flex: 0 0 240rpx; align-items: center; justify-content: center; width: 240rpx; height: 240rpx; }
+.empty-art-backdrop { position: absolute; width: 212rpx; height: 212rpx; border-radius: 50%; background: #fff2e4; }
+.empty-cup { position: relative; width: 220rpx; height: 220rpx; }
+.record-button { align-self: stretch; width: 100%; min-width: 0; min-height: 82rpx; padding: 0 18rpx; margin: 0; font-size: 27rpx; box-shadow: 0 7rpx 16rpx rgba(169, 67, 56, 0.14); }
 
 .save-confirmation { display: flex; flex-direction: column; gap: 7rpx; padding: 22rpx 28rpx; border-color: rgba(185, 71, 61, 0.28); background: #fff0dc; }
 .save-confirmation-title { color: #8b3d32; font-size: 27rpx; font-weight: 900; }
@@ -139,9 +144,9 @@
 .record-copy { display: flex; flex-direction: column; gap: 5rpx; }
 .record-name { font-size: 27rpx; font-weight: 800; line-height: 1.35; }
 .record-calories { font-size: 23rpx; color: #8a7566; }
-.record-actions { display: flex; align-items: center; gap: 24rpx; margin-top: 14rpx; color: #8b4f3b; font-size: 23rpx; }
-.record-actions button { min-height: 48rpx; padding: 0; margin: 0; border: 0; background: transparent; color: #8b4f3b; font-size: 23rpx; line-height: 48rpx; }
-.record-actions picker { line-height: 48rpx; }
+.record-actions { display: flex; align-items: center; justify-content: space-between; gap: 10rpx; margin-top: 14rpx; color: #8b4f3b; font-size: 23rpx; }
+.record-actions button { flex: 0 0 auto; min-height: 48rpx; padding: 0; margin: 0; border: 0; background: transparent; color: #8b4f3b; font-size: 23rpx; line-height: 48rpx; white-space: nowrap; }
+.record-actions picker { flex: 0 0 auto; line-height: 48rpx; white-space: nowrap; }
 .day-empty { line-height: 1.5; }
 .diary-error { display: flex; flex-direction: column; gap: 16rpx; padding: 30rpx; }
 

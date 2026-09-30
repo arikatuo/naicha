@@ -32,11 +32,17 @@
     </view>
 
     <view wx:if="{{!hasRecords}}" class="empty-card surface">
-      <image class="empty-cup" src="/assets/icons/milk-tea-cup.png" mode="aspectFit" aria-hidden="true"></image>
-      <view class="empty-action">
-        <text class="empty-title">{{emptyTitle}}</text>
-        <button class="button-primary record-button" disabled="{{selectedInFuture}}" bindtap="startRecord">{{recordButtonLabel}}</button>
+      <view class="empty-main">
+        <view class="empty-copy">
+          <text class="empty-date">{{selectedDateLabel}}</text>
+          <text class="empty-title">{{emptyTitle}}</text>
+        </view>
+        <view class="empty-art" aria-hidden="true">
+          <view class="empty-art-backdrop"></view>
+          <image class="empty-cup" src="/assets/icons/milk-tea-cup.png" mode="aspectFit"></image>
+        </view>
       </view>
+      <button class="button-primary record-button" disabled="{{selectedInFuture}}" bindtap="startRecord">{{recordButtonLabel}}</button>
     </view>
 
     <view wx:else class="history-content">
