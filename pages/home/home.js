@@ -18,6 +18,7 @@ Page({
     todayDate: '',
     selectedDateLabel: '',
     selectedRecords: [],
+    selectedCalories: 0,
     hasRecords: false,
     hasSelectedRecords: false,
     monthCount: 0,
@@ -25,7 +26,6 @@ Page({
     justSavedRecordId: '',
     justSavedRecord: null,
     recordButtonLabel: '选一杯，看看热量',
-    emptyTitle: '从今天这一杯开始',
     selectedInFuture: false,
     storageError: false
   },
@@ -54,19 +54,20 @@ Page({
       const records = diary.getRecords();
       const { year, month, selectedDate } = this.data;
       const today = dateKey(new Date());
+      const selectedRecords = records.filter((record) => record.date === selectedDate);
       this.setData({
         monthLabel: `${year}年${month}月`,
-        cells: monthCells(year, month, records, selectedDate),
+        cells: monthCells(year, month, records, selectedDate).map((cell) => ({ ...cell, today: cell.date === today })),
         selectedDateLabel: displayDate(selectedDate),
         todayDate: today,
-        selectedRecords: records.filter((record) => record.date === selectedDate),
+        selectedRecords,
+        selectedCalories: selectedRecords.reduce((total, record) => total + (Number.isFinite(record.calories) && record.calories >= 0 ? record.calories : 0), 0),
         hasRecords: records.length > 0,
-        hasSelectedRecords: records.some((record) => record.date === selectedDate),
+        hasSelectedRecords: selectedRecords.length > 0,
         monthCount: records.filter((record) => record.date.startsWith(`${year}-${String(month).padStart(2, '0')}-`)).length,
         latestRecord: records[0] || null,
         justSavedRecord: records.find((record) => record.id === this.data.justSavedRecordId) || null,
         recordButtonLabel: selectedDate === today ? '选一杯，看看热量' : `选一杯，补记${displayDate(selectedDate)}`,
-        emptyTitle: selectedDate === today ? '从今天这一杯开始' : '从这一杯开始',
         selectedInFuture: selectedDate > today,
         storageError: false
       });

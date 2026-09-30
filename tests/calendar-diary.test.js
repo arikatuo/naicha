@@ -96,6 +96,24 @@ test('calendar record flow saves only after an explicit result action and return
   assert.match(navigation.at(-1), /\/pages\/drinks\/drinks\?brandId=mixue&drinkId=mixue-pearl/);
 });
 
+test('home keeps today distinct from selection and totals multiple cups on the selected day', () => {
+  createWx();
+  diary.saveRecord({ date: '2026-09-29', mode: 'brand', drinkName: '珍珠奶茶', calories: 420 });
+  diary.saveRecord({ date: '2026-09-29', mode: 'custom', drinkName: '自选奶茶', calories: 320 });
+  const home = loadPage('pages/home/home.js');
+  home.onLoad();
+  home.setData({ year: 2026, month: 9, selectedDate: '2026-09-29' });
+  home.refresh();
+
+  assert.equal(home.data.selectedRecords.length, 2);
+  assert.equal(home.data.selectedCalories, 740);
+  assert.equal(home.data.cells[29].count, 2);
+  assert.equal(home.data.cells[29].selected, true);
+  const today = home.data.cells.find((cell) => cell.date === dateKey(new Date()));
+  if (today) assert.equal(today.today, true);
+  assert.equal(home.data.cells[29].today, home.data.cells[29].date === dateKey(new Date()));
+});
+
 test('shared result exposes own calculation and excludes private configuration from its path', () => {
   createWx();
   const result = loadPage('pages/result/result.js');

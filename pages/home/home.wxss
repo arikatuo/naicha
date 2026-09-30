@@ -33,11 +33,11 @@
 
 .month-arrow {
   display: flex;
-  flex: 0 0 64rpx;
+  flex: 0 0 88rpx;
   align-items: center;
   justify-content: center;
-  width: 64rpx;
-  min-height: 64rpx;
+  width: 88rpx;
+  min-height: 88rpx;
   padding: 0 0 6rpx;
   margin: 0;
   border: 0;
@@ -62,6 +62,7 @@
 }
 
 .day-cell {
+  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -86,23 +87,29 @@
   line-height: 1;
 }
 
+.day-button.today {
+  box-shadow: inset 0 0 0 2rpx #b9473d;
+}
+
 .day-button.selected {
   background: #b9473d;
   color: #fff;
   font-weight: 800;
 }
+.day-button.today.selected { box-shadow: none; }
 
 .record-dot {
   position: absolute;
   bottom: 3rpx;
   left: 50%;
   transform: translateX(-50%);
-  width: 7rpx;
-  height: 7rpx;
+  width: 9rpx;
+  height: 9rpx;
   border-radius: 50%;
   background: #b9473d;
 }
 .selected .record-dot { background: #fff; }
+.record-count { position: absolute; right: 4rpx; bottom: 1rpx; display: flex; align-items: center; justify-content: center; min-width: 27rpx; height: 27rpx; padding: 0 2rpx; border: 2rpx solid #fffdf9; border-radius: 999rpx; background: #b9473d; color: #fff; font-size: 18rpx; font-weight: 800; line-height: 1; }
 
 .empty-card, .day-panel {
   display: flex;
@@ -114,13 +121,15 @@
 }
 
 .empty-card { flex-direction: column; align-items: stretch; justify-content: space-between; min-height: 330rpx; padding: 34rpx; border: 0; background: #f6e2cd; }
-.empty-main { display: flex; flex: 1; align-items: flex-start; justify-content: space-between; min-height: 220rpx; padding-top: 34rpx; box-sizing: border-box; }
-.empty-copy { display: flex; flex: 1; min-width: 0; flex-direction: column; gap: 18rpx; padding-top: 22rpx; }
-.empty-date { color: #b9473d; font-size: 52rpx; font-weight: 900; line-height: 1; }
-.empty-title { color: #2d1f18; font-size: 30rpx; font-weight: 800; line-height: 1.3; }
-.empty-art { position: relative; display: flex; flex: 0 0 240rpx; align-items: center; justify-content: center; width: 240rpx; height: 240rpx; }
-.empty-art-backdrop { position: absolute; width: 212rpx; height: 212rpx; border-radius: 50%; background: #fff2e4; }
-.empty-cup { position: relative; width: 220rpx; height: 220rpx; }
+.empty-main { display: flex; align-items: flex-start; justify-content: space-between; min-height: 170rpx; box-sizing: border-box; }
+.empty-date { padding-top: 12rpx; color: #b9473d; font-size: 42rpx; font-weight: 900; line-height: 1; }
+.empty-status { display: flex; flex-direction: column; gap: 7rpx; padding-bottom: 18rpx; }
+.empty-label { color: #76584b; font-size: 24rpx; line-height: 1.3; }
+.empty-count { display: flex; align-items: baseline; gap: 8rpx; color: #2d1f18; font-size: 72rpx; font-weight: 900; line-height: 1; }
+.empty-count-unit { font-size: 26rpx; font-weight: 700; }
+.empty-art { position: relative; display: flex; flex: 0 0 190rpx; align-items: center; justify-content: center; width: 190rpx; height: 190rpx; }
+.empty-art-backdrop { position: absolute; width: 172rpx; height: 172rpx; border-radius: 50%; background: #fff2e4; }
+.empty-cup { position: relative; width: 185rpx; height: 185rpx; }
 .record-button { align-self: stretch; width: 100%; min-width: 0; min-height: 82rpx; padding: 0 18rpx; margin: 0; font-size: 27rpx; box-shadow: 0 7rpx 16rpx rgba(169, 67, 56, 0.14); }
 
 .save-confirmation { display: flex; flex-direction: column; gap: 7rpx; padding: 22rpx 28rpx; border-color: rgba(185, 71, 61, 0.28); background: #fff0dc; }
@@ -135,10 +144,10 @@
 .latest-repeat { align-self: flex-start; min-height: 40rpx; padding: 0; margin: 0; border: 0; background: transparent; color: #a94338; font-size: 23rpx; font-weight: 800; line-height: 40rpx; }
 .latest-repeat::after { border: 0; }
 
-.day-panel { flex-direction: column; align-items: stretch; gap: 22rpx; }
+.day-panel { flex-direction: column; align-items: stretch; gap: 22rpx; padding: 30rpx; border: 0; background: #f6e2cd; }
 .day-panel-head { display: flex; justify-content: space-between; align-items: baseline; }
 .day-panel-title { font-size: 32rpx; font-weight: 900; }
-.day-panel-count, .day-empty { color: #8a7566; font-size: 24rpx; }
+.day-panel-count { color: #7b6155; font-size: 23rpx; }
 .record-list { display: flex; flex-direction: column; gap: 16rpx; }
 .record-card { padding: 18rpx; border-radius: 22rpx; background: #fff4e5; }
 .record-copy { display: flex; flex-direction: column; gap: 5rpx; }
@@ -147,7 +156,6 @@
 .record-actions { display: flex; align-items: center; justify-content: space-between; gap: 10rpx; margin-top: 14rpx; color: #8b4f3b; font-size: 23rpx; }
 .record-actions button { flex: 0 0 auto; min-height: 48rpx; padding: 0; margin: 0; border: 0; background: transparent; color: #8b4f3b; font-size: 23rpx; line-height: 48rpx; white-space: nowrap; }
 .record-actions picker { flex: 0 0 auto; line-height: 48rpx; white-space: nowrap; }
-.day-empty { line-height: 1.5; }
 .diary-error { display: flex; flex-direction: column; gap: 16rpx; padding: 30rpx; }
 
 @media (min-height: 760px) {

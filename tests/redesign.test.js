@@ -27,8 +27,8 @@ test('calendar is the first page and makes first recording the primary action', 
   assert.equal(appConfig.pages[0], 'pages/home/home');
   assert.equal(appConfig.tabBar.list[0].text, '日历');
   assert.match(markup, /class="calendar-card surface"/);
-  assert.match(markup, /{{emptyTitle}}/);
-  assert.match(read('pages/home/home.js'), /从今天这一杯开始/);
+  assert.match(markup, /这天的记录/);
+  assert.match(markup, /class="empty-count"/);
   assert.match(markup, /bindtap="startRecord"/);
   assert.match(styles, /\.weekdays,\s*\.days-grid\s*{[^}]*grid-template-columns:\s*repeat\(7,/s);
 });
