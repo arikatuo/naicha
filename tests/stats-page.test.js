@@ -31,7 +31,7 @@ function createWx() {
   return { values, navigation };
 }
 
-test('calendar entry opens statistics and chart returns to a recorded date', () => {
+test('statistics tab refreshes from local records and chart returns to a recorded date', () => {
   const { navigation } = createWx();
   const app = { globalData: { focusDate: '', focusRecordId: '' } };
   global.getApp = () => app;
@@ -39,12 +39,6 @@ test('calendar entry opens statistics and chart returns to a recorded date', () 
   const input = { date: today, mode: 'custom', drinkName: '奶茶', calories: 320 };
   diary.saveRecord(input);
   diary.saveRecord(input);
-
-  const home = loadPage('pages/home/home.js');
-  home.onLoad();
-  home.onShow();
-  home.openStats();
-  assert.equal(navigation.at(-1), '/pages/stats/stats');
 
   const stats = loadPage('pages/stats/stats.js');
   stats.onShow();
@@ -88,28 +82,30 @@ test('period switching and an empty period keep the next action clear', () => {
   assert.equal(navigation.at(-1), '/pages/brands/brands');
 });
 
-test('statistics entry stays in the calendar month header before the first record', () => {
+test('statistics has its own tab and the calendar month header stays focused', () => {
+  const appConfig = JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'app.json'), 'utf8'));
+  assert.deepEqual(appConfig.tabBar.list.map(({ text }) => text), ['日历', '查热量', '统计']);
+  const statsTab = appConfig.tabBar.list[2];
+  assert.equal(statsTab.pagePath, 'pages/stats/stats');
+  for (const icon of [statsTab.iconPath, statsTab.selectedIconPath]) {
+    assert.ok(fs.existsSync(path.join(__dirname, '..', icon)));
+  }
   const homeMarkup = fs.readFileSync(path.join(__dirname, '..', 'pages/home/home.wxml'), 'utf8');
   const monthHeader = homeMarkup.indexOf('class="month-header"');
-  const entry = homeMarkup.indexOf('bindtap="openStats"');
   const weekdays = homeMarkup.indexOf('class="weekdays"');
-  assert.ok(monthHeader > 0 && monthHeader < entry && entry < weekdays);
-  const { navigation } = createWx();
-  global.getApp = () => ({ globalData: { focusDate: '', focusRecordId: '' } });
-  const home = loadPage('pages/home/home.js');
-  home.onLoad();
-  home.onShow();
-  assert.equal(home.data.hasRecords, false);
-  home.openStats();
-  assert.equal(navigation.at(-1), '/pages/stats/stats');
+  assert.ok(monthHeader > 0 && monthHeader < weekdays);
+  assert.doesNotMatch(homeMarkup, /bindtap="openStats"/);
 });
 
-test('empty statistics replace zero metrics with one record action', () => {
+test('empty statistics keep the period clear and group the record action', () => {
   const markup = fs.readFileSync(path.join(__dirname, '..', 'pages/stats/stats.wxml'), 'utf8');
   assert.match(markup, /class="period-range"[^>]*>{{periodLabel}}<\/text>/);
   assert.match(markup, /wx:if="{{hasPeriodRecords}}" class="summary-card surface"/);
-  assert.match(markup, /wx:if="{{!hasPeriodRecords}}" class="stats-empty surface"/);
+  assert.match(markup, /wx:if="{{!hasPeriodRecords}}" class="stats-empty"/);
+  assert.match(markup, /class="empty-content"[\s\S]*class="empty-emblem"[\s\S]*class="empty-title"[\s\S]*bindtap="startRecord"/);
+  assert.doesNotMatch(markup, /class="empty-track /);
+  assert.match(markup, /wx:for="{{buckets}}"/);
   assert.match(markup, /{{activePeriodLabel}}还没有记录/);
-  assert.match(markup, /bindtap="startRecord">去记一杯<\/button>/);
+  assert.match(markup, /bindtap="startRecord">记录一杯<\/button>/);
   assert.doesNotMatch(markup, /看看这段时间的记录|只统计这台设备上保存的记录|不代表这段时间没有喝/);
 });

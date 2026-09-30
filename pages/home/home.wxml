@@ -10,7 +10,6 @@
         <button class="month-arrow" bindtap="previousMonth" aria-label="上个月">‹</button>
         <view class="month-center">
           <text class="month-title">{{monthLabel}}</text>
-          <button class="stats-entry" bindtap="openStats" aria-label="查看本周、本月、本年统计">查看统计 ›</button>
         </view>
         <button class="month-arrow" bindtap="nextMonth" aria-label="下个月">›</button>
       </view>
@@ -34,8 +33,10 @@
 
     <view wx:if="{{!hasRecords}}" class="empty-card surface">
       <image class="empty-cup" src="/assets/icons/milk-tea-cup.png" mode="aspectFit" aria-hidden="true"></image>
-      <text class="empty-title">{{emptyTitle}}</text>
-      <button class="button-primary record-button" disabled="{{selectedInFuture}}" bindtap="startRecord">{{recordButtonLabel}}</button>
+      <view class="empty-action">
+        <text class="empty-title">{{emptyTitle}}</text>
+        <button class="button-primary record-button" disabled="{{selectedInFuture}}" bindtap="startRecord">{{recordButtonLabel}}</button>
+      </view>
     </view>
 
     <view wx:else class="history-content">

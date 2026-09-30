@@ -99,10 +99,6 @@ Page({
     wx.navigateTo({ url: `/pages/brands/brands?recordDate=${this.data.selectedDate}` });
   },
 
-  openStats() {
-    wx.navigateTo({ url: '/pages/stats/stats' });
-  },
-
   repeatRecord(event) {
     const record = this.data.selectedRecords.find((item) => item.id === event.currentTarget.dataset.id)
       || (this.data.latestRecord && this.data.latestRecord.id === event.currentTarget.dataset.id ? this.data.latestRecord : null);

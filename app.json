@@ -10,18 +10,19 @@
   ],
   "window": {
     "navigationBarTitleText": "奶茶热量日历",
-    "navigationBarBackgroundColor": "#fff4e5",
+    "navigationBarBackgroundColor": "#fbf8f3",
     "navigationBarTextStyle": "black",
-    "backgroundColor": "#fff4e5"
+    "backgroundColor": "#fbf8f3"
   },
   "tabBar": {
     "color": "#8a8078",
     "selectedColor": "#b9473d",
-    "backgroundColor": "#fff9f0",
+    "backgroundColor": "#fffdf9",
     "borderStyle": "white",
     "list": [
       { "pagePath": "pages/home/home", "text": "日历", "iconPath": "assets/tabs/calendar.png", "selectedIconPath": "assets/tabs/calendar-active.png" },
-      { "pagePath": "pages/lookup/lookup", "text": "查热量", "iconPath": "assets/tabs/search.png", "selectedIconPath": "assets/tabs/search-active.png" }
+      { "pagePath": "pages/lookup/lookup", "text": "查热量", "iconPath": "assets/tabs/search.png", "selectedIconPath": "assets/tabs/search-active.png" },
+      { "pagePath": "pages/stats/stats", "text": "统计", "iconPath": "assets/tabs/stats.png", "selectedIconPath": "assets/tabs/stats-active.png" }
     ]
   },
   "style": "v2",

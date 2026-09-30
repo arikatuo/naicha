@@ -4,11 +4,13 @@
     <button class="button-secondary" bindtap="refresh">重试</button>
   </view>
 
-  <view wx:else>
-    <view class="period-switch" role="tablist" aria-label="统计时间范围">
-      <button wx:for="{{periods}}" wx:key="key" class="period-option {{activePeriod === item.key ? 'active' : ''}}" role="tab" aria-selected="{{activePeriod === item.key}}" data-period="{{item.key}}" bindtap="changePeriod">{{item.label}}</button>
+  <view wx:else class="stats-body">
+    <view class="period-controls">
+      <view class="period-switch" role="tablist" aria-label="统计时间范围">
+        <button wx:for="{{periods}}" wx:key="key" class="period-option {{activePeriod === item.key ? 'active' : ''}}" role="tab" aria-selected="{{activePeriod === item.key}}" data-period="{{item.key}}" bindtap="changePeriod">{{item.label}}</button>
+      </view>
+      <text class="period-range" aria-live="polite">{{periodLabel}}</text>
     </view>
-    <text class="period-range" aria-live="polite">{{periodLabel}}</text>
 
     <view wx:if="{{hasPeriodRecords}}" class="summary-card surface">
       <view class="summary-values">
@@ -44,10 +46,14 @@
       <button class="calendar-link" bindtap="goToCalendar">查看日历里的具体记录 ›</button>
     </view>
 
-    <view wx:if="{{!hasPeriodRecords}}" class="stats-empty surface">
-      <image class="empty-cup" src="/assets/icons/milk-tea-cup.png" mode="aspectFit" aria-hidden="true"></image>
-      <text class="empty-title">{{activePeriodLabel}}还没有记录</text>
-      <button class="button-primary" bindtap="startRecord">去记一杯</button>
+    <view wx:if="{{!hasPeriodRecords}}" class="stats-empty" aria-live="polite">
+      <view class="empty-content">
+        <view class="empty-emblem" aria-hidden="true">
+          <image src="/assets/tabs/stats-active.png" mode="aspectFit"></image>
+        </view>
+        <text class="empty-title">{{activePeriodLabel}}还没有记录</text>
+        <button class="button-primary" bindtap="startRecord">记录一杯</button>
+      </view>
     </view>
   </view>
 </view>

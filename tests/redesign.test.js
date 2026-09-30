@@ -11,9 +11,9 @@ test('global Clay-lite tokens use an accessible single-accent palette', () => {
   const appConfig = JSON.parse(read('app.json'));
   const styles = read('app.wxss');
 
-  assert.equal(appConfig.window.navigationBarBackgroundColor, '#fff4e5');
-  assert.equal(appConfig.window.backgroundColor, '#fff4e5');
-  assert.match(styles, /page\s*{[^}]*background:\s*#fff4e5;[^}]*color:\s*#2d1f18;/s);
+  assert.equal(appConfig.window.navigationBarBackgroundColor, '#fbf8f3');
+  assert.equal(appConfig.window.backgroundColor, '#fbf8f3');
+  assert.match(styles, /page\s*{[^}]*background:\s*#fbf8f3;[^}]*color:\s*#2d1f18;/s);
   assert.match(styles, /\.button-primary\s*{[^}]*background:\s*linear-gradient\(145deg,\s*#b9473d,\s*#a94338\);[^}]*color:\s*#fff;/s);
   assert.match(styles, /\.surface\s*{[^}]*border-radius:\s*28rpx;[^}]*background:\s*#fff9f0;/s);
   assert.doesNotMatch(styles, /\.surface\s*{[^}]*inset/s);
