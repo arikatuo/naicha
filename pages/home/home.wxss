@@ -1,11 +1,17 @@
 .diary-page {
+  display: flex;
+  flex-direction: column;
   padding-top: 24rpx;
   padding-bottom: calc(40rpx + env(safe-area-inset-bottom));
   background: #fbf8f3;
 }
 
-.diary-content { display: flex; flex-direction: column; gap: 20rpx; }
+.diary-content { display: flex; flex: 1; flex-direction: column; gap: 20rpx; }
 .history-content { display: flex; flex-direction: column; gap: 20rpx; }
+
+.first-record-layout .calendar-card { display: flex; flex: 1; flex-direction: column; }
+.first-record-layout .days-grid { flex: 1; grid-auto-rows: minmax(92rpx, 1fr); }
+.first-record-layout .day-button { width: 76rpx; height: 76rpx; min-height: 76rpx; }
 
 .calendar-card {
   padding: 24rpx 16rpx 28rpx;

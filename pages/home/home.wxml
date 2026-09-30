@@ -4,7 +4,7 @@
     <button class="button-secondary" bindtap="refresh">重试</button>
   </view>
 
-  <view wx:else class="diary-content">
+  <view wx:else class="diary-content {{!hasRecords ? 'first-record-layout' : ''}}">
     <view class="calendar-card surface">
       <view class="month-header">
         <button class="month-arrow" bindtap="previousMonth" aria-label="上个月">‹</button>
