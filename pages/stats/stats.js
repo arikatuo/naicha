@@ -24,6 +24,7 @@ Page({
   data: {
     periods: PERIODS,
     activePeriod: 'month',
+    activePeriodLabel: '本月',
     periodLabel: '',
     cups: 0,
     days: 0,
@@ -46,6 +47,7 @@ Page({
       const chartTitle = { week: '每天已记录杯数', month: '每周已记录杯数', year: '每月已记录杯数' }[this.data.activePeriod];
       this.setData({
         periodLabel: stats.label,
+        activePeriodLabel: PERIODS.find((item) => item.key === this.data.activePeriod).label,
         cups: stats.cups,
         days: stats.days,
         calories: stats.calories,

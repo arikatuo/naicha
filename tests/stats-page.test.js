@@ -79,18 +79,21 @@ test('period switching and an empty period keep the next action clear', () => {
   const stats = loadPage('pages/stats/stats.js');
   stats.onShow();
   assert.equal(stats.data.hasPeriodRecords, false);
+  assert.equal(stats.data.activePeriodLabel, '本月');
   stats.changePeriod({ currentTarget: { dataset: { period: 'week' } } });
   assert.equal(stats.data.activePeriod, 'week');
+  assert.equal(stats.data.activePeriodLabel, '本周');
   assert.equal(stats.data.buckets.length, 7);
   stats.startRecord();
   assert.equal(navigation.at(-1), '/pages/brands/brands');
 });
 
-test('statistics entry is visible above the calendar even before the first record', () => {
-  const markup = fs.readFileSync(path.join(__dirname, '..', 'pages/home/home.wxml'), 'utf8');
-  const entry = markup.indexOf('bindtap="openStats"');
-  assert.ok(entry > 0);
-  assert.ok(entry < markup.indexOf('wx:if="{{!hasRecords}}"'));
+test('statistics entry stays in the calendar month header before the first record', () => {
+  const homeMarkup = fs.readFileSync(path.join(__dirname, '..', 'pages/home/home.wxml'), 'utf8');
+  const monthHeader = homeMarkup.indexOf('class="month-header"');
+  const entry = homeMarkup.indexOf('bindtap="openStats"');
+  const weekdays = homeMarkup.indexOf('class="weekdays"');
+  assert.ok(monthHeader > 0 && monthHeader < entry && entry < weekdays);
   const { navigation } = createWx();
   global.getApp = () => ({ globalData: { focusDate: '', focusRecordId: '' } });
   const home = loadPage('pages/home/home.js');
@@ -99,4 +102,14 @@ test('statistics entry is visible above the calendar even before the first recor
   assert.equal(home.data.hasRecords, false);
   home.openStats();
   assert.equal(navigation.at(-1), '/pages/stats/stats');
+});
+
+test('empty statistics replace zero metrics with one record action', () => {
+  const markup = fs.readFileSync(path.join(__dirname, '..', 'pages/stats/stats.wxml'), 'utf8');
+  assert.match(markup, /class="period-range"[^>]*>{{periodLabel}}<\/text>/);
+  assert.match(markup, /wx:if="{{hasPeriodRecords}}" class="summary-card surface"/);
+  assert.match(markup, /wx:if="{{!hasPeriodRecords}}" class="stats-empty surface"/);
+  assert.match(markup, /{{activePeriodLabel}}还没有记录/);
+  assert.match(markup, /bindtap="startRecord">去记一杯<\/button>/);
+  assert.doesNotMatch(markup, /看看这段时间的记录|只统计这台设备上保存的记录|不代表这段时间没有喝/);
 });

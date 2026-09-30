@@ -1,8 +1,4 @@
 <view class="page diary-page">
-  <view class="diary-heading">
-    <button class="stats-entry" bindtap="openStats" aria-label="查看本周、本月、本年统计">查看统计 ›</button>
-  </view>
-
   <view wx:if="{{storageError}}" class="surface diary-error">
     <text>记录暂时无法读取</text>
     <button class="button-secondary" bindtap="refresh">重试</button>
@@ -14,6 +10,7 @@
         <button class="month-arrow" bindtap="previousMonth" aria-label="上个月">‹</button>
         <view class="month-center">
           <text class="month-title">{{monthLabel}}</text>
+          <button class="stats-entry" bindtap="openStats" aria-label="查看本周、本月、本年统计">查看统计 ›</button>
         </view>
         <button class="month-arrow" bindtap="nextMonth" aria-label="下个月">›</button>
       </view>
