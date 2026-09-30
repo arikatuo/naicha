@@ -1,6 +1,7 @@
 <view class="page diary-page">
   <view class="diary-heading">
     <text class="diary-subtitle">选一杯看估算热量，喝过再记到日历</text>
+    <button class="stats-entry" bindtap="openStats" aria-label="查看本周、本月、本年统计">查看统计 ›</button>
   </view>
 
   <view wx:if="{{storageError}}" class="surface diary-error">
@@ -54,7 +55,6 @@
           <text class="latest-kicker">最近一杯</text>
           <text class="latest-name">{{latestRecord.brandName ? latestRecord.brandName + ' · ' : ''}}{{latestRecord.drinkName}}</text>
           <button class="latest-repeat" data-id="{{latestRecord.id}}" bindtap="repeatRecord">再记这杯 ›</button>
-          <button class="stats-link" bindtap="openStats">查看本周／月／年统计 ›</button>
         </view>
       </view>
       <view class="day-panel surface">

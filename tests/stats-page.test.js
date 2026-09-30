@@ -1,6 +1,7 @@
 const test = require('node:test');
 const assert = require('node:assert/strict');
 const path = require('node:path');
+const fs = require('node:fs');
 const diary = require('../utils/diary-store');
 const { dateKey } = require('../utils/calendar');
 
@@ -83,4 +84,19 @@ test('period switching and an empty period keep the next action clear', () => {
   assert.equal(stats.data.buckets.length, 7);
   stats.startRecord();
   assert.equal(navigation.at(-1), '/pages/brands/brands');
+});
+
+test('statistics entry is visible above the calendar even before the first record', () => {
+  const markup = fs.readFileSync(path.join(__dirname, '..', 'pages/home/home.wxml'), 'utf8');
+  const entry = markup.indexOf('bindtap="openStats"');
+  assert.ok(entry > 0);
+  assert.ok(entry < markup.indexOf('wx:if="{{!hasRecords}}"'));
+  const { navigation } = createWx();
+  global.getApp = () => ({ globalData: { focusDate: '', focusRecordId: '' } });
+  const home = loadPage('pages/home/home.js');
+  home.onLoad();
+  home.onShow();
+  assert.equal(home.data.hasRecords, false);
+  home.openStats();
+  assert.equal(navigation.at(-1), '/pages/stats/stats');
 });
