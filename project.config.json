@@ -1,7 +1,31 @@
 {
   "description": "奶茶热量日历",
   "packOptions": {
-    "ignore": [],
+    "ignore": [
+      { "type": "folder", "value": ".git" },
+      { "type": "folder", "value": ".omx" },
+      { "type": "folder", "value": ".claude-plugin" },
+      { "type": "folder", "value": ".worktrees" },
+      { "type": "folder", "value": "docs" },
+      { "type": "folder", "value": "tests" },
+      { "type": "folder", "value": "sessions" },
+      { "type": "folder", "value": "statuses" },
+      { "type": "folder", "value": "labels" },
+      { "type": "folder", "value": "sources" },
+      { "type": "folder", "value": "skills" },
+      { "type": "file", "value": "config.json" },
+      { "type": "file", "value": "views.json" },
+      { "type": "file", "value": "package.json" },
+      { "type": "file", "value": "project.private.config.json" },
+      { "type": "file", "value": "assets/icons/pork.png" },
+      { "type": "file", "value": "assets/icons/bike.png" },
+      { "type": "file", "value": "assets/icons/jogging.png" },
+      { "type": "file", "value": "assets/qrcode-official.jpg" },
+      { "type": "file", "value": "assets/miniprogram-avatar.png" },
+      { "type": "suffix", "value": ".jsonl" },
+      { "type": "suffix", "value": ".docx" },
+      { "type": "suffix", "value": ".md" }
+    ],
     "include": []
   },
   "setting": {
