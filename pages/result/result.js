@@ -3,8 +3,8 @@ const { decodePayload, encodePayload } = require('../../utils/nav');
 const { buildEquivalentCards } = require('../../utils/equivalents');
 const { getResultCopy } = require('../../utils/copy');
 const { drawPoster, loadCanvasImage } = require('../../utils/poster');
-const diary = require('../../utils/diary-store');
-const { dateKey, isValidDateKey } = require('../../utils/calendar');
+const { saveAndShowInCalendar } = require('../../utils/record-flow');
+const { dateKey, isValidDateKey, relativeDateLabel } = require('../../utils/calendar');
 
 const POSTER_QRCODE_SRC = '/assets/qrcode.png';
 const POSTER_CUP_SRC = '/assets/icons/milk-tea-cup.png';
@@ -24,11 +24,21 @@ function buildShareTitle(payload, card) {
   return `我刚才这杯约等于${equivalentText}，你那杯呢？`;
 }
 
-function buildDots(cards, activeIndex) {
-  return cards.map((card, index) => ({
-    id: card.id,
-    active: index === activeIndex
-  }));
+// 其余几个换算：保留原来的序号，点一下就换到大卡片上
+function buildOtherCards(cards, activeIndex) {
+  return cards
+    .map((card, index) => ({ ...card, index }))
+    .filter((card) => card.index !== activeIndex);
+}
+
+// 记录日期快捷项：今天 / 昨天 / 前天，其余日期走系统日期选择器
+function buildDateChips(todayDate, recordDate) {
+  const base = new Date();
+  return ['今天', '昨天', '前天'].map((label, offset) => {
+    const day = new Date(base.getFullYear(), base.getMonth(), base.getDate() - offset);
+    const date = dateKey(day);
+    return { label, date: offset === 0 ? todayDate : date, active: (offset === 0 ? todayDate : date) === recordDate };
+  });
 }
 
 function getPosterCanvas(page) {
@@ -68,7 +78,7 @@ Page({
     payload: null,
     cards: [],
     currentCard: null,
-    dots: [],
+    otherCards: [],
     heroCard: null,
     currentEquivalentIndex: 0,
     currentEquivalentPosition: 1,
@@ -76,6 +86,9 @@ Page({
     previewPosterPath: '',
     posterGenerating: false,
     recordDate: '',
+    recordDateLabel: '今天',
+    dateChips: [],
+    customDate: false,
     todayDate: '',
     isShared: false,
     savingRecord: false,
@@ -99,6 +112,8 @@ Page({
     }
 
     const cards = buildEquivalentCards(payload.calories, store.equivalents);
+    const todayDate = dateKey(new Date());
+    const recordDate = isValidDateKey(payload.recordDate) ? payload.recordDate : todayDate;
     const currentEquivalentIndex = 0;
 
     this.setData({
@@ -106,12 +121,15 @@ Page({
       payload,
       cards,
       currentCard: cards[currentEquivalentIndex] || null,
-      dots: buildDots(cards, currentEquivalentIndex),
+      otherCards: buildOtherCards(cards, currentEquivalentIndex),
       heroCard: cards[0] || null,
       currentEquivalentIndex,
       currentEquivalentPosition: currentEquivalentIndex + 1,
-      recordDate: isValidDateKey(payload.recordDate) ? payload.recordDate : dateKey(new Date()),
-      todayDate: dateKey(new Date()),
+      recordDate,
+      recordDateLabel: relativeDateLabel(recordDate, todayDate),
+      dateChips: buildDateChips(todayDate, recordDate),
+      customDate: !buildDateChips(todayDate, recordDate).some((chip) => chip.active),
+      todayDate,
       isShared: options.shared === '1',
       savingRecord: false,
       savedRecordId: '',
@@ -120,11 +138,26 @@ Page({
   },
 
   recalculate() {
-    wx.switchTab({ url: '/pages/lookup/lookup' });
+    wx.switchTab({ url: '/pages/record/record' });
+  },
+
+  applyRecordDate(recordDate) {
+    const { todayDate } = this.data;
+    const dateChips = buildDateChips(todayDate, recordDate);
+    this.setData({
+      recordDate,
+      recordDateLabel: relativeDateLabel(recordDate, todayDate),
+      dateChips,
+      customDate: !dateChips.some((chip) => chip.active)
+    });
   },
 
   selectRecordDate(event) {
-    this.setData({ recordDate: event.detail.value });
+    this.applyRecordDate(event.detail.value);
+  },
+
+  pickQuickDate(event) {
+    this.applyRecordDate(event.currentTarget.dataset.date);
   },
 
   saveRecord() {
@@ -132,7 +165,7 @@ Page({
     this.setData({ savingRecord: true });
     try {
       const { payload, recordDate } = this.data;
-      const record = diary.saveRecord({
+      const record = saveAndShowInCalendar({
         date: recordDate,
         mode: payload.mode,
         brandName: payload.brandName,
@@ -141,12 +174,6 @@ Page({
         config: payload.config
       });
       this.setData({ savingRecord: false, savedRecordId: record.id });
-      const app = typeof getApp === 'function' ? getApp() : null;
-      if (app && app.globalData) {
-        app.globalData.focusDate = recordDate;
-        app.globalData.focusRecordId = record.id;
-      }
-      wx.switchTab({ url: '/pages/home/home' });
     } catch (error) {
       this.setData({ savingRecord: false });
       wx.showToast({ title: '保存失败，请重试', icon: 'none' });
@@ -165,20 +192,13 @@ Page({
       currentEquivalentIndex: safeIndex,
       currentEquivalentPosition: safeIndex + 1,
       currentCard: cards[safeIndex],
-      dots: buildDots(cards, safeIndex)
+      otherCards: buildOtherCards(cards, safeIndex)
     });
   },
 
-  onEquivalentChange(event) {
-    this.setEquivalentIndex(event.detail.current || 0);
-  },
-
-  previousEquivalent() {
-    this.setEquivalentIndex(this.data.currentEquivalentIndex - 1);
-  },
-
-  nextEquivalent() {
-    this.setEquivalentIndex(this.data.currentEquivalentIndex + 1);
+  // 点下面的小卡，把它换到大卡片上；分享图和转发标题用的也是它
+  selectEquivalent(event) {
+    this.setEquivalentIndex(Number(event.currentTarget.dataset.index));
   },
 
   async generatePoster() {

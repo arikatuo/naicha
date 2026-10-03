@@ -1,0 +1,51 @@
+.tab-bar {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 100;
+  display: flex;
+  align-items: flex-end;
+  height: calc(110rpx + env(safe-area-inset-bottom));
+  padding-bottom: env(safe-area-inset-bottom);
+  box-sizing: border-box;
+  border-top: 1rpx solid #efe6dd;
+  background: #fffdf9;
+}
+
+.tab-item {
+  position: relative;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6rpx;
+  height: 110rpx;
+  color: #857468;
+  font-size: 22rpx;
+}
+.tab-item.active { color: #b9473d; font-weight: 600; }
+.tab-icon { width: 44rpx; height: 44rpx; }
+
+/* 中间的「记一杯」：抬高的圆形主按钮 */
+.tab-center { justify-content: flex-end; padding-bottom: 12rpx; box-sizing: border-box; }
+.center-button {
+  position: absolute;
+  top: -36rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 104rpx;
+  height: 104rpx;
+  border: 8rpx solid #fbf8f3;
+  border-radius: 50%;
+  background: #b9473d;
+  box-shadow: 0 10rpx 24rpx rgba(185, 71, 61, 0.28);
+  box-sizing: border-box;
+}
+.plus { position: relative; width: 36rpx; height: 36rpx; }
+.plus::before, .plus::after { content: ''; position: absolute; border-radius: 4rpx; background: #fff; }
+.plus::before { top: 15rpx; left: 0; width: 36rpx; height: 6rpx; }
+.plus::after { top: 0; left: 15rpx; width: 6rpx; height: 36rpx; }
+.tab-center .tab-text { color: #b9473d; }

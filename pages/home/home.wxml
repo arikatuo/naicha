@@ -1,81 +1,82 @@
 <view class="page diary-page">
   <view wx:if="{{storageError}}" class="surface diary-error">
     <text>记录暂时无法读取</text>
-    <button class="button-secondary" bindtap="refresh">重试</button>
+    <view role="button" class="button-secondary" bindtap="refresh">重试</view>
   </view>
 
-  <view wx:else class="diary-content {{!hasRecords ? 'first-record-layout' : ''}}">
+  <view wx:else class="diary-content">
     <view class="calendar-card surface">
       <view class="month-header">
-        <button class="month-arrow" bindtap="previousMonth" aria-label="上个月">‹</button>
+        <view role="button" class="month-arrow" bindtap="previousMonth" aria-label="上个月">‹</view>
         <view class="month-center">
           <text class="month-title">{{monthLabel}}</text>
         </view>
-        <button class="month-arrow" bindtap="nextMonth" aria-label="下个月">›</button>
+        <view role="button" class="month-arrow" bindtap="nextMonth" aria-label="下个月">›</view>
       </view>
       <view class="weekdays">
-        <text>周一</text><text>周二</text><text>周三</text><text>周四</text><text>周五</text><text>周六</text><text>周日</text>
+        <text>一</text><text>二</text><text>三</text><text>四</text><text>五</text><text class="weekend">六</text><text class="weekend">日</text>
       </view>
       <view class="days-grid">
         <view wx:for="{{cells}}" wx:key="key" class="day-cell">
-          <button wx:if="{{item.date}}" class="day-button {{item.selected ? 'selected' : ''}} {{item.today ? 'today' : ''}}" data-date="{{item.date}}" bindtap="selectDay" aria-label="{{item.date}}{{item.today ? '，今天' : ''}}{{item.count ? '，已记录' + item.count + '杯' : ''}}">
+          <view role="button" wx:if="{{item.date}}" class="day-button {{item.selected ? 'selected' : ''}} {{item.today ? 'today' : ''}}" data-date="{{item.date}}" bindtap="selectDay" aria-label="{{item.date}}{{item.today ? '，今天' : ''}}{{item.count ? '，已记录' + item.count + '杯' : ''}}">
             <text>{{item.day}}</text>
-            <view wx:if="{{item.count === 1}}" class="record-dot"></view>
-          </button>
-          <text wx:if="{{item.count > 1}}" class="record-count" data-date="{{item.date}}" bindtap="selectDay">{{item.count}}</text>
+          </view>
+          <view wx:if="{{item.tier}}" class="heat-dot tier-{{item.tier}} {{item.selected ? 'on-selected' : ''}}"></view>
         </view>
+      </view>
+      <view class="heat-legend" aria-hidden="true">
+        <text class="legend-title">当天热量</text>
+        <view class="legend-item"><view class="heat-dot tier-1"></view><text>轻松</text></view>
+        <view class="legend-item"><view class="heat-dot tier-2"></view><text>适中</text></view>
+        <view class="legend-item"><view class="heat-dot tier-3"></view><text>偏高</text></view>
       </view>
     </view>
 
-    <view wx:if="{{justSavedRecord}}" class="save-confirmation surface" aria-live="polite">
+    <view wx:if="{{justSavedRecord}}" class="save-confirmation" aria-live="polite">
       <text class="save-confirmation-title">已记到{{selectedDateLabel}}的日历</text>
       <text class="save-confirmation-detail">{{justSavedRecord.brandName ? justSavedRecord.brandName + ' · ' : ''}}{{justSavedRecord.drinkName}} · 约 {{justSavedRecord.calories}} kcal</text>
     </view>
 
-    <view wx:if="{{!hasRecords}}" class="empty-card surface">
-      <view class="empty-main">
-        <text class="empty-date">{{selectedDateLabel}}</text>
-        <view class="empty-art" aria-hidden="true">
-          <view class="empty-art-backdrop"></view>
-          <image class="empty-cup" src="/assets/icons/milk-tea-cup.png" mode="aspectFit"></image>
+    <view class="day-panel">
+      <view class="day-panel-head">
+        <text class="day-panel-title">{{selectedDateLabel}}</text>
+        <text wx:if="{{hasSelectedRecords}}" class="day-panel-count">{{selectedRecords.length}} 杯 · 约 {{selectedCalories}} kcal</text>
+      </view>
+
+      <view wx:if="{{hasSelectedRecords}}" class="record-list">
+        <view wx:for="{{selectedRecords}}" wx:key="id" class="record-card">
+          <view class="record-main">
+            <view class="record-copy">
+              <text class="record-name">{{item.brandName ? item.brandName + ' · ' : ''}}{{item.drinkName}}</text>
+              <text class="record-calories">约 {{item.calories}} kcal · 估算</text>
+            </view>
+            <view role="button" class="record-repeat" data-id="{{item.id}}" bindtap="repeatRecord">再喝一杯</view>
+            <view role="button" class="record-more" data-id="{{item.id}}" bindtap="toggleMore" aria-label="更多操作">⋯</view>
+          </view>
+          <view wx:if="{{expandedId === item.id}}" class="record-more-row">
+            <picker mode="date" value="{{item.date}}" end="{{todayDate}}" data-id="{{item.id}}" bindchange="changeRecordDate">
+              <view class="more-action">改日期</view>
+            </picker>
+            <view role="button" class="more-action danger" data-id="{{item.id}}" bindtap="removeRecord">删除</view>
+          </view>
         </view>
       </view>
-      <view class="empty-status">
-        <text class="empty-label">这天的记录</text>
-        <view class="empty-count"><text>0</text><text class="empty-count-unit">杯</text></view>
+
+      <view wx:else class="day-empty">
+        <image class="day-empty-cup" src="/assets/icons/milk-tea-cup.png" mode="aspectFit" aria-hidden="true"></image>
+        <text class="day-empty-title">{{selectedInFuture ? '还没到这一天' : '这天还没有记录'}}</text>
+        <text class="day-empty-copy">{{selectedInFuture ? '先看看别的日子吧。' : (selectedIsToday ? '喝了就点下面的 ＋ 记一杯。' : '漏记了？可以在这里补上。')}}</text>
       </view>
-      <button class="button-primary record-button" disabled="{{selectedInFuture}}" bindtap="startRecord">{{recordButtonLabel}}</button>
+
+      <view role="button" wx:if="{{!selectedInFuture && !selectedIsToday}}" class="button-primary record-button" bindtap="startRecord">{{recordButtonLabel}}</view>
     </view>
 
-    <view wx:else class="history-content">
-      <view class="day-panel surface">
-        <view class="day-panel-head">
-        <text class="day-panel-title">{{selectedDateLabel}}</text>
-        <text wx:if="{{hasSelectedRecords}}" class="day-panel-count">已记录 {{selectedRecords.length}} 杯 · 约 {{selectedCalories}} kcal</text>
-        <text wx:else class="day-panel-count">还没有记录</text>
-        </view>
-        <view wx:if="{{hasSelectedRecords}}" class="record-list">
-        <view wx:for="{{selectedRecords}}" wx:key="id" class="record-card">
-          <view class="record-copy">
-            <text class="record-name">{{item.brandName ? item.brandName + ' · ' : ''}}{{item.drinkName}}</text>
-            <text class="record-calories">约 {{item.calories}} kcal · 估算</text>
-          </view>
-          <view class="record-actions">
-            <button data-id="{{item.id}}" bindtap="repeatRecord">再记这杯</button>
-            <picker mode="date" value="{{item.date}}" end="{{todayDate}}" data-id="{{item.id}}" bindchange="changeRecordDate"><text>改日期</text></picker>
-            <button data-id="{{item.id}}" bindtap="removeRecord">删除</button>
-          </view>
-        </view>
-        </view>
-        <button class="button-primary record-button" disabled="{{selectedInFuture}}" bindtap="startRecord">{{recordButtonLabel}}</button>
-      </view>
-      <view class="history-summary surface">
-        <view class="history-stat"><text class="history-stat-value">{{monthCount}}</text><text class="history-stat-label">这个月已记的杯数</text></view>
-        <view wx:if="{{latestRecord}}" class="latest-drink">
-          <text class="latest-kicker">最近一杯</text>
-          <text class="latest-name">{{latestRecord.brandName ? latestRecord.brandName + ' · ' : ''}}{{latestRecord.drinkName}}</text>
-          <button class="latest-repeat" data-id="{{latestRecord.id}}" bindtap="repeatRecord">再记这杯 ›</button>
-        </view>
+    <view wx:if="{{hasRecords}}" class="history-summary surface">
+      <view class="history-stat"><text class="history-stat-value">{{monthCount}}</text><text class="history-stat-label">这个月已记的杯数</text></view>
+      <view wx:if="{{latestRecord}}" class="latest-drink">
+        <text class="latest-kicker">最近一杯</text>
+        <text class="latest-name">{{latestRecord.brandName ? latestRecord.brandName + ' · ' : ''}}{{latestRecord.drinkName}}</text>
+        <view role="button" class="latest-repeat" data-id="{{latestRecord.id}}" bindtap="repeatRecord">再喝一杯 ›</view>
       </view>
     </view>
   </view>

@@ -1,38 +1,62 @@
+/* ============ 设计变量（全局唯一来源，页面样式一律引用这里） ============ */
 page {
-  background: #fbf8f3;
-  color: #2d1f18;
-  font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif;
+  /* 色彩：暖白底 + 单一强调色 */
+  --bg: #fbf8f3;
+  --surface: #ffffff;
+  --surface-soft: #f8ebde;
+  --primary: #b9473d;
+  --primary-soft: #f9e7e2;
+  --text: #2d1f18;
+  --text-2: #75625a;
+  --text-3: #857468;
+  --line: #efe6dd;
+  /* 热量分档：轻松 / 适中 / 偏高 */
+  --heat-1: #f0b48a;
+  --heat-2: #e08a5a;
+  --heat-3: #b9473d;
+  /* 圆角 */
+  --r-sm: 16rpx;
+  --r-md: 24rpx;
+  --r-lg: 32rpx;
+  --r-pill: 999rpx;
+  /* 字号与字重：只用 400 / 600 两档字重 */
+  --fs-title: 44rpx;
+  --fs-h2: 32rpx;
+  --fs-body: 28rpx;
+  --fs-cap: 24rpx;
+  --fw: 400;
+  --fw-strong: 600;
+  /* 阴影 */
+  --shadow-card: 0 8rpx 28rpx rgba(120, 70, 50, 0.06);
+  --shadow-cta: 0 12rpx 28rpx rgba(185, 71, 61, 0.22);
+
+  background: var(--bg);
+  color: var(--text);
+  font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Helvetica Neue", sans-serif;
+  font-size: var(--fs-body);
 }
 
 .page {
   min-height: 100vh;
   box-sizing: border-box;
-  padding: 36rpx 32rpx calc(56rpx + env(safe-area-inset-bottom));
+  padding: 32rpx 32rpx calc(56rpx + env(safe-area-inset-bottom));
 }
 
 .muted {
-  color: #6f5d51;
+  color: var(--text-2);
 }
 
-.button-primary {
+/* ---------- 按钮：一个主按钮、一个次按钮、一个文字按钮 ---------- */
+.button-primary,
+.button-secondary,
+.button-text {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 100%;
-  min-height: 96rpx;
   box-sizing: border-box;
   margin: 0;
-  padding: 0 32rpx;
-  border: 0;
-  border-radius: 999rpx;
-  background: linear-gradient(145deg, #b9473d, #a94338);
-  color: #fff;
-  box-shadow: 0 16rpx 30rpx rgba(169, 67, 56, 0.24);
-  font-size: 30rpx;
-  font-weight: 800;
   line-height: 1.2;
   white-space: nowrap;
-  transition: transform 180ms ease-out, box-shadow 180ms ease-out, opacity 180ms ease-out;
 }
 
 .button-primary::after,
@@ -41,39 +65,52 @@ page {
   border: 0;
 }
 
-.button-secondary {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.button-primary {
   width: 100%;
-  min-height: 92rpx;
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0 28rpx;
-  border: 2rpx solid rgba(185, 71, 61, 0.16);
-  border-radius: 999rpx;
-  background: #fff9f0;
-  color: #5f3d31;
-  box-shadow: 0 10rpx 22rpx rgba(95, 61, 49, 0.09);
+  min-height: 96rpx;
+  padding: 0 32rpx;
+  border: 0;
+  border-radius: var(--r-pill);
+  background: var(--primary);
+  color: #fff;
+  box-shadow: var(--shadow-cta);
   font-size: 30rpx;
-  font-weight: 800;
-  line-height: 1.2;
-  white-space: nowrap;
-  transition: transform 180ms ease-out, box-shadow 180ms ease-out, opacity 180ms ease-out;
+  font-weight: var(--fw-strong);
 }
 
-.button-primary:active,
-.button-secondary:active {
-  opacity: 0.94;
-  transform: scale(0.98) translateY(2rpx);
-  box-shadow: 0 6rpx 14rpx rgba(95, 61, 49, 0.12);
+.is-disabled {
+  opacity: 0.5;
+  box-shadow: none;
 }
 
+.button-secondary {
+  width: 100%;
+  min-height: 88rpx;
+  padding: 0 28rpx;
+  border: 2rpx solid var(--line);
+  border-radius: var(--r-pill);
+  background: var(--surface);
+  color: var(--text);
+  font-size: 28rpx;
+  font-weight: var(--fw-strong);
+}
+
+.button-text {
+  min-height: 88rpx;
+  padding: 0 24rpx;
+  border: 0;
+  background: transparent;
+  color: var(--text-2);
+  font-size: 28rpx;
+  font-weight: var(--fw-strong);
+}
+
+/* ---------- 容器与小件 ---------- */
 .surface {
-  border: 2rpx solid rgba(95, 61, 49, 0.08);
-  border-radius: 28rpx;
-  background: #fff9f0;
-  box-shadow: 0 14rpx 32rpx rgba(95, 61, 49, 0.09);
+  border: 1rpx solid var(--line);
+  border-radius: var(--r-lg);
+  background: var(--surface);
+  box-shadow: var(--shadow-card);
 }
 
 .pill {
@@ -82,43 +119,21 @@ page {
   justify-content: center;
   min-height: 64rpx;
   box-sizing: border-box;
-  border-radius: 999rpx;
-  background: #f8e4cf;
-  color: #5f3d31;
-  font-size: 24rpx;
-  font-weight: 700;
+  border-radius: var(--r-pill);
+  background: var(--surface-soft);
+  color: var(--text);
+  font-size: var(--fs-cap);
+  font-weight: var(--fw-strong);
 }
 
 .clay-chip {
-  border-radius: 999rpx;
-  background: #f4d8bd;
-  box-shadow: 0 8rpx 18rpx rgba(95, 61, 49, 0.08);
+  border-radius: var(--r-pill);
+  background: var(--surface-soft);
 }
 
 .clay-pressed {
-  background: #6a3c2c;
+  background: var(--primary);
   color: #fff;
-  box-shadow: none;
-}
-
-.button-text {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 88rpx;
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0 24rpx;
-  border: 0;
-  background: transparent;
-  color: #6a3c2c;
-  font-size: 28rpx;
-  font-weight: 700;
-  line-height: 1.2;
-}
-
-.button-text:active {
-  opacity: 0.64;
 }
 
 .section-head {
@@ -129,14 +144,14 @@ page {
 }
 
 .page-title {
-  color: #2d1f18;
-  font-size: 48rpx;
-  font-weight: 800;
-  line-height: 1.18;
+  color: var(--text);
+  font-size: var(--fs-title);
+  font-weight: var(--fw-strong);
+  line-height: 1.2;
 }
 
 .page-subtitle {
-  color: #6f5d51;
+  color: var(--text-2);
   font-size: 26rpx;
   line-height: 1.5;
 }
@@ -151,14 +166,14 @@ page {
 }
 
 .state-title {
-  color: #2d1f18;
-  font-size: 36rpx;
-  font-weight: 800;
+  color: var(--text);
+  font-size: var(--fs-h2);
+  font-weight: var(--fw-strong);
   line-height: 1.25;
 }
 
 .state-copy {
-  color: #6f5d51;
+  color: var(--text-2);
   font-size: 26rpx;
   line-height: 1.55;
 }

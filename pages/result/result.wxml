@@ -2,18 +2,14 @@
   <view wx:if="{{hasResult}}" class="result-shell">
     <view class="summary result-surface" aria-live="polite">
       <view class="summary-topline">
-        <text class="summary-kicker">揭晓结果</text>
+        <text class="result-badge">{{resultCopy.badge}}</text>
+        <text class="estimate-badge">估算</text>
       </view>
 
       <view class="calorie-row">
         <text class="calorie-prefix">约</text>
         <text class="calorie-number">{{payload.calories}}</text>
         <text class="calorie-unit">kcal</text>
-      </view>
-
-      <view class="badge-row">
-        <text class="result-badge">{{resultCopy.badge}}</text>
-        <text class="estimate-badge">估算</text>
       </view>
 
       <text class="result-title">{{resultCopy.title}}</text>
@@ -25,58 +21,64 @@
     </view>
 
     <view class="equivalent-stage">
-      <text class="stage-label">等于什么？</text>
+      <view class="stage-head">
+        <text class="stage-label">相当于</text>
+        <text class="stage-hint">点下面的换一个，分享图也用它</text>
+      </view>
 
-      <swiper class="equivalent-swiper" current="{{currentEquivalentIndex}}" circular="true" duration="280" easing-function="easeOutCubic" bindchange="onEquivalentChange">
-        <swiper-item wx:for="{{cards}}" wx:key="id">
-          <view class="swiper-item-inner">
-            <view class="equivalent-card">
-              <view class="icon-well">
-                <image class="icon" src="{{item.icon}}" mode="aspectFit"></image>
-              </view>
-              <view class="card-body">
-                <view class="metric-row">
-                  <text class="card-number">{{item.numberMain}}</text>
-                  <text class="card-unit">{{item.numberUnit}}</text>
-                </view>
-                <text class="card-label">{{item.label}}</text>
-                <text class="card-sub">{{item.hint}}</text>
-              </view>
-            </view>
-          </view>
-        </swiper-item>
-      </swiper>
-
-      <view class="carousel-controls">
-        <view class="carousel-arrow" bindtap="previousEquivalent" aria-label="上一个换算">‹</view>
-        <view class="carousel-dots" aria-label="换算分页">
-          <text wx:for="{{dots}}" wx:key="id" class="carousel-dot {{item.active ? 'active' : ''}}"></text>
+      <view class="equivalent-card hero-equivalent" aria-live="polite">
+        <view class="icon-well">
+          <image class="icon" src="{{currentCard.icon}}" mode="aspectFit"></image>
         </view>
-        <view class="carousel-arrow" bindtap="nextEquivalent" aria-label="下一个换算">›</view>
+        <view class="card-body">
+          <view class="metric-row">
+            <text class="card-number">{{currentCard.numberMain}}</text>
+            <text class="card-unit">{{currentCard.numberUnit}}</text>
+          </view>
+          <text class="card-label">{{currentCard.label}}</text>
+          <text class="card-sub">{{currentCard.hint}}</text>
+        </view>
+      </view>
+
+      <view class="equivalent-tiles">
+        <view role="button" wx:for="{{otherCards}}" wx:key="id" class="equivalent-tile" data-index="{{item.index}}" bindtap="selectEquivalent" aria-label="换成{{item.label}}">
+          <image class="tile-icon" src="{{item.icon}}" mode="aspectFit" aria-hidden="true"></image>
+          <view class="tile-copy">
+            <view class="tile-metric"><text class="tile-number">{{item.numberMain}}</text><text class="tile-unit">{{item.numberUnit}}</text></view>
+            <text class="tile-label">{{item.label}}</text>
+          </view>
+        </view>
       </view>
     </view>
 
+    <view class="secondary-actions {{isShared ? 'shared-actions' : ''}}">
+      <view class="share-slot">
+        <view class="button-secondary share-button" role="button">分享给朋友</view>
+        <button class="share-overlay" open-type="share" hover-class="none" aria-label="分享给朋友"></button>
+      </view>
+      <view role="button" class="button-secondary poster-button {{posterGenerating ? 'is-disabled' : ''}}" bindtap="generatePoster">生成分享图</view>
+      <view role="button" wx:if="{{!isShared}}" class="button-secondary recalculate-button" bindtap="recalculate">算另一杯</view>
+    </view>
+
     <view class="actions">
-      <view wx:if="{{!isShared}}" class="record-action">
-        <picker mode="date" value="{{recordDate}}" end="{{todayDate}}" bindchange="selectRecordDate">
-          <view class="record-date">记录日期：{{recordDate}} <text>修改 ›</text></view>
-        </picker>
-        <button class="button-primary save-record-button" loading="{{savingRecord}}" disabled="{{savingRecord || savedRecordId}}" bindtap="saveRecord">{{savedRecordId ? '已记到日历' : '记到日历'}}</button>
-        <text class="record-helper">喝过这杯？记下后可在日历里找回。</text>
-      </view>
-      <button wx:else class="button-primary own-drink-button" bindtap="recalculate">算我的这杯</button>
-      <button class="button-secondary share-button" open-type="share">分享给朋友</button>
-      <view class="secondary-actions {{isShared ? 'shared-actions' : ''}}">
-        <button class="button-secondary poster-button" loading="{{posterGenerating}}" disabled="{{posterGenerating}}" bindtap="generatePoster">生成分享图</button>
-        <button wx:if="{{!isShared}}" class="button-secondary recalculate-button" bindtap="recalculate">算另一杯</button>
-      </view>
+      <block wx:if="{{!isShared}}">
+        <view class="date-row">
+          <text class="date-row-label">记到</text>
+          <view role="button" wx:for="{{dateChips}}" wx:key="label" class="date-chip {{item.active ? 'active' : ''}}" data-date="{{item.date}}" bindtap="pickQuickDate">{{item.label}}</view>
+          <picker mode="date" value="{{recordDate}}" end="{{todayDate}}" bindchange="selectRecordDate">
+            <view class="date-chip {{customDate ? 'active' : ''}}" aria-label="选择其他日期">{{customDate ? recordDateLabel : '其他日期'}} ›</view>
+          </picker>
+        </view>
+        <view role="button" class="button-primary save-record-button {{savingRecord || savedRecordId ? 'is-disabled' : ''}}" bindtap="saveRecord">{{savedRecordId ? '已记到日历' : '记到日历'}}</view>
+      </block>
+      <view role="button" wx:else class="button-primary own-drink-button" bindtap="recalculate">算我的这杯</view>
     </view>
   </view>
 
   <view wx:else class="error-state surface">
     <text class="state-title">结果走丢了</text>
     <text class="state-copy">{{errorMessage}}</text>
-    <button class="button-primary" bindtap="recalculate">重新计算</button>
+    <view role="button" class="button-primary" bindtap="recalculate">重新计算</view>
   </view>
 
   <view wx:if="{{posterPreviewOpen}}" class="poster-preview-mask" bindtap="closePosterPreview">
@@ -84,8 +86,8 @@
       <text class="preview-title">结果图预览</text>
       <image class="poster-preview-image" src="{{previewPosterPath}}" mode="aspectFit"></image>
       <view class="preview-actions">
-        <button class="button-primary preview-save" bindtap="savePoster">保存到相册</button>
-        <button class="button-text preview-close" bindtap="closePosterPreview">关闭</button>
+        <view role="button" class="button-primary preview-save" bindtap="savePoster">保存到相册</view>
+        <view role="button" class="button-text preview-close" bindtap="closePosterPreview">关闭</view>
       </view>
     </view>
   </view>

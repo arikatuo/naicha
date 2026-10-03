@@ -2,7 +2,8 @@ const store = require('../../utils/data-store');
 const { calculateBrandDrinkCalories } = require('../../utils/calculator');
 const { getDrinkIcon } = require('../../utils/drink-icons');
 const { encodePayload, decodePayload } = require('../../utils/nav');
-const { isValidDateKey } = require('../../utils/calendar');
+const { dateKey, isValidDateKey, relativeDateLabel } = require('../../utils/calendar');
+const { saveAndShowInCalendar } = require('../../utils/record-flow');
 
 function mapDrink(drink) {
   const tagColorMap = {
@@ -22,8 +23,17 @@ function mapDrink(drink) {
       ...t,
       tagClass: tagColorMap[t.id] || ''
     })),
-    icon: getDrinkIcon(drink)
+    icon: getDrinkIcon(drink),
+    defaultCalories: store.getDefaultCalories(drink)
   };
+}
+
+// 筛选条：只列出这家店实际出现过的标签，最多 5 个
+function buildFilters(drinks) {
+  const counts = new Map();
+  drinks.forEach((drink) => drink.tags.forEach((tag) => counts.set(tag.id, { id: tag.id, name: tag.name, count: ((counts.get(tag.id) || {}).count || 0) + 1 })));
+  const tags = [...counts.values()].filter((tag) => tag.count < drinks.length).sort((a, b) => b.count - a.count).slice(0, 5);
+  return tags.length ? [{ id: 'all', name: '全部' }, ...tags.map(({ id, name }) => ({ id, name }))] : [];
 }
 
 function createToppingOptions(selectedIds = []) {
@@ -37,9 +47,15 @@ Page({
   data: {
     brandId: '',
     recordDate: '',
+    recordDateLabel: '今天',
+    liveCalories: 0,
     brand: null,
     brandName: '饮品选择',
     drinks: [],
+    visibleDrinks: [],
+    filters: [],
+    activeFilter: 'all',
+    sortByCalories: false,
     hasContent: false,
     emptyTitle: '',
     emptyMessage: '',
@@ -58,11 +74,33 @@ Page({
   },
 
   onLoad(options) {
-    this.setData({ recordDate: options && isValidDateKey(options.recordDate) ? options.recordDate : '' });
+    const recordDate = options && isValidDateKey(options.recordDate) ? options.recordDate : '';
+    this.setData({
+      recordDate,
+      recordDateLabel: recordDate ? relativeDateLabel(recordDate, dateKey(new Date())) : '今天'
+    });
     this.loadContent((options && options.brandId) || '');
     if (options && options.drinkId) {
       this.openDrinkById(options.drinkId, decodePayload(options.prefill));
     }
+  },
+
+  // 按当前筛选和排序生成列表
+  applyView() {
+    const { drinks, activeFilter, sortByCalories } = this.data;
+    let list = activeFilter === 'all' ? drinks.slice() : drinks.filter((drink) => drink.tagIds && drink.tagIds.includes(activeFilter));
+    if (sortByCalories) list = list.sort((a, b) => a.defaultCalories - b.defaultCalories);
+    this.setData({ visibleDrinks: list });
+  },
+
+  selectFilter(event) {
+    this.setData({ activeFilter: event.currentTarget.dataset.id });
+    this.applyView();
+  },
+
+  toggleSort() {
+    this.setData({ sortByCalories: !this.data.sortByCalories });
+    this.applyView();
   },
 
   loadContent(brandId) {
@@ -75,6 +113,9 @@ Page({
       brand,
       brandName: brand ? brand.name : '饮品选择',
       drinks,
+      filters: buildFilters(drinks),
+      activeFilter: 'all',
+      sortByCalories: false,
       hasContent,
       emptyTitle: brand ? '这家店的饮品还在整理中' : '没有找到这家品牌',
       emptyMessage: brand
@@ -90,6 +131,10 @@ Page({
       toppingOptions: createToppingOptions(),
       panelOpen: false
     });
+    this.applyView();
+    if (brand && typeof wx !== 'undefined' && typeof wx.setNavigationBarTitle === 'function') {
+      wx.setNavigationBarTitle({ title: brand.name });
+    }
   },
 
   reloadContent() {
@@ -99,7 +144,7 @@ Page({
   backToBrands() {
     wx.navigateBack({
       fail: () => {
-        wx.reLaunch({ url: '/pages/brands/brands' });
+        wx.switchTab({ url: '/pages/record/record' });
       }
     });
   },
@@ -137,6 +182,7 @@ Page({
       toppingOptions: createToppingOptions(selectedExtraToppingIds),
       panelOpen: true
     });
+    this.updateLiveCalories();
   },
 
   closePanel() {
@@ -149,7 +195,8 @@ Page({
       selectedExtraToppingCount: 0,
       defaultToppings: [],
       sizeOptions: [],
-      toppingOptions: createToppingOptions()
+      toppingOptions: createToppingOptions(),
+      liveCalories: 0
     });
   },
 
@@ -162,10 +209,12 @@ Page({
         selected: size.id === selectedSizeId
       }))
     });
+    this.updateLiveCalories();
   },
 
   selectSweetness(event) {
     this.setData({ selectedSweetnessId: event.currentTarget.dataset.id });
+    this.updateLiveCalories();
   },
 
   toggleExtraTopping(event) {
@@ -180,6 +229,7 @@ Page({
         selectedExtraToppingCount: next.length,
         toppingOptions: createToppingOptions(next)
       });
+      this.updateLiveCalories();
       return;
     }
 
@@ -194,35 +244,68 @@ Page({
       selectedExtraToppingCount: selected.length,
       toppingOptions: createToppingOptions(selected)
     });
+    this.updateLiveCalories();
   },
 
-  calculate() {
+  // 当前配置对应的热量；配置每变一次就刷新底部的实时热量条
+  currentCalories() {
     const drink = this.data.selectedDrink;
     const size = store.getCupSizeById(this.data.selectedSizeId);
     const sweetness = store.getSweetnessById(this.data.selectedSweetnessId);
-    if (!drink || !size || !sweetness) {
-      wx.showToast({ title: '先把这杯配置完整吧', icon: 'none' });
-      return;
-    }
-
+    if (!drink || !size || !sweetness) return null;
     const extraToppings = store.getToppingsByIds(this.data.selectedExtraToppingIds);
-    const calories = calculateBrandDrinkCalories({ drink, size, sweetness, extraToppings });
-    const payload = {
+    return calculateBrandDrinkCalories({ drink, size, sweetness, extraToppings });
+  },
+
+  updateLiveCalories() {
+    const calories = this.currentCalories();
+    this.setData({ liveCalories: calories === null ? 0 : calories });
+  },
+
+  buildPayload() {
+    const calories = this.currentCalories();
+    if (calories === null) {
+      wx.showToast({ title: '先把这杯配置完整吧', icon: 'none' });
+      return null;
+    }
+    return {
       mode: 'brand',
-      drinkName: drink.displayName,
+      drinkName: this.data.selectedDrink.displayName,
       brandName: this.data.brand.name,
       calories,
       recordDate: this.data.recordDate,
       config: {
         brandId: this.data.brandId,
-        drinkId: drink.id,
+        drinkId: this.data.selectedDrink.id,
         sizeId: this.data.selectedSizeId,
         sweetnessId: this.data.selectedSweetnessId,
         toppingIds: this.data.selectedExtraToppingIds
       }
     };
+  },
 
+  calculate() {
+    const payload = this.buildPayload();
+    if (!payload) return;
     wx.navigateTo({ url: `/pages/result/result?payload=${encodePayload(payload)}` });
+  },
+
+  // 常喝的一杯不用再看结果页，直接记到日历
+  saveNow() {
+    const payload = this.buildPayload();
+    if (!payload) return;
+    try {
+      saveAndShowInCalendar({
+        date: payload.recordDate || dateKey(new Date()),
+        mode: payload.mode,
+        brandName: payload.brandName,
+        drinkName: payload.drinkName,
+        calories: payload.calories,
+        config: payload.config
+      });
+    } catch (error) {
+      wx.showToast({ title: '保存失败，请重试', icon: 'none' });
+    }
   },
 
   onShareAppMessage() {
@@ -231,7 +314,7 @@ Page({
       title: store.copywriting.shareTitle,
       path: brandId
         ? `/pages/drinks/drinks?brandId=${encodeURIComponent(brandId)}`
-        : '/pages/brands/brands'
+        : '/pages/record/record'
     };
   }
 });

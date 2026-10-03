@@ -13,23 +13,25 @@ test('calendar home keeps the first action clear without explanatory copy', () =
   const markup = read('pages/home/home.wxml');
 
   assert.match(markup, /class="calendar-card surface"/);
-  assert.match(markup, /class="empty-card surface"/);
+  assert.match(markup, /class="day-panel"/);
   assert.match(markup, /recordButtonLabel/);
   assert.doesNotMatch(markup, /选一杯看估算热量|选好饮品|记录示例|记下后/);
 });
 
-test('lookup tab exposes both existing calculation routes', () => {
-  const markup = read('pages/lookup/lookup.wxml');
-  const script = read('pages/lookup/lookup.js');
+test('record tab exposes brand, quick, recent and custom routes', () => {
+  const markup = read('pages/record/record.wxml');
+  const script = read('pages/record/record.js');
 
-  assert.match(markup, /bindtap="goBrands"[^>]*>选一杯热门饮品<\/button>/);
-  assert.match(markup, /bindtap="goCustom"[^>]*>自己搭一杯<\/button>/);
-  assert.match(script, /\/pages\/brands\/brands/);
+  assert.match(markup, /bindtap="openBrand"/);
+  assert.match(markup, /bindtap="openQuickDrink"/);
+  assert.match(markup, /bindtap="openRecent"/);
+  assert.match(markup, /bindtap="goCustom"/);
+  assert.match(script, /\/pages\/drinks\/drinks/);
   assert.match(script, /\/pages\/custom\/custom/);
 });
 
 test('brand data remains complete and brand cards keep differentiated flavor copy', () => {
-  const markup = read('pages/brands/brands.wxml');
+  const markup = read('pages/record/record.wxml');
   const brands = require('../data/brands');
 
   assert.match(markup, /{{item\.subtitle}}/);
@@ -43,21 +45,21 @@ test('brand data remains complete and brand cards keep differentiated flavor cop
 });
 
 test('brand page provides a retryable empty state', () => {
-  const markup = read('pages/brands/brands.wxml');
-  const script = read('pages/brands/brands.js');
+  const markup = read('pages/record/record.wxml');
+  const script = read('pages/record/record.js');
 
   assert.match(markup, /wx:if="{{hasBrands}}"/);
-  assert.match(markup, /class="empty-state"/);
+  assert.match(markup, /class="empty-state surface"/);
   assert.match(script, /reloadBrands\(\)/);
 });
 
-test('drink cards use a two-column grid and drink-specific artwork', () => {
+test('drink rows are a compact single column with drink-specific artwork', () => {
   const script = read('pages/drinks/drinks.js');
   const styles = read('pages/drinks/drinks.wxss');
   const iconMap = require('../data/drink-icons');
 
-  assert.match(styles, /\.drink-list\s*{[^}]*display:\s*grid;/s);
-  assert.match(styles, /grid-template-columns:\s*repeat\(2,\s*1fr\)/);
+  assert.match(styles, /\.drink-list\s*{[^}]*flex-direction:\s*column;/s);
+  assert.match(styles, /\.drink-icon-shell\s*{[^}]*width:\s*96rpx;/s);
   assert.match(script, /getDrinkIcon\(drink\)/);
   assert.ok(new Set(Object.values(iconMap)).size >= 8);
 });
@@ -102,7 +104,7 @@ test('result page keeps the kcal summary as the leading card', () => {
 
   assert.ok(summaryIndex > -1);
   assert.ok(summaryIndex < equivalentIndex);
-  assert.match(markup, /揭晓结果/);
+  assert.match(markup, /class="result-badge"/);
   assert.match(styles, /\.calorie-number\s*{[^}]*font-size:\s*100rpx;/s);
   assert.match(styles, /\.summary-footer\s*{[^}]*flex-direction:\s*column;/s);
 });
@@ -110,20 +112,21 @@ test('result page keeps the kcal summary as the leading card', () => {
 test('result page keeps light badge styling', () => {
   const styles = read('pages/result/result.wxss');
 
-  assert.match(styles, /\.result-badge\s*{[^}]*background:\s*#b9473d;/s);
-  assert.match(styles, /\.estimate-badge\s*{[^}]*background:\s*#FAEEDA;/s);
+  assert.match(styles, /\.result-badge\s*{[^}]*background:\s*var\(--primary\);/s);
+  assert.match(styles, /\.estimate-badge\s*{[^}]*background:\s*var\(--surface\);/s);
   assert.doesNotMatch(styles, /\.result-page\s*{[^}]*background:\s*#0/s);
 });
 
-test('result equivalents remain browsable by swipe and controls', () => {
+test('result equivalents show one hero card and tappable tiles for the rest', () => {
   const markup = read('pages/result/result.wxml');
   const styles = read('pages/result/result.wxss');
   const script = read('pages/result/result.js');
 
-  assert.match(markup, /class="equivalent-swiper"/);
-  assert.match(markup, /class="carousel-arrow"/);
-  assert.match(styles, /\.equivalent-swiper\s*{[^}]*height:\s*260rpx;/s);
+  assert.match(markup, /class="equivalent-card hero-equivalent"/);
+  assert.match(markup, /class="equivalent-tile"/);
+  assert.match(styles, /\.equivalent-tiles\s*{[^}]*display:\s*grid;/s);
   assert.match(script, /setEquivalentIndex\(/);
+  assert.match(script, /selectEquivalent\(/);
 });
 
 test('result page provides a visible recovery state for malformed payloads', () => {
@@ -141,12 +144,13 @@ test('result page offers deliberate recording, sharing, and a fresh calculation'
   const script = read('pages/result/result.js');
 
   assert.match(markup, /bindtap="saveRecord"/);
-  assert.match(markup, /open-type="share"[^>]*>分享给朋友<\/button>/);
+  assert.match(markup, /<button class="share-overlay" open-type="share"/);
+  assert.match(markup, /class="button-secondary share-button"[^>]*>分享给朋友<\/view>/);
   assert.match(markup, /bindtap="generatePoster"/);
   assert.match(markup, /class="button-secondary recalculate-button"/);
   assert.match(script, /buildShareTitle\(/);
   assert.match(script, /encodePayload\(\{/);
-  assert.match(script, /wx\.switchTab\(\{\s*url:\s*'\/pages\/lookup\/lookup'\s*\}\)/s);
+  assert.match(script, /wx\.switchTab\(\{\s*url:\s*'\/pages\/record\/record'\s*\}\)/s);
 });
 
 test('local visual assets cover brand logos and distinct result icons', () => {
@@ -183,7 +187,7 @@ test('local visual assets cover brand logos and distinct result icons', () => {
 test('equivalent cards use reference details instead of instructions', () => {
   const markup = read('pages/result/result.wxml');
 
-  assert.match(markup, /{{item\.hint}}/);
+  assert.match(markup, /{{currentCard\.hint}}/);
   assert.doesNotMatch(read('utils/equivalents.js'), /左右滑动|换算玩具/);
 });
 
@@ -244,10 +248,12 @@ test('canvas image loading resolves only after the image onload callback', async
   assert.equal(resolved, true);
 });
 
-test('poster draws preloaded image objects and separates calorie units from the estimate badge', () => {
+test('poster draws preloaded image objects and keeps the calorie number and unit separate', () => {
   const poster = read('utils/poster.js');
   const layout = getCalorieLayout(520);
+  const longLayout = getCalorieLayout(1520);
   const imageDraws = [];
+  const texts = [];
   const ctx = {
     beginPath() {},
     moveTo() {},
@@ -257,7 +263,7 @@ test('poster draws preloaded image objects and separates calorie units from the 
     fill() {},
     fillRect() {},
     clearRect() {},
-    fillText() {},
+    fillText(text, x, y) { texts.push({ text, x, y, align: this.textAlign }); },
     drawImage(image) {
       imageDraws.push(image);
     }
@@ -284,7 +290,11 @@ test('poster draws preloaded image objects and separates calorie units from the 
   assert.match(poster, /drawText\(ctx,\s*calories,/);
   assert.match(poster, /drawText\(ctx,\s*'kcal',/);
   assert.doesNotMatch(poster, /`\$\{payload\.calories\} kcal`/);
-  assert.equal(layout.numberX, 92);
-  assert.ok(layout.unitX >= 218);
-  assert.ok(layout.badgeX >= layout.unitX + 54);
+  assert.ok(layout.numberSize > longLayout.numberSize, 'four-digit numbers shrink');
+  const number = texts.find((item) => item.text === '520');
+  const unit = texts.find((item) => item.text === 'kcal');
+  assert.equal(number.align, 'center');
+  assert.equal(unit.align, 'center');
+  assert.ok(unit.y > number.y, 'unit sits below the number');
+  assert.ok(texts.every((item) => item.x >= 0 && item.x <= 360 && item.y > 0 && item.y <= 640));
 });

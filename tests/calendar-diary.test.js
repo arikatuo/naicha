@@ -75,7 +75,8 @@ test('calendar record flow saves only after an explicit result action and return
   home.setData({ selectedDate: '2026-09-29', year: 2026, month: 9 });
   home.refresh();
   home.startRecord();
-  assert.equal(navigation.at(-1), '/pages/brands/brands?recordDate=2026-09-29');
+  assert.equal(navigation.at(-1), '/pages/record/record');
+  assert.equal(app.globalData.recordDate, '2026-09-29');
 
   const result = loadPage('pages/result/result.js');
   result.onLoad({ payload: encodePayload({ mode: 'brand', drinkName: '珍珠奶茶', brandName: '蜜雪冰城', calories: 420, recordDate: '2026-09-29', config: { brandId: 'mixue', drinkId: 'mixue-pearl' } }) });
@@ -129,8 +130,9 @@ test('shared result exposes own calculation and excludes private configuration f
 
 test('brand and custom flows carry the selected record date and configuration to the result', () => {
   const { navigation } = createWx();
-  const brands = loadPage('pages/brands/brands.js');
-  brands.onLoad({ recordDate: '2026-09-28' });
+  const brands = loadPage('pages/record/record.js');
+  brands.onLoad();
+  brands.setDate('2026-09-28');
   brands.openBrand({ currentTarget: { dataset: { id: 'mixue' } } });
   assert.equal(navigation.at(-1), '/pages/drinks/drinks?brandId=mixue&recordDate=2026-09-28');
 
@@ -156,9 +158,10 @@ test('brand and custom flows carry the selected record date and configuration to
 
 test('quick drink starts at its configuration with the selected diary date', () => {
   const { navigation } = createWx();
-  const brands = loadPage('pages/brands/brands.js');
-  brands.onLoad({ recordDate: '2026-09-28' });
-  assert.equal(brands.data.quickDrinks.length, 3);
+  const brands = loadPage('pages/record/record.js');
+  brands.onLoad();
+  brands.setDate('2026-09-28');
+  assert.equal(brands.data.quickDrinks.length, 10);
   brands.openQuickDrink({ currentTarget: { dataset: { id: 'chagee-boya-juexian' } } });
   assert.equal(navigation.at(-1), '/pages/drinks/drinks?brandId=chagee&drinkId=chagee-boya-juexian&recordDate=2026-09-28');
 });

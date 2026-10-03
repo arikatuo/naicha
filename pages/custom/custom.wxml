@@ -1,9 +1,7 @@
 <view class="page custom-page">
-  <view class="section-head">
-    <text class="eyebrow">自由搭配</text>
-    <text class="title">自己搭一杯</text>
-    <text class="subtitle">把四个常见选项顺手配好，再去看结果。</text>
+  <view class="custom-intro">
     <image class="topping-toy" src="/assets/icons/toppings.png" mode="aspectFit"></image>
+    <text class="subtitle">选基底、杯型、甜度和小料，热量实时更新。</text>
   </view>
 
   <view class="builder-surface surface">
@@ -13,7 +11,7 @@
         <text class="label">先选基底</text>
       </view>
       <view class="option-grid">
-        <button
+        <view role="button"
           wx:for="{{bases}}"
           wx:key="id"
           class="option {{selectedBaseId === item.id ? 'active' : ''}}"
@@ -22,8 +20,8 @@
           aria-label="基底 {{item.name}}"
           aria-checked="{{selectedBaseId === item.id}}"
         >
-          {{item.name}}
-        </button>
+         <text wx:if="{{selectedBaseId === item.id}}" class="option-check">✓</text>{{item.name}}
+        </view>
       </view>
     </view>
 
@@ -33,7 +31,7 @@
         <text class="label">杯型</text>
       </view>
       <view class="option-grid two">
-        <button
+        <view role="button"
           wx:for="{{cupSizes}}"
           wx:key="id"
           class="option {{selectedSizeId === item.id ? 'active' : ''}}"
@@ -42,8 +40,8 @@
           aria-label="杯型 {{item.name}}"
           aria-checked="{{selectedSizeId === item.id}}"
         >
-          {{item.name}}
-        </button>
+          <text wx:if="{{selectedSizeId === item.id}}" class="option-check">✓</text>{{item.name}}
+        </view>
       </view>
     </view>
 
@@ -53,7 +51,7 @@
         <text class="label">甜度</text>
       </view>
       <view class="option-grid">
-        <button
+        <view role="button"
           wx:for="{{sweetnessLevels}}"
           wx:key="id"
           class="option {{selectedSweetnessId === item.id ? 'active' : ''}}"
@@ -62,8 +60,8 @@
           aria-label="甜度 {{item.name}}"
           aria-checked="{{selectedSweetnessId === item.id}}"
         >
-          {{item.name}}
-        </button>
+          <text wx:if="{{selectedSweetnessId === item.id}}" class="option-check">✓</text>{{item.name}}
+        </view>
       </view>
     </view>
 
@@ -74,7 +72,7 @@
       </view>
       <text class="group-help">最多选 4 种，按你平时的搭配来。</text>
       <view class="option-grid">
-        <button
+        <view role="button"
           wx:for="{{toppingOptions}}"
           wx:key="id"
           class="option {{item.selected ? 'active' : ''}}"
@@ -83,13 +81,22 @@
           aria-label="小料 {{item.name}}"
           aria-checked="{{item.selected}}"
         >
-          {{item.name}}
-        </button>
+          <text wx:if="{{item.selected}}" class="option-check">✓</text><text class="option-name">{{item.name}}</text><text class="option-kcal">+{{item.calories}}</text>
+        </view>
       </view>
     </view>
   </view>
 
   <view class="submit-bar">
-    <button class="button-primary submit" bindtap="calculate">看看等于什么</button>
+    <view class="live-row" aria-live="polite">
+      <text class="live-label">这一杯约</text>
+      <text class="live-number">{{liveCalories}}</text>
+      <text class="live-unit">kcal</text>
+      <text class="live-badge">估算</text>
+    </view>
+    <view class="submit-actions">
+      <view role="button" class="button-secondary submit-quick" bindtap="saveNow">直接记到{{recordDateLabel}}</view>
+      <view role="button" class="button-primary submit" bindtap="calculate">看看等于什么</view>
+    </view>
   </view>
 </view>

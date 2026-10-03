@@ -1,5 +1,6 @@
 const diary = require('../../utils/diary-store');
 const { dateKey } = require('../../utils/calendar');
+const { syncTabBar } = require('../../utils/nav');
 const { getPeriodStats } = require('../../utils/diary-stats');
 
 const PERIODS = [
@@ -16,7 +17,7 @@ function chartBars(buckets) {
       ...item,
       displayDate: `${Number(item.date.slice(5, 7))}月${Number(item.date.slice(8, 10))}日`
     })),
-    height: bucket.count ? Math.max(20, Math.round(bucket.count / max * 128)) : 6
+    height: bucket.count ? Math.max(20, Math.round(bucket.count / max * 168)) : 6
   }));
 }
 
@@ -32,12 +33,16 @@ Page({
     buckets: [],
     chartTitle: '',
     chartDescription: '',
+    averageCalories: 0,
     selectedBucket: null,
+    selectedIndex: -1,
+    scrollTo: '',
     hasPeriodRecords: false,
     storageError: false
   },
 
   onShow() {
+    syncTabBar(this, 2);
     this.refresh();
   },
 
@@ -51,10 +56,13 @@ Page({
         cups: stats.cups,
         days: stats.days,
         calories: stats.calories,
+        averageCalories: stats.cups ? Math.round(stats.calories / stats.cups) : 0,
         buckets: chartBars(stats.buckets),
         chartTitle,
         chartDescription: this.data.activePeriod === 'year' ? '左右滑动看月份，点选柱形查看记录日期' : '点选柱形，查看这个时段的记录日期',
         selectedBucket: null,
+        selectedIndex: -1,
+        scrollTo: this.data.activePeriod === 'year' ? `col-${Math.max(0, new Date().getMonth() - 1)}` : '',
         hasPeriodRecords: stats.cups > 0,
         storageError: false
       });
@@ -73,7 +81,8 @@ Page({
   openBucket(event) {
     const bucket = this.data.buckets[event.currentTarget.dataset.index];
     if (!bucket || !bucket.count) return;
-    this.setData({ selectedBucket: bucket });
+    const index = event.currentTarget.dataset.index;
+    this.setData(this.data.selectedIndex === index ? { selectedBucket: null, selectedIndex: -1 } : { selectedBucket: bucket, selectedIndex: index });
   },
 
   openRecordDate(event) {
@@ -99,6 +108,6 @@ Page({
   },
 
   startRecord() {
-    wx.navigateTo({ url: '/pages/brands/brands' });
+    wx.switchTab({ url: '/pages/record/record' });
   }
 });

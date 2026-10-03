@@ -79,16 +79,17 @@ test('period switching and an empty period keep the next action clear', () => {
   assert.equal(stats.data.activePeriodLabel, '本周');
   assert.equal(stats.data.buckets.length, 7);
   stats.startRecord();
-  assert.equal(navigation.at(-1), '/pages/brands/brands');
+  assert.equal(navigation.at(-1), '/pages/record/record');
 });
 
 test('statistics has its own tab and the calendar month header stays focused', () => {
   const appConfig = JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'app.json'), 'utf8'));
-  assert.deepEqual(appConfig.tabBar.list.map(({ text }) => text), ['日历', '查热量', '统计']);
-  const statsTab = appConfig.tabBar.list[2];
-  assert.equal(statsTab.pagePath, 'pages/stats/stats');
-  for (const icon of [statsTab.iconPath, statsTab.selectedIconPath]) {
-    assert.ok(fs.existsSync(path.join(__dirname, '..', icon)));
+  assert.equal(appConfig.tabBar.custom, true);
+  assert.deepEqual(appConfig.tabBar.list.map(({ text }) => text), ['日历', '记一杯', '统计']);
+  assert.equal(appConfig.tabBar.list[2].pagePath, 'pages/stats/stats');
+  const tabScript = fs.readFileSync(path.join(__dirname, '..', 'custom-tab-bar/index.js'), 'utf8');
+  for (const icon of tabScript.match(/\/assets\/tabs\/[\w-]+\.png/g)) {
+    assert.ok(fs.existsSync(path.join(__dirname, '..', icon)), icon);
   }
   const homeMarkup = fs.readFileSync(path.join(__dirname, '..', 'pages/home/home.wxml'), 'utf8');
   const monthHeader = homeMarkup.indexOf('class="month-header"');
@@ -106,6 +107,6 @@ test('empty statistics keep the period clear and group the record action', () =>
   assert.doesNotMatch(markup, /class="empty-track /);
   assert.match(markup, /wx:for="{{buckets}}"/);
   assert.match(markup, /{{activePeriodLabel}}还没有记录/);
-  assert.match(markup, /bindtap="startRecord">记录一杯<\/button>/);
+  assert.match(markup, /bindtap="startRecord">记录一杯<\/view>/);
   assert.doesNotMatch(markup, /看看这段时间的记录|只统计这台设备上保存的记录|不代表这段时间没有喝/);
 });

@@ -1,7 +1,7 @@
 const store = require('../../utils/data-store');
 const diary = require('../../utils/diary-store');
 const { dateKey, monthCells, shiftMonth } = require('../../utils/calendar');
-const { encodePayload } = require('../../utils/nav');
+const { repeatRecordUrl, syncTabBar } = require('../../utils/nav');
 
 function displayDate(key) {
   const [, month, day] = key.split('-').map(Number);
@@ -25,8 +25,10 @@ Page({
     latestRecord: null,
     justSavedRecordId: '',
     justSavedRecord: null,
-    recordButtonLabel: '选一杯，看看热量',
+    recordButtonLabel: '记一杯',
+    expandedId: '',
     selectedInFuture: false,
+    selectedIsToday: true,
     storageError: false
   },
 
@@ -36,6 +38,7 @@ Page({
   },
 
   onShow() {
+    syncTabBar(this, 0);
     const app = typeof getApp === 'function' ? getApp() : null;
     const focusDate = app && app.globalData && app.globalData.focusDate;
     const focusRecordId = app && app.globalData && app.globalData.focusRecordId;
@@ -67,8 +70,9 @@ Page({
         monthCount: records.filter((record) => record.date.startsWith(`${year}-${String(month).padStart(2, '0')}-`)).length,
         latestRecord: records[0] || null,
         justSavedRecord: records.find((record) => record.id === this.data.justSavedRecordId) || null,
-        recordButtonLabel: selectedDate === today ? '选一杯，看看热量' : `选一杯，补记${displayDate(selectedDate)}`,
+        recordButtonLabel: selectedDate === today ? '记一杯' : `补记${displayDate(selectedDate)}的一杯`,
         selectedInFuture: selectedDate > today,
+        selectedIsToday: selectedDate === today,
         storageError: false
       });
     } catch (error) {
@@ -84,39 +88,40 @@ Page({
     const today = dateKey(new Date());
     const monthPrefix = `${year}-${String(month).padStart(2, '0')}-`;
     const selectedDate = today.startsWith(monthPrefix) ? today : `${monthPrefix}01`;
-    this.setData({ year, month, selectedDate, justSavedRecordId: '' });
+    this.setData({ year, month, selectedDate, justSavedRecordId: '', expandedId: '' });
     this.refresh();
   },
 
   selectDay(event) {
     const { date } = event.currentTarget.dataset;
     if (!date) return;
-    this.setData({ selectedDate: date, justSavedRecordId: '' });
+    this.setData({ selectedDate: date, justSavedRecordId: '', expandedId: '' });
     this.refresh();
   },
 
   startRecord() {
     if (this.data.selectedInFuture) return;
-    wx.navigateTo({ url: `/pages/brands/brands?recordDate=${this.data.selectedDate}` });
+    const app = typeof getApp === 'function' ? getApp() : null;
+    if (app && app.globalData) app.globalData.recordDate = this.data.selectedDate;
+    wx.switchTab({ url: '/pages/record/record' });
+  },
+
+  toggleMore(event) {
+    const { id } = event.currentTarget.dataset;
+    this.setData({ expandedId: this.data.expandedId === id ? '' : id });
   },
 
   repeatRecord(event) {
     const record = this.data.selectedRecords.find((item) => item.id === event.currentTarget.dataset.id)
       || (this.data.latestRecord && this.data.latestRecord.id === event.currentTarget.dataset.id ? this.data.latestRecord : null);
     if (!record) return;
-    const config = record.config || {};
-    if (record.mode === 'brand' && config.brandId && config.drinkId) {
-      wx.navigateTo({ url: `/pages/drinks/drinks?brandId=${config.brandId}&drinkId=${config.drinkId}&prefill=${encodePayload(config)}` });
-    } else if (record.mode === 'custom' && config.baseId) {
-      wx.navigateTo({ url: `/pages/custom/custom?prefill=${encodePayload(config)}` });
-    } else {
-      wx.navigateTo({ url: `/pages/result/result?payload=${encodePayload(record)}` });
-    }
+    wx.navigateTo({ url: repeatRecordUrl(record) });
   },
 
   changeRecordDate(event) {
     try {
       diary.updateRecord(event.currentTarget.dataset.id, { date: event.detail.value });
+      this.setData({ expandedId: '' });
       this.refresh();
       wx.showToast({ title: '日期已修改', icon: 'success' });
     } catch (error) {
@@ -133,6 +138,7 @@ Page({
         if (!confirm) return;
         try {
           diary.deleteRecord(id);
+          this.setData({ expandedId: '' });
           this.refresh();
         } catch (error) {
           wx.showToast({ title: '删除失败，请重试', icon: 'none' });

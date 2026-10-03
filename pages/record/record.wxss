@@ -1,0 +1,112 @@
+.record-page { padding-top: 16rpx; padding-bottom: calc(240rpx + env(safe-area-inset-bottom)); }
+
+.record-head { display: flex; align-items: center; margin-bottom: 24rpx; }
+
+.date-chip {
+  display: flex;
+  align-items: center;
+  gap: 8rpx;
+  min-height: 72rpx;
+  box-sizing: border-box;
+  padding: 0 24rpx;
+  border-radius: var(--r-pill);
+  background: var(--surface-soft);
+  font-size: 26rpx;
+}
+.date-chip-label { color: var(--text-2); }
+.date-chip-value { color: var(--primary); font-weight: var(--fw-strong); }
+.date-chip-arrow { color: var(--text-3); font-size: 30rpx; }
+
+.block { margin-bottom: 32rpx; }
+.block-title { display: block; margin-bottom: 16rpx; color: var(--text-2); font-size: var(--fs-cap); font-weight: var(--fw-strong); }
+
+/* 最近喝过：横向滑动的小卡，一键再来 */
+.recent-scroll { margin: 0 -32rpx; white-space: nowrap; }
+.recent-row { display: inline-flex; gap: 16rpx; padding: 0 32rpx; }
+.recent-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6rpx;
+  flex: 0 0 300rpx;
+  width: 300rpx;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 24rpx;
+  border: 1rpx solid var(--line);
+  border-radius: var(--r-md);
+  background: var(--surface);
+  box-shadow: var(--shadow-card);
+  text-align: left;
+  line-height: 1.3;
+}
+.recent-card::after, .brand-card::after { border: 0; }
+.recent-name { width: 100%; overflow: hidden; font-size: 28rpx; font-weight: var(--fw-strong); text-overflow: ellipsis; white-space: nowrap; }
+.recent-meta { width: 100%; overflow: hidden; color: var(--text-2); font-size: 22rpx; text-overflow: ellipsis; white-space: nowrap; }
+.recent-go { margin-top: 8rpx; color: var(--primary); font-size: 24rpx; font-weight: var(--fw-strong); }
+
+/* 常见饮品：两列紧凑小卡，小图标 + 名称 + 品牌 */
+.quick-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12rpx; }
+.quick-chip { display: flex; align-items: center; gap: 14rpx; min-height: 88rpx; box-sizing: border-box; padding: 12rpx 18rpx; border: 1rpx solid var(--line); border-radius: var(--r-md); background: var(--surface); }
+.quick-chip image { flex: 0 0 56rpx; width: 56rpx; height: 56rpx; }
+.chip-copy { display: flex; flex: 1; min-width: 0; flex-direction: column; gap: 2rpx; }
+.chip-name { overflow: hidden; font-size: 26rpx; font-weight: var(--fw-strong); line-height: 1.3; text-overflow: ellipsis; white-space: nowrap; }
+.chip-brand { overflow: hidden; color: var(--text-3); font-size: 21rpx; line-height: 1.3; text-overflow: ellipsis; white-space: nowrap; }
+
+/* 搜索结果、自己搭一杯：整行卡片（用 view，避开 button 的默认宽度和居中） */
+.quick-list { display: flex; flex-direction: column; gap: 12rpx; }
+.quick-drink, .custom-row {
+  display: flex;
+  align-items: center;
+  gap: 20rpx;
+  width: 100%;
+  min-height: 112rpx;
+  box-sizing: border-box;
+  padding: 16rpx 24rpx;
+  border: 1rpx solid var(--line);
+  border-radius: var(--r-md);
+  background: var(--surface);
+  box-shadow: var(--shadow-card);
+  text-align: left;
+  line-height: 1.3;
+}
+.quick-drink image, .custom-row image { flex: 0 0 72rpx; width: 72rpx; height: 72rpx; }
+.quick-copy, .custom-copy { display: flex; flex: 1; min-width: 0; flex-direction: column; gap: 4rpx; }
+.quick-name, .custom-title { font-size: 28rpx; font-weight: var(--fw-strong); }
+.quick-brand, .custom-sub { color: var(--text-2); font-size: 23rpx; }
+.quick-chevron { color: var(--primary); font-size: 36rpx; }
+.custom-row { margin-bottom: 32rpx; background: var(--primary-soft); border-color: transparent; box-shadow: none; }
+
+/* 品牌网格：两列，logo 统一放在白色底板里 */
+.brand-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16rpx; }
+.brand-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12rpx;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 16rpx 16rpx 20rpx;
+  border: 1rpx solid var(--line);
+  border-radius: var(--r-md);
+  background: var(--surface);
+  box-shadow: var(--shadow-card);
+}
+.brand-logo-panel { display: flex; align-items: center; justify-content: center; width: 100%; height: 112rpx; border-radius: var(--r-sm); background: var(--bg); overflow: hidden; }
+.brand-logo { display: block; width: 160rpx; height: 96rpx; }
+.brand-logo-fallback { display: flex; align-items: center; justify-content: center; width: 88rpx; height: 88rpx; border-radius: 50%; background: var(--surface-soft); color: var(--text-2); font-size: 44rpx; font-weight: var(--fw-strong); }
+.brand-meta { display: flex; flex-direction: column; align-items: center; gap: 6rpx; width: 100%; min-width: 0; }
+.brand-name, .brand-subtitle { display: block; width: 100%; min-width: 0; overflow: hidden; text-align: center; text-overflow: ellipsis; white-space: nowrap; }
+.brand-name { font-size: 28rpx; font-weight: var(--fw-strong); line-height: 1.2; }
+.brand-subtitle { color: var(--text-2); font-size: 22rpx; line-height: 1.2; }
+
+.disclaimer { display: block; margin-top: 8rpx; color: var(--text-3); font-size: 22rpx; text-align: center; }
+
+/* 搜索 */
+.search-box { position: relative; display: flex; align-items: center; margin-bottom: 32rpx; border-radius: var(--r-pill); background: var(--surface); border: 1rpx solid var(--line); box-shadow: var(--shadow-card); }
+.search-icon { flex: 0 0 auto; padding: 0 8rpx 0 28rpx; color: var(--text-3); font-size: 34rpx; }
+.search-input { flex: 1; min-width: 0; height: 88rpx; padding: 0 8rpx; font-size: 28rpx; color: var(--text); }
+.search-clear { flex: 0 0 88rpx; display: flex; align-items: center; justify-content: center; width: 88rpx; min-height: 88rpx; margin: 0; padding: 0; border: 0; background: transparent; color: var(--text-3); font-size: 40rpx; line-height: 1; }
+.search-clear::after { border: 0; }
+.search-empty { display: flex; flex-direction: column; align-items: center; gap: 12rpx; padding: 48rpx 0; text-align: center; }
+.search-custom { width: 320rpx; margin-top: 12rpx; }

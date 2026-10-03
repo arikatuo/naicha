@@ -1,9 +1,8 @@
 {
   "pages": [
     "pages/home/home",
+    "pages/record/record",
     "pages/stats/stats",
-    "pages/lookup/lookup",
-    "pages/brands/brands",
     "pages/drinks/drinks",
     "pages/custom/custom",
     "pages/result/result"
@@ -15,14 +14,24 @@
     "backgroundColor": "#fbf8f3"
   },
   "tabBar": {
+    "custom": true,
     "color": "#8a8078",
     "selectedColor": "#b9473d",
     "backgroundColor": "#fffdf9",
     "borderStyle": "white",
     "list": [
-      { "pagePath": "pages/home/home", "text": "日历", "iconPath": "assets/tabs/calendar.png", "selectedIconPath": "assets/tabs/calendar-active.png" },
-      { "pagePath": "pages/lookup/lookup", "text": "查热量", "iconPath": "assets/tabs/search.png", "selectedIconPath": "assets/tabs/search-active.png" },
-      { "pagePath": "pages/stats/stats", "text": "统计", "iconPath": "assets/tabs/stats.png", "selectedIconPath": "assets/tabs/stats-active.png" }
+      {
+        "pagePath": "pages/home/home",
+        "text": "日历"
+      },
+      {
+        "pagePath": "pages/record/record",
+        "text": "记一杯"
+      },
+      {
+        "pagePath": "pages/stats/stats",
+        "text": "统计"
+      }
     ]
   },
   "style": "v2",

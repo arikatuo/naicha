@@ -24,7 +24,7 @@ function loadPage(relativePath) {
 test('every page registers a share-to-friend handler', () => {
   const pages = [
     'pages/home/home.js',
-    'pages/brands/brands.js',
+    'pages/record/record.js',
     'pages/drinks/drinks.js',
     'pages/custom/custom.js',
     'pages/result/result.js'
@@ -46,8 +46,8 @@ test('list and form pages share stable entry paths', () => {
     '/pages/home/home'
   );
   assert.equal(
-    loadPage('pages/brands/brands.js').onShareAppMessage().path,
-    '/pages/brands/brands'
+    loadPage('pages/record/record.js').onShareAppMessage().path,
+    '/pages/record/record'
   );
   assert.equal(
     loadPage('pages/custom/custom.js').onShareAppMessage().path,
@@ -64,6 +64,6 @@ test('drinks page keeps the selected brand in its share path', () => {
   );
   assert.equal(
     definition.onShareAppMessage.call({ data: { brandId: '' } }).path,
-    '/pages/brands/brands'
+    '/pages/record/record'
   );
 });

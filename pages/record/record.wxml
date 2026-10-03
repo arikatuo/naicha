@@ -1,0 +1,87 @@
+<view class="page record-page">
+  <view class="record-head">
+    <picker mode="date" value="{{recordDate}}" end="{{todayDate}}" bindchange="changeDate">
+      <view class="date-chip" aria-label="记录日期，点击修改">
+        <text class="date-chip-label">记到</text>
+        <text class="date-chip-value">{{recordDateLabel}}</text>
+        <text class="date-chip-arrow">›</text>
+      </view>
+    </picker>
+  </view>
+
+  <view class="search-box">
+    <text class="search-icon" aria-hidden="true">⌕</text>
+    <input class="search-input" value="{{query}}" placeholder="搜饮品或品牌，比如 杨枝甘露" confirm-type="search" bindinput="onSearchInput" />
+    <view role="button" wx:if="{{query}}" class="search-clear" bindtap="clearSearch" aria-label="清除搜索">×</view>
+  </view>
+
+  <view wx:if="{{query}}" class="block">
+    <view wx:if="{{searchResults.length}}" class="quick-list">
+      <view wx:for="{{searchResults}}" wx:key="id" class="quick-drink" role="button" data-id="{{item.id}}" bindtap="openSearchResult" aria-label="选择{{item.brandName}}{{item.name}}">
+        <image src="{{item.icon}}" mode="aspectFit" aria-hidden="true"></image>
+        <view class="quick-copy"><text class="quick-name">{{item.name}}</text><text class="quick-brand">{{item.brandName}} · 约 {{item.calories}} kcal</text></view>
+        <text class="quick-chevron" aria-hidden="true">›</text>
+      </view>
+    </view>
+    <view wx:else class="search-empty">
+      <text class="state-title">没找到「{{query}}」</text>
+      <text class="state-copy">换个词试试，或者自己搭一杯。</text>
+      <view role="button" class="button-secondary search-custom" bindtap="goCustom">自己搭一杯</view>
+    </view>
+  </view>
+
+  <block wx:else>
+  <view wx:if="{{recentDrinks.length}}" class="block">
+    <text class="block-title">最近喝过</text>
+    <scroll-view class="recent-scroll" scroll-x="true" enable-flex="true" show-scrollbar="false">
+      <view class="recent-row">
+        <view role="button" wx:for="{{recentDrinks}}" wx:key="id" class="recent-card" data-id="{{item.id}}" bindtap="openRecent" aria-label="再喝一杯{{item.name}}">
+          <text class="recent-name">{{item.name}}</text>
+          <text class="recent-meta">{{item.meta}}</text>
+          <text class="recent-go">再喝一杯 ›</text>
+        </view>
+      </view>
+    </scroll-view>
+  </view>
+
+  <view wx:if="{{quickDrinks.length}}" class="block">
+    <text class="block-title">常见饮品</text>
+    <view class="quick-grid">
+      <view wx:for="{{quickDrinks}}" wx:key="id" class="quick-chip" role="button" data-id="{{item.id}}" bindtap="openQuickDrink" aria-label="选择{{item.brandName}}{{item.name}}">
+        <image src="{{item.icon}}" mode="aspectFit" aria-hidden="true"></image>
+        <view class="chip-copy"><text class="chip-name">{{item.name}}</text><text class="chip-brand">{{item.brandName}}</text></view>
+      </view>
+    </view>
+  </view>
+
+  <view class="custom-row" role="button" bindtap="goCustom" aria-label="自己搭一杯">
+    <image src="/assets/icons/toppings.png" mode="aspectFit" aria-hidden="true"></image>
+    <view class="custom-copy"><text class="custom-title">自己搭一杯</text><text class="custom-sub">找不到的饮品，也能算出热量</text></view>
+    <text class="quick-chevron" aria-hidden="true">›</text>
+  </view>
+
+  <view class="block">
+    <text class="block-title">按品牌找</text>
+    <view wx:if="{{hasBrands}}" class="brand-grid">
+      <view role="button" wx:for="{{brands}}" wx:key="id" class="brand-card" data-id="{{item.id}}" bindtap="openBrand" aria-label="查看{{item.name}}热门款">
+        <view class="brand-logo-panel">
+          <image wx:if="{{!item.logoFailed}}" class="brand-logo" src="{{item.logo}}" mode="aspectFit" binderror="onLogoError" data-index="{{index}}" aria-hidden="true"></image>
+          <view wx:else class="brand-logo-fallback" aria-hidden="true"><text>{{item.firstChar}}</text></view>
+        </view>
+        <view class="brand-meta">
+          <text class="brand-name">{{item.name}}</text>
+          <text class="brand-subtitle">{{item.subtitle}}</text>
+        </view>
+      </view>
+    </view>
+    <view wx:else class="empty-state surface">
+      <text class="state-title">品牌列表还在赶来路上</text>
+      <text class="state-copy">可能是数据没刷新出来，重新试试。</text>
+      <view role="button" class="button-primary" bindtap="reloadBrands" aria-label="重新加载品牌列表">重新试试</view>
+    </view>
+  </view>
+
+  </block>
+
+  <text class="disclaimer">热量为估算值，非品牌官方数据，仅供趣味参考。</text>
+</view>

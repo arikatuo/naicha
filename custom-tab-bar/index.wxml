@@ -1,0 +1,16 @@
+<view class="tab-bar">
+  <view
+    wx:for="{{list}}"
+    wx:key="pagePath"
+    class="tab-item {{item.center ? 'tab-center' : ''}} {{selected === index ? 'active' : ''}}"
+    data-path="{{item.pagePath}}"
+    data-index="{{index}}"
+    bindtap="switchTab"
+    aria-label="{{item.text}}"
+    role="tab"
+  >
+    <view wx:if="{{item.center}}" class="center-button"><view class="plus"></view></view>
+    <image wx:else class="tab-icon" src="{{selected === index ? item.activeIcon : item.icon}}" mode="aspectFit"></image>
+    <text class="tab-text">{{item.text}}</text>
+  </view>
+</view>

@@ -1,45 +1,58 @@
-.stats-page { display: flex; flex-direction: column; min-height: calc(100vh - 120rpx); padding-top: 24rpx; background: #fbf8f3; }
+.stats-page { display: flex; flex-direction: column; min-height: calc(100vh - 120rpx); padding-top: 24rpx; padding-bottom: calc(240rpx + env(safe-area-inset-bottom)); }
 .stats-body { display: flex; flex: 1; flex-direction: column; }
-.period-controls { margin-bottom: 20rpx; }
-.period-switch { display: flex; padding: 6rpx; border: 1rpx solid #eee5da; border-radius: 999rpx; background: #f3eee7; }
-.period-option { flex: 1; min-height: 72rpx; padding: 0; margin: 0; border: 0; border-radius: 999rpx; background: transparent; color: #7a6b60; font-size: 26rpx; }
-.period-option.active { background: #fffdf9; color: #b9473d; font-weight: 800; box-shadow: 0 3rpx 9rpx rgba(95, 61, 49, 0.06); }
-.period-option::after, .chart-column::after, .calendar-link::after { border: 0; }
-.period-range { display: block; margin: 28rpx 2rpx 0; color: #2d1f18; font-size: 32rpx; font-weight: 800; line-height: 1.25; }
-.summary-card, .chart-card, .calorie-card { padding: 28rpx; border: 1rpx solid #eee5da; border-radius: 26rpx; background: #fffdf9; box-shadow: 0 6rpx 20rpx rgba(95, 61, 49, 0.035); }
-.summary-card { background: #fff6ec; box-shadow: none; }
-.summary-caption, .calorie-caption { color: #8a7566; font-size: 23rpx; }
+
+/* ---------- 时间范围切换：三个等宽选项，文字上下左右居中 ---------- */
+.period-controls { margin-bottom: 24rpx; }
+.period-switch { display: flex; padding: 6rpx; border-radius: var(--r-pill); background: var(--surface-soft); }
+.period-option { display: flex; flex: 1; align-items: center; justify-content: center; height: 72rpx; border-radius: var(--r-pill); color: var(--text-2); font-size: 26rpx; line-height: 1; }
+.period-option.active { background: var(--surface); color: var(--primary); font-weight: var(--fw-strong); box-shadow: var(--shadow-card); }
+.period-range { display: block; margin: 36rpx 4rpx 0; color: var(--text); font-size: var(--fs-h2); font-weight: var(--fw-strong); line-height: 1.25; }
+
+/* ---------- 卡片 ---------- */
+.summary-card, .chart-card, .calorie-card { padding: 28rpx; border-radius: var(--r-lg); background: var(--surface); }
+.summary-card { border: 0; background: var(--surface-soft); box-shadow: none; }
+.summary-caption, .calorie-caption { color: var(--text-2); font-size: 23rpx; }
 .summary-values { display: flex; align-items: flex-end; }
 .summary-cups { display: flex; align-items: baseline; flex: 1; }
-.summary-number { color: #b9473d; font-size: 80rpx; line-height: 1; font-weight: 900; }
-.summary-unit { margin-left: 9rpx; color: #8a7566; font-size: 25rpx; }
-.summary-days { display: flex; flex: 0 0 36%; flex-direction: column; gap: 10rpx; padding-left: 28rpx; border-left: 1rpx solid #ead9c6; }
-.days-number { font-size: 44rpx; font-weight: 800; line-height: 1; }
+.summary-number { color: var(--primary); font-size: 80rpx; line-height: 1; font-weight: var(--fw-strong); }
+.summary-unit { margin-left: 9rpx; color: var(--text-2); font-size: 25rpx; }
+.summary-days { display: flex; flex: 0 0 36%; flex-direction: column; gap: 10rpx; padding-left: 28rpx; border-left: 1rpx solid rgba(120, 70, 50, 0.14); }
+.days-number { font-size: 44rpx; font-weight: var(--fw-strong); line-height: 1; }
 .stats-content { display: flex; flex-direction: column; gap: 20rpx; margin-top: 20rpx; }
-.card-title { display: block; font-size: 28rpx; font-weight: 800; }
-.card-description { display: block; margin-top: 10rpx; color: #8a7566; font-size: 22rpx; line-height: 1.4; }
+.card-title { display: block; font-size: 28rpx; font-weight: var(--fw-strong); }
+.card-description { display: block; margin-top: 10rpx; color: var(--text-3); font-size: 22rpx; line-height: 1.4; }
+
+/* ---------- 柱状图：选中一根，其余变淡 ---------- */
 .chart-scroll { width: 100%; }
-.chart-columns { display: flex; justify-content: space-around; align-items: flex-end; gap: 2rpx; height: 220rpx; margin-top: 24rpx; border-bottom: 1rpx solid #dbc6b0; }
+.chart-columns { display: flex; justify-content: space-around; align-items: flex-end; gap: 2rpx; height: 260rpx; margin-top: 24rpx; border-bottom: 1rpx solid var(--line); }
 .chart-columns.year-chart { min-width: 984rpx; }
 .year-chart .chart-column { min-width: 80rpx; }
 .chart-column { display: flex; flex: 1; flex-direction: column; align-items: center; justify-content: flex-end; min-width: 0; height: 100%; padding: 0; margin: 0; border: 0; background: transparent; }
-.chart-track { display: flex; flex-direction: column; align-items: center; justify-content: flex-end; width: 100%; height: 160rpx; }
-.chart-count { color: #5f3d31; font-size: 24rpx; line-height: 30rpx; }
-.chart-bar { width: 55%; max-width: 45rpx; min-width: 12rpx; border-radius: 10rpx 10rpx 0 0; background: #ead9c6; }
-.chart-bar.filled { background: #b9473d; }
-.chart-label { overflow: hidden; width: 100%; height: 46rpx; color: #8a7566; font-size: 24rpx; line-height: 46rpx; text-align: center; white-space: nowrap; }
-.bucket-detail { margin-top: 24rpx; padding-top: 22rpx; border-top: 1rpx solid #ead9c6; }
-.bucket-detail-title { display: block; color: #5f3d31; font-size: 24rpx; font-weight: 800; }
+.chart-column::after, .calendar-link::after, .bucket-date::after { border: 0; }
+.chart-track { display: flex; flex-direction: column; align-items: center; justify-content: flex-end; width: 100%; height: 200rpx; }
+.chart-count { color: var(--text); font-size: 24rpx; line-height: 30rpx; }
+.chart-bar { width: 55%; max-width: 45rpx; min-width: 12rpx; border-radius: 10rpx 10rpx 0 0; background: var(--line); transition: opacity 160ms ease-out; }
+.chart-bar.filled { background: var(--primary); }
+.has-selection .chart-bar.filled { opacity: 0.4; }
+.has-selection .chart-bar.filled.selected { opacity: 1; }
+.chart-label { overflow: hidden; width: 100%; height: 46rpx; color: var(--text-3); font-size: 24rpx; line-height: 46rpx; text-align: center; white-space: nowrap; }
+
+.bucket-detail { margin-top: 24rpx; padding-top: 22rpx; border-top: 1rpx solid var(--line); }
+.bucket-detail-title { display: block; color: var(--text); font-size: 24rpx; font-weight: var(--fw-strong); }
 .bucket-dates { display: flex; flex-wrap: wrap; gap: 12rpx; margin-top: 16rpx; }
-.bucket-date { min-height: 58rpx; padding: 0 18rpx; margin: 0; border: 0; border-radius: 999rpx; background: #f8e4cf; color: #5f3d31; font-size: 22rpx; }
-.bucket-date::after { border: 0; }
-.calorie-value { display: flex; align-items: baseline; margin-top: 12rpx; font-size: 44rpx; font-weight: 800; }
-.calorie-unit { margin-left: 10rpx; color: #8a7566; font-size: 23rpx; font-weight: 500; }
-.calendar-link { align-self: center; min-height: 64rpx; padding: 0 16rpx; margin: 0; border: 0; background: transparent; color: #a94338; font-size: 24rpx; font-weight: 800; }
+.bucket-date { display: flex; align-items: center; justify-content: center; min-height: 72rpx; padding: 0 22rpx; margin: 0; border: 0; border-radius: var(--r-pill); background: var(--primary-soft); color: var(--primary); font-size: 24rpx; font-weight: var(--fw-strong); line-height: 1; }
+
+.calorie-value { display: flex; align-items: baseline; margin-top: 12rpx; font-size: 44rpx; font-weight: var(--fw-strong); }
+.calorie-unit { margin-left: 10rpx; color: var(--text-2); font-size: 23rpx; font-weight: var(--fw); }
+.calorie-average { display: block; margin-top: 8rpx; color: var(--text-3); font-size: 23rpx; }
+.calendar-link { display: flex; align-items: center; justify-content: center; align-self: center; min-height: 88rpx; padding: 0 24rpx; margin: 0; border: 0; background: transparent; color: var(--primary); font-size: 26rpx; font-weight: var(--fw-strong); }
+
+/* ---------- 空状态 ---------- */
 .stats-empty { display: flex; flex: 1; align-items: center; justify-content: center; min-height: 620rpx; text-align: center; }
 .empty-content { display: flex; flex-direction: column; align-items: center; width: 100%; padding: 0 24rpx 92rpx; }
-.empty-emblem { display: flex; align-items: center; justify-content: center; width: 220rpx; height: 220rpx; margin-bottom: 38rpx; border: 1rpx solid #efddd0; border-radius: 50%; background: #f8ebe0; }
-.empty-emblem image { width: 130rpx; height: 130rpx; }
-.empty-title { color: #2d1f18; font-size: 32rpx; font-weight: 800; }
-.stats-empty .button-primary { width: 360rpx; max-width: 100%; min-height: 82rpx; margin-top: 30rpx; font-size: 28rpx; box-shadow: 0 8rpx 18rpx rgba(169, 67, 56, 0.14); }
+.empty-emblem { display: flex; align-items: center; justify-content: center; width: 220rpx; height: 220rpx; margin-bottom: 32rpx; border-radius: 50%; background: var(--surface-soft); }
+.empty-emblem image { width: 150rpx; height: 150rpx; }
+.empty-title { color: var(--text); font-size: var(--fs-h2); font-weight: var(--fw-strong); }
+.empty-copy { margin-top: 10rpx; color: var(--text-2); font-size: 25rpx; line-height: 1.5; }
+.stats-empty .button-primary { width: 360rpx; max-width: 100%; min-height: 88rpx; margin-top: 36rpx; font-size: 28rpx; }
 .stats-error { display: flex; flex-direction: column; gap: 18rpx; padding: 30rpx; }

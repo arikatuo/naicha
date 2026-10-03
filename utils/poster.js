@@ -14,10 +14,13 @@ function roundRect(ctx, x, y, width, height, radius, color) {
   ctx.fill();
 }
 
-function drawText(ctx, text, x, y, size, color) {
+// options.align: 'left' | 'center'；options.weight: 400 | 600
+function drawText(ctx, text, x, y, size, color, options = {}) {
   ctx.fillStyle = color;
-  ctx.font = `${size}px sans-serif`;
+  ctx.font = `${options.weight || 400} ${size}px sans-serif`;
+  ctx.textAlign = options.align || 'left';
   ctx.fillText(text, x, y);
+  ctx.textAlign = 'left';
 }
 
 function loadCanvasImage(canvas, src) {
@@ -90,21 +93,15 @@ function wrapText(text, maxWidth, size, maxLines) {
   return lines;
 }
 
-function drawWrappedText(ctx, text, x, y, size, color, maxWidth, lineHeight, maxLines) {
+function drawWrappedText(ctx, text, x, y, size, color, maxWidth, lineHeight, maxLines, options) {
   const lines = wrapText(text, maxWidth, size, maxLines);
-  lines.forEach((line, index) => drawText(ctx, line, x, y + index * lineHeight, size, color));
+  lines.forEach((line, index) => drawText(ctx, line, x, y + index * lineHeight, size, color, options));
   return y + Math.max(lines.length, 1) * lineHeight;
 }
 
+// 热量数字居中放大，四位数时缩小一档避免超出卡片
 function getCalorieLayout(calories) {
-  const text = `${calories}`;
-  return {
-    numberSize: text.length > 3 ? 46 : 56,
-    numberX: 92,
-    unitX: text.length > 3 ? 224 : 218,
-    unitSize: 26,
-    badgeX: 276
-  };
+  return { numberSize: `${calories}`.length > 3 ? 72 : 88, unitSize: 18 };
 }
 
 function buildEquivalentText(card) {
@@ -126,43 +123,48 @@ function drawPoster({ ctx, payload, cards, highlightCard, resultCopy, width, hei
   const drinkLabel = payload.brandName ? `${payload.brandName} · ${payload.drinkName}` : payload.drinkName;
   const calories = `${payload.calories}`;
   const calorieLayout = getCalorieLayout(payload.calories);
+  const center = width / 2;
+  const strong = { align: 'center', weight: 600 };
 
   ctx.clearRect(0, 0, width, height);
-  ctx.fillStyle = '#fff4e5';
+  ctx.fillStyle = '#fbf8f3';
   ctx.fillRect(0, 0, width, height);
 
-  roundRect(ctx, 26, 30, 116, 36, 18, '#b9473d');
-  drawText(ctx, '换算结果', 48, 54, 14, '#ffffff');
-  ctx.drawImage(images.cup, 264, 26, 66, 66);
+  // 顶部：品牌小标签 + 奶茶插画
+  roundRect(ctx, 24, 28, 124, 34, 17, '#b9473d');
+  drawText(ctx, '奶茶热量日历', 40, 50, 14, '#ffffff', { weight: 600 });
+  ctx.drawImage(images.cup, 256, 20, 80, 80);
 
-  roundRect(ctx, 20, 106, 320, 82, 22, 'rgba(255, 249, 240, 0.86)');
-  const titleBottom = drawWrappedText(ctx, resultCopy.title, 34, 137, 24, '#2d1f18', 292, 30, 2);
-  const drinkY = titleBottom + 4;
-  drawText(ctx, ellipsizeText(drinkLabel, 292, 16), 34, drinkY, 16, '#6f5d51');
+  // 主卡片：饮品名、热量大数字、一句话
+  roundRect(ctx, 24, 120, 312, 248, 28, '#ffffff');
+  drawText(ctx, ellipsizeText(drinkLabel, 272, 15), center, 156, 15, '#6f5d51', { align: 'center' });
+  drawText(ctx, calories, center, 250, calorieLayout.numberSize, '#2d1f18', strong);
+  drawText(ctx, 'kcal', center, 280, calorieLayout.unitSize, '#6f5d51', { align: 'center' });
+  roundRect(ctx, center - 34, 292, 68, 22, 11, '#f8ebde');
+  drawText(ctx, '约 · 估算', center, 308, 12, '#6f5d51', { align: 'center' });
+  drawWrappedText(ctx, resultCopy.title, center, 342, 17, '#2d1f18', 272, 24, 1, strong);
 
-  const calorieCardY = Math.max(220, drinkY + 30);
-  roundRect(ctx, 28, calorieCardY, 304, 126, 22, '#fff9f0');
-  drawText(ctx, '约', 54, calorieCardY + 66, 34, '#2d1f18');
-  drawText(ctx, calories, calorieLayout.numberX, calorieCardY + 66, calorieLayout.numberSize, '#2d1f18');
-  drawText(ctx, 'kcal', calorieLayout.unitX, calorieCardY + 66, calorieLayout.unitSize, '#2d1f18');
-  roundRect(ctx, calorieLayout.badgeX, calorieCardY + 32, 46, 30, 15, '#f1d7be');
-  drawText(ctx, '估算', calorieLayout.badgeX + 10, calorieCardY + 52, 13, '#6a3c2c');
-  drawText(ctx, '热量为估算值，仅供趣味参考。', 54, calorieCardY + 101, 14, '#6f5d51');
-
-  const equivalentY = calorieCardY + 154;
-  roundRect(ctx, 36, equivalentY, 288, 132, 26, '#f8e4cf');
+  // 等于什么：左图右字
+  roundRect(ctx, 24, 384, 312, 120, 28, '#f8ebde');
   if (images.equivalent) {
-    ctx.drawImage(images.equivalent, 145, equivalentY + 22, 70, 70);
+    ctx.drawImage(images.equivalent, 44, 408, 72, 72);
   }
-  drawText(ctx, ellipsizeText(buildEquivalentText(selectedCard), 236, 24), 62, equivalentY + 106, 24, '#2d1f18');
+  const hasParts = selectedCard && selectedCard.numberMain;
+  drawText(ctx, '约等于', 134, 430, 13, '#6f5d51');
+  if (hasParts) {
+    drawText(ctx, ellipsizeText(`${selectedCard.numberMain}${selectedCard.numberUnit || ''}`, 188, 32), 134, 466, 32, '#2d1f18', { weight: 600 });
+    drawText(ctx, ellipsizeText(String(selectedCard.label || selectedCard.name || '').replace('消耗', ''), 188, 15), 134, 490, 15, '#6f5d51');
+  } else {
+    drawText(ctx, ellipsizeText(buildEquivalentText(selectedCard), 188, 20), 134, 468, 20, '#2d1f18', { weight: 600 });
+  }
 
-  const qrY = equivalentY + 142;
-  roundRect(ctx, 54, qrY, 252, 92, 24, '#fff9f0');
-  ctx.drawImage(images.qrcode, 72, qrY + 6, 80, 80);
-  drawText(ctx, '微信搜一搜', 172, qrY + 36, 13, '#6a3c2c');
-  drawText(ctx, '奶茶热量日历', 172, qrY + 58, 13, '#6a3c2c');
+  // 底部：二维码 + 提示
+  roundRect(ctx, 24, 520, 312, 88, 28, '#ffffff');
+  ctx.drawImage(images.qrcode, 38, 526, 76, 76);
+  drawText(ctx, '微信搜一搜', 130, 558, 13, '#6f5d51');
+  drawText(ctx, '奶茶热量日历', 130, 584, 19, '#2d1f18', { weight: 600 });
 
-  drawText(ctx, '热量为估算值，仅供趣味参考', 28, 618, 12, '#6f5d51');
+  drawText(ctx, '热量为估算值，仅供趣味参考', center, 626, 11, '#857468', { align: 'center' });
 }
 
 module.exports = {
