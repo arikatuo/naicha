@@ -1,0 +1,1337 @@
+[
+  {
+    "brand": "蜜雪冰城",
+    "name": "冰鲜柠檬水",
+    "size": "660 ml（页面杯型范围，未映射到热量配置）",
+    "sugar": "未注明（估算按常规有糖配方，糖量为假设）",
+    "kcal": 180,
+    "range": [
+      100,
+      260
+    ],
+    "evidenceType": "配料估算",
+    "sourceUrl": "https://www.nckfhsm.com/products/bing-xian-ning-meng-shui-6",
+    "sourceNote": "来源仅支持名称/配料，不支持本条整杯数值。假设柠檬等20 kcal+可消化糖40g×4=160 kcal；糖量假设25–60g。网页20 kcal未注明糖度，不能视作正常糖整杯。",
+    "includedToppings": [],
+    "verifyNote": "待核对中国大陆门店是否常售，以及本杯容量、糖度、冰量和自带料；不能按整杯热量直接乘糖度比例。 本条第三方容量/价格可能混有地区版本；不要据其价格判断大陆常规版。"
+  },
+  {
+    "brand": "蜜雪冰城",
+    "name": "珍珠奶茶",
+    "size": "505~660 ml（页面杯型范围，未映射到热量配置）",
+    "sugar": "未注明（估算按常规有糖配方，糖量为假设）",
+    "kcal": 380,
+    "range": [
+      280,
+      520
+    ],
+    "evidenceType": "配料估算",
+    "sourceUrl": "https://www.nckfhsm.com/products/zhen-zhu-nai-cha-11",
+    "sourceNote": "来源仅支持名称/配料，不支持本条整杯数值。假设奶茶基底240 kcal+熟珍珠50–70g约140 kcal；奶基及糖量未知。",
+    "includedToppings": [
+      "珍珠"
+    ],
+    "verifyNote": "待核对中国大陆门店是否常售，以及本杯容量、糖度、冰量和自带料；不能按整杯热量直接乘糖度比例。 本条第三方容量/价格可能混有地区版本；不要据其价格判断大陆常规版。"
+  },
+  {
+    "brand": "蜜雪冰城",
+    "name": "茉莉奶绿",
+    "size": "505 ml（页面杯型范围，未映射到热量配置）",
+    "sugar": "未注明（页面列糖度选项，但没有热量与配置映射）",
+    "kcal": 107,
+    "range": null,
+    "evidenceType": "第三方参考",
+    "sourceUrl": "https://www.nckfhsm.com/products/mo-li-nai-lv-8",
+    "sourceNote": "页面读取热量 107 kcal；有范围则取区间中点作暂用参考，非官方核实值。",
+    "includedToppings": [],
+    "verifyNote": "待核对中国大陆门店是否常售，以及本杯容量、糖度、冰量和自带料；不能按整杯热量直接乘糖度比例。 本条第三方容量/价格可能混有地区版本；不要据其价格判断大陆常规版。"
+  },
+  {
+    "brand": "蜜雪冰城",
+    "name": "棒打鲜橙",
+    "size": "660 ml（页面杯型范围，未映射到热量配置）",
+    "sugar": "未注明（页面列糖度选项，但没有热量与配置映射）",
+    "kcal": 100,
+    "range": null,
+    "evidenceType": "第三方参考",
+    "sourceUrl": "https://www.nckfhsm.com/products/bang-da-xian-cheng",
+    "sourceNote": "页面读取热量 100 kcal；有范围则取区间中点作暂用参考，非官方核实值。",
+    "includedToppings": [],
+    "verifyNote": "待核对中国大陆门店是否常售，以及本杯容量、糖度、冰量和自带料；不能按整杯热量直接乘糖度比例。 本条第三方容量/价格可能混有地区版本；不要据其价格判断大陆常规版。"
+  },
+  {
+    "brand": "蜜雪冰城",
+    "name": "满杯百香果",
+    "size": "505~660 ml（页面杯型范围，未映射到热量配置）",
+    "sugar": "未注明（估算按常规有糖配方，糖量为假设）",
+    "kcal": 350,
+    "range": [
+      220,
+      480
+    ],
+    "evidenceType": "配料估算",
+    "sourceUrl": "https://www.nckfhsm.com/products/man-bei-bai-xiang-guo-7",
+    "sourceNote": "来源仅支持名称/配料，不支持本条整杯数值。假设百香果浆80 kcal+糖30g×4=120 kcal+珍珠100 kcal+椰果50 kcal。",
+    "includedToppings": [
+      "珍珠",
+      "椰果"
+    ],
+    "verifyNote": "待核对中国大陆门店是否常售，以及本杯容量、糖度、冰量和自带料；不能按整杯热量直接乘糖度比例。 本条第三方容量/价格可能混有地区版本；不要据其价格判断大陆常规版。"
+  },
+  {
+    "brand": "蜜雪冰城",
+    "name": "蜜桃四季春",
+    "size": "660 ml（页面杯型范围，未映射到热量配置）",
+    "sugar": "未注明（估算按常规有糖配方，糖量为假设）",
+    "kcal": 240,
+    "range": [
+      150,
+      350
+    ],
+    "evidenceType": "配料估算",
+    "sourceUrl": "https://www.nckfhsm.com/products/mi-tao-si-ji-chun-43615",
+    "sourceNote": "来源仅支持名称/配料，不支持本条整杯数值。假设桃果浆80 kcal+可消化糖25g×4=100 kcal+啵啵60 kcal。",
+    "includedToppings": [
+      "啵啵"
+    ],
+    "verifyNote": "待核对中国大陆门店是否常售，以及本杯容量、糖度、冰量和自带料；不能按整杯热量直接乘糖度比例。第三方出现同名多价格条目，须确认大陆常规版，配方/地区可能不同。 本条第三方容量/价格可能混有地区版本；不要据其价格判断大陆常规版。"
+  },
+  {
+    "brand": "蜜雪冰城",
+    "name": "三拼霸霸奶茶",
+    "size": "660 ml（页面杯型范围，未映射到热量配置）",
+    "sugar": "未注明（估算按常规有糖配方，糖量为假设）",
+    "kcal": 500,
+    "range": [
+      350,
+      650
+    ],
+    "evidenceType": "配料估算",
+    "sourceUrl": "https://www.nckfhsm.com/products/san-pin-ba-ba-nai-cha-43125",
+    "sourceNote": "来源仅支持名称/配料，不支持本条整杯数值。假设奶茶基底280 kcal+珍珠100 kcal+布丁70 kcal+椰果50 kcal。",
+    "includedToppings": [
+      "珍珠",
+      "椰果",
+      "布丁"
+    ],
+    "verifyNote": "待核对中国大陆门店是否常售，以及本杯容量、糖度、冰量和自带料；不能按整杯热量直接乘糖度比例。 本条第三方容量/价格可能混有地区版本；不要据其价格判断大陆常规版。"
+  },
+  {
+    "brand": "蜜雪冰城",
+    "name": "草莓摇摇奶昔",
+    "size": "420 ml（页面杯型范围，未映射到热量配置）",
+    "sugar": "未注明（估算按常规有糖配方，糖量为假设）",
+    "kcal": 250,
+    "range": [
+      200,
+      350
+    ],
+    "evidenceType": "配料估算",
+    "sourceUrl": "https://www.nckfhsm.com/products/cao-mei-yao-yao-nai-xi-mi-xue-bing-cheng",
+    "sourceNote": "来源仅支持名称/配料，不支持本条整杯数值。菜单注明冰淇淋115–125g；假设其约180 kcal，草莓果浆及糖约70 kcal。",
+    "includedToppings": [
+      "冰淇淋",
+      "草莓果浆"
+    ],
+    "verifyNote": "待核对中国大陆门店是否常售，以及本杯容量、糖度、冰量和自带料；不能按整杯热量直接乘糖度比例。 本条第三方容量/价格可能混有地区版本；不要据其价格判断大陆常规版。"
+  },
+  {
+    "brand": "霸王茶姬",
+    "name": "伯牙绝弦",
+    "size": "500~700 ml（页面杯型范围，未映射到热量配置）",
+    "sugar": "未注明（页面列糖度选项，但没有热量与配置映射）",
+    "kcal": 258,
+    "range": [
+      238,
+      277
+    ],
+    "evidenceType": "第三方参考",
+    "sourceUrl": "https://www.nckfhsm.com/products/bo-ya-jue-xian",
+    "sourceNote": "页面读取热量 238~277 kcal；有范围则取区间中点作暂用参考，非官方核实值。",
+    "includedToppings": [],
+    "verifyNote": "待核对中国大陆门店是否常售，以及本杯容量、糖度、冰量和自带料；不能按整杯热量直接乘糖度比例。优先到官方健康计算器 https://qmproductcomput.bwcj.com/ 逐配置核对；本轮未从动态页面取得该数值。"
+  },
+  {
+    "brand": "霸王茶姬",
+    "name": "青青糯山",
+    "size": "500~700 ml（页面杯型范围，未映射到热量配置）",
+    "sugar": "未注明（页面列糖度选项，但没有热量与配置映射）",
+    "kcal": 291,
+    "range": null,
+    "evidenceType": "第三方参考",
+    "sourceUrl": "https://www.nckfhsm.com/products/qing-qing-nuo-shan",
+    "sourceNote": "页面读取热量 291 kcal；有范围则取区间中点作暂用参考，非官方核实值。",
+    "includedToppings": [],
+    "verifyNote": "待核对中国大陆门店是否常售，以及本杯容量、糖度、冰量和自带料；不能按整杯热量直接乘糖度比例。优先到官方健康计算器 https://qmproductcomput.bwcj.com/ 逐配置核对；本轮未从动态页面取得该数值。"
+  },
+  {
+    "brand": "霸王茶姬",
+    "name": "花田乌龙",
+    "size": "500~700 ml（页面杯型范围，未映射到热量配置）",
+    "sugar": "未注明（页面列糖度选项，但没有热量与配置映射）",
+    "kcal": 198,
+    "range": [
+      124,
+      273
+    ],
+    "evidenceType": "第三方参考",
+    "sourceUrl": "https://www.nckfhsm.com/products/hua-tian-wu-long",
+    "sourceNote": "页面读取热量 124~273 kcal；有范围则取区间中点作暂用参考，非官方核实值。",
+    "includedToppings": [],
+    "verifyNote": "待核对中国大陆门店是否常售，以及本杯容量、糖度、冰量和自带料；不能按整杯热量直接乘糖度比例。优先到官方健康计算器 https://qmproductcomput.bwcj.com/ 逐配置核对；本轮未从动态页面取得该数值。"
+  },
+  {
+    "brand": "霸王茶姬",
+    "name": "白雾红尘",
+    "size": "500~700 ml（页面杯型范围，未映射到热量配置）",
+    "sugar": "未注明（页面列糖度选项，但没有热量与配置映射）",
+    "kcal": 320,
+    "range": null,
+    "evidenceType": "第三方参考",
+    "sourceUrl": "https://www.nckfhsm.com/products/bai-wu-hong-chen",
+    "sourceNote": "页面读取热量 320 kcal；有范围则取区间中点作暂用参考，非官方核实值。",
+    "includedToppings": [],
+    "verifyNote": "待核对中国大陆门店是否常售，以及本杯容量、糖度、冰量和自带料；不能按整杯热量直接乘糖度比例。优先到官方健康计算器 https://qmproductcomput.bwcj.com/ 逐配置核对；本轮未从动态页面取得该数值。"
+  },
+  {
+    "brand": "霸王茶姬",
+    "name": "寻香山茶",
+    "size": "500~700 ml（页面杯型范围，未映射到热量配置）",
+    "sugar": "未注明（页面列糖度选项，但没有热量与配置映射）",
+    "kcal": 192,
+    "range": [
+      93,
+      290
+    ],
+    "evidenceType": "第三方参考",
+    "sourceUrl": "https://www.nckfhsm.com/products/xun-xiang-shan-cha",
+    "sourceNote": "页面读取热量 93~290 kcal；有范围则取区间中点作暂用参考，非官方核实值。",
+    "includedToppings": [],
+    "verifyNote": "待核对中国大陆门店是否常售，以及本杯容量、糖度、冰量和自带料；不能按整杯热量直接乘糖度比例。优先到官方健康计算器 https://qmproductcomput.bwcj.com/ 逐配置核对；本轮未从动态页面取得该数值。"
+  },
+  {
+    "brand": "霸王茶姬",
+    "name": "桂馥兰香",
+    "size": "500~700 ml（页面杯型范围，未映射到热量配置）",
+    "sugar": "未注明（页面列糖度选项，但没有热量与配置映射）",
+    "kcal": 233,
+    "range": null,
+    "evidenceType": "第三方参考",
+    "sourceUrl": "https://www.nckfhsm.com/products/gui-fu-lan-xiang",
+    "sourceNote": "页面读取热量 233 kcal；有范围则取区间中点作暂用参考，非官方核实值。",
+    "includedToppings": [],
+    "verifyNote": "待核对中国大陆门店是否常售，以及本杯容量、糖度、冰量和自带料；不能按整杯热量直接乘糖度比例。优先到官方健康计算器 https://qmproductcomput.bwcj.com/ 逐配置核对；本轮未从动态页面取得该数值。"
+  },
+  {
+    "brand": "霸王茶姬",
+    "name": "轻因·伯牙绝弦",
+    "size": "500~700 ml（页面杯型范围，未映射到热量配置）",
+    "sugar": "未注明（页面列糖度选项，但没有热量与配置映射）",
+    "kcal": 183,
+    "range": [
+      106,
+      260
+    ],
+    "evidenceType": "第三方参考",
+    "sourceUrl": "https://www.nckfhsm.com/products/qing-yin-bo-ya-jue-xian",
+    "sourceNote": "页面读取热量 106~260 kcal；有范围则取区间中点作暂用参考，非官方核实值。",
+    "includedToppings": [],
+    "verifyNote": "待核对中国大陆门店是否常售，以及本杯容量、糖度、冰量和自带料；不能按整杯热量直接乘糖度比例。优先到官方健康计算器 https://qmproductcomput.bwcj.com/ 逐配置核对；本轮未从动态页面取得该数值。"
+  },
+  {
+    "brand": "霸王茶姬",
+    "name": "凤凰栖梧",
+    "size": "未注明（按常见一杯暂估，须核对容量）",
+    "sugar": "未注明（页面列糖度选项，但没有热量与配置映射）",
+    "kcal": 190,
+    "range": null,
+    "evidenceType": "第三方参考",
+    "sourceUrl": "https://www.nckfhsm.com/products/feng-huang-qi-wu",
+    "sourceNote": "页面读取热量 190 kcal；有范围则取区间中点作暂用参考，非官方核实值。",
+    "includedToppings": [],
+    "verifyNote": "待核对中国大陆门店是否常售，以及本杯容量、糖度、冰量和自带料；不能按整杯热量直接乘糖度比例。优先到官方健康计算器 https://qmproductcomput.bwcj.com/ 逐配置核对；本轮未从动态页面取得该数值。"
+  },
+  {
+    "brand": "喜茶",
+    "name": "多肉葡萄(首创)",
+    "size": "500~650 ml（页面杯型范围，未映射到热量配置）",
+    "sugar": "未注明（页面列糖度选项，但没有热量与配置映射）",
+    "kcal": 188,
+    "range": [
+      159,
+      216
+    ],
+    "evidenceType": "第三方参考",
+    "sourceUrl": "https://www.nckfhsm.com/products/duo-rou-pu-tao-shou-chuang",
+    "sourceNote": "页面读取热量 159~216 kcal；有范围则取区间中点作暂用参考，非官方核实值。",
+    "includedToppings": [],
+    "verifyNote": "待核对中国大陆门店是否常售，以及本杯容量、糖度、冰量和自带料；不能按整杯热量直接乘糖度比例。"
+  },
+  {
+    "brand": "喜茶",
+    "name": "芒芒甘露(首创)",
+    "size": "500 ml（页面杯型范围，未映射到热量配置）",
+    "sugar": "未注明（页面列糖度选项，但没有热量与配置映射）",
+    "kcal": 316,
+    "range": [
+      283,
+      348
+    ],
+    "evidenceType": "第三方参考",
+    "sourceUrl": "https://www.nckfhsm.com/products/mang-mang-gan-lu-shou-chuang",
+    "sourceNote": "页面读取热量 283~348 kcal；有范围则取区间中点作暂用参考，非官方核实值。",
+    "includedToppings": [
+      "西米",
+      "芒果果肉",
+      "红柚"
+    ],
+    "verifyNote": "待核对中国大陆门店是否常售，以及本杯容量、糖度、冰量和自带料；不能按整杯热量直接乘糖度比例。"
+  },
+  {
+    "brand": "喜茶",
+    "name": "椰椰芒芒",
+    "size": "500 ml（页面杯型范围，未映射到热量配置）",
+    "sugar": "未注明（页面列糖度选项，但没有热量与配置映射）",
+    "kcal": 315,
+    "range": [
+      279,
+      351
+    ],
+    "evidenceType": "第三方参考",
+    "sourceUrl": "https://www.nckfhsm.com/products/ye-ye-mang-mang",
+    "sourceNote": "页面读取热量 279~351 kcal；有范围则取区间中点作暂用参考，非官方核实值。",
+    "includedToppings": [
+      "西米",
+      "弹弹冻",
+      "芒果果肉"
+    ],
+    "verifyNote": "待核对中国大陆门店是否常售，以及本杯容量、糖度、冰量和自带料；不能按整杯热量直接乘糖度比例。"
+  },
+  {
+    "brand": "喜茶",
+    "name": "烤黑糖波波牛乳茶",
+    "size": "500 ml（页面杯型范围，未映射到热量配置）",
+    "sugar": "未注明（页面列糖度选项，但没有热量与配置映射）",
+    "kcal": 410,
+    "range": null,
+    "evidenceType": "第三方参考",
+    "sourceUrl": "https://www.nckfhsm.com/products/kao-hei-tang-bo-bo-niu-ru-cha",
+    "sourceNote": "页面读取热量 410 kcal；有范围则取区间中点作暂用参考，非官方核实值。",
+    "includedToppings": [
+      "黑糖珍珠"
+    ],
+    "verifyNote": "待核对中国大陆门店是否常售，以及本杯容量、糖度、冰量和自带料；不能按整杯热量直接乘糖度比例。"
+  },
+  {
+    "brand": "喜茶",
+    "name": "三倍厚抹",
+    "size": "500 ml（页面杯型范围，未映射到热量配置）",
+    "sugar": "未注明（页面列糖度选项，但没有热量与配置映射）",
+    "kcal": 420,
+    "range": [
+      388,
+      453
+    ],
+    "evidenceType": "第三方参考",
+    "sourceUrl": "https://www.nckfhsm.com/products/san-bei-hou-mo",
+    "sourceNote": "页面读取热量 388~453 kcal；有范围则取区间中点作暂用参考，非官方核实值。",
+    "includedToppings": [
+      "奶盖"
+    ],
+    "verifyNote": "待核对中国大陆门店是否常售，以及本杯容量、糖度、冰量和自带料；不能按整杯热量直接乘糖度比例。"
+  },
+  {
+    "brand": "喜茶",
+    "name": "满杯红柚(首创)",
+    "size": "500~650 ml（页面杯型范围，未映射到热量配置）",
+    "sugar": "未注明（页面列糖度选项，但没有热量与配置映射）",
+    "kcal": 200,
+    "range": [
+      171,
+      230
+    ],
+    "evidenceType": "第三方参考",
+    "sourceUrl": "https://www.nckfhsm.com/products/man-bei-hong-you-shou-chuang",
+    "sourceNote": "页面读取热量 171~230 kcal；有范围则取区间中点作暂用参考，非官方核实值。",
+    "includedToppings": [],
+    "verifyNote": "待核对中国大陆门店是否常售，以及本杯容量、糖度、冰量和自带料；不能按整杯热量直接乘糖度比例。"
+  },
+  {
+    "brand": "喜茶",
+    "name": "雪毫茉王牛乳茶",
+    "size": "500 ml（页面杯型范围，未映射到热量配置）",
+    "sugar": "未注明（页面列糖度选项，但没有热量与配置映射）",
+    "kcal": 214,
+    "range": [
+      178,
+      249
+    ],
+    "evidenceType": "第三方参考",
+    "sourceUrl": "https://www.nckfhsm.com/products/xue-hao-mo-wang-niu-ru-cha",
+    "sourceNote": "页面读取热量 178~249 kcal；有范围则取区间中点作暂用参考，非官方核实值。",
+    "includedToppings": [],
+    "verifyNote": "待核对中国大陆门店是否常售，以及本杯容量、糖度、冰量和自带料；不能按整杯热量直接乘糖度比例。"
+  },
+  {
+    "brand": "茶百道",
+    "name": "茉莉奶绿",
+    "size": "475~650 ml（页面杯型范围，未映射到热量配置）",
+    "sugar": "未注明（页面列糖度选项，但没有热量与配置映射）",
+    "kcal": 275,
+    "range": [
+      250,
+      300
+    ],
+    "evidenceType": "第三方参考",
+    "sourceUrl": "https://www.nckfhsm.com/products/mo-li-nai-lv-25380",
+    "sourceNote": "页面读取热量 250~300 kcal；有范围则取区间中点作暂用参考，非官方核实值。",
+    "includedToppings": [],
+    "verifyNote": "待核对中国大陆门店是否常售，以及本杯容量、糖度、冰量和自带料；不能按整杯热量直接乘糖度比例。"
+  },
+  {
+    "brand": "茶百道",
+    "name": "杨枝甘露",
+    "size": "475~650 ml（页面杯型范围，未映射到热量配置）",
+    "sugar": "未注明（页面列糖度选项，但没有热量与配置映射）",
+    "kcal": 345,
+    "range": [
+      310,
+      380
+    ],
+    "evidenceType": "第三方参考",
+    "sourceUrl": "https://www.nckfhsm.com/products/yang-zhi-gan-lu-25361",
+    "sourceNote": "页面读取热量 310~380 kcal；有范围则取区间中点作暂用参考，非官方核实值。",
+    "includedToppings": [
+      "西米",
+      "芒果"
+    ],
+    "verifyNote": "待核对中国大陆门店是否常售，以及本杯容量、糖度、冰量和自带料；不能按整杯热量直接乘糖度比例。"
+  },
+  {
+    "brand": "茶百道",
+    "name": "豆乳米麻薯",
+    "size": "475~650 ml（页面杯型范围，未映射到热量配置）",
+    "sugar": "未注明（页面列糖度选项，但没有热量与配置映射）",
+    "kcal": 480,
+    "range": [
+      459,
+      500
+    ],
+    "evidenceType": "第三方参考",
+    "sourceUrl": "https://www.nckfhsm.com/products/dou-ru-mi-ma-shu-25383",
+    "sourceNote": "页面读取热量 459~500 kcal；有范围则取区间中点作暂用参考，非官方核实值。",
+    "includedToppings": [
+      "米麻薯",
+      "芝士",
+      "黄豆粉"
+    ],
+    "verifyNote": "待核对中国大陆门店是否常售，以及本杯容量、糖度、冰量和自带料；不能按整杯热量直接乘糖度比例。"
+  },
+  {
+    "brand": "茶百道",
+    "name": "豆乳玉麒麟",
+    "size": "475~650 ml（页面杯型范围，未映射到热量配置）",
+    "sugar": "未注明（估算按常规有糖配方，糖量为假设）",
+    "kcal": 380,
+    "range": [
+      260,
+      520
+    ],
+    "evidenceType": "配料估算",
+    "sourceUrl": "https://www.nckfhsm.com/products/dou-ru-yu-qi-lin",
+    "sourceNote": "来源仅支持名称/配料，不支持本条整杯数值。假设牛乳/奶茶基底220 kcal+芝士奶盖120 kcal+黄豆粉40 kcal；份量未公开。",
+    "includedToppings": [
+      "芝士",
+      "黄豆粉"
+    ],
+    "verifyNote": "待核对中国大陆门店是否常售，以及本杯容量、糖度、冰量和自带料；不能按整杯热量直接乘糖度比例。"
+  },
+  {
+    "brand": "茶百道",
+    "name": "乌漆嘛黑",
+    "size": "520 ml（页面杯型范围，未映射到热量配置）",
+    "sugar": "未注明（估算按常规有糖配方，糖量为假设）",
+    "kcal": 220,
+    "range": [
+      140,
+      340
+    ],
+    "evidenceType": "配料估算",
+    "sourceUrl": "https://www.nckfhsm.com/products/wu-qi-ma-hei",
+    "sourceNote": "来源仅支持名称/配料，不支持本条整杯数值。假设多种果肉果浆约100 kcal+可消化糖30g×4=120 kcal；不含额外芝士奶盖。",
+    "includedToppings": [],
+    "verifyNote": "待核对中国大陆门店是否常售，以及本杯容量、糖度、冰量和自带料；不能按整杯热量直接乘糖度比例。"
+  },
+  {
+    "brand": "茶百道",
+    "name": "黑糖珍珠奶茶Pro",
+    "size": "475~600 ml（页面杯型范围，未映射到热量配置）",
+    "sugar": "未注明（估算按常规有糖配方，糖量为假设）",
+    "kcal": 400,
+    "range": [
+      280,
+      550
+    ],
+    "evidenceType": "配料估算",
+    "sourceUrl": "https://www.nckfhsm.com/products/hei-tang-zhen-zhu-nai-cha-pro",
+    "sourceNote": "来源仅支持名称/配料，不支持本条整杯数值。假设奶茶基底250 kcal+含糖珍珠150 kcal；奶基及糖浆份量未知。",
+    "includedToppings": [
+      "黑糖珍珠"
+    ],
+    "verifyNote": "待核对中国大陆门店是否常售，以及本杯容量、糖度、冰量和自带料；不能按整杯热量直接乘糖度比例。"
+  },
+  {
+    "brand": "古茗",
+    "name": "古茗奶茶",
+    "size": "500~645 ml（页面杯型范围，未映射到热量配置）",
+    "sugar": "未注明（页面列糖度选项，但没有热量与配置映射）",
+    "kcal": 355,
+    "range": null,
+    "evidenceType": "第三方参考",
+    "sourceUrl": "https://www.nckfhsm.com/products/gu-ming-nai-cha",
+    "sourceNote": "页面读取热量 355 kcal；有范围则取区间中点作暂用参考，非官方核实值。",
+    "includedToppings": [],
+    "verifyNote": "待核对中国大陆门店是否常售，以及本杯容量、糖度、冰量和自带料；不能按整杯热量直接乘糖度比例。免费珍珠/椰果是可选项，355 kcal是否含免费料未注明，不要自动叠加。"
+  },
+  {
+    "brand": "古茗",
+    "name": "云岭茉莉",
+    "size": "500~645 ml（页面杯型范围，未映射到热量配置）",
+    "sugar": "未注明（页面列糖度选项，但没有热量与配置映射）",
+    "kcal": 145,
+    "range": null,
+    "evidenceType": "第三方参考",
+    "sourceUrl": "https://www.nckfhsm.com/products/yun-ling-mo-li",
+    "sourceNote": "页面读取热量 145 kcal；有范围则取区间中点作暂用参考，非官方核实值。",
+    "includedToppings": [],
+    "verifyNote": "待核对中国大陆门店是否常售，以及本杯容量、糖度、冰量和自带料；不能按整杯热量直接乘糖度比例。"
+  },
+  {
+    "brand": "古茗",
+    "name": "大叔奶茶",
+    "size": "500~645 ml（页面杯型范围，未映射到热量配置）",
+    "sugar": "未注明（估算按常规有糖配方，糖量为假设）",
+    "kcal": 480,
+    "range": [
+      350,
+      650
+    ],
+    "evidenceType": "配料估算",
+    "sourceUrl": "https://www.nckfhsm.com/products/da-shu-nai-cha",
+    "sourceNote": "来源仅支持名称/配料，不支持本条整杯数值。假设奶茶基底250 kcal+蜜豆70 kcal+布丁60 kcal+珍珠100 kcal。",
+    "includedToppings": [
+      "蜜豆",
+      "布丁",
+      "珍珠"
+    ],
+    "verifyNote": "待核对中国大陆门店是否常售，以及本杯容量、糖度、冰量和自带料；不能按整杯热量直接乘糖度比例。"
+  },
+  {
+    "brand": "古茗",
+    "name": "杨枝甘露轻盈版",
+    "size": "500~645 ml（页面杯型范围，未映射到热量配置）",
+    "sugar": "未注明（估算按常规有糖配方，糖量为假设）",
+    "kcal": 320,
+    "range": [
+      220,
+      450
+    ],
+    "evidenceType": "配料估算",
+    "sourceUrl": "https://www.nckfhsm.com/products/yang-zhi-gan-lu-qing-ying-ban-25199",
+    "sourceNote": "来源仅支持名称/配料，不支持本条整杯数值。假设芒果/西柚80 kcal+椰浆100 kcal+西米/多肉80 kcal+糖15g×4=60 kcal。",
+    "includedToppings": [
+      "西米",
+      "多肉",
+      "西柚粒",
+      "芒果"
+    ],
+    "verifyNote": "待核对中国大陆门店是否常售，以及本杯容量、糖度、冰量和自带料；不能按整杯热量直接乘糖度比例。"
+  },
+  {
+    "brand": "古茗",
+    "name": "超A芝士葡萄",
+    "size": "630 ml（页面杯型范围，未映射到热量配置）",
+    "sugar": "未注明（估算按常规有糖配方，糖量为假设）",
+    "kcal": 380,
+    "range": [
+      280,
+      520
+    ],
+    "evidenceType": "配料估算",
+    "sourceUrl": "https://www.nckfhsm.com/products/chao-a-zhi-shi-pu-tao-gu-ming",
+    "sourceNote": "来源仅支持名称/配料，不支持本条整杯数值。假设葡萄果肉果汁140 kcal+奶盖120 kcal+多肉40 kcal+糖20g×4=80 kcal。",
+    "includedToppings": [
+      "芝士奶盖",
+      "多肉",
+      "葡萄果肉"
+    ],
+    "verifyNote": "待核对中国大陆门店是否常售，以及本杯容量、糖度、冰量和自带料；不能按整杯热量直接乘糖度比例。"
+  },
+  {
+    "brand": "古茗",
+    "name": "布蕾脆脆奶芙",
+    "size": "510 ml（页面杯型范围，未映射到热量配置）",
+    "sugar": "未注明（页面列糖度选项，但没有热量与配置映射）",
+    "kcal": 560,
+    "range": null,
+    "evidenceType": "第三方参考",
+    "sourceUrl": "https://www.nckfhsm.com/products/bu-lei-cui-cui-nai-fu",
+    "sourceNote": "页面读取热量 560 kcal；有范围则取区间中点作暂用参考，非官方核实值。",
+    "includedToppings": [
+      "布蕾",
+      "珍珠",
+      "香草籽奶芙",
+      "坚果碎"
+    ],
+    "verifyNote": "待核对中国大陆门店是否常售，以及本杯容量、糖度、冰量和自带料；不能按整杯热量直接乘糖度比例。"
+  },
+  {
+    "brand": "古茗",
+    "name": "抹茶四季春",
+    "size": "500 ml（页面杯型范围，未映射到热量配置）",
+    "sugar": "未注明（页面列糖度选项，但没有热量与配置映射）",
+    "kcal": 329,
+    "range": null,
+    "evidenceType": "第三方参考",
+    "sourceUrl": "https://www.nckfhsm.com/products/mo-cha-si-ji-chun",
+    "sourceNote": "页面读取热量 329 kcal；有范围则取区间中点作暂用参考，非官方核实值。",
+    "includedToppings": [
+      "抹茶奶盖",
+      "黑糖珍珠"
+    ],
+    "verifyNote": "待核对中国大陆门店是否常售，以及本杯容量、糖度、冰量和自带料；不能按整杯热量直接乘糖度比例。"
+  },
+  {
+    "brand": "古茗",
+    "name": "四季青山",
+    "size": "500~645 ml（页面杯型范围，未映射到热量配置）",
+    "sugar": "未注明（估算按常规有糖配方，糖量为假设）",
+    "kcal": 200,
+    "range": [
+      130,
+      310
+    ],
+    "evidenceType": "配料估算",
+    "sourceUrl": "https://www.nckfhsm.com/products/si-ji-qing-shan",
+    "sourceNote": "来源仅支持名称/配料，不支持本条整杯数值。假设鲜奶200ml×60kcal/100ml=120 kcal+糖20g×4=80 kcal；不含额外奶芙。",
+    "includedToppings": [],
+    "verifyNote": "待核对中国大陆门店是否常售，以及本杯容量、糖度、冰量和自带料；不能按整杯热量直接乘糖度比例。"
+  },
+  {
+    "brand": "一点点",
+    "name": "波霸奶茶",
+    "size": "480~640 ml（页面杯型范围，未映射到热量配置）",
+    "sugar": "未注明（估算按常规有糖配方，糖量为假设）",
+    "kcal": 420,
+    "range": [
+      300,
+      580
+    ],
+    "evidenceType": "配料估算",
+    "sourceUrl": "https://www.nckfhsm.com/products/bo-ba-nai-cha",
+    "sourceNote": "来源仅支持名称/配料，不支持本条整杯数值。假设奶精茶基底280 kcal+熟波霸约140 kcal；不包含点单后额外小料。",
+    "includedToppings": [
+      "波霸"
+    ],
+    "verifyNote": "待核对中国大陆门店是否常售，以及本杯容量、糖度、冰量和自带料；不能按整杯热量直接乘糖度比例。"
+  },
+  {
+    "brand": "一点点",
+    "name": "四季奶青",
+    "size": "480~640 ml（页面杯型范围，未映射到热量配置）",
+    "sugar": "未注明（估算按常规有糖配方，糖量为假设）",
+    "kcal": 280,
+    "range": [
+      180,
+      400
+    ],
+    "evidenceType": "配料估算",
+    "sourceUrl": "https://www.nckfhsm.com/products/si-ji-nai-qing",
+    "sourceNote": "来源仅支持名称/配料，不支持本条整杯数值。假设奶精35g×500kcal/100g=175 kcal+可消化糖约26g×4=104 kcal。",
+    "includedToppings": [],
+    "verifyNote": "待核对中国大陆门店是否常售，以及本杯容量、糖度、冰量和自带料；不能按整杯热量直接乘糖度比例。"
+  },
+  {
+    "brand": "一点点",
+    "name": "冰淇淋红茶",
+    "size": "480~640 ml（页面杯型范围，未映射到热量配置）",
+    "sugar": "未注明（估算按常规有糖配方，糖量为假设）",
+    "kcal": 270,
+    "range": [
+      180,
+      400
+    ],
+    "evidenceType": "配料估算",
+    "sourceUrl": "https://www.nckfhsm.com/products/bing-qi-lin-hong-cha-yi-dian-dian",
+    "sourceNote": "来源仅支持名称/配料，不支持本条整杯数值。假设冰淇淋约190 kcal+糖20g×4=80 kcal；红茶热量近零。",
+    "includedToppings": [
+      "冰淇淋"
+    ],
+    "verifyNote": "待核对中国大陆门店是否常售，以及本杯容量、糖度、冰量和自带料；不能按整杯热量直接乘糖度比例。"
+  },
+  {
+    "brand": "一点点",
+    "name": "A2牛乳红茶",
+    "size": "480~640 ml（页面杯型范围，未映射到热量配置）",
+    "sugar": "未注明（页面列糖度选项，但没有热量与配置映射）",
+    "kcal": 220,
+    "range": null,
+    "evidenceType": "第三方参考",
+    "sourceUrl": "https://www.nckfhsm.com/products/a2-niu-ru-hong-cha",
+    "sourceNote": "页面读取热量 220 kcal；有范围则取区间中点作暂用参考，非官方核实值。",
+    "includedToppings": [],
+    "verifyNote": "待核对中国大陆门店是否常售，以及本杯容量、糖度、冰量和自带料；不能按整杯热量直接乘糖度比例。"
+  },
+  {
+    "brand": "一点点",
+    "name": "养乐多绿",
+    "size": "480~640 ml（页面杯型范围，未映射到热量配置）",
+    "sugar": "未注明（估算按常规有糖配方，糖量为假设）",
+    "kcal": 220,
+    "range": [
+      130,
+      330
+    ],
+    "evidenceType": "配料估算",
+    "sourceUrl": "https://www.nckfhsm.com/products/yang-le-duo-lv",
+    "sourceNote": "来源仅支持名称/配料，不支持本条整杯数值。假设养乐多等乳酸菌饮料约100 kcal+糖30g×4=120 kcal。",
+    "includedToppings": [],
+    "verifyNote": "待核对中国大陆门店是否常售，以及本杯容量、糖度、冰量和自带料；不能按整杯热量直接乘糖度比例。"
+  },
+  {
+    "brand": "一点点",
+    "name": "阿华田",
+    "size": "480~640 ml（页面杯型范围，未映射到热量配置）",
+    "sugar": "未注明（估算按常规有糖配方，糖量为假设）",
+    "kcal": 380,
+    "range": [
+      260,
+      520
+    ],
+    "evidenceType": "配料估算",
+    "sourceUrl": "https://www.nckfhsm.com/products/a-hua-tian",
+    "sourceNote": "来源仅支持名称/配料，不支持本条整杯数值。假设奶基120 kcal+阿华田粉/糖150 kcal+配方冰淇淋110 kcal；菜单含冰淇淋，需核对当前配方。",
+    "includedToppings": [
+      "冰淇淋（当前菜单列出，待核对）"
+    ],
+    "verifyNote": "待核对中国大陆门店是否常售，以及本杯容量、糖度、冰量和自带料；不能按整杯热量直接乘糖度比例。"
+  },
+  {
+    "brand": "一点点",
+    "name": "QQ美莓奶茶",
+    "size": "480~640 ml（页面杯型范围，未映射到热量配置）",
+    "sugar": "未注明（页面列糖度选项，但没有热量与配置映射）",
+    "kcal": 360,
+    "range": null,
+    "evidenceType": "第三方参考",
+    "sourceUrl": "https://www.nckfhsm.com/products/qq-mei-mei-nai-cha",
+    "sourceNote": "页面读取热量 360 kcal；有范围则取区间中点作暂用参考，非官方核实值。",
+    "includedToppings": [
+      "波霸",
+      "草莓果料"
+    ],
+    "verifyNote": "待核对中国大陆门店是否常售，以及本杯容量、糖度、冰量和自带料；不能按整杯热量直接乘糖度比例。"
+  },
+  {
+    "brand": "一点点",
+    "name": "藏青盐咸奶绿",
+    "size": "480~640 ml（页面杯型范围，未映射到热量配置）",
+    "sugar": "未注明（页面列糖度选项，但没有热量与配置映射）",
+    "kcal": 230,
+    "range": null,
+    "evidenceType": "第三方参考",
+    "sourceUrl": "https://www.nckfhsm.com/products/zang-qing-yan-xian-nai-lv",
+    "sourceNote": "页面读取热量 230 kcal；有范围则取区间中点作暂用参考，非官方核实值。",
+    "includedToppings": [],
+    "verifyNote": "待核对中国大陆门店是否常售，以及本杯容量、糖度、冰量和自带料；不能按整杯热量直接乘糖度比例。"
+  },
+  {
+    "brand": "CoCo都可",
+    "name": "珍珠奶茶",
+    "size": "500~630 ml（页面杯型范围，未映射到热量配置）",
+    "sugar": "未注明（页面列糖度选项，但没有热量与配置映射）",
+    "kcal": 506,
+    "range": [
+      291,
+      722
+    ],
+    "evidenceType": "第三方参考",
+    "sourceUrl": "https://www.nckfhsm.com/products/zhen-zhu-nai-cha-33366",
+    "sourceNote": "页面读取热量 291~722 kcal；有范围则取区间中点作暂用参考，非官方核实值。",
+    "includedToppings": [
+      "珍珠"
+    ],
+    "verifyNote": "待核对中国大陆门店是否常售，以及本杯容量、糖度、冰量和自带料；不能按整杯热量直接乘糖度比例。"
+  },
+  {
+    "brand": "CoCo都可",
+    "name": "奶茶三兄弟",
+    "size": "500~630 ml（页面杯型范围，未映射到热量配置）",
+    "sugar": "未注明（页面列糖度选项，但没有热量与配置映射）",
+    "kcal": 466,
+    "range": [
+      309,
+      622
+    ],
+    "evidenceType": "第三方参考",
+    "sourceUrl": "https://www.nckfhsm.com/products/nai-cha-san-xiong-di-33364",
+    "sourceNote": "页面读取热量 309~622 kcal；有范围则取区间中点作暂用参考，非官方核实值。",
+    "includedToppings": [
+      "珍珠",
+      "布丁",
+      "仙草"
+    ],
+    "verifyNote": "待核对中国大陆门店是否常售，以及本杯容量、糖度、冰量和自带料；不能按整杯热量直接乘糖度比例。"
+  },
+  {
+    "brand": "CoCo都可",
+    "name": "鲜百香双响炮",
+    "size": "630 ml（页面杯型范围，未映射到热量配置）",
+    "sugar": "未注明（估算按常规有糖配方，糖量为假设）",
+    "kcal": 370,
+    "range": [
+      250,
+      510
+    ],
+    "evidenceType": "配料估算",
+    "sourceUrl": "https://www.nckfhsm.com/products/xian-bai-xiang-shuang-xiang-pao-33582",
+    "sourceNote": "来源仅支持名称/配料，不支持本条整杯数值。假设百香果浆80 kcal+糖30g×4=120 kcal+珍珠120 kcal+椰果50 kcal。",
+    "includedToppings": [
+      "珍珠",
+      "椰果"
+    ],
+    "verifyNote": "待核对中国大陆门店是否常售，以及本杯容量、糖度、冰量和自带料；不能按整杯热量直接乘糖度比例。"
+  },
+  {
+    "brand": "CoCo都可",
+    "name": "双倍鲜芋雪冰",
+    "size": "500~630 ml（页面杯型范围，未映射到热量配置）",
+    "sugar": "未注明（页面列糖度选项，但没有热量与配置映射）",
+    "kcal": 432,
+    "range": null,
+    "evidenceType": "第三方参考",
+    "sourceUrl": "https://www.nckfhsm.com/products/shuang-bei-xian-yu-xue-bing",
+    "sourceNote": "页面读取热量 432 kcal；有范围则取区间中点作暂用参考，非官方核实值。",
+    "includedToppings": [
+      "鲜芋（珍珠布丁仅大杯超有料版含）"
+    ],
+    "verifyNote": "待核对中国大陆门店是否常售，以及本杯容量、糖度、冰量和自带料；不能按整杯热量直接乘糖度比例。432 kcal对应版本未注明；仅超有料大杯含珍珠布丁。"
+  },
+  {
+    "brand": "CoCo都可",
+    "name": "四季珍珠奶青",
+    "size": "500~630 ml（页面杯型范围，未映射到热量配置）",
+    "sugar": "未注明（估算按常规有糖配方，糖量为假设）",
+    "kcal": 400,
+    "range": [
+      280,
+      560
+    ],
+    "evidenceType": "配料估算",
+    "sourceUrl": "https://www.nckfhsm.com/products/si-ji-zhen-zhu-nai-qing",
+    "sourceNote": "来源仅支持名称/配料，不支持本条整杯数值。假设奶茶基底260 kcal+熟珍珠140 kcal；不含额外加料。",
+    "includedToppings": [
+      "珍珠"
+    ],
+    "verifyNote": "待核对中国大陆门店是否常售，以及本杯容量、糖度、冰量和自带料；不能按整杯热量直接乘糖度比例。"
+  },
+  {
+    "brand": "CoCo都可",
+    "name": "四季春茶",
+    "size": "500~630 ml（页面杯型范围，未映射到热量配置）",
+    "sugar": "未注明（估算按常规有糖配方，糖量为假设）",
+    "kcal": 100,
+    "range": [
+      0,
+      180
+    ],
+    "evidenceType": "配料估算",
+    "sourceUrl": "https://www.nckfhsm.com/products/si-ji-chun-cha-coco-dou-ke",
+    "sourceNote": "来源仅支持名称/配料，不支持本条整杯数值。假设纯茶接近0 kcal+糖25g×4=100 kcal；选不额外加糖时可接近0。",
+    "includedToppings": [],
+    "verifyNote": "待核对中国大陆门店是否常售，以及本杯容量、糖度、冰量和自带料；不能按整杯热量直接乘糖度比例。"
+  },
+  {
+    "brand": "CoCo都可",
+    "name": "黑糖珍珠奶茶",
+    "size": "500 ml（页面杯型范围，未映射到热量配置）",
+    "sugar": "未注明（估算按常规有糖配方，糖量为假设）",
+    "kcal": 430,
+    "range": [
+      300,
+      600
+    ],
+    "evidenceType": "配料估算",
+    "sourceUrl": "https://www.nckfhsm.com/products/hei-tang-zhen-zhu-nai-cha-coco-dou-ke",
+    "sourceNote": "来源仅支持名称/配料，不支持本条整杯数值。假设奶茶基底260 kcal+含糖珍珠170 kcal；不含额外布丁鲜芋。",
+    "includedToppings": [
+      "黑糖珍珠"
+    ],
+    "verifyNote": "待核对中国大陆门店是否常售，以及本杯容量、糖度、冰量和自带料；不能按整杯热量直接乘糖度比例。"
+  },
+  {
+    "brand": "CoCo都可",
+    "name": "莓莓冰奶",
+    "size": "500 ml（页面杯型范围，未映射到热量配置）",
+    "sugar": "未注明（估算按常规有糖配方，糖量为假设）",
+    "kcal": 280,
+    "range": [
+      180,
+      410
+    ],
+    "evidenceType": "配料估算",
+    "sourceUrl": "https://www.nckfhsm.com/products/mei-mei-bing-nai",
+    "sourceNote": "来源仅支持名称/配料，不支持本条整杯数值。假设牛奶200ml×60kcal/100ml=120 kcal+莓果浆80 kcal+糖20g×4=80 kcal。",
+    "includedToppings": [],
+    "verifyNote": "待核对中国大陆门店是否常售，以及本杯容量、糖度、冰量和自带料；不能按整杯热量直接乘糖度比例。"
+  },
+  {
+    "brand": "茉莉奶白",
+    "name": "茉莉奶白",
+    "size": "未注明（按常见一杯暂估，须核对容量）",
+    "sugar": "未注明（页面列糖度选项，但没有热量与配置映射）",
+    "kcal": 230,
+    "range": null,
+    "evidenceType": "第三方参考",
+    "sourceUrl": "https://www.nckfhsm.com/products/mo-li-nai-bai",
+    "sourceNote": "页面读取热量 230 kcal；有范围则取区间中点作暂用参考，非官方核实值。",
+    "includedToppings": [],
+    "verifyNote": "待核对中国大陆门店是否常售，以及本杯容量、糖度、冰量和自带料；不能按整杯热量直接乘糖度比例。"
+  },
+  {
+    "brand": "茉莉奶白",
+    "name": "栀子奶白",
+    "size": "未注明（按常见一杯暂估，须核对容量）",
+    "sugar": "未注明（估算按常规有糖配方，糖量为假设）",
+    "kcal": 230,
+    "range": [
+      150,
+      340
+    ],
+    "evidenceType": "配料估算",
+    "sourceUrl": "https://www.nckfhsm.com/products/zhi-zi-nai-bai",
+    "sourceNote": "来源仅支持名称/配料，不支持本条整杯数值。假设牛奶250ml×60kcal/100ml=150 kcal+糖20g×4=80 kcal；不含额外小料。",
+    "includedToppings": [],
+    "verifyNote": "待核对中国大陆门店是否常售，以及本杯容量、糖度、冰量和自带料；不能按整杯热量直接乘糖度比例。"
+  },
+  {
+    "brand": "茉莉奶白",
+    "name": "白兰",
+    "size": "未注明（按常见一杯暂估，须核对容量）",
+    "sugar": "未注明（估算按常规有糖配方，糖量为假设）",
+    "kcal": 240,
+    "range": [
+      150,
+      350
+    ],
+    "evidenceType": "配料估算",
+    "sourceUrl": "https://www.nckfhsm.com/products/bai-lan",
+    "sourceNote": "来源仅支持名称/配料，不支持本条整杯数值。假设牛奶250ml×60kcal/100ml=150 kcal+糖/风味基底90 kcal；页面未给可读取热量。",
+    "includedToppings": [],
+    "verifyNote": "待核对中国大陆门店是否常售，以及本杯容量、糖度、冰量和自带料；不能按整杯热量直接乘糖度比例。"
+  },
+  {
+    "brand": "茉莉奶白",
+    "name": "一朵茉莉花",
+    "size": "未注明（按常见一杯暂估，须核对容量）",
+    "sugar": "未注明（估算按常规有糖配方，糖量为假设）",
+    "kcal": 400,
+    "range": [
+      280,
+      560
+    ],
+    "evidenceType": "配料估算",
+    "sourceUrl": "https://www.nckfhsm.com/products/yi-duo-mo-li-hua",
+    "sourceNote": "来源仅支持名称/配料，不支持本条整杯数值。假设鲜奶茶230 kcal+忌廉云顶140 kcal+碧根果碎30 kcal。",
+    "includedToppings": [
+      "茉莉忌廉云顶",
+      "碧根果碎"
+    ],
+    "verifyNote": "待核对中国大陆门店是否常售，以及本杯容量、糖度、冰量和自带料；不能按整杯热量直接乘糖度比例。"
+  },
+  {
+    "brand": "茉莉奶白",
+    "name": "针王葡萄",
+    "size": "未注明（按常见一杯暂估，须核对容量）",
+    "sugar": "未注明（估算按常规有糖配方，糖量为假设）",
+    "kcal": 270,
+    "range": [
+      180,
+      400
+    ],
+    "evidenceType": "配料估算",
+    "sourceUrl": "https://www.nckfhsm.com/products/zhen-wang-pu-tao",
+    "sourceNote": "来源仅支持名称/配料，不支持本条整杯数值。假设牛奶200ml×60kcal/100ml=120 kcal+葡萄汁100 kcal+糖/风味50 kcal。",
+    "includedToppings": [],
+    "verifyNote": "待核对中国大陆门店是否常售，以及本杯容量、糖度、冰量和自带料；不能按整杯热量直接乘糖度比例。"
+  },
+  {
+    "brand": "茉莉奶白",
+    "name": "针王苹果",
+    "size": "未注明（按常见一杯暂估，须核对容量）",
+    "sugar": "未注明（估算按常规有糖配方，糖量为假设）",
+    "kcal": 250,
+    "range": [
+      160,
+      370
+    ],
+    "evidenceType": "配料估算",
+    "sourceUrl": "https://www.nckfhsm.com/products/zhen-wang-ping-guo",
+    "sourceNote": "来源仅支持名称/配料，不支持本条整杯数值。假设牛奶200ml×60kcal/100ml=120 kcal+苹果汁80 kcal+糖/风味50 kcal。",
+    "includedToppings": [],
+    "verifyNote": "待核对中国大陆门店是否常售，以及本杯容量、糖度、冰量和自带料；不能按整杯热量直接乘糖度比例。"
+  },
+  {
+    "brand": "茉莉奶白",
+    "name": "针王橘子",
+    "size": "未注明（按常见一杯暂估，须核对容量）",
+    "sugar": "未注明（估算按常规有糖配方，糖量为假设）",
+    "kcal": 260,
+    "range": [
+      170,
+      390
+    ],
+    "evidenceType": "配料估算",
+    "sourceUrl": "https://www.nckfhsm.com/products/zhen-wang-ju-zi",
+    "sourceNote": "来源仅支持名称/配料，不支持本条整杯数值。假设牛奶200ml×60kcal/100ml=120 kcal+复合柑橘汁80 kcal+糖15g×4=60 kcal。",
+    "includedToppings": [],
+    "verifyNote": "待核对中国大陆门店是否常售，以及本杯容量、糖度、冰量和自带料；不能按整杯热量直接乘糖度比例。"
+  },
+  {
+    "brand": "茉莉奶白",
+    "name": "粉红苹果茉莉椰",
+    "size": "未注明（按常见一杯暂估，须核对容量）",
+    "sugar": "未注明（页面列糖度选项，但没有热量与配置映射）",
+    "kcal": 91,
+    "range": null,
+    "evidenceType": "第三方参考",
+    "sourceUrl": "https://www.nckfhsm.com/products/fen-hong-ping-guo-mo-li-ye",
+    "sourceNote": "页面读取热量 91 kcal；有范围则取区间中点作暂用参考，非官方核实值。",
+    "includedToppings": [],
+    "verifyNote": "待核对中国大陆门店是否常售，以及本杯容量、糖度、冰量和自带料；不能按整杯热量直接乘糖度比例。"
+  },
+  {
+    "brand": "沪上阿姨",
+    "name": "血糯米奶茶",
+    "size": "未注明（按常见一杯暂估，须核对容量）",
+    "sugar": "未注明（页面列糖度选项，但没有热量与配置映射）",
+    "kcal": 240,
+    "range": null,
+    "evidenceType": "第三方参考",
+    "sourceUrl": "https://www.nckfhsm.com/products/xue-nuo-mi-nai-cha",
+    "sourceNote": "页面读取热量 240 kcal；有范围则取区间中点作暂用参考，非官方核实值。",
+    "includedToppings": [
+      "血糯米"
+    ],
+    "verifyNote": "待核对中国大陆门店是否常售，以及本杯容量、糖度、冰量和自带料；不能按整杯热量直接乘糖度比例。"
+  },
+  {
+    "brand": "沪上阿姨",
+    "name": "手作黑糖波波牛乳茶",
+    "size": "未注明（按常见一杯暂估，须核对容量）",
+    "sugar": "未注明（估算按常规有糖配方，糖量为假设）",
+    "kcal": 400,
+    "range": [
+      280,
+      560
+    ],
+    "evidenceType": "配料估算",
+    "sourceUrl": "https://www.nckfhsm.com/products/shou-zuo-hei-tang-bo-bo-niu-ru-cha",
+    "sourceNote": "来源仅支持名称/配料，不支持本条整杯数值。假设牛奶300ml×60kcal/100ml=180 kcal+黑糖珍珠160 kcal+糖浆60 kcal。",
+    "includedToppings": [
+      "黑糖珍珠"
+    ],
+    "verifyNote": "待核对中国大陆门店是否常售，以及本杯容量、糖度、冰量和自带料；不能按整杯热量直接乘糖度比例。"
+  },
+  {
+    "brand": "沪上阿姨",
+    "name": "杨枝甘露经典版",
+    "size": "未注明（按常见一杯暂估，须核对容量）",
+    "sugar": "未注明（估算按常规有糖配方，糖量为假设）",
+    "kcal": 450,
+    "range": [
+      300,
+      650
+    ],
+    "evidenceType": "配料估算",
+    "sourceUrl": "https://www.nckfhsm.com/products/yang-zhi-gan-lu-jing-dian-ban",
+    "sourceNote": "来源仅支持名称/配料，不支持本条整杯数值。假设芒果/西柚100 kcal+椰奶100 kcal+多肉80 kcal+芝士奶盖110 kcal+糖15g×4=60 kcal。",
+    "includedToppings": [
+      "大多肉",
+      "小多肉",
+      "芝士奶盖",
+      "芒果",
+      "西柚粒"
+    ],
+    "verifyNote": "待核对中国大陆门店是否常售，以及本杯容量、糖度、冰量和自带料；不能按整杯热量直接乘糖度比例。"
+  },
+  {
+    "brand": "沪上阿姨",
+    "name": "桃桃蜜柚",
+    "size": "未注明（按常见一杯暂估，须核对容量）",
+    "sugar": "未注明（估算按常规有糖配方，糖量为假设）",
+    "kcal": 220,
+    "range": [
+      130,
+      340
+    ],
+    "evidenceType": "配料估算",
+    "sourceUrl": "https://www.nckfhsm.com/products/tao-tao-mi-you",
+    "sourceNote": "来源仅支持名称/配料，不支持本条整杯数值。假设桃汁西柚等果料100 kcal+可消化糖30g×4=120 kcal。",
+    "includedToppings": [
+      "西柚果粒"
+    ],
+    "verifyNote": "待核对中国大陆门店是否常售，以及本杯容量、糖度、冰量和自带料；不能按整杯热量直接乘糖度比例。"
+  },
+  {
+    "brand": "沪上阿姨",
+    "name": "冰蓝海盐冰奶",
+    "size": "未注明（按常见一杯暂估，须核对容量）",
+    "sugar": "未注明（页面列糖度选项，但没有热量与配置映射）",
+    "kcal": 210,
+    "range": null,
+    "evidenceType": "第三方参考",
+    "sourceUrl": "https://www.nckfhsm.com/products/bing-lan-hai-yan-bing-nai-hu-shang-a-yi",
+    "sourceNote": "页面读取热量 210 kcal；有范围则取区间中点作暂用参考，非官方核实值。",
+    "includedToppings": [],
+    "verifyNote": "待核对中国大陆门店是否常售，以及本杯容量、糖度、冰量和自带料；不能按整杯热量直接乘糖度比例。"
+  },
+  {
+    "brand": "沪上阿姨",
+    "name": "Zhen珠奶茶",
+    "size": "未注明（按常见一杯暂估，须核对容量）",
+    "sugar": "未注明（估算按常规有糖配方，糖量为假设）",
+    "kcal": 400,
+    "range": [
+      280,
+      560
+    ],
+    "evidenceType": "配料估算",
+    "sourceUrl": "https://www.nckfhsm.com/products/zhen-zhu-nai-cha-hu-shang-a-yi",
+    "sourceNote": "来源仅支持名称/配料，不支持本条整杯数值。假设牛奶300ml×60kcal/100ml=180 kcal+黑糖珍珠160 kcal+糖浆60 kcal。",
+    "includedToppings": [
+      "黑糖珍珠"
+    ],
+    "verifyNote": "待核对中国大陆门店是否常售，以及本杯容量、糖度、冰量和自带料；不能按整杯热量直接乘糖度比例。"
+  },
+  {
+    "brand": "沪上阿姨",
+    "name": "沁爽柠檬冰茶",
+    "size": "未注明（按常见一杯暂估，须核对容量）",
+    "sugar": "未注明（估算按常规有糖配方，糖量为假设）",
+    "kcal": 160,
+    "range": [
+      80,
+      260
+    ],
+    "evidenceType": "配料估算",
+    "sourceUrl": "https://www.nckfhsm.com/products/qin-shuang-ning-meng-bing-cha",
+    "sourceNote": "来源仅支持名称/配料，不支持本条整杯数值。假设柠檬汁20 kcal+可消化糖35g×4=140 kcal。",
+    "includedToppings": [],
+    "verifyNote": "待核对中国大陆门店是否常售，以及本杯容量、糖度、冰量和自带料；不能按整杯热量直接乘糖度比例。"
+  },
+  {
+    "brand": "沪上阿姨",
+    "name": "岩上奇兰（白芽奇兰轻乳茶）",
+    "size": "未注明（按常见一杯暂估，须核对容量）",
+    "sugar": "未注明（估算按常规有糖配方，糖量为假设）",
+    "kcal": 230,
+    "range": [
+      150,
+      350
+    ],
+    "evidenceType": "配料估算",
+    "sourceUrl": "https://www.nckfhsm.com/products/yan-shang-qi-lan-bai-ya-qi-lan-qing-ru-cha",
+    "sourceNote": "来源仅支持名称/配料，不支持本条整杯数值。假设牛奶250ml×60kcal/100ml=150 kcal+糖20g×4=80 kcal。",
+    "includedToppings": [],
+    "verifyNote": "待核对中国大陆门店是否常售，以及本杯容量、糖度、冰量和自带料；不能按整杯热量直接乘糖度比例。"
+  },
+  {
+    "brand": "奈雪的茶",
+    "name": "霸气杨枝甘露",
+    "size": "500~650 ml（页面杯型范围，未映射到热量配置）",
+    "sugar": "未注明（估算按常规有糖配方，糖量为假设）",
+    "kcal": 360,
+    "range": [
+      250,
+      520
+    ],
+    "evidenceType": "配料估算",
+    "sourceUrl": "https://www.nckfhsm.com/products/ba-qi-yang-zhi-gan-lu",
+    "sourceNote": "来源仅支持名称/配料，不支持本条整杯数值。假设芒果/西柚100 kcal+椰奶100 kcal+西米100 kcal+糖15g×4=60 kcal。",
+    "includedToppings": [
+      "西米",
+      "芒果",
+      "西柚"
+    ],
+    "verifyNote": "待核对中国大陆门店是否常售，以及本杯容量、糖度、冰量和自带料；不能按整杯热量直接乘糖度比例。"
+  },
+  {
+    "brand": "奈雪的茶",
+    "name": "霸气橙子",
+    "size": "500~650 ml（页面杯型范围，未映射到热量配置）",
+    "sugar": "未注明（估算按常规有糖配方，糖量为假设）",
+    "kcal": 220,
+    "range": [
+      130,
+      340
+    ],
+    "evidenceType": "配料估算",
+    "sourceUrl": "https://www.nckfhsm.com/products/ba-qi-cheng-zi-25595",
+    "sourceNote": "来源仅支持名称/配料，不支持本条整杯数值。假设鲜橙橙汁120 kcal+糖25g×4=100 kcal；茶汤热量近零。",
+    "includedToppings": [],
+    "verifyNote": "待核对中国大陆门店是否常售，以及本杯容量、糖度、冰量和自带料；不能按整杯热量直接乘糖度比例。"
+  },
+  {
+    "brand": "奈雪的茶",
+    "name": "霸气芝士葡萄",
+    "size": "500~650 ml（页面杯型范围，未映射到热量配置）",
+    "sugar": "未注明（估算按常规有糖配方，糖量为假设）",
+    "kcal": 380,
+    "range": [
+      260,
+      530
+    ],
+    "evidenceType": "配料估算",
+    "sourceUrl": "https://www.nckfhsm.com/products/ba-qi-zhi-shi-pu-tao-nai-xue-de-cha",
+    "sourceNote": "来源仅支持名称/配料，不支持本条整杯数值。假设葡萄果肉果汁140 kcal+芝士奶盖140 kcal+糖25g×4=100 kcal。",
+    "includedToppings": [
+      "芝士奶盖",
+      "葡萄果肉"
+    ],
+    "verifyNote": "待核对中国大陆门店是否常售，以及本杯容量、糖度、冰量和自带料；不能按整杯热量直接乘糖度比例。"
+  },
+  {
+    "brand": "奈雪的茶",
+    "name": "霸气芝士芒果",
+    "size": "500~650 ml（页面杯型范围，未映射到热量配置）",
+    "sugar": "未注明（估算按常规有糖配方，糖量为假设）",
+    "kcal": 400,
+    "range": [
+      280,
+      560
+    ],
+    "evidenceType": "配料估算",
+    "sourceUrl": "https://www.nckfhsm.com/products/ba-qi-zhi-shi-mang-guo",
+    "sourceNote": "来源仅支持名称/配料，不支持本条整杯数值。假设芒果果肉果浆160 kcal+芝士奶盖140 kcal+糖25g×4=100 kcal。",
+    "includedToppings": [
+      "芝士奶盖",
+      "芒果果肉"
+    ],
+    "verifyNote": "待核对中国大陆门店是否常售，以及本杯容量、糖度、冰量和自带料；不能按整杯热量直接乘糖度比例。"
+  },
+  {
+    "brand": "奈雪的茶",
+    "name": "霸气玉油柑",
+    "size": "350 ml（页面杯型范围，未映射到热量配置）",
+    "sugar": "未注明（估算按常规有糖配方，糖量为假设）",
+    "kcal": 100,
+    "range": [
+      50,
+      190
+    ],
+    "evidenceType": "配料估算",
+    "sourceUrl": "https://www.nckfhsm.com/products/ba-qi-yu-you-gan-25655",
+    "sourceNote": "来源仅支持名称/配料，不支持本条整杯数值。假设油柑汁40 kcal+糖15g×4=60 kcal；350ml杯。",
+    "includedToppings": [],
+    "verifyNote": "待核对中国大陆门店是否常售，以及本杯容量、糖度、冰量和自带料；不能按整杯热量直接乘糖度比例。"
+  },
+  {
+    "brand": "奈雪的茶",
+    "name": "茉莉初雪轻乳茶",
+    "size": "500~650 ml（页面杯型范围，未映射到热量配置）",
+    "sugar": "未注明（估算按常规有糖配方，糖量为假设）",
+    "kcal": 230,
+    "range": [
+      150,
+      340
+    ],
+    "evidenceType": "配料估算",
+    "sourceUrl": "https://www.nckfhsm.com/products/mo-li-chu-xue-qing-ru-cha",
+    "sourceNote": "来源仅支持名称/配料，不支持本条整杯数值。假设牛奶250ml×60kcal/100ml=150 kcal+糖20g×4=80 kcal。",
+    "includedToppings": [],
+    "verifyNote": "待核对中国大陆门店是否常售，以及本杯容量、糖度、冰量和自带料；不能按整杯热量直接乘糖度比例。"
+  },
+  {
+    "brand": "奈雪的茶",
+    "name": "金色山脉珍珠奶茶",
+    "size": "500~650 ml（页面杯型范围，未映射到热量配置）",
+    "sugar": "未注明（估算按常规有糖配方，糖量为假设）",
+    "kcal": 400,
+    "range": [
+      280,
+      550
+    ],
+    "evidenceType": "配料估算",
+    "sourceUrl": "https://www.nckfhsm.com/products/jin-se-shan-mai-zhen-zhu-nai-cha",
+    "sourceNote": "来源仅支持名称/配料，不支持本条整杯数值。假设奶茶基底260 kcal+黑糖珍珠140 kcal。",
+    "includedToppings": [
+      "黑糖珍珠"
+    ],
+    "verifyNote": "待核对中国大陆门店是否常售，以及本杯容量、糖度、冰量和自带料；不能按整杯热量直接乘糖度比例。"
+  },
+  {
+    "brand": "奈雪的茶",
+    "name": "鸭屎香轻乳茶",
+    "size": "500~650 ml（页面杯型范围，未映射到热量配置）",
+    "sugar": "未注明（估算按常规有糖配方，糖量为假设）",
+    "kcal": 230,
+    "range": [
+      150,
+      340
+    ],
+    "evidenceType": "配料估算",
+    "sourceUrl": "https://www.nckfhsm.com/products/ya-shi-xiang-qing-ru-cha-49472",
+    "sourceNote": "来源仅支持名称/配料，不支持本条整杯数值。假设牛奶250ml×60kcal/100ml=150 kcal+糖20g×4=80 kcal。",
+    "includedToppings": [],
+    "verifyNote": "待核对中国大陆门店是否常售，以及本杯容量、糖度、冰量和自带料；不能按整杯热量直接乘糖度比例。"
+  },
+  {
+    "brand": "喜茶",
+    "name": "九窨茉王·轻乳",
+    "size": "500 ml（页面杯型范围，未映射到热量配置）",
+    "sugar": "未注明（页面列糖度选项，但没有热量与配置映射）",
+    "kcal": 163,
+    "range": [
+      119,
+      207
+    ],
+    "evidenceType": "第三方参考",
+    "sourceUrl": "https://www.nckfhsm.com/products/jiu-xun-mo-wang-qing-ru",
+    "sourceNote": "页面读取热量 119~207 kcal；有范围则取区间中点作暂用参考，非官方核实值。",
+    "includedToppings": [],
+    "verifyNote": "待核对中国大陆门店是否常售，以及本杯容量、糖度、冰量和自带料；不能按整杯热量直接乘糖度比例。"
+  },
+  {
+    "brand": "茶百道",
+    "name": "芒果冰奶",
+    "size": "500 ml（页面杯型范围，未映射到热量配置）",
+    "sugar": "未注明（估算按常规有糖配方，糖量为假设）",
+    "kcal": 300,
+    "range": [
+      220,
+      430
+    ],
+    "evidenceType": "配料估算",
+    "sourceUrl": "https://www.nckfhsm.com/products/mang-mang-nai-lv-50589",
+    "sourceNote": "来源仅支持名称/配料，不支持本条整杯数值。假设奶基200ml×60kcal/100ml=120 kcal+芒果/果浆80 kcal+糖25g×4=100 kcal。",
+    "includedToppings": [],
+    "verifyNote": "待核对中国大陆门店是否常售，以及本杯容量、糖度、冰量和自带料；不能按整杯热量直接乘糖度比例。"
+  },
+  {
+    "brand": "茶百道",
+    "name": "生椰拿铁",
+    "size": "475~520 ml（页面杯型范围，未映射到热量配置）",
+    "sugar": "未注明（估算按常规有糖配方，糖量为假设）",
+    "kcal": 280,
+    "range": [
+      180,
+      400
+    ],
+    "evidenceType": "配料估算",
+    "sourceUrl": "https://www.nckfhsm.com/products/sheng-ye-na-tie-oUT1krbK",
+    "sourceNote": "来源仅支持名称/配料，不支持本条整杯数值。假设调制椰乳约200 kcal+额外糖/奶约75 kcal+咖啡5 kcal；椰乳份量和含糖量未知。",
+    "includedToppings": [],
+    "verifyNote": "待核对中国大陆门店是否常售，以及本杯容量、糖度、冰量和自带料；不能按整杯热量直接乘糖度比例。"
+  }
+]

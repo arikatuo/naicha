@@ -1,0 +1,1282 @@
+[
+  {
+    "brand": "LINLEE 林里",
+    "name": "招牌手打柠檬茶",
+    "size": "未注明",
+    "sugar": "未注明",
+    "kcal": 180,
+    "range": [
+      110,
+      260
+    ],
+    "evidenceType": "配料估算",
+    "sourceUrl": "https://you.ctrip.com/food/152/136615890.html",
+    "sourceNote": "携程广州门店列出品名，未提供热量；按添加糖约40g=160kcal，加柠檬可食部分约20kcal；未获取品牌糖用量。",
+    "includedToppings": "柠檬",
+    "verifyNote": "核实本地门店是否在售、杯型容量、默认糖度和真实配方；估算份量不是品牌披露。"
+  },
+  {
+    "brand": "LINLEE 林里",
+    "name": "单丛鸭屎香手打柠檬茶",
+    "size": "未注明",
+    "sugar": "未注明",
+    "kcal": 180,
+    "range": [
+      110,
+      260
+    ],
+    "evidenceType": "配料估算",
+    "sourceUrl": "https://you.ctrip.com/food/152/136615890.html",
+    "sourceNote": "携程广州门店列出品名，未提供热量；按添加糖约40g=160kcal，加柠檬约20kcal。",
+    "includedToppings": "柠檬",
+    "verifyNote": "核实本地门店是否在售、杯型容量、默认糖度和真实配方；估算份量不是品牌披露。"
+  },
+  {
+    "brand": "LINLEE 林里",
+    "name": "清新手打柠檬茶",
+    "size": "未注明",
+    "sugar": "未注明",
+    "kcal": 160,
+    "range": [
+      90,
+      240
+    ],
+    "evidenceType": "配料估算",
+    "sourceUrl": "https://you.ctrip.com/food/152/136615890.html",
+    "sourceNote": "携程广州门店列出品名，未提供热量；按添加糖约35g=140kcal，加柠檬约20kcal。",
+    "includedToppings": "柠檬",
+    "verifyNote": "核实本地门店是否在售、杯型容量、默认糖度和真实配方；估算份量不是品牌披露。"
+  },
+  {
+    "brand": "LINLEE 林里",
+    "name": "海底椰手打冰柠茶",
+    "size": "未注明",
+    "sugar": "未注明",
+    "kcal": 270,
+    "range": [
+      180,
+      420
+    ],
+    "evidenceType": "配料估算",
+    "sourceUrl": "https://you.ctrip.com/food/152/136615890.html",
+    "sourceNote": "携程广州门店列出品名，未提供热量；假设椰乳基底提供约150kcal、添加糖25g约100kcal、柠檬约20kcal；椰乳配方未知。",
+    "includedToppings": "柠檬；椰乳已计入",
+    "verifyNote": "核实本地门店是否在售、杯型容量、默认糖度和真实配方；估算份量不是品牌披露。"
+  },
+  {
+    "brand": "LINLEE 林里",
+    "name": "西瓜冰柠茶",
+    "size": "未注明",
+    "sugar": "未注明",
+    "kcal": 200,
+    "range": [
+      120,
+      300
+    ],
+    "evidenceType": "配料估算",
+    "sourceUrl": "https://you.ctrip.com/food/152/136615890.html",
+    "sourceNote": "携程广州门店列出品名，未提供热量；假设西瓜果肉150g约45kcal、柠檬约15kcal、添加糖35g约140kcal。",
+    "includedToppings": "西瓜、柠檬",
+    "verifyNote": "核实本地门店是否在售、杯型容量、默认糖度和真实配方；估算份量不是品牌披露。"
+  },
+  {
+    "brand": "LINLEE 林里",
+    "name": "苹果冰柠茶",
+    "size": "未注明",
+    "sugar": "未注明",
+    "kcal": 230,
+    "range": [
+      140,
+      340
+    ],
+    "evidenceType": "配料估算",
+    "sourceUrl": "https://you.ctrip.com/food/152/136615890.html",
+    "sourceNote": "携程广州门店列出品名，未提供热量；假设苹果果肉/果汁约70kcal、柠檬约20kcal、添加糖35g约140kcal。",
+    "includedToppings": "苹果、柠檬",
+    "verifyNote": "核实本地门店是否在售、杯型容量、默认糖度和真实配方；估算份量不是品牌披露。"
+  },
+  {
+    "brand": "LINLEE 林里",
+    "name": "香柠椰青水",
+    "size": "未注明",
+    "sugar": "未注明",
+    "kcal": 170,
+    "range": [
+      90,
+      270
+    ],
+    "evidenceType": "配料估算",
+    "sourceUrl": "https://you.ctrip.com/food/152/136615890.html",
+    "sourceNote": "携程广州门店列出品名，未提供热量；假设椰子水300ml约60kcal、添加糖25g约100kcal、柠檬约10kcal。",
+    "includedToppings": "柠檬；椰子水已计入",
+    "verifyNote": "核实本地门店是否在售、杯型容量、默认糖度和真实配方；估算份量不是品牌披露。"
+  },
+  {
+    "brand": "LINLEE 林里",
+    "name": "空山乌龙鲜奶茶",
+    "size": "未注明",
+    "sugar": "未注明",
+    "kcal": 240,
+    "range": [
+      150,
+      350
+    ],
+    "evidenceType": "配料估算",
+    "sourceUrl": "https://you.ctrip.com/food/152/136615890.html",
+    "sourceNote": "携程广州门店列出品名，未提供热量；假设牛奶200g约122kcal、添加糖30g约120kcal，茶底能量很低。",
+    "includedToppings": "鲜奶已计入",
+    "verifyNote": "核实本地门店是否在售、杯型容量、默认糖度和真实配方；估算份量不是品牌披露。"
+  },
+  {
+    "brand": "快乐柠檬",
+    "name": "大红袍真香冻柠茶",
+    "size": "未注明",
+    "sugar": "未注明",
+    "kcal": 120,
+    "range": [
+      28,
+      218
+    ],
+    "evidenceType": "第三方参考",
+    "sourceUrl": "https://www.nckfhsm.com/products/da-hong-pao-zhen-xiang-dong-ning-cha",
+    "sourceNote": "第三方页面直接列出热量区间；kcal为区间取整代表值，未能对应具体配置，不是某糖度实测值。",
+    "includedToppings": "柠檬",
+    "verifyNote": "优先核实区间两端对应杯型、糖度、加料；第三方未说明检测来源，不应作为官方值。"
+  },
+  {
+    "brand": "快乐柠檬",
+    "name": "招牌小金桔柠檬茶",
+    "size": "未注明",
+    "sugar": "未注明",
+    "kcal": 300,
+    "range": [
+      153,
+      458
+    ],
+    "evidenceType": "第三方参考",
+    "sourceUrl": "https://www.nckfhsm.com/products/zhao-pai-xiao-jin-ju-ning-meng-cha",
+    "sourceNote": "第三方页面直接列出热量区间；kcal为区间取整代表值，未能对应具体配置，不是某糖度实测值。",
+    "includedToppings": "金桔、柠檬",
+    "verifyNote": "优先核实区间两端对应杯型、糖度、加料；第三方未说明检测来源，不应作为官方值。"
+  },
+  {
+    "brand": "快乐柠檬",
+    "name": "岩盐芝士奶茶",
+    "size": "未注明",
+    "sugar": "未注明",
+    "kcal": 530,
+    "range": [
+      296,
+      756
+    ],
+    "evidenceType": "第三方参考",
+    "sourceUrl": "https://www.nckfhsm.com/products/yan-yan-zhi-shi-nai-cha",
+    "sourceNote": "第三方页面直接列出热量区间；kcal为区间取整代表值，未能对应具体配置，不是某糖度实测值。",
+    "includedToppings": "芝士奶盖",
+    "verifyNote": "优先核实区间两端对应杯型、糖度、加料；第三方未说明检测来源，不应作为官方值。"
+  },
+  {
+    "brand": "快乐柠檬",
+    "name": "岩盐芝士奇兰",
+    "size": "未注明",
+    "sugar": "未注明",
+    "kcal": 260,
+    "range": [
+      220,
+      297
+    ],
+    "evidenceType": "第三方参考",
+    "sourceUrl": "https://www.nckfhsm.com/products/yan-yan-zhi-shi-qi-lan",
+    "sourceNote": "第三方页面直接列出热量区间；kcal为区间取整代表值，未能对应具体配置，不是某糖度实测值。",
+    "includedToppings": "芝士奶盖",
+    "verifyNote": "优先核实区间两端对应杯型、糖度、加料；第三方未说明检测来源，不应作为官方值。"
+  },
+  {
+    "brand": "快乐柠檬",
+    "name": "岩盐芝士鸭屎香",
+    "size": "未注明",
+    "sugar": "未注明",
+    "kcal": 280,
+    "range": [
+      194,
+      375
+    ],
+    "evidenceType": "第三方参考",
+    "sourceUrl": "https://www.nckfhsm.com/products/yan-yan-zhi-shi-ya-shi-xiang",
+    "sourceNote": "第三方页面直接列出热量区间；kcal为区间取整代表值，未能对应具体配置，不是某糖度实测值。",
+    "includedToppings": "芝士奶盖",
+    "verifyNote": "优先核实区间两端对应杯型、糖度、加料；第三方未说明检测来源，不应作为官方值。"
+  },
+  {
+    "brand": "快乐柠檬",
+    "name": "蛋糕忌廉珍珠奶茶",
+    "size": "未注明",
+    "sugar": "未注明",
+    "kcal": 520,
+    "range": [
+      350,
+      750
+    ],
+    "evidenceType": "配料估算",
+    "sourceUrl": "https://www.nckfhsm.com/brands/kuai-le-ning-meng/menu/available",
+    "sourceNote": "大陆第三方菜单列出品名但无热量；假设奶茶基底300kcal、珍珠50g约100kcal、蛋糕忌廉40g约120kcal。",
+    "includedToppings": "珍珠、蛋糕忌廉",
+    "verifyNote": "核实本地门店是否在售、杯型容量、默认糖度和真实配方；估算份量不是品牌披露。"
+  },
+  {
+    "brand": "快乐柠檬",
+    "name": "蛋糕忌廉珍珠牛奶茶",
+    "size": "未注明",
+    "sugar": "未注明",
+    "kcal": 470,
+    "range": [
+      300,
+      700
+    ],
+    "evidenceType": "配料估算",
+    "sourceUrl": "https://www.nckfhsm.com/brands/kuai-le-ning-meng/menu/available",
+    "sourceNote": "大陆第三方菜单列出品名但无热量；假设牛奶200g122kcal、糖30g120kcal、珍珠50g100kcal、忌廉40g120kcal。",
+    "includedToppings": "珍珠、蛋糕忌廉；牛奶已计入",
+    "verifyNote": "核实本地门店是否在售、杯型容量、默认糖度和真实配方；估算份量不是品牌披露。"
+  },
+  {
+    "brand": "快乐柠檬",
+    "name": "菠萝蜜桃冰沙",
+    "size": "未注明",
+    "sugar": "未注明",
+    "kcal": 240,
+    "range": [
+      140,
+      380
+    ],
+    "evidenceType": "配料估算",
+    "sourceUrl": "https://www.nckfhsm.com/brands/kuai-le-ning-meng/menu/available",
+    "sourceNote": "大陆第三方菜单列出品名但无热量；假设水果/果酱约100kcal、添加糖35g140kcal；不额外加奶盖。",
+    "includedToppings": "菠萝、蜜桃",
+    "verifyNote": "核实本地门店是否在售、杯型容量、默认糖度和真实配方；估算份量不是品牌披露。"
+  },
+  {
+    "brand": "冰雪时光",
+    "name": "冰鲜柠檬水",
+    "size": "未注明",
+    "sugar": "未注明",
+    "kcal": 150,
+    "range": [
+      80,
+      240
+    ],
+    "evidenceType": "配料估算",
+    "sourceUrl": "https://www.nckfhsm.com/brands/bing-xue-shi-guang/menu/available",
+    "sourceNote": "第三方大陆菜单列出品名但无热量；假设添加糖35g140kcal、柠檬约10kcal。",
+    "includedToppings": "柠檬",
+    "verifyNote": "核实本地门店是否在售、杯型容量、默认糖度和真实配方；估算份量不是品牌披露。"
+  },
+  {
+    "brand": "冰雪时光",
+    "name": "抹茶黑糖珍珠牛乳",
+    "size": "未注明",
+    "sugar": "未注明",
+    "kcal": 410,
+    "range": [
+      280,
+      590
+    ],
+    "evidenceType": "配料估算",
+    "sourceUrl": "https://www.nckfhsm.com/brands/bing-xue-shi-guang/menu/available",
+    "sourceNote": "第三方大陆菜单列出品名但无热量；假设牛奶250g153kcal、黑糖35g140kcal、珍珠50g100kcal、抹茶约15kcal。",
+    "includedToppings": "黑糖珍珠；牛奶、黑糖已计入",
+    "verifyNote": "核实本地门店是否在售、杯型容量、默认糖度和真实配方；估算份量不是品牌披露。"
+  },
+  {
+    "brand": "冰雪时光",
+    "name": "黑糖芝士牛乳",
+    "size": "未注明",
+    "sugar": "未注明",
+    "kcal": 410,
+    "range": [
+      270,
+      600
+    ],
+    "evidenceType": "配料估算",
+    "sourceUrl": "https://www.nckfhsm.com/brands/bing-xue-shi-guang/menu/available",
+    "sourceNote": "第三方大陆菜单列出品名但无热量；假设牛奶250g153kcal、黑糖30g120kcal、芝士奶盖40g约140kcal。",
+    "includedToppings": "芝士奶盖；牛奶、黑糖已计入",
+    "verifyNote": "核实本地门店是否在售、杯型容量、默认糖度和真实配方；估算份量不是品牌披露。"
+  },
+  {
+    "brand": "冰雪时光",
+    "name": "抹茶芋泥牛乳",
+    "size": "未注明",
+    "sugar": "未注明",
+    "kcal": 400,
+    "range": [
+      260,
+      580
+    ],
+    "evidenceType": "配料估算",
+    "sourceUrl": "https://www.nckfhsm.com/brands/bing-xue-shi-guang/menu/available",
+    "sourceNote": "第三方大陆菜单列出品名但无热量；假设牛奶250g153kcal、芋泥80g约160kcal、糖20g80kcal、抹茶约10kcal。",
+    "includedToppings": "芋泥；牛乳已计入",
+    "verifyNote": "核实本地门店是否在售、杯型容量、默认糖度和真实配方；估算份量不是品牌披露。"
+  },
+  {
+    "brand": "冰雪时光",
+    "name": "芋见珍珠牛乳",
+    "size": "未注明",
+    "sugar": "未注明",
+    "kcal": 440,
+    "range": [
+      300,
+      640
+    ],
+    "evidenceType": "配料估算",
+    "sourceUrl": "https://www.nckfhsm.com/brands/bing-xue-shi-guang/menu/available",
+    "sourceNote": "第三方大陆菜单列出品名但无热量；假设牛奶250g153kcal、芋泥60g120kcal、珍珠50g100kcal、糖15g60kcal。",
+    "includedToppings": "芋泥、珍珠；牛乳已计入",
+    "verifyNote": "核实本地门店是否在售、杯型容量、默认糖度和真实配方；估算份量不是品牌披露。"
+  },
+  {
+    "brand": "冰雪时光",
+    "name": "芋见茉莉牛乳",
+    "size": "未注明",
+    "sugar": "未注明",
+    "kcal": 350,
+    "range": [
+      220,
+      520
+    ],
+    "evidenceType": "配料估算",
+    "sourceUrl": "https://www.nckfhsm.com/brands/bing-xue-shi-guang/menu/available",
+    "sourceNote": "第三方大陆菜单列出品名但无热量；假设牛奶250g153kcal、芋泥60g120kcal、糖20g80kcal。",
+    "includedToppings": "芋泥；牛乳已计入",
+    "verifyNote": "核实本地门店是否在售、杯型容量、默认糖度和真实配方；估算份量不是品牌披露。"
+  },
+  {
+    "brand": "冰雪时光",
+    "name": "满杯青提茉莉",
+    "size": "未注明",
+    "sugar": "未注明",
+    "kcal": 240,
+    "range": [
+      140,
+      380
+    ],
+    "evidenceType": "配料估算",
+    "sourceUrl": "https://www.nckfhsm.com/brands/bing-xue-shi-guang/menu/available",
+    "sourceNote": "第三方大陆菜单列出品名但无热量；假设葡萄150g约100kcal、添加糖35g140kcal，茉莉茶底能量很低。",
+    "includedToppings": "青提",
+    "verifyNote": "核实本地门店是否在售、杯型容量、默认糖度和真实配方；估算份量不是品牌披露。"
+  },
+  {
+    "brand": "冰雪时光",
+    "name": "山楂桃桃",
+    "size": "未注明",
+    "sugar": "未注明",
+    "kcal": 240,
+    "range": [
+      140,
+      380
+    ],
+    "evidenceType": "配料估算",
+    "sourceUrl": "https://www.nckfhsm.com/brands/bing-xue-shi-guang/menu/available",
+    "sourceNote": "第三方大陆菜单列出品名但无热量；假设山楂桃果肉/果酱约100kcal、添加糖35g140kcal。",
+    "includedToppings": "山楂、桃",
+    "verifyNote": "核实本地门店是否在售、杯型容量、默认糖度和真实配方；估算份量不是品牌披露。"
+  },
+  {
+    "brand": "吾饮良品",
+    "name": "草莓玛奇朵",
+    "size": "未注明",
+    "sugar": "未注明",
+    "kcal": 320,
+    "range": [
+      200,
+      470
+    ],
+    "evidenceType": "配料估算",
+    "sourceUrl": "https://m.maigoo.com/top/435827.html",
+    "sourceNote": "第三方推荐页说明品名/组成，无热量，且部分款可能历史或季节款；假设草莓150g约50kcal、糖30g120kcal、奶盖40g150kcal。",
+    "includedToppings": "草莓、奶盖",
+    "verifyNote": "核实2026年本地菜单是否仍在售、份量和默认加料。第三方推荐页不是实时菜单，热量为自建假设。"
+  },
+  {
+    "brand": "吾饮良品",
+    "name": "有颗柠檬",
+    "size": "未注明",
+    "sugar": "未注明",
+    "kcal": 180,
+    "range": [
+      100,
+      300
+    ],
+    "evidenceType": "配料估算",
+    "sourceUrl": "https://m.maigoo.com/top/435827.html",
+    "sourceNote": "第三方推荐页说明品名/组成，无热量，且部分款可能历史或季节款；假设添加糖40g160kcal、柠檬约20kcal。",
+    "includedToppings": "柠檬",
+    "verifyNote": "核实2026年本地菜单是否仍在售、份量和默认加料。第三方推荐页不是实时菜单，热量为自建假设。"
+  },
+  {
+    "brand": "吾饮良品",
+    "name": "多肉桃桃",
+    "size": "未注明",
+    "sugar": "未注明",
+    "kcal": 250,
+    "range": [
+      140,
+      390
+    ],
+    "evidenceType": "配料估算",
+    "sourceUrl": "https://m.maigoo.com/top/435827.html",
+    "sourceNote": "第三方推荐页说明品名/组成，无热量，且部分款可能历史或季节款；假设桃果肉150g约60kcal、糖35g140kcal、清凉冻约50kcal。",
+    "includedToppings": "桃果肉、清凉冻",
+    "verifyNote": "核实2026年本地菜单是否仍在售、份量和默认加料。第三方推荐页不是实时菜单，热量为自建假设。"
+  },
+  {
+    "brand": "吾饮良品",
+    "name": "杨枝甘露",
+    "size": "未注明",
+    "sugar": "未注明",
+    "kcal": 400,
+    "range": [
+      250,
+      600
+    ],
+    "evidenceType": "配料估算",
+    "sourceUrl": "https://m.maigoo.com/top/435827.html",
+    "sourceNote": "第三方推荐页说明品名/组成，无热量，且部分款可能历史或季节款；假设椰奶基底150kcal、芒果西柚约90kcal、西米50g约60kcal、糖25g100kcal。",
+    "includedToppings": "芒果、西柚、西米；椰奶已计入",
+    "verifyNote": "核实2026年本地菜单是否仍在售、份量和默认加料。第三方推荐页不是实时菜单，热量为自建假设。"
+  },
+  {
+    "brand": "吾饮良品",
+    "name": "芋圆桂花酒酿",
+    "size": "未注明",
+    "sugar": "未注明",
+    "kcal": 490,
+    "range": [
+      320,
+      720
+    ],
+    "evidenceType": "配料估算",
+    "sourceUrl": "https://m.maigoo.com/top/435827.html",
+    "sourceNote": "第三方推荐页说明品名/组成，无热量，且部分款可能历史或季节款；假设奶茶基底240kcal、芋圆50g100kcal、酒酿40g60kcal、奶霜30g90kcal。",
+    "includedToppings": "芋圆、桂花酒酿、奶霜",
+    "verifyNote": "核实2026年本地菜单是否仍在售、份量和默认加料。第三方推荐页不是实时菜单，热量为自建假设。"
+  },
+  {
+    "brand": "吾饮良品",
+    "name": "厚乳拿铁",
+    "size": "未注明",
+    "sugar": "未注明",
+    "kcal": 280,
+    "range": [
+      180,
+      420
+    ],
+    "evidenceType": "配料估算",
+    "sourceUrl": "https://m.maigoo.com/top/435827.html",
+    "sourceNote": "第三方推荐页说明品名/组成，无热量，且部分款可能历史或季节款；假设厚乳250g按约110kcal/100g计275kcal，加浓缩约5kcal；未确认是否默认加糖。",
+    "includedToppings": "厚乳已计入",
+    "verifyNote": "核实2026年本地菜单是否仍在售、份量和默认加料。第三方推荐页不是实时菜单，热量为自建假设。"
+  },
+  {
+    "brand": "吾饮良品",
+    "name": "满杯烧仙草",
+    "size": "未注明",
+    "sugar": "未注明",
+    "kcal": 570,
+    "range": [
+      350,
+      850
+    ],
+    "evidenceType": "配料估算",
+    "sourceUrl": "https://m.maigoo.com/top/435827.html",
+    "sourceNote": "第三方推荐页说明品名/组成，无热量，且部分款可能历史或季节款；假设奶茶基底230kcal、珍珠/芋圆/红豆合计约210kcal、花生葡萄干约100kcal、仙草马蹄约30kcal。",
+    "includedToppings": "仙草、珍珠、红豆、芋圆、花生、马蹄、葡萄干",
+    "verifyNote": "核实2026年本地菜单是否仍在售、份量和默认加料。第三方推荐页不是实时菜单，热量为自建假设。"
+  },
+  {
+    "brand": "吾饮良品",
+    "name": "吾家奶茶",
+    "size": "未注明",
+    "sugar": "未注明",
+    "kcal": 360,
+    "range": [
+      230,
+      540
+    ],
+    "evidenceType": "配料估算",
+    "sourceUrl": "https://m.maigoo.com/top/435827.html",
+    "sourceNote": "第三方推荐页说明品名/组成，无热量，且部分款可能历史或季节款；假设奶茶基底260kcal、珍珠50g100kcal；这里取珍珠版，红豆/椰果版不同。",
+    "includedToppings": "珍珠（估算选定版本）",
+    "verifyNote": "核实2026年本地菜单是否仍在售、份量和默认加料。第三方推荐页不是实时菜单，热量为自建假设。"
+  },
+  {
+    "brand": "星巴克 Starbucks",
+    "name": "美式咖啡",
+    "size": "未注明；估算按中杯约355ml",
+    "sugar": "不另外加糖（估算配置）",
+    "kcal": 10,
+    "range": [
+      5,
+      20
+    ],
+    "evidenceType": "配料估算",
+    "sourceUrl": "https://www.starbucks.com.cn/menu/beverages/espresso/caffe-latte/",
+    "sourceNote": "大陆官方菜单确认饮品名称；本页不公布热量。无奶无糖浓缩兑水，按2-3份浓缩约5-15kcal。",
+    "includedToppings": "无",
+    "verifyNote": "核实本地门店是否在售、杯型容量、默认糖度和真实配方；估算份量不是品牌披露。"
+  },
+  {
+    "brand": "星巴克 Starbucks",
+    "name": "拿铁",
+    "size": "未注明；估算按中杯约355ml",
+    "sugar": "不另外加糖（估算配置）",
+    "kcal": 190,
+    "range": [
+      130,
+      250
+    ],
+    "evidenceType": "配料估算",
+    "sourceUrl": "https://www.starbucks.com.cn/menu/beverages/espresso/caffe-latte/",
+    "sourceNote": "大陆官方菜单确认饮品名称；本页不公布热量。假设全脂奶300g约183kcal，加浓缩约7kcal。",
+    "includedToppings": "牛奶已计入",
+    "verifyNote": "核实本地门店是否在售、杯型容量、默认糖度和真实配方；估算份量不是品牌披露。"
+  },
+  {
+    "brand": "星巴克 Starbucks",
+    "name": "卡布奇诺",
+    "size": "未注明；估算按中杯约355ml",
+    "sugar": "不另外加糖（估算配置）",
+    "kcal": 130,
+    "range": [
+      80,
+      200
+    ],
+    "evidenceType": "配料估算",
+    "sourceUrl": "https://www.starbucks.com.cn/menu/beverages/espresso/caffe-latte/",
+    "sourceNote": "大陆官方菜单确认饮品名称；本页不公布热量。假设全脂奶200g约122kcal，加浓缩约8kcal；奶泡比例影响奶量。",
+    "includedToppings": "牛奶已计入",
+    "verifyNote": "核实本地门店是否在售、杯型容量、默认糖度和真实配方；估算份量不是品牌披露。"
+  },
+  {
+    "brand": "星巴克 Starbucks",
+    "name": "馥芮白",
+    "size": "未注明；估算按中杯约355ml",
+    "sugar": "不另外加糖（估算配置）",
+    "kcal": 180,
+    "range": [
+      120,
+      250
+    ],
+    "evidenceType": "配料估算",
+    "sourceUrl": "https://www.starbucks.com.cn/menu/beverages/espresso/caffe-latte/",
+    "sourceNote": "大陆官方菜单确认饮品名称；本页不公布热量。假设全脂奶280g约171kcal，加浓缩约9kcal。",
+    "includedToppings": "牛奶已计入",
+    "verifyNote": "核实本地门店是否在售、杯型容量、默认糖度和真实配方；估算份量不是品牌披露。"
+  },
+  {
+    "brand": "星巴克 Starbucks",
+    "name": "焦糖玛奇朵",
+    "size": "未注明；估算按中杯约355ml",
+    "sugar": "未注明；估算含原配方糖浆",
+    "kcal": 260,
+    "range": [
+      180,
+      360
+    ],
+    "evidenceType": "配料估算",
+    "sourceUrl": "https://www.starbucks.com.cn/menu/beverages/espresso/caffe-latte/",
+    "sourceNote": "大陆官方菜单确认饮品名称；本页不公布热量。假设牛奶250g153kcal、香草糖浆所含糖20g80kcal、焦糖淋酱约20kcal、浓缩约7kcal。",
+    "includedToppings": "焦糖淋酱、香草糖浆已计入",
+    "verifyNote": "核实本地门店是否在售、杯型容量、默认糖度和真实配方；估算份量不是品牌披露。"
+  },
+  {
+    "brand": "星巴克 Starbucks",
+    "name": "摩卡",
+    "size": "未注明；估算按中杯约355ml",
+    "sugar": "未注明；估算含原配方酱料",
+    "kcal": 330,
+    "range": [
+      230,
+      470
+    ],
+    "evidenceType": "配料估算",
+    "sourceUrl": "https://www.starbucks.com.cn/menu/beverages/espresso/caffe-latte/",
+    "sourceNote": "大陆官方菜单确认饮品名称；本页不公布热量。假设牛奶250g153kcal、摩卡酱约90kcal、奶油顶约80kcal、浓缩约7kcal。",
+    "includedToppings": "摩卡酱、奶油顶已计入",
+    "verifyNote": "核实本地门店是否在售、杯型容量、默认糖度和真实配方；估算份量不是品牌披露。"
+  },
+  {
+    "brand": "星巴克 Starbucks",
+    "name": "香草风味拿铁",
+    "size": "未注明；估算按中杯约355ml",
+    "sugar": "未注明；估算含原配方糖浆",
+    "kcal": 270,
+    "range": [
+      190,
+      370
+    ],
+    "evidenceType": "配料估算",
+    "sourceUrl": "https://www.starbucks.com.cn/menu/beverages/espresso/caffe-latte/",
+    "sourceNote": "大陆官方菜单确认饮品名称；本页不公布热量。假设牛奶300g183kcal、糖浆所含糖20g80kcal、浓缩约7kcal。",
+    "includedToppings": "香草糖浆已计入",
+    "verifyNote": "核实本地门店是否在售、杯型容量、默认糖度和真实配方；估算份量不是品牌披露。"
+  },
+  {
+    "brand": "星巴克 Starbucks",
+    "name": "榛果风味拿铁",
+    "size": "未注明；估算按中杯约355ml",
+    "sugar": "未注明；估算含原配方糖浆",
+    "kcal": 270,
+    "range": [
+      190,
+      370
+    ],
+    "evidenceType": "配料估算",
+    "sourceUrl": "https://www.starbucks.com.cn/menu/beverages/espresso/caffe-latte/",
+    "sourceNote": "大陆官方菜单确认饮品名称；本页不公布热量。假设牛奶300g183kcal、糖浆所含糖20g80kcal、浓缩约7kcal。",
+    "includedToppings": "榛果糖浆已计入",
+    "verifyNote": "核实本地门店是否在售、杯型容量、默认糖度和真实配方；估算份量不是品牌披露。"
+  },
+  {
+    "brand": "瑞幸咖啡",
+    "name": "生椰拿铁",
+    "size": "大杯/冰；毫升未注明",
+    "sugar": "不另外加糖",
+    "kcal": 179,
+    "range": [
+      179,
+      179
+    ],
+    "evidenceType": "官方参考",
+    "sourceUrl": "https://www.lkcoffee.com/products",
+    "sourceNote": "大陆瑞幸官方产品页直接公开热量；埃塞金烘/默认浓度。",
+    "includedToppings": "椰乳已计入",
+    "verifyNote": "仅适用于所列默认配置；实际点单热/冰、杯型、咖啡豆、换奶、甜度变化需重新核对。"
+  },
+  {
+    "brand": "瑞幸咖啡",
+    "name": "茉莉花香拿铁",
+    "size": "大杯/冰；毫升未注明",
+    "sugar": "不另外加糖",
+    "kcal": 76,
+    "range": [
+      76,
+      76
+    ],
+    "evidenceType": "官方参考",
+    "sourceUrl": "https://www.lkcoffee.com/products",
+    "sourceNote": "大陆瑞幸官方产品页直接公开热量；埃塞金烘/默认浓度/牛奶；搜索快照曾显示76-94，打开官网正文76，以此配置76为准。",
+    "includedToppings": "牛奶、茉莉茶已计入",
+    "verifyNote": "仅适用于所列默认配置；实际点单热/冰、杯型、咖啡豆、换奶、甜度变化需重新核对。"
+  },
+  {
+    "brand": "瑞幸咖啡",
+    "name": "拿铁",
+    "size": "大杯/热；毫升未注明",
+    "sugar": "不另外加糖",
+    "kcal": 268,
+    "range": [
+      268,
+      268
+    ],
+    "evidenceType": "官方参考",
+    "sourceUrl": "https://www.lkcoffee.com/products",
+    "sourceNote": "大陆瑞幸官方产品页直接公开热量；埃塞金烘/默认浓度/牛奶。",
+    "includedToppings": "牛奶已计入",
+    "verifyNote": "仅适用于所列默认配置；实际点单热/冰、杯型、咖啡豆、换奶、甜度变化需重新核对。"
+  },
+  {
+    "brand": "瑞幸咖啡",
+    "name": "冰吸生椰拿铁",
+    "size": "大杯/冰；毫升未注明",
+    "sugar": "不另外加糖",
+    "kcal": 196,
+    "range": [
+      196,
+      196
+    ],
+    "evidenceType": "官方参考",
+    "sourceUrl": "https://www.lkcoffee.com/products",
+    "sourceNote": "大陆瑞幸官方产品页直接公开热量；意式拼配/默认浓度。",
+    "includedToppings": "椰乳、清凉配方已计入",
+    "verifyNote": "仅适用于所列默认配置；实际点单热/冰、杯型、咖啡豆、换奶、甜度变化需重新核对。"
+  },
+  {
+    "brand": "瑞幸咖啡",
+    "name": "小黄油拿铁",
+    "size": "大杯/冰；毫升未注明",
+    "sugar": "不另外加糖",
+    "kcal": 250,
+    "range": [
+      250,
+      250
+    ],
+    "evidenceType": "官方参考",
+    "sourceUrl": "https://www.lkcoffee.com/products",
+    "sourceNote": "大陆瑞幸官方产品页直接公开热量；埃塞金烘/默认浓度。",
+    "includedToppings": "黄油风味基底已计入",
+    "verifyNote": "仅适用于所列默认配置；实际点单热/冰、杯型、咖啡豆、换奶、甜度变化需重新核对。"
+  },
+  {
+    "brand": "瑞幸咖啡",
+    "name": "生椰三重奏拿铁",
+    "size": "大杯/冰；毫升未注明",
+    "sugar": "微甜",
+    "kcal": 470,
+    "range": [
+      470,
+      470
+    ],
+    "evidenceType": "官方参考",
+    "sourceUrl": "https://www.lkcoffee.com/products",
+    "sourceNote": "大陆瑞幸官方产品页直接公开热量；意式拼配/默认浓度。",
+    "includedToppings": "椰子奶油顶、椰奶冻、椰浆已计入",
+    "verifyNote": "仅适用于所列默认配置；实际点单热/冰、杯型、咖啡豆、换奶、甜度变化需重新核对。"
+  },
+  {
+    "brand": "瑞幸咖啡",
+    "name": "轻椰茉莉拿铁",
+    "size": "大杯/冰；毫升未注明",
+    "sugar": "不另外加糖",
+    "kcal": 120,
+    "range": [
+      120,
+      120
+    ],
+    "evidenceType": "官方参考",
+    "sourceUrl": "https://www.lkcoffee.com/products",
+    "sourceNote": "大陆瑞幸官方产品页直接公开热量；意式拼配/默认浓度。",
+    "includedToppings": "椰乳、茉莉茶已计入",
+    "verifyNote": "仅适用于所列默认配置；实际点单热/冰、杯型、咖啡豆、换奶、甜度变化需重新核对。"
+  },
+  {
+    "brand": "瑞幸咖啡",
+    "name": "丝绒拿铁",
+    "size": "大杯/热；毫升未注明",
+    "sugar": "不另外加糖",
+    "kcal": 376,
+    "range": [
+      376,
+      376
+    ],
+    "evidenceType": "官方参考",
+    "sourceUrl": "https://www.lkcoffee.com/products",
+    "sourceNote": "大陆瑞幸官方产品页直接公开热量；埃塞金烘/默认浓度。",
+    "includedToppings": "丝绒风味厚奶已计入",
+    "verifyNote": "仅适用于所列默认配置；实际点单热/冰、杯型、咖啡豆、换奶、甜度变化需重新核对。"
+  },
+  {
+    "brand": "库迪咖啡",
+    "name": "生椰拿铁",
+    "size": "355-591ml（菜单范围；估算按大杯）",
+    "sugar": "未注明",
+    "kcal": 230,
+    "range": [
+      150,
+      360
+    ],
+    "evidenceType": "配料估算",
+    "sourceUrl": "https://www.nckfhsm.com/brands/ku-di-ka-fei/menu/available",
+    "sourceNote": "第三方大陆菜单列出名称但无热量；假设椰乳基底250ml约200kcal、调味糖20-30kcal；实际品牌椰乳营养表未找到。",
+    "includedToppings": "椰乳已计入",
+    "verifyNote": "核实本地门店是否在售、杯型容量、默认糖度和真实配方；估算份量不是品牌披露。"
+  },
+  {
+    "brand": "库迪咖啡",
+    "name": "潘帕斯蓝椰拿铁",
+    "size": "355-591ml（菜单范围；估算按大杯）",
+    "sugar": "未注明",
+    "kcal": 310,
+    "range": [
+      200,
+      470
+    ],
+    "evidenceType": "配料估算",
+    "sourceUrl": "https://www.nckfhsm.com/products/pan-pa-si-lan-ye-na-tie",
+    "sourceNote": "第三方单品页确认牛乳、椰浆、咖啡、晶球，无热量。假设牛乳/椰浆基底200kcal、晶球50g约50kcal、调味约60kcal。",
+    "includedToppings": "晶球；牛乳、椰浆及调味已计入",
+    "verifyNote": "核实本地门店是否在售、杯型容量、默认糖度和真实配方；估算份量不是品牌披露。"
+  },
+  {
+    "brand": "库迪咖啡",
+    "name": "经典拿铁",
+    "size": "355-591ml（菜单范围；估算按大杯）",
+    "sugar": "不额外加糖（估算选定版本）",
+    "kcal": 200,
+    "range": [
+      140,
+      300
+    ],
+    "evidenceType": "配料估算",
+    "sourceUrl": "https://www.nckfhsm.com/products/jing-dian-na-tie-27779",
+    "sourceNote": "第三方单品页确认牛乳咖啡和不额外加糖选项，无热量。假设牛乳320g约195kcal、浓缩约5kcal。",
+    "includedToppings": "牛乳已计入",
+    "verifyNote": "核实本地门店是否在售、杯型容量、默认糖度和真实配方；估算份量不是品牌披露。"
+  },
+  {
+    "brand": "库迪咖啡",
+    "name": "小黄油拿铁",
+    "size": "355-591ml（菜单范围；估算按大杯）",
+    "sugar": "未注明",
+    "kcal": 290,
+    "range": [
+      190,
+      430
+    ],
+    "evidenceType": "配料估算",
+    "sourceUrl": "https://www.nckfhsm.com/brands/ku-di-ka-fei/menu/available?page=2",
+    "sourceNote": "第三方菜单确认名称但无热量；假设牛奶250g153kcal、含黄油调味基底约130kcal、浓缩约7kcal。",
+    "includedToppings": "黄油风味基底已计入",
+    "verifyNote": "核实本地门店是否在售、杯型容量、默认糖度和真实配方；估算份量不是品牌披露。"
+  },
+  {
+    "brand": "库迪咖啡",
+    "name": "小黄油美式",
+    "size": "355-591ml（范围；热量对应杯型未注明）",
+    "sugar": "未注明",
+    "kcal": 190,
+    "range": [
+      170,
+      205
+    ],
+    "evidenceType": "第三方参考",
+    "sourceUrl": "https://www.nckfhsm.com/brands/ku-di-ka-fei/menu/available?page=2",
+    "sourceNote": "第三方菜单列170-205kcal；代表值取190，不对应确定杯型/糖度；网站称资料收集自互联网，未说明检测来源。",
+    "includedToppings": "黄油风味基底已计入",
+    "verifyNote": "优先核实热量对应容量/甜度及当前配方；同值range只表示网站给一个数字，不表示所有配置恒定。"
+  },
+  {
+    "brand": "库迪咖啡",
+    "name": "超燃椰青美式",
+    "size": "355-591ml（范围；热量对应杯型未注明）",
+    "sugar": "未注明",
+    "kcal": 95,
+    "range": [
+      95,
+      95
+    ],
+    "evidenceType": "第三方参考",
+    "sourceUrl": "https://www.nckfhsm.com/brands/ku-di-ka-fei/menu/available?page=2",
+    "sourceNote": "第三方菜单列95kcal但未注明对应配置；网站称资料收集自互联网，未说明检测来源。",
+    "includedToppings": "椰子水已计入",
+    "verifyNote": "优先核实热量对应容量/甜度及当前配方；同值range只表示网站给一个数字，不表示所有配置恒定。"
+  },
+  {
+    "brand": "库迪咖啡",
+    "name": "茉莉花香拿铁",
+    "size": "355-591ml（范围；热量对应杯型未注明）",
+    "sugar": "未注明",
+    "kcal": 141,
+    "range": [
+      141,
+      141
+    ],
+    "evidenceType": "第三方参考",
+    "sourceUrl": "https://www.nckfhsm.com/brands/ku-di-ka-fei/menu/available?page=2",
+    "sourceNote": "第三方菜单列141kcal但未注明对应配置；网站称资料收集自互联网，未说明检测来源。",
+    "includedToppings": "奶基底和茉莉茶已计入",
+    "verifyNote": "优先核实热量对应容量/甜度及当前配方；同值range只表示网站给一个数字，不表示所有配置恒定。"
+  },
+  {
+    "brand": "库迪咖啡",
+    "name": "金奖深烘美式",
+    "size": "355-591ml（范围；热量对应杯型未注明）",
+    "sugar": "不额外加糖（估算选定版本）",
+    "kcal": 10,
+    "range": [
+      5,
+      20
+    ],
+    "evidenceType": "配料估算",
+    "sourceUrl": "https://www.nckfhsm.com/brands/ku-di-ka-fei/menu/available?page=4",
+    "sourceNote": "第三方菜单列品名、容量范围并写近零热量；无奶无糖浓缩兑水按约5-15kcal估算，10为取整候选。",
+    "includedToppings": "无",
+    "verifyNote": "核实无糖无奶配置、咖啡浓度与容量；0kcal通常是近零口径，不代表严格无能量。"
+  },
+  {
+    "brand": "幸运咖",
+    "name": "经典美式",
+    "size": "未注明",
+    "sugar": "不另外加糖（估算配置）",
+    "kcal": 10,
+    "range": [
+      5,
+      20
+    ],
+    "evidenceType": "配料估算",
+    "sourceUrl": "https://www.nckfhsm.com/brands/xing-yun-ka/menu/available",
+    "sourceNote": "第三方大陆菜单提供品名；菜单写0kcal；按无糖无奶浓缩约5-15kcal估算，避免误认为绝对零。",
+    "includedToppings": "无",
+    "verifyNote": "核实本地门店是否在售、杯型容量、默认糖度和真实配方；估算份量不是品牌披露。"
+  },
+  {
+    "brand": "幸运咖",
+    "name": "椰椰拿铁",
+    "size": "未注明",
+    "sugar": "未注明",
+    "kcal": 250,
+    "range": [
+      160,
+      390
+    ],
+    "evidenceType": "配料估算",
+    "sourceUrl": "https://www.nckfhsm.com/brands/xing-yun-ka/menu/available",
+    "sourceNote": "第三方大陆菜单提供品名；假设椰乳基底250ml约200kcal、糖/调味约50kcal。",
+    "includedToppings": "椰乳已计入",
+    "verifyNote": "核实本地门店是否在售、杯型容量、默认糖度和真实配方；估算份量不是品牌披露。"
+  },
+  {
+    "brand": "幸运咖",
+    "name": "铁观音拿铁",
+    "size": "未注明",
+    "sugar": "未注明",
+    "kcal": 230,
+    "range": [
+      140,
+      340
+    ],
+    "evidenceType": "配料估算",
+    "sourceUrl": "https://www.nckfhsm.com/brands/xing-yun-ka/menu/available",
+    "sourceNote": "第三方大陆菜单提供品名；假设牛奶250g153kcal、糖20g80kcal，茶/咖啡约0-10kcal。",
+    "includedToppings": "奶、茶咖基底已计入；是否含咖啡待核实",
+    "verifyNote": "核实本地门店是否在售、杯型容量、默认糖度和真实配方；估算份量不是品牌披露。"
+  },
+  {
+    "brand": "幸运咖",
+    "name": "招牌冰拿铁",
+    "size": "未注明",
+    "sugar": "未注明",
+    "kcal": 220,
+    "range": [
+      130,
+      330
+    ],
+    "evidenceType": "配料估算",
+    "sourceUrl": "https://www.nckfhsm.com/brands/xing-yun-ka/menu/available",
+    "sourceNote": "第三方大陆菜单提供品名；假设牛奶250g153kcal、糖15g60kcal、浓缩约7kcal。",
+    "includedToppings": "牛奶已计入",
+    "verifyNote": "核实本地门店是否在售、杯型容量、默认糖度和真实配方；估算份量不是品牌披露。"
+  },
+  {
+    "brand": "幸运咖",
+    "name": "全冰醇香拿铁",
+    "size": "未注明",
+    "sugar": "未注明",
+    "kcal": 170,
+    "range": [
+      100,
+      270
+    ],
+    "evidenceType": "配料估算",
+    "sourceUrl": "https://www.nckfhsm.com/brands/xing-yun-ka/menu/available",
+    "sourceNote": "第三方大陆菜单提供品名；假设冰多乳量少，牛奶200g122kcal、糖10g40kcal、浓缩约8kcal。",
+    "includedToppings": "牛奶已计入",
+    "verifyNote": "核实本地门店是否在售、杯型容量、默认糖度和真实配方；估算份量不是品牌披露。"
+  },
+  {
+    "brand": "幸运咖",
+    "name": "可可咖啡",
+    "size": "未注明",
+    "sugar": "未注明",
+    "kcal": 310,
+    "range": [
+      200,
+      450
+    ],
+    "evidenceType": "配料估算",
+    "sourceUrl": "https://www.nckfhsm.com/brands/xing-yun-ka/menu/available",
+    "sourceNote": "第三方大陆菜单提供品名；假设牛奶250g153kcal、甜可可基底/糖约150kcal、浓缩约7kcal。",
+    "includedToppings": "可可、牛奶已计入",
+    "verifyNote": "核实本地门店是否在售、杯型容量、默认糖度和真实配方；估算份量不是品牌披露。"
+  },
+  {
+    "brand": "幸运咖",
+    "name": "可可牛奶",
+    "size": "未注明",
+    "sugar": "未注明",
+    "kcal": 300,
+    "range": [
+      190,
+      440
+    ],
+    "evidenceType": "配料估算",
+    "sourceUrl": "https://www.nckfhsm.com/brands/xing-yun-ka/menu/available",
+    "sourceNote": "第三方大陆菜单提供品名；假设牛奶250g153kcal、甜可可基底/糖约150kcal。",
+    "includedToppings": "可可、牛奶已计入",
+    "verifyNote": "核实本地门店是否在售、杯型容量、默认糖度和真实配方；估算份量不是品牌披露。"
+  },
+  {
+    "brand": "幸运咖",
+    "name": "咖啡雪球泡鲁达",
+    "size": "未注明",
+    "sugar": "未注明",
+    "kcal": 440,
+    "range": [
+      290,
+      660
+    ],
+    "evidenceType": "配料估算",
+    "sourceUrl": "https://www.nckfhsm.com/brands/xing-yun-ka/menu/available",
+    "sourceNote": "第三方大陆菜单提供品名；假设奶咖基底200kcal、雪球约120kcal、面包/椰丝等配料约120kcal；配料明细未取得。",
+    "includedToppings": "雪球及泡鲁达配料按名称假设，待核实",
+    "verifyNote": "核实本地门店是否在售、杯型容量、默认糖度和真实配方；估算份量不是品牌披露。"
+  },
+  {
+    "brand": "挪瓦咖啡",
+    "name": "花魁SOE美式",
+    "size": "未注明",
+    "sugar": "不另外加糖（估算配置）",
+    "kcal": 10,
+    "range": [
+      5,
+      20
+    ],
+    "evidenceType": "配料估算",
+    "sourceUrl": "https://www.nowwacafe.com/",
+    "sourceNote": "大陆官网确认品名/系列，未提供绝对热量。按无奶无糖浓缩兑水约5-15kcal，官网只说低卡。",
+    "includedToppings": "无",
+    "verifyNote": "核实本地门店是否在售、杯型容量、默认糖度和真实配方；估算份量不是品牌披露。"
+  },
+  {
+    "brand": "挪瓦咖啡",
+    "name": "0脂拿铁",
+    "size": "未注明",
+    "sugar": "未注明；估算不额外加糖",
+    "kcal": 110,
+    "range": [
+      70,
+      190
+    ],
+    "evidenceType": "配料估算",
+    "sourceUrl": "https://www.nowwacafe.com/",
+    "sourceNote": "大陆官网确认品名/系列，未提供绝对热量。假设脱脂乳300g约100kcal、浓缩约10kcal；0脂不等于0热量。",
+    "includedToppings": "脱脂乳已计入",
+    "verifyNote": "核实本地门店是否在售、杯型容量、默认糖度和真实配方；估算份量不是品牌披露。"
+  },
+  {
+    "brand": "挪瓦咖啡",
+    "name": "超模半熟芝士拿铁",
+    "size": "未注明",
+    "sugar": "未注明",
+    "kcal": 210,
+    "range": [
+      130,
+      300
+    ],
+    "evidenceType": "配料估算",
+    "sourceUrl": "https://www.nowwacafe.com/",
+    "sourceNote": "大陆官网确认品名/系列，未提供绝对热量。假设低脂芝士乳250g约200kcal、浓缩约10kcal；官网只给相对降热量声明，未披露绝对值。",
+    "includedToppings": "低脂芝士乳已计入",
+    "verifyNote": "核实本地门店是否在售、杯型容量、默认糖度和真实配方；估算份量不是品牌披露。"
+  },
+  {
+    "brand": "挪瓦咖啡",
+    "name": "吨吨一桶橙C美式",
+    "size": "未注明",
+    "sugar": "未注明",
+    "kcal": 140,
+    "range": [
+      80,
+      260
+    ],
+    "evidenceType": "配料估算",
+    "sourceUrl": "https://www.nowwacafe.com/",
+    "sourceNote": "大陆官网确认品名/系列，未提供绝对热量。官网称含约一颗赣南脐橙；假设橙汁/橙果约90kcal、调味糖约40kcal、咖啡10kcal。",
+    "includedToppings": "橙果/橙汁已计入",
+    "verifyNote": "核实本地门店是否在售、杯型容量、默认糖度和真实配方；估算份量不是品牌披露。"
+  },
+  {
+    "brand": "挪瓦咖啡",
+    "name": "吨吨一桶柚C美式",
+    "size": "未注明",
+    "sugar": "未注明",
+    "kcal": 140,
+    "range": [
+      70,
+      260
+    ],
+    "evidenceType": "配料估算",
+    "sourceUrl": "https://www.nowwacafe.com/",
+    "sourceNote": "大陆官网确认品名/系列，未提供绝对热量。假设柚果/果汁约90kcal、调味约40kcal、咖啡10kcal；0脂/0糖宣传不能证明0kcal。",
+    "includedToppings": "柚果/柚汁已计入",
+    "verifyNote": "核实本地门店是否在售、杯型容量、默认糖度和真实配方；估算份量不是品牌披露。"
+  },
+  {
+    "brand": "挪瓦咖啡",
+    "name": "吨吨桶电解质蓝椰水",
+    "size": "未注明",
+    "sugar": "未注明",
+    "kcal": 160,
+    "range": [
+      90,
+      280
+    ],
+    "evidenceType": "配料估算",
+    "sourceUrl": "https://www.nowwacafe.com/",
+    "sourceNote": "大陆官网确认品名/系列，未提供绝对热量。假设椰子水500ml约100kcal、调味糖约60kcal；颜料和电解质本身不是主要能量。",
+    "includedToppings": "椰子水及调味已计入",
+    "verifyNote": "核实本地门店是否在售、杯型容量、默认糖度和真实配方；估算份量不是品牌披露。"
+  },
+  {
+    "brand": "挪瓦咖啡",
+    "name": "吨吨桶羽衣甘蓝轻咖",
+    "size": "未注明",
+    "sugar": "未注明",
+    "kcal": 150,
+    "range": [
+      70,
+      280
+    ],
+    "evidenceType": "配料估算",
+    "sourceUrl": "https://www.nowwacafe.com/",
+    "sourceNote": "大陆官网确认品名/系列，未提供绝对热量。假设果蔬汁/果肉约100kcal、调味糖约40kcal、生豆咖啡液约10kcal。",
+    "includedToppings": "果蔬基底已计入",
+    "verifyNote": "核实本地门店是否在售、杯型容量、默认糖度和真实配方；估算份量不是品牌披露。"
+  },
+  {
+    "brand": "挪瓦咖啡",
+    "name": "生椰拿铁",
+    "size": "标准杯至吨吨桶450-750ml",
+    "sugar": "不另外加糖（菜单推荐）",
+    "kcal": 184,
+    "range": [
+      184,
+      307
+    ],
+    "evidenceType": "第三方参考",
+    "sourceUrl": "https://www.nckfhsm.com/products/sheng-ye-na-tie-28490",
+    "sourceNote": "第三方页面列450-750ml、184-307kcal；184取标准杯端点为候选，端点与容量映射仍需核实。",
+    "includedToppings": "椰乳已计入",
+    "verifyNote": "核实标准杯是否450ml/184kcal，吨吨桶是否750ml/307kcal；不要和新0脂椰乳配方混用。"
+  },
+  {
+    "brand": "Manner Coffee",
+    "name": "美式咖啡 Americano",
+    "size": "237-355ml（菜单范围）",
+    "sugar": "不另外加糖（估算配置）",
+    "kcal": 10,
+    "range": [
+      5,
+      20
+    ],
+    "evidenceType": "配料估算",
+    "sourceUrl": "https://www.nckfhsm.com/brands/manner-coffee/menu/available",
+    "sourceNote": "第三方大陆菜单确认名称/杯型，无可信整杯热量；无奶无糖浓缩兑水约5-15kcal；菜单0kcal只可视近零。",
+    "includedToppings": "无",
+    "verifyNote": "核实本地门店是否在售、杯型容量、默认糖度和真实配方；估算份量不是品牌披露。"
+  },
+  {
+    "brand": "Manner Coffee",
+    "name": "拿铁咖啡 Latte",
+    "size": "237-355ml（菜单范围）",
+    "sugar": "不另外加糖（估算配置）",
+    "kcal": 160,
+    "range": [
+      100,
+      230
+    ],
+    "evidenceType": "配料估算",
+    "sourceUrl": "https://www.nckfhsm.com/brands/manner-coffee/menu/available",
+    "sourceNote": "第三方大陆菜单确认名称/杯型，无可信整杯热量；假设牛奶250g153kcal、浓缩约7kcal。",
+    "includedToppings": "牛奶已计入",
+    "verifyNote": "核实本地门店是否在售、杯型容量、默认糖度和真实配方；估算份量不是品牌披露。"
+  },
+  {
+    "brand": "Manner Coffee",
+    "name": "澳式白咖啡 Flat White",
+    "size": "237-355ml（菜单范围）",
+    "sugar": "不另外加糖（估算配置）",
+    "kcal": 130,
+    "range": [
+      80,
+      200
+    ],
+    "evidenceType": "配料估算",
+    "sourceUrl": "https://www.nckfhsm.com/brands/manner-coffee/menu/available",
+    "sourceNote": "第三方大陆菜单确认名称/杯型，无可信整杯热量；假设牛奶200g122kcal、浓缩约8kcal。",
+    "includedToppings": "牛奶已计入",
+    "verifyNote": "核实本地门店是否在售、杯型容量、默认糖度和真实配方；估算份量不是品牌披露。"
+  },
+  {
+    "brand": "Manner Coffee",
+    "name": "燕麦拿铁",
+    "size": "237-355ml（菜单范围）",
+    "sugar": "不另外加糖（估算配置）",
+    "kcal": 160,
+    "range": [
+      100,
+      240
+    ],
+    "evidenceType": "配料估算",
+    "sourceUrl": "https://www.nckfhsm.com/brands/manner-coffee/menu/available",
+    "sourceNote": "第三方大陆菜单确认名称/杯型，无可信整杯热量；假设燕麦奶250ml按58kcal/100ml约145kcal、浓缩约10kcal；奶牌和容量未确认。",
+    "includedToppings": "燕麦奶已计入",
+    "verifyNote": "核实本地门店是否在售、杯型容量、默认糖度和真实配方；估算份量不是品牌披露。"
+  },
+  {
+    "brand": "Manner Coffee",
+    "name": "拿铁 埃塞古吉罕贝拉G1日晒",
+    "size": "237-355ml（菜单范围）",
+    "sugar": "不另外加糖（估算配置）",
+    "kcal": 160,
+    "range": [
+      100,
+      230
+    ],
+    "evidenceType": "配料估算",
+    "sourceUrl": "https://www.nckfhsm.com/brands/manner-coffee/menu/available",
+    "sourceNote": "第三方大陆菜单确认名称/杯型，无可信整杯热量；假设牛奶250g153kcal、浓缩约7kcal；换豆不应造成大热量差异。",
+    "includedToppings": "牛奶已计入",
+    "verifyNote": "核实本地门店是否在售、杯型容量、默认糖度和真实配方；估算份量不是品牌披露。"
+  },
+  {
+    "brand": "Manner Coffee",
+    "name": "美式 埃塞古吉罕贝拉G1日晒",
+    "size": "355ml（菜单）",
+    "sugar": "不另外加糖（估算配置）",
+    "kcal": 10,
+    "range": [
+      5,
+      20
+    ],
+    "evidenceType": "配料估算",
+    "sourceUrl": "https://www.nckfhsm.com/brands/manner-coffee/menu/available",
+    "sourceNote": "第三方大陆菜单确认名称/杯型，无可信整杯热量；无奶无糖SOE浓缩兑水约5-15kcal。",
+    "includedToppings": "无",
+    "verifyNote": "核实本地门店是否在售、杯型容量、默认糖度和真实配方；估算份量不是品牌披露。"
+  },
+  {
+    "brand": "Manner Coffee",
+    "name": "埃塞古吉罕贝拉G1日晒Dirty",
+    "size": "237ml（菜单）",
+    "sugar": "未注明",
+    "kcal": 140,
+    "range": [
+      90,
+      220
+    ],
+    "evidenceType": "配料估算",
+    "sourceUrl": "https://www.nckfhsm.com/brands/manner-coffee/menu/available",
+    "sourceNote": "第三方大陆菜单确认名称/杯型，无可信整杯热量；假设乳基底200g约130kcal、浓缩约10kcal；可能特殊奶基底，份量未知。",
+    "includedToppings": "乳基底已计入",
+    "verifyNote": "核实本地门店是否在售、杯型容量、默认糖度和真实配方；估算份量不是品牌披露。"
+  },
+  {
+    "brand": "Manner Coffee",
+    "name": "柚子冰美式",
+    "size": "355-473ml（菜单范围）",
+    "sugar": "未注明",
+    "kcal": 150,
+    "range": [
+      80,
+      260
+    ],
+    "evidenceType": "配料估算",
+    "sourceUrl": "https://www.nckfhsm.com/brands/manner-coffee/menu/available?page=2",
+    "sourceNote": "第三方大陆菜单确认名称/杯型，未给热量；假设柚子/果汁约80kcal、调味糖15g60kcal、咖啡10kcal。",
+    "includedToppings": "柚子基底已计入",
+    "verifyNote": "核实本地门店是否在售、杯型容量、默认糖度和真实配方；估算份量不是品牌披露。"
+  }
+]
