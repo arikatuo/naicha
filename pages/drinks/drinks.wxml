@@ -105,7 +105,7 @@
           </view>
           <view class="segmented topping-grid">
             <view role="button"
-              wx:for="{{toppingOptions}}"
+              wx:for="{{visibleToppingOptions}}"
               wx:key="id"
               class="option topping-option {{item.selected ? 'active' : ''}}"
               data-id="{{item.id}}"
@@ -116,6 +116,7 @@
               <text wx:if="{{item.selected}}" class="option-check">✓</text><text class="option-name">{{item.name}}</text><text class="option-kcal">+{{item.calories}}</text>
             </view>
           </view>
+          <view wx:if="{{canCollapseToppings}}" role="button" class="more-toggle" bindtap="toggleAllToppings">{{showAllToppings ? '收起' : '展开更多 ' + hiddenToppingCount + ' 种'}}</view>
         </view>
       </view>
     </scroll-view>

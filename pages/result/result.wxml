@@ -23,7 +23,7 @@
     <view class="equivalent-stage">
       <view class="stage-head">
         <text class="stage-label">相当于</text>
-        <text class="stage-hint">点下面的换一个，分享图也用它</text>
+        <text wx:if="{{otherCards.length}}" class="stage-hint">点下面的换一个，分享图也用它</text>
       </view>
 
       <view class="equivalent-card hero-equivalent" aria-live="polite">
@@ -40,7 +40,7 @@
         </view>
       </view>
 
-      <view class="equivalent-tiles">
+      <view wx:if="{{otherCards.length}}" class="equivalent-tiles">
         <view role="button" wx:for="{{otherCards}}" wx:key="id" class="equivalent-tile" data-index="{{item.index}}" bindtap="selectEquivalent" aria-label="换成{{item.label}}">
           <image class="tile-icon" src="{{item.icon}}" mode="aspectFit" aria-hidden="true"></image>
           <view class="tile-copy">

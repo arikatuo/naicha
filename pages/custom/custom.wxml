@@ -10,9 +10,10 @@
         <text class="step-dot">1</text>
         <text class="label">先选基底</text>
       </view>
-      <view class="option-grid">
+      <text class="group-caption">奶茶果茶</text>
+      <view class="option-grid chips">
         <view role="button"
-          wx:for="{{bases}}"
+          wx:for="{{teaBases}}"
           wx:key="id"
           class="option {{selectedBaseId === item.id ? 'active' : ''}}"
           data-id="{{item.id}}"
@@ -20,7 +21,21 @@
           aria-label="基底 {{item.name}}"
           aria-checked="{{selectedBaseId === item.id}}"
         >
-         <text wx:if="{{selectedBaseId === item.id}}" class="option-check">✓</text>{{item.name}}
+          <text wx:if="{{selectedBaseId === item.id}}" class="option-check">✓</text>{{item.name}}
+        </view>
+      </view>
+      <text class="group-caption">咖啡</text>
+      <view class="option-grid chips">
+        <view role="button"
+          wx:for="{{coffeeBases}}"
+          wx:key="id"
+          class="option {{selectedBaseId === item.id ? 'active' : ''}}"
+          data-id="{{item.id}}"
+          bindtap="selectBase"
+          aria-label="基底 {{item.name}}"
+          aria-checked="{{selectedBaseId === item.id}}"
+        >
+          <text wx:if="{{selectedBaseId === item.id}}" class="option-check">✓</text>{{item.name}}
         </view>
       </view>
     </view>
@@ -45,7 +60,7 @@
       </view>
     </view>
 
-    <view class="builder-group">
+    <view wx:if="{{sweetnessVisible}}" class="builder-group">
       <view class="group-head">
         <text class="step-dot">3</text>
         <text class="label">甜度</text>
@@ -67,13 +82,13 @@
 
     <view class="builder-group">
       <view class="group-head">
-        <text class="step-dot">4</text>
-        <text class="label">加点小料 {{selectedToppingCount}}/4</text>
+        <text class="step-dot">{{toppingStep}}</text>
+        <text class="label">{{selectedBaseId === 'americano' || selectedBaseId === 'coffee-latte' ? '加点咖啡配料' : '加点小料'}} {{selectedToppingCount}}/4</text>
       </view>
       <text class="group-help">最多选 4 种，按你平时的搭配来。</text>
       <view class="option-grid">
         <view role="button"
-          wx:for="{{toppingOptions}}"
+          wx:for="{{visibleToppingOptions}}"
           wx:key="id"
           class="option {{item.selected ? 'active' : ''}}"
           data-id="{{item.id}}"
@@ -84,6 +99,7 @@
           <text wx:if="{{item.selected}}" class="option-check">✓</text><text class="option-name">{{item.name}}</text><text class="option-kcal">+{{item.calories}}</text>
         </view>
       </view>
+      <view wx:if="{{canCollapseToppings}}" role="button" class="more-toggle" bindtap="toggleAllToppings">{{showAllToppings ? '收起' : '展开更多 ' + hiddenToppingCount + ' 种'}}</view>
     </view>
   </view>
 

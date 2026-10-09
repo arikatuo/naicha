@@ -40,7 +40,7 @@ test('brand data remains complete and brand cards keep differentiated flavor cop
   assert.equal(new Set(brands.map((brand) => brand.subtitle)).size, brands.length);
 
   for (const brand of store.getBrands()) {
-    assert.equal(store.getDrinksByBrandId(brand.id).length, 8);
+    assert.ok(store.getDrinksByBrandId(brand.id).length >= 4, brand.name);
   }
 });
 
@@ -153,8 +153,7 @@ test('result page offers deliberate recording, sharing, and a fresh calculation'
   assert.match(script, /wx\.switchTab\(\{\s*url:\s*'\/pages\/record\/record'\s*\}\)/s);
 });
 
-test('local visual assets cover brand logos and distinct result icons', () => {
-  const sources = JSON.parse(read('assets/brands/sources.json'));
+test('local visual assets cover distinct result and drink icons', () => {
   const iconPaths = [
     'assets/icons/bike.png',
     'assets/icons/americano.png',
@@ -170,12 +169,6 @@ test('local visual assets cover brand logos and distinct result icons', () => {
     'assets/icons/drinks/osmanthus-tea.png',
     'assets/icons/drinks/jasmine-milk.png'
   ];
-
-  assert.equal(Object.keys(sources).length, 8);
-  for (const source of Object.values(sources)) {
-    assert.match(source.url, /^https:\/\//);
-    assert.equal(source.type, 'official');
-  }
 
   for (const iconPath of iconPaths) {
     const absolutePath = path.join(__dirname, '..', iconPath);

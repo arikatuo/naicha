@@ -80,7 +80,7 @@ test('custom builder uses one form surface, selection count, and fixed action ba
   const styles = read('pages/custom/custom.wxss');
 
   assert.equal((markup.match(/class="builder-surface surface"/g) || []).length, 1);
-  assert.match(markup, /加点小料\s*{{selectedToppingCount}}\/4/);
+  assert.match(markup, /加点小料[\s\S]*{{selectedToppingCount}}\/4/);
   assert.match(markup, /class="submit-bar"/);
   assert.match(script, /selectedToppingCount:\s*0/);
   assert.match(styles, /\.submit-bar\s*{[^}]*position:\s*fixed;[^}]*bottom:\s*0;/s);
@@ -122,7 +122,7 @@ test('brand cards stay compact and use the shared tokens', () => {
 
   assert.match(styles, /\.brand-grid\s*{[^}]*grid-template-columns:\s*repeat\(2,\s*minmax\(0,\s*1fr\)\);/s);
   assert.match(styles, /\.brand-card\s*{[^}]*border-radius:\s*var\(--r-md\);/s);
-  assert.match(styles, /\.brand-logo-panel\s*{[^}]*height:\s*112rpx;/s);
+  assert.match(styles, /\.brand-avatar\s*{[^}]*height:\s*72rpx;/s);
   assert.match(styles, /\.brand-name,\s*\.brand-subtitle\s*{[^}]*white-space:\s*nowrap;/s);
   assert.match(styles, /\.brand-name,\s*\.brand-subtitle\s*{[^}]*text-overflow:\s*ellipsis;/s);
   assert.doesNotMatch(styles, /font-weight:\s*(700|800|900)/);

@@ -20,7 +20,7 @@ function drink(brandId, slug, displayName, calories, options = {}) {
   };
 }
 
-module.exports = [
+const baseDrinks = [
   drink('mixue', 'fresh-lemonade', '冰鲜柠檬水', 160, {
     sizeCalories: { large: 160 },
     availableSizes: ['large'],
@@ -440,3 +440,5 @@ module.exports = [
     tagIds: ['fruit', 'toppings']
   })
 ];
+
+module.exports = baseDrinks.concat(require('./extra-drinks'));

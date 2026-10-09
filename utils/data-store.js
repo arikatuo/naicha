@@ -49,6 +49,26 @@ function getToppingsByIds(ids) {
   return ids.map(getToppingById).filter(Boolean);
 }
 
+// 小料按饮品类型分：咖啡只显示咖啡加料；奶茶不显示咖啡加料；scope 为 'all' 时全部显示（自己搭的拿铁）
+// 常用的排前面，冷门的排后面；没列出的保持原来的顺序
+const TOPPING_ORDER = ['pearl', 'brown-pearl', 'taro-ball', 'pudding', 'milk-foam', 'coconut-jelly', 'grass-jelly', 'red-bean', 'taro', 'sago', 'cold-foam', 'rice-ball', 'powder-strip', 'oreo', 'konjac-jelly', 'crisp-boba', 'milk-jelly', 'aiyu', 'kanten', 'aloe', 'grain', 'ice-cream'];
+
+function orderToppings(list) {
+  const rank = (topping) => {
+    const index = TOPPING_ORDER.indexOf(topping.id);
+    return index < 0 ? TOPPING_ORDER.length : index;
+  };
+  return list.map((topping, position) => ({ topping, position }))
+    .sort((a, b) => rank(a.topping) - rank(b.topping) || a.position - b.position)
+    .map(({ topping }) => topping);
+}
+
+function getToppingsForScope(scope) {
+  if (scope === 'all') return orderToppings(toppings);
+  if (scope === 'coffee') return orderToppings(toppings.filter((topping) => topping.scope === 'coffee'));
+  return orderToppings(toppings.filter((topping) => topping.scope !== 'coffee'));
+}
+
 function getTagById(id) {
   return byId(tags, id);
 }
@@ -107,6 +127,7 @@ module.exports = {
   getSweetnessById,
   getToppingById,
   getToppingsByIds,
+  getToppingsForScope,
   getTagById,
   getTagsByIds,
   bases,

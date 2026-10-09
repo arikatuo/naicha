@@ -13,7 +13,10 @@ function mapDrink(drink) {
     toppings: 'tag-toppings',
     classic: 'tag-milktea',
     'milk-foam': 'tag-milktea',
-    'thick-milk': 'tag-milktea'
+    'thick-milk': 'tag-milktea',
+    coffee: 'tag-coffee',
+    latte: 'tag-coffee',
+    'black-coffee': 'tag-coffee'
   };
   const tags = store.getTagsByIds(drink.tagIds || []);
   return {
@@ -36,11 +39,24 @@ function buildFilters(drinks) {
   return tags.length ? [{ id: 'all', name: '全部' }, ...tags.map(({ id, name }) => ({ id, name }))] : [];
 }
 
-function createToppingOptions(selectedIds = []) {
-  return store.toppings.map((topping) => ({
+// 当前品牌的小料范围：咖啡品牌只显示咖啡加料，其余显示奶茶小料
+let toppingScope = 'tea';
+
+const COLLAPSED_TOPPINGS = 10;
+
+// 小料列表：常用的先显示，已选中的永远可见，其余折叠
+function toppingView(selectedIds = [], showAll = false) {
+  const all = store.getToppingsForScope(toppingScope).map((topping) => ({
     ...topping,
     selected: selectedIds.includes(topping.id)
   }));
+  const visible = showAll ? all : all.filter((topping, index) => index < COLLAPSED_TOPPINGS || topping.selected);
+  return {
+    toppingOptions: all,
+    visibleToppingOptions: visible,
+    hiddenToppingCount: all.length - visible.length,
+    canCollapseToppings: all.length > COLLAPSED_TOPPINGS
+  };
 }
 
 Page({
@@ -69,7 +85,11 @@ Page({
     toppings: store.toppings,
     defaultToppings: [],
     sizeOptions: [],
-    toppingOptions: createToppingOptions(),
+    toppingOptions: [],
+    visibleToppingOptions: [],
+    hiddenToppingCount: 0,
+    canCollapseToppings: false,
+    showAllToppings: false,
     panelOpen: false
   },
 
@@ -105,6 +125,7 @@ Page({
 
   loadContent(brandId) {
     const brand = store.getBrandById(brandId);
+    toppingScope = brand && brand.category === 'coffee' ? 'coffee' : 'tea';
     const drinks = brand ? store.getDrinksByBrandId(brandId).map(mapDrink) : [];
     const hasContent = Boolean(brand && drinks.length);
 
@@ -128,7 +149,8 @@ Page({
       selectedExtraToppingCount: 0,
       defaultToppings: [],
       sizeOptions: [],
-      toppingOptions: createToppingOptions(),
+      ...toppingView([], false),
+      showAllToppings: false,
       panelOpen: false
     });
     this.applyView();
@@ -168,8 +190,10 @@ Page({
 
     const selectedSizeId = prefill && drink.availableSizes.includes(prefill.sizeId) ? prefill.sizeId : drink.defaultSize;
     const selectedSweetnessId = prefill && store.getSweetnessById(prefill.sweetnessId) ? prefill.sweetnessId : drink.defaultSweetness;
+    // 只保留这家店能加的小料，避免咖啡带着珍珠
+    const allowedToppingIds = store.getToppingsForScope(toppingScope).map((topping) => topping.id);
     const selectedExtraToppingIds = prefill && Array.isArray(prefill.toppingIds)
-      ? prefill.toppingIds.filter((toppingId) => store.getToppingById(toppingId)).slice(0, 3)
+      ? prefill.toppingIds.filter((toppingId) => allowedToppingIds.includes(toppingId)).slice(0, 3)
       : [];
     this.setData({
       selectedDrink: drink,
@@ -179,7 +203,8 @@ Page({
       selectedExtraToppingCount: selectedExtraToppingIds.length,
       defaultToppings,
       sizeOptions: sizeOptions.map((size) => ({ ...size, selected: size.id === selectedSizeId })),
-      toppingOptions: createToppingOptions(selectedExtraToppingIds),
+      ...toppingView(selectedExtraToppingIds, false),
+      showAllToppings: false,
       panelOpen: true
     });
     this.updateLiveCalories();
@@ -195,7 +220,8 @@ Page({
       selectedExtraToppingCount: 0,
       defaultToppings: [],
       sizeOptions: [],
-      toppingOptions: createToppingOptions(),
+      ...toppingView([], false),
+      showAllToppings: false,
       liveCalories: 0
     });
   },
@@ -217,6 +243,11 @@ Page({
     this.updateLiveCalories();
   },
 
+  toggleAllToppings() {
+    const showAllToppings = !this.data.showAllToppings;
+    this.setData({ showAllToppings, ...toppingView(this.data.selectedExtraToppingIds, showAllToppings) });
+  },
+
   toggleExtraTopping(event) {
     const id = event.currentTarget.dataset.id;
     const selected = this.data.selectedExtraToppingIds.slice();
@@ -227,7 +258,7 @@ Page({
       this.setData({
         selectedExtraToppingIds: next,
         selectedExtraToppingCount: next.length,
-        toppingOptions: createToppingOptions(next)
+        ...toppingView(next, this.data.showAllToppings)
       });
       this.updateLiveCalories();
       return;
@@ -242,7 +273,7 @@ Page({
     this.setData({
       selectedExtraToppingIds: selected,
       selectedExtraToppingCount: selected.length,
-      toppingOptions: createToppingOptions(selected)
+      ...toppingView(selected, this.data.showAllToppings)
     });
     this.updateLiveCalories();
   },

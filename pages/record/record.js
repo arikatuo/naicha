@@ -28,6 +28,9 @@ function recentKey(record) {
 Page({
   data: {
     brands: [],
+    visibleBrands: [],
+    brandTabs: [],
+    brandCategory: 'all',
     hasBrands: false,
     quickDrinks: [],
     recentDrinks: [],
@@ -97,15 +100,12 @@ Page({
   },
 
   reloadBrands() {
-    const brands = store.getBrands().map((b) => ({
-      ...b,
-      firstChar: b.name.charAt(0),
-      logoFailed: false
-    }));
+    const brands = store.getBrands();
 
     this.setData({
       brands,
       hasBrands: brands.length > 0,
+      brandCategory: 'all',
       quickDrinks: QUICK_DRINK_IDS.map((id) => {
         const drink = store.getDrinkById(id);
         const brand = drink && store.getBrandById(drink.brandId);
@@ -118,11 +118,26 @@ Page({
         } : null;
       }).filter(Boolean)
     });
+    this.applyBrandView();
   },
 
-  onLogoError(event) {
-    const { index } = event.currentTarget.dataset;
-    this.setData({ [`brands[${index}].logoFailed`]: true });
+  // 品牌分类：全部 / 奶茶果茶 / 咖啡
+  applyBrandView() {
+    const { brands, brandCategory } = this.data;
+    const count = (category) => brands.filter((brand) => brand.category === category).length;
+    this.setData({
+      brandTabs: [
+        { id: 'all', name: '全部', count: brands.length },
+        { id: 'tea', name: '奶茶果茶', count: count('tea') },
+        { id: 'coffee', name: '咖啡', count: count('coffee') }
+      ].filter((tab) => tab.id === 'all' || tab.count > 0),
+      visibleBrands: brandCategory === 'all' ? brands : brands.filter((brand) => brand.category === brandCategory)
+    });
+  },
+
+  selectBrandCategory(event) {
+    this.setData({ brandCategory: event.currentTarget.dataset.id });
+    this.applyBrandView();
   },
 
   onSearchInput(event) {

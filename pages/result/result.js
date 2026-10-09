@@ -1,6 +1,6 @@
 const store = require('../../utils/data-store');
 const { decodePayload, encodePayload } = require('../../utils/nav');
-const { buildEquivalentCards } = require('../../utils/equivalents');
+const { buildEquivalentCards, rankEquivalentCards } = require('../../utils/equivalents');
 const { getResultCopy } = require('../../utils/copy');
 const { drawPoster, loadCanvasImage } = require('../../utils/poster');
 const { saveAndShowInCalendar } = require('../../utils/record-flow');
@@ -25,10 +25,18 @@ function buildShareTitle(payload, card) {
 }
 
 // 其余几个换算：保留原来的序号，点一下就换到大卡片上
+// 数值太小的换算（比如 0.1 个苹果）没有意义，低热量饮品不显示
+const MIN_TILE_VALUE = 0.3;
+
+function isMeaningful(card) {
+  const value = Number(card.numberMain);
+  return Number.isNaN(value) ? card.numberMain !== '<0.1' : value >= MIN_TILE_VALUE;
+}
+
 function buildOtherCards(cards, activeIndex) {
   return cards
     .map((card, index) => ({ ...card, index }))
-    .filter((card) => card.index !== activeIndex);
+    .filter((card) => card.index !== activeIndex && isMeaningful(card));
 }
 
 // 记录日期快捷项：今天 / 昨天 / 前天，其余日期走系统日期选择器
@@ -111,7 +119,7 @@ Page({
       return;
     }
 
-    const cards = buildEquivalentCards(payload.calories, store.equivalents);
+    const cards = rankEquivalentCards(buildEquivalentCards(payload.calories, store.equivalents));
     const todayDate = dateKey(new Date());
     const recordDate = isValidDateKey(payload.recordDate) ? payload.recordDate : todayDate;
     const currentEquivalentIndex = 0;

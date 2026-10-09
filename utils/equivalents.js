@@ -3,7 +3,20 @@ function roundToNearest(value, step) {
 }
 
 function formatOneDecimal(value) {
+  if (value > 0 && value < 0.05) return '<0.1';
   return (Math.round(value * 10) / 10).toFixed(1);
+}
+
+// 低热量的饮品（比如美式）换成薯条是 0.0 包，没有意义：把读起来自然的换算排到前面
+function rankEquivalentCards(cards) {
+  const score = (card) => {
+    const value = Number(card.numberMain);
+    if (!Number.isFinite(value)) return 2;
+    if (value >= 0.5 && value < 10) return 0;
+    if (value >= 10 && value < 30) return 1;
+    return 2;
+  };
+  return cards.map((card, index) => ({ card, index })).sort((a, b) => score(a.card) - score(b.card) || a.index - b.index).map(({ card }) => card);
 }
 
 function buildEquivalentText(calories, equivalent) {
@@ -114,6 +127,7 @@ function buildEquivalentCards(calories, equivalents) {
 }
 
 module.exports = {
+  rankEquivalentCards,
   buildEquivalentCards,
   buildEquivalentDisplay,
   buildEquivalentHint,

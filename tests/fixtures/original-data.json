@@ -1,0 +1,1049 @@
+{
+ "drinks": [
+  {
+   "id": "mixue-fresh-lemonade",
+   "brandId": "mixue",
+   "displayName": "冰鲜柠檬水",
+   "baseCalories": 160,
+   "sizeCalories": {
+    "large": 160
+   },
+   "defaultSize": "large",
+   "tagIds": [
+    "fruit",
+    "fresh"
+   ]
+  },
+  {
+   "id": "mixue-ice-cream",
+   "brandId": "mixue",
+   "displayName": "新鲜冰淇淋",
+   "baseCalories": 180,
+   "sizeCalories": {
+    "large": 180
+   },
+   "defaultSize": "large",
+   "tagIds": [
+    "classic"
+   ]
+  },
+  {
+   "id": "mixue-strawberry-shake",
+   "brandId": "mixue",
+   "displayName": "草莓摇摇奶昔",
+   "baseCalories": 360,
+   "sizeCalories": {
+    "large": 360
+   },
+   "defaultSize": "large",
+   "tagIds": [
+    "fruit",
+    "toppings"
+   ]
+  },
+  {
+   "id": "mixue-jasmine-milk-green",
+   "brandId": "mixue",
+   "displayName": "茉莉奶绿",
+   "baseCalories": 280,
+   "sizeCalories": {
+    "large": 280
+   },
+   "defaultSize": "large",
+   "tagIds": [
+    "fresh",
+    "milk-tea"
+   ]
+  },
+  {
+   "id": "mixue-snow-king-coffee",
+   "brandId": "mixue",
+   "displayName": "雪王雪顶咖啡",
+   "baseCalories": 330,
+   "sizeCalories": {
+    "large": 330
+   },
+   "defaultSize": "large",
+   "tagIds": [
+    "classic",
+    "toppings"
+   ]
+  },
+  {
+   "id": "mixue-pearl-milk-tea",
+   "brandId": "mixue",
+   "displayName": "珍珠奶茶",
+   "baseCalories": 460,
+   "sizeCalories": {
+    "large": 460
+   },
+   "defaultSize": "large",
+   "tagIds": [
+    "classic",
+    "milk-tea",
+    "toppings"
+   ]
+  },
+  {
+   "id": "mixue-orange-smash",
+   "brandId": "mixue",
+   "displayName": "棒打鲜橙",
+   "baseCalories": 240,
+   "sizeCalories": {
+    "large": 240
+   },
+   "defaultSize": "large",
+   "tagIds": [
+    "fruit",
+    "fresh"
+   ]
+  },
+  {
+   "id": "mixue-passion-fruit-cup",
+   "brandId": "mixue",
+   "displayName": "满杯百香果",
+   "baseCalories": 360,
+   "sizeCalories": {
+    "large": 360
+   },
+   "defaultSize": "large",
+   "tagIds": [
+    "fruit",
+    "toppings"
+   ]
+  },
+  {
+   "id": "chagee-boya-juexian",
+   "brandId": "chagee",
+   "displayName": "伯牙绝弦",
+   "baseCalories": 130,
+   "sizeCalories": {
+    "medium": 130,
+    "large": 170
+   },
+   "defaultSize": "large",
+   "tagIds": [
+    "classic",
+    "milk-tea",
+    "fresh"
+   ]
+  },
+  {
+   "id": "chagee-ceylon-black-tea",
+   "brandId": "chagee",
+   "displayName": "锡兰红茶",
+   "baseCalories": 150,
+   "sizeCalories": {
+    "medium": 150,
+    "large": 195
+   },
+   "defaultSize": "large",
+   "tagIds": [
+    "fresh",
+    "milk-tea"
+   ]
+  },
+  {
+   "id": "chagee-qingmo-guanyin",
+   "brandId": "chagee",
+   "displayName": "青沫观音",
+   "baseCalories": 145,
+   "sizeCalories": {
+    "medium": 145,
+    "large": 190
+   },
+   "defaultSize": "large",
+   "tagIds": [
+    "fresh",
+    "milk-tea"
+   ]
+  },
+  {
+   "id": "chagee-qingqing-nuoshan",
+   "brandId": "chagee",
+   "displayName": "青青糯山",
+   "baseCalories": 155,
+   "sizeCalories": {
+    "medium": 155,
+    "large": 205
+   },
+   "defaultSize": "large",
+   "tagIds": [
+    "fresh",
+    "milk-tea"
+   ]
+  },
+  {
+   "id": "chagee-guifu-lanxiang",
+   "brandId": "chagee",
+   "displayName": "桂馥兰香",
+   "baseCalories": 145,
+   "sizeCalories": {
+    "medium": 145,
+    "large": 190
+   },
+   "defaultSize": "large",
+   "tagIds": [
+    "fresh",
+    "milk-tea"
+   ]
+  },
+  {
+   "id": "chagee-baiwu-hongchen",
+   "brandId": "chagee",
+   "displayName": "白雾红尘",
+   "baseCalories": 150,
+   "sizeCalories": {
+    "medium": 150,
+    "large": 200
+   },
+   "defaultSize": "large",
+   "tagIds": [
+    "fresh",
+    "milk-tea"
+   ]
+  },
+  {
+   "id": "chagee-rose-puer",
+   "brandId": "chagee",
+   "displayName": "去云南·玫瑰普洱",
+   "baseCalories": 150,
+   "sizeCalories": {
+    "medium": 150,
+    "large": 200
+   },
+   "defaultSize": "large",
+   "tagIds": [
+    "fresh",
+    "milk-tea"
+   ]
+  },
+  {
+   "id": "chagee-wanshanhong",
+   "brandId": "chagee",
+   "displayName": "万山红·金丝小种",
+   "baseCalories": 150,
+   "sizeCalories": {
+    "medium": 150,
+    "large": 200
+   },
+   "defaultSize": "large",
+   "tagIds": [
+    "fresh",
+    "milk-tea"
+   ]
+  },
+  {
+   "id": "heytea-grape-jelly",
+   "brandId": "heytea",
+   "displayName": "多肉葡萄冻",
+   "baseCalories": 140,
+   "sizeCalories": {
+    "medium": 140
+   },
+   "defaultSize": "medium",
+   "tagIds": [
+    "fruit",
+    "toppings"
+   ]
+  },
+  {
+   "id": "heytea-berry-cheese",
+   "brandId": "heytea",
+   "displayName": "芝芝莓莓",
+   "baseCalories": 430,
+   "sizeCalories": {
+    "medium": 430
+   },
+   "defaultSize": "medium",
+   "tagIds": [
+    "fruit",
+    "milk-foam"
+   ]
+  },
+  {
+   "id": "heytea-mango-cheese",
+   "brandId": "heytea",
+   "displayName": "芝芝芒芒",
+   "baseCalories": 470,
+   "sizeCalories": {
+    "medium": 470
+   },
+   "defaultSize": "medium",
+   "tagIds": [
+    "fruit",
+    "milk-foam"
+   ]
+  },
+  {
+   "id": "heytea-green-grape",
+   "brandId": "heytea",
+   "displayName": "多肉青提",
+   "baseCalories": 330,
+   "sizeCalories": {
+    "medium": 330
+   },
+   "defaultSize": "medium",
+   "tagIds": [
+    "fruit",
+    "toppings"
+   ]
+  },
+  {
+   "id": "heytea-roasted-brown-sugar-bobo",
+   "brandId": "heytea",
+   "displayName": "烤黑糖波波牛乳茶",
+   "baseCalories": 560,
+   "sizeCalories": {
+    "medium": 560
+   },
+   "defaultSize": "medium",
+   "tagIds": [
+    "milk-tea",
+    "toppings"
+   ]
+  },
+  {
+   "id": "heytea-light-mango-pomelo",
+   "brandId": "heytea",
+   "displayName": "轻芒芒甘露",
+   "baseCalories": 330,
+   "sizeCalories": {
+    "medium": 330
+   },
+   "defaultSize": "medium",
+   "tagIds": [
+    "fruit",
+    "toppings"
+   ]
+  },
+  {
+   "id": "heytea-cheese-green-tea",
+   "brandId": "heytea",
+   "displayName": "芝芝绿妍茶后",
+   "baseCalories": 260,
+   "sizeCalories": {
+    "medium": 260
+   },
+   "defaultSize": "medium",
+   "tagIds": [
+    "fresh",
+    "milk-foam"
+   ]
+  },
+  {
+   "id": "heytea-yueguan",
+   "brandId": "heytea",
+   "displayName": "月观",
+   "baseCalories": 103,
+   "sizeCalories": {
+    "medium": 103
+   },
+   "defaultSize": "medium",
+   "tagIds": [
+    "fresh"
+   ]
+  },
+  {
+   "id": "chabaidao-yangzhi-ganlu",
+   "brandId": "chabaidao",
+   "displayName": "杨枝甘露",
+   "baseCalories": 390,
+   "sizeCalories": {
+    "medium": 390,
+    "large": 520
+   },
+   "defaultSize": "large",
+   "tagIds": [
+    "fruit",
+    "toppings"
+   ]
+  },
+  {
+   "id": "chabaidao-green-grape-jasmine",
+   "brandId": "chabaidao",
+   "displayName": "青提茉莉",
+   "baseCalories": 210,
+   "sizeCalories": {
+    "medium": 210,
+    "large": 280
+   },
+   "defaultSize": "large",
+   "tagIds": [
+    "fruit",
+    "fresh"
+   ]
+  },
+  {
+   "id": "chabaidao-watermelon-bobo",
+   "brandId": "chabaidao",
+   "displayName": "西瓜啵啵",
+   "baseCalories": 240,
+   "sizeCalories": {
+    "medium": 240,
+    "large": 320
+   },
+   "defaultSize": "large",
+   "tagIds": [
+    "fruit",
+    "toppings"
+   ]
+  },
+  {
+   "id": "chabaidao-sunshine-green-grape-milk",
+   "brandId": "chabaidao",
+   "displayName": "阳光青提冰奶",
+   "baseCalories": 310,
+   "sizeCalories": {
+    "medium": 310,
+    "large": 420
+   },
+   "defaultSize": "large",
+   "tagIds": [
+    "fruit",
+    "milk-tea"
+   ]
+  },
+  {
+   "id": "chabaidao-pink-guava",
+   "brandId": "chabaidao",
+   "displayName": "粉上芭乐提",
+   "baseCalories": 230,
+   "sizeCalories": {
+    "medium": 230,
+    "large": 310
+   },
+   "defaultSize": "large",
+   "tagIds": [
+    "fruit",
+    "fresh"
+   ]
+  },
+  {
+   "id": "chabaidao-soy-jade-kylin",
+   "brandId": "chabaidao",
+   "displayName": "豆乳玉麒麟",
+   "baseCalories": 330,
+   "sizeCalories": {
+    "medium": 330,
+    "large": 450
+   },
+   "defaultSize": "large",
+   "tagIds": [
+    "fresh",
+    "milk-tea"
+   ]
+  },
+  {
+   "id": "chabaidao-signature-taro-ball-milk-tea",
+   "brandId": "chabaidao",
+   "displayName": "招牌芋圆奶茶",
+   "baseCalories": 470,
+   "sizeCalories": {
+    "medium": 470,
+    "large": 620
+   },
+   "defaultSize": "large",
+   "tagIds": [
+    "milk-tea",
+    "toppings"
+   ]
+  },
+  {
+   "id": "chabaidao-jasmine-milk-green",
+   "brandId": "chabaidao",
+   "displayName": "茉莉奶绿",
+   "baseCalories": 270,
+   "sizeCalories": {
+    "medium": 270,
+    "large": 360
+   },
+   "defaultSize": "large",
+   "tagIds": [
+    "fresh",
+    "milk-tea"
+   ]
+  },
+  {
+   "id": "guming-yangzhi-ganlu",
+   "brandId": "guming",
+   "displayName": "杨枝甘露",
+   "baseCalories": 390,
+   "sizeCalories": {
+    "medium": 390,
+    "large": 520
+   },
+   "defaultSize": "large",
+   "tagIds": [
+    "fruit",
+    "toppings"
+   ]
+  },
+  {
+   "id": "guming-super-cheese-grape",
+   "brandId": "guming",
+   "displayName": "超A芝士葡萄",
+   "baseCalories": 360,
+   "sizeCalories": {
+    "medium": 360,
+    "large": 500
+   },
+   "defaultSize": "large",
+   "tagIds": [
+    "fruit",
+    "milk-foam"
+   ]
+  },
+  {
+   "id": "guming-yunling-jasmine-white",
+   "brandId": "guming",
+   "displayName": "云岭茉莉白",
+   "baseCalories": 240,
+   "sizeCalories": {
+    "medium": 240,
+    "large": 330
+   },
+   "defaultSize": "large",
+   "tagIds": [
+    "fresh",
+    "milk-tea"
+   ]
+  },
+  {
+   "id": "guming-brulee-crunch-milk",
+   "brandId": "guming",
+   "displayName": "布蕾脆脆奶芙",
+   "baseCalories": 520,
+   "sizeCalories": {
+    "medium": 520,
+    "large": 700
+   },
+   "defaultSize": "large",
+   "tagIds": [
+    "milk-tea",
+    "toppings"
+   ]
+  },
+  {
+   "id": "guming-taro-grain-milk",
+   "brandId": "guming",
+   "displayName": "芋泥青稞牛奶",
+   "baseCalories": 500,
+   "sizeCalories": {
+    "medium": 500,
+    "large": 670
+   },
+   "defaultSize": "large",
+   "tagIds": [
+    "milk-tea",
+    "toppings"
+   ]
+  },
+  {
+   "id": "guming-whole-lemon",
+   "brandId": "guming",
+   "displayName": "一颗大柠檬",
+   "baseCalories": 150,
+   "sizeCalories": {
+    "medium": 150,
+    "large": 220
+   },
+   "defaultSize": "large",
+   "tagIds": [
+    "fruit",
+    "fresh"
+   ]
+  },
+  {
+   "id": "guming-passion-duet",
+   "brandId": "guming",
+   "displayName": "百香双重奏",
+   "baseCalories": 330,
+   "sizeCalories": {
+    "medium": 330,
+    "large": 450
+   },
+   "defaultSize": "large",
+   "tagIds": [
+    "fruit",
+    "toppings"
+   ]
+  },
+  {
+   "id": "guming-classic-milk-tea",
+   "brandId": "guming",
+   "displayName": "古茗奶茶",
+   "baseCalories": 280,
+   "sizeCalories": {
+    "medium": 280,
+    "large": 390
+   },
+   "defaultSize": "large",
+   "tagIds": [
+    "classic",
+    "milk-tea"
+   ]
+  },
+  {
+   "id": "yidiandian-black-tea-macchiato",
+   "brandId": "yidiandian",
+   "displayName": "红茶玛奇朵",
+   "baseCalories": 270,
+   "sizeCalories": {
+    "medium": 270,
+    "large": 380
+   },
+   "defaultSize": "large",
+   "tagIds": [
+    "classic",
+    "milk-foam"
+   ]
+  },
+  {
+   "id": "yidiandian-boba-milk-tea",
+   "brandId": "yidiandian",
+   "displayName": "波霸奶茶",
+   "baseCalories": 460,
+   "sizeCalories": {
+    "medium": 460,
+    "large": 620
+   },
+   "defaultSize": "large",
+   "tagIds": [
+    "milk-tea",
+    "toppings"
+   ]
+  },
+  {
+   "id": "yidiandian-four-seasons-three-toppings",
+   "brandId": "yidiandian",
+   "displayName": "四季春+珍波椰",
+   "baseCalories": 330,
+   "sizeCalories": {
+    "medium": 330,
+    "large": 450
+   },
+   "defaultSize": "large",
+   "tagIds": [
+    "fresh",
+    "toppings"
+   ]
+  },
+  {
+   "id": "yidiandian-milk-black-tea",
+   "brandId": "yidiandian",
+   "displayName": "牛乳红茶",
+   "baseCalories": 220,
+   "sizeCalories": {
+    "medium": 220,
+    "large": 320
+   },
+   "defaultSize": "large",
+   "tagIds": [
+    "fresh",
+    "milk-tea"
+   ]
+  },
+  {
+   "id": "yidiandian-qingxiang-oolong",
+   "brandId": "yidiandian",
+   "displayName": "清香乌龙茶",
+   "baseCalories": 60,
+   "sizeCalories": {
+    "medium": 60,
+    "large": 90
+   },
+   "defaultSize": "large",
+   "tagIds": [
+    "fresh"
+   ]
+  },
+  {
+   "id": "yidiandian-ice-cream-black-tea",
+   "brandId": "yidiandian",
+   "displayName": "冰淇淋红茶",
+   "baseCalories": 260,
+   "sizeCalories": {
+    "medium": 260,
+    "large": 380
+   },
+   "defaultSize": "large",
+   "tagIds": [
+    "fresh",
+    "toppings"
+   ]
+  },
+  {
+   "id": "yidiandian-yakult-green-tea",
+   "brandId": "yidiandian",
+   "displayName": "多多绿",
+   "baseCalories": 220,
+   "sizeCalories": {
+    "medium": 220,
+    "large": 330
+   },
+   "defaultSize": "large",
+   "tagIds": [
+    "fresh"
+   ]
+  },
+  {
+   "id": "yidiandian-grapefruit-green-tea",
+   "brandId": "yidiandian",
+   "displayName": "葡萄柚绿",
+   "baseCalories": 200,
+   "sizeCalories": {
+    "medium": 200,
+    "large": 300
+   },
+   "defaultSize": "large",
+   "tagIds": [
+    "fruit",
+    "fresh"
+   ]
+  },
+  {
+   "id": "coco-pearl-milk-tea",
+   "brandId": "coco",
+   "displayName": "珍珠奶茶",
+   "baseCalories": 450,
+   "sizeCalories": {
+    "medium": 450,
+    "large": 620
+   },
+   "defaultSize": "large",
+   "tagIds": [
+    "classic",
+    "milk-tea",
+    "toppings"
+   ]
+  },
+  {
+   "id": "coco-three-brothers",
+   "brandId": "coco",
+   "displayName": "奶茶三兄弟",
+   "baseCalories": 560,
+   "sizeCalories": {
+    "medium": 560,
+    "large": 760
+   },
+   "defaultSize": "large",
+   "tagIds": [
+    "milk-tea",
+    "toppings"
+   ]
+  },
+  {
+   "id": "coco-passion-fruit-double",
+   "brandId": "coco",
+   "displayName": "鲜百香双响炮",
+   "baseCalories": 380,
+   "sizeCalories": {
+    "medium": 380,
+    "large": 520
+   },
+   "defaultSize": "large",
+   "tagIds": [
+    "fruit",
+    "toppings"
+   ]
+  },
+  {
+   "id": "coco-taro-grain-milk",
+   "brandId": "coco",
+   "displayName": "鲜芋青稞牛奶",
+   "baseCalories": 510,
+   "sizeCalories": {
+    "medium": 510,
+    "large": 680
+   },
+   "defaultSize": "large",
+   "tagIds": [
+    "milk-tea",
+    "toppings"
+   ]
+  },
+  {
+   "id": "coco-jasmine-milk-green",
+   "brandId": "coco",
+   "displayName": "茉莉奶绿",
+   "baseCalories": 300,
+   "sizeCalories": {
+    "medium": 300,
+    "large": 420
+   },
+   "defaultSize": "large",
+   "tagIds": [
+    "fresh",
+    "milk-tea"
+   ]
+  },
+  {
+   "id": "coco-taro-milk-tea",
+   "brandId": "coco",
+   "displayName": "芋头奶茶",
+   "baseCalories": 400,
+   "sizeCalories": {
+    "medium": 400,
+    "large": 560
+   },
+   "defaultSize": "large",
+   "tagIds": [
+    "milk-tea"
+   ]
+  },
+  {
+   "id": "coco-lemon-king",
+   "brandId": "coco",
+   "displayName": "柠檬霸",
+   "baseCalories": 180,
+   "sizeCalories": {
+    "medium": 180,
+    "large": 260
+   },
+   "defaultSize": "large",
+   "tagIds": [
+    "fruit",
+    "fresh"
+   ]
+  },
+  {
+   "id": "coco-coconut-mango-pomelo",
+   "brandId": "coco",
+   "displayName": "生椰杨枝甘露",
+   "baseCalories": 430,
+   "sizeCalories": {
+    "medium": 430,
+    "large": 600
+   },
+   "defaultSize": "large",
+   "tagIds": [
+    "fruit",
+    "toppings"
+   ]
+  },
+  {
+   "id": "molimilk-jasmine-milk-white",
+   "brandId": "molimilk",
+   "displayName": "茉莉奶白",
+   "baseCalories": 250,
+   "sizeCalories": {
+    "medium": 250,
+    "large": 350
+   },
+   "defaultSize": "large",
+   "tagIds": [
+    "classic",
+    "fresh",
+    "milk-tea"
+   ]
+  },
+  {
+   "id": "molimilk-osmanthus-longjing",
+   "brandId": "molimilk",
+   "displayName": "桂花龙井",
+   "baseCalories": 230,
+   "sizeCalories": {
+    "medium": 230,
+    "large": 330
+   },
+   "defaultSize": "large",
+   "tagIds": [
+    "fresh",
+    "milk-tea"
+   ]
+  },
+  {
+   "id": "molimilk-bailan",
+   "brandId": "molimilk",
+   "displayName": "白兰",
+   "baseCalories": 250,
+   "sizeCalories": {
+    "medium": 250,
+    "large": 350
+   },
+   "defaultSize": "large",
+   "tagIds": [
+    "fresh",
+    "milk-tea"
+   ]
+  },
+  {
+   "id": "molimilk-gardenia-milk-white",
+   "brandId": "molimilk",
+   "displayName": "栀子奶白",
+   "baseCalories": 250,
+   "sizeCalories": {
+    "medium": 250,
+    "large": 350
+   },
+   "defaultSize": "large",
+   "tagIds": [
+    "fresh",
+    "milk-tea"
+   ]
+  },
+  {
+   "id": "molimilk-matcha-bailan",
+   "brandId": "molimilk",
+   "displayName": "抹茶白兰",
+   "baseCalories": 430,
+   "sizeCalories": {
+    "medium": 430,
+    "large": 600
+   },
+   "defaultSize": "large",
+   "tagIds": [
+    "fresh",
+    "milk-foam"
+   ]
+  },
+  {
+   "id": "molimilk-matcha-zhenwang",
+   "brandId": "molimilk",
+   "displayName": "抹茶针王",
+   "baseCalories": 430,
+   "sizeCalories": {
+    "medium": 430,
+    "large": 600
+   },
+   "defaultSize": "large",
+   "tagIds": [
+    "fresh",
+    "milk-foam"
+   ]
+  },
+  {
+   "id": "molimilk-jasmine-flower",
+   "brandId": "molimilk",
+   "displayName": "一朵茉莉花",
+   "baseCalories": 460,
+   "sizeCalories": {
+    "medium": 460,
+    "large": 650
+   },
+   "defaultSize": "large",
+   "tagIds": [
+    "milk-tea",
+    "toppings"
+   ]
+  },
+  {
+   "id": "molimilk-jasmine-mango-pomelo",
+   "brandId": "molimilk",
+   "displayName": "茉莉杨枝甘露",
+   "baseCalories": 420,
+   "sizeCalories": {
+    "medium": 420,
+    "large": 580
+   },
+   "defaultSize": "large",
+   "tagIds": [
+    "fruit",
+    "toppings"
+   ]
+  }
+ ],
+ "toppings": [
+  {
+   "id": "milk-foam",
+   "name": "芝士奶盖",
+   "calories": 203
+  },
+  {
+   "id": "pearl",
+   "name": "珍珠/波霸",
+   "calories": 156
+  },
+  {
+   "id": "powder-strip",
+   "name": "粉条",
+   "calories": 131
+  },
+  {
+   "id": "taro-ball",
+   "name": "芋圆",
+   "calories": 128
+  },
+  {
+   "id": "oreo",
+   "name": "奥利奥脆片",
+   "calories": 116
+  },
+  {
+   "id": "pudding",
+   "name": "布丁",
+   "calories": 110
+  },
+  {
+   "id": "coconut-jelly",
+   "name": "椰果",
+   "calories": 76
+  },
+  {
+   "id": "konjac-jelly",
+   "name": "蒟蒻/寒天晶球",
+   "calories": 71
+  },
+  {
+   "id": "grass-jelly",
+   "name": "仙草冻",
+   "calories": 57
+  },
+  {
+   "id": "aiyu",
+   "name": "爱玉",
+   "calories": 45
+  },
+  {
+   "id": "kanten",
+   "name": "寒天",
+   "calories": 42
+  },
+  {
+   "id": "aloe",
+   "name": "芦荟",
+   "calories": 31
+  },
+  {
+   "id": "sago",
+   "name": "西米",
+   "calories": 100
+  },
+  {
+   "id": "crisp-boba",
+   "name": "脆波波/爆爆珠",
+   "calories": 70
+  },
+  {
+   "id": "milk-jelly",
+   "name": "奶冻/茶冻/冻冻",
+   "calories": 70
+  },
+  {
+   "id": "rice-ball",
+   "name": "白玉丸子",
+   "calories": 150
+  },
+  {
+   "id": "grain",
+   "name": "青稞/燕麦谷物",
+   "calories": 120
+  },
+  {
+   "id": "taro",
+   "name": "芋泥",
+   "calories": 180
+  },
+  {
+   "id": "red-bean",
+   "name": "红豆",
+   "calories": 130
+  },
+  {
+   "id": "ice-cream",
+   "name": "冰淇淋/雪顶",
+   "calories": 130
+  }
+ ]
+}

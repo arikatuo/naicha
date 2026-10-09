@@ -23,7 +23,13 @@
 }
 .label { color: var(--text); font-size: 28rpx; font-weight: var(--fw-strong); }
 
+.group-caption { color: var(--text-3); font-size: 22rpx; line-height: 1.4; }
+.group-caption + .option-grid + .group-caption { margin-top: 8rpx; }
+.more-toggle { display: flex; align-items: center; justify-content: center; min-height: 80rpx; margin-top: 4rpx; color: var(--primary); font-size: 26rpx; font-weight: var(--fw-strong); }
+
 .option-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16rpx; width: 100%; box-sizing: border-box; }
+.option-grid.chips { display: flex; flex-wrap: wrap; gap: 12rpx; }
+.option-grid.chips .option { width: auto; flex: 0 0 auto; padding: 0 30rpx; }
 .option-grid.two { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 
 /* 选项：与饮品浮层一致，选中是淡红底加红字红边 */

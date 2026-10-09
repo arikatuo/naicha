@@ -18,5 +18,13 @@ module.exports = [
   { id: 'grain', name: '青稞/燕麦谷物', calories: 120 },
   { id: 'taro', name: '芋泥', calories: 180 },
   { id: 'red-bean', name: '红豆', calories: 130 },
-  { id: 'ice-cream', name: '冰淇淋/雪顶', calories: 130 }
+  { id: 'ice-cream', name: '冰淇淋/雪顶', calories: 130 },
+  { id: 'brown-pearl', name: '黑糖珍珠', calories: 170 },
+  { id: 'cold-foam', name: '冷奶沫', calories: 50 },
+  { id: 'extra-shot', name: '额外浓缩', calories: 5, scope: 'coffee' },
+  { id: 'syrup', name: '糖浆', calories: 20, scope: 'coffee' },
+  { id: 'mocha-sauce', name: '摩卡酱', calories: 29, scope: 'coffee' },
+  { id: 'caramel-sauce', name: '焦糖淋酱', calories: 21, scope: 'coffee' },
+  { id: 'whipped-cream', name: '打发奶油顶', calories: 90, scope: 'coffee' },
+  { id: 'oat-milk', name: '燕麦奶', calories: 61, scope: 'coffee' }
 ];

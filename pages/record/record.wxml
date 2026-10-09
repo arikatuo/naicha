@@ -62,12 +62,12 @@
 
   <view class="block">
     <text class="block-title">按品牌找</text>
+    <view wx:if="{{brandTabs.length > 1}}" class="brand-tabs">
+      <view role="button" wx:for="{{brandTabs}}" wx:key="id" class="brand-tab {{brandCategory === item.id ? 'active' : ''}}" data-id="{{item.id}}" bindtap="selectBrandCategory">{{item.name}} {{item.count}}</view>
+    </view>
     <view wx:if="{{hasBrands}}" class="brand-grid">
-      <view role="button" wx:for="{{brands}}" wx:key="id" class="brand-card" data-id="{{item.id}}" bindtap="openBrand" aria-label="查看{{item.name}}热门款">
-        <view class="brand-logo-panel">
-          <image wx:if="{{!item.logoFailed}}" class="brand-logo" src="{{item.logo}}" mode="aspectFit" binderror="onLogoError" data-index="{{index}}" aria-hidden="true"></image>
-          <view wx:else class="brand-logo-fallback" aria-hidden="true"><text>{{item.firstChar}}</text></view>
-        </view>
+      <view role="button" wx:for="{{visibleBrands}}" wx:key="id" class="brand-card" data-id="{{item.id}}" bindtap="openBrand" aria-label="查看{{item.name}}热门款">
+        <view class="brand-avatar" style="background: {{item.color}}; color: {{item.ink}};" aria-hidden="true"><text>{{item.mark}}</text></view>
         <view class="brand-meta">
           <text class="brand-name">{{item.name}}</text>
           <text class="brand-subtitle">{{item.subtitle}}</text>
